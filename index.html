@@ -593,6 +593,10 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
       <div class="sb-sub">Reflexive Constructive World Model</div>
     </div>
     <div class="sb-grp">
+      <div class="sb-lbl">Start Here</div>
+      <a href="#" data-page="everything" class="nl"><span class="nl-num">&#x2302;</span><span class="nl-txt">Everything You Need to Know</span></a>
+    </div>
+    <div class="sb-grp">
       <div class="sb-lbl">Core Documents</div>
       <a href="#" data-page="overview" class="nl"><span class="nl-num">1</span><span class="nl-txt">Unified Architecture</span></a>
       <a href="#" data-page="briefing" class="nl"><span class="nl-num">2</span><span class="nl-txt">Technical Briefing</span></a>
@@ -618,9 +622,587 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
       <a href="#" data-page="ttt" class="nl"><span class="nl-num">11</span><span class="nl-txt">Test-Time Training</span></a>
       <a href="#" data-page="curiosity" class="nl"><span class="nl-num">12</span><span class="nl-txt">Curiosity-Driven WM</span></a>
     </div>
-    <div class="sb-foot">17 documents &middot; August 2026<br>Continual Learning &times; Reflexive World Models</div>
+    <div class="sb-foot">18 documents &middot; August 2026<br>Continual Learning &times; Reflexive World Models</div>
   </nav>
   <main class="main" id="main">
+    <div class="pg" id="pg-everything">
+<div class="page">
+
+<div class="doc-header" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%); padding: 4rem 2.2rem 3.2rem; border-bottom: 3px solid var(--accent); margin: -2.5rem -2.2rem 2.5rem;">
+  <div style="font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.22em; color: #60a5fa; margin-bottom: 1rem;">The Complete Picture</div>
+  <h1 style="margin-bottom: 0.8rem; font-size: 2.5rem; line-height: 1.12; color: #f1f5f9; max-width: 780px;">RecWM: Everything You Need to Know</h1>
+  <p style="font-size: 1.12rem; max-width: 720px; color: #94a3b8; line-height: 1.6; font-style: italic;">The vision, the problem, the model, the math, the product, and the research &mdash; explained clearly, from first principles, without jargon.</p>
+  <p style="font-size: 0.82rem; color: #475569; margin-top: 1rem;">August 2026 &middot; Read time: ~25 minutes</p>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc" style="margin-bottom:2.8rem;">
+  <h3 style="margin-top:0;">Contents</h3>
+  <ol style="columns:2; column-gap:2rem; font-size:0.93rem;">
+    <li><a href="#ev-vision">The Vision</a></li>
+    <li><a href="#ev-problem">The Problem: Why This Doesn&rsquo;t Exist Yet</a></li>
+    <li><a href="#ev-insight">The Core Insight: Markets Build Themselves</a></li>
+    <li><a href="#ev-model">What the Model Is</a></li>
+    <li><a href="#ev-data">What Goes In: The Data</a></li>
+    <li><a href="#ev-engine">How It Works: The Engine</a></li>
+    <li><a href="#ev-output">What Comes Out</a></li>
+    <li><a href="#ev-capabilities">What You Can Do With It</a></li>
+    <li><a href="#ev-math">The Research: Why Nobody Built This Before</a></li>
+    <li><a href="#ev-theorems">The Five Theorems (Plain English)</a></li>
+    <li><a href="#ev-ewmt">The New Field: EWM Theory</a></li>
+    <li><a href="#ev-landscape">Where We Sit in the World</a></li>
+    <li><a href="#ev-build">How We Build It</a></li>
+    <li><a href="#ev-who">Who It&rsquo;s For</a></li>
+  </ol>
+</div>
+
+<!-- ================================================================ -->
+<!-- 1. THE VISION -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-vision">
+  <h2>The Vision</h2>
+
+  <p style="font-size: 1.15rem; line-height: 1.7; color: var(--heading); max-width: 700px;">We are building a <strong>world model for financial markets</strong> &mdash; a system that understands the economy the way a chess engine understands chess. Not by memorising past games, but by understanding the rules, the pieces, and the consequences of every move.</p>
+
+  <p>Every major AI system that has changed the world &mdash; AlphaGo, self-driving cars, protein folding &mdash; works the same way: it builds an internal model of how the world works, then uses that model to reason, plan, and act. Finance has nothing like this. The biggest banks in the world spend $40 billion a year on technology and still rely on dashboards that show what already happened. They have faster data. They do not have better understanding.</p>
+
+  <p>RecWM is the missing piece: an AI system that doesn&rsquo;t just predict prices, but <em>understands</em> why markets move, how decisions create consequences, and what happens when everyone acts on the same information at the same time.</p>
+
+  <div style="background: linear-gradient(135deg, var(--accent-wash) 0%, var(--bg) 100%); border: 1px solid var(--accent); border-left: 4px solid var(--accent); padding: 1.5rem 1.8rem; border-radius: 0 var(--r) var(--r) 0; margin: 2rem 0;">
+    <p style="font-size: 1.05rem; margin: 0; font-weight: 500; color: var(--heading);"><strong>In one sentence:</strong> RecWM is an on-premise AI engine that models the causal structure of financial markets, learns continuously from new data without forgetting the past, and accounts for the fact that its own predictions change the system it&rsquo;s predicting.</p>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- 2. THE PROBLEM -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-problem">
+  <h2>The Problem: Why This Doesn&rsquo;t Exist Yet</h2>
+
+  <p>To understand why nobody has built this, you need to understand three things that make financial markets fundamentally harder than other AI problems:</p>
+
+  <h3>Problem 1: The World Changes</h3>
+  <p>A chess board has fixed rules. A protein has fixed physics. Financial markets do not. The relationship between interest rates and stock prices behaves completely differently in 2007 (before the financial crisis), 2010 (zero interest rates), and 2022 (fastest rate hikes in 40 years). A model trained on one regime breaks the moment conditions change.</p>
+  <p>This is called <strong>non-stationarity</strong>, and it kills every model that trains once and deploys with frozen weights. Which is every model deployed at major banks today.</p>
+
+  <h3>Problem 2: The Model Changes the World</h3>
+  <p>This is the hard one. When a weather forecast predicts rain, the rain still comes. When a financial model predicts a crash and people act on it, the prediction itself changes whether the crash happens. If everyone hedges, the crash might be averted. If everyone sells, the crash gets worse.</p>
+  <p>George Soros called this <strong>reflexivity</strong>. Academics call it <strong>performativity</strong>. It means that in financial markets, the observer is not separate from the system &mdash; the model is <em>inside</em> the world it&rsquo;s trying to model. This creates a feedback loop that standard AI completely ignores.</p>
+
+  <div style="background: var(--warn-bg); border: 1px solid var(--warn-border); border-left: 4px solid var(--warn); padding: 1.2rem 1.5rem; border-radius: 0 var(--r) var(--r) 0; margin: 1.5rem 0;">
+    <p style="margin: 0; font-size: 0.95rem;"><strong>Why this matters practically:</strong> Every risk model at every major bank ignores this. They assume the model observes the market from outside. But when JPMorgan&rsquo;s risk model and Goldman&rsquo;s risk model and everyone else&rsquo;s risk model all see the same signal and all act on it simultaneously &mdash; that collective action is the event. The models didn&rsquo;t predict the crash. They caused it. And they have no mechanism to know this is happening.</p>
+  </div>
+
+  <h3>Problem 3: Constraints Are Invisible</h3>
+  <p>Markets don&rsquo;t just have prices. They have rules. Regulations cap leverage. Liquidity determines what trades are actually possible. Accounting identities mean that one party&rsquo;s asset is another&rsquo;s liability. These constraints are not bolted on after the fact &mdash; they shape what can happen <em>before</em> anyone acts. And they change over time: a new regulation, a liquidity drought, a collateral haircut change all alter the space of possible outcomes.</p>
+  <p>No existing model treats constraints as first-class objects that evolve with the system.</p>
+
+  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); padding: 1.5rem 1.8rem; border-radius: var(--r); margin: 2rem 0;">
+    <h4 style="margin-top: 0; color: var(--accent);">The three-problem summary</h4>
+    <table style="margin: 0;">
+      <thead><tr><th>Problem</th><th>What It Means</th><th>What Everyone Else Does</th><th>What RecWM Does</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Non-stationarity</strong></td><td>The rules change</td><td>Retrain from scratch (slow, expensive, forgets the past)</td><td>Continuous learning: updates every day without forgetting</td></tr>
+        <tr><td><strong>Reflexivity</strong></td><td>The model changes the game</td><td>Ignore it completely</td><td>Measures its own influence and adjusts in real time</td></tr>
+        <tr><td><strong>Evolving constraints</strong></td><td>The boundaries move</td><td>Check limits after the fact</td><td>Constraints are built into the model&rsquo;s core equation</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- 3. THE CORE INSIGHT -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-insight">
+  <h2>The Core Insight: Markets Build Themselves</h2>
+
+  <p>Here is the idea that makes RecWM different from everything else:</p>
+
+  <p style="font-size: 1.15rem; line-height: 1.7; color: var(--heading); max-width: 700px; margin: 1.5rem 0;"><strong>Financial markets are not systems to be predicted. They are systems that are continuously constructed by the beliefs and actions of their participants, under constraints that themselves evolve.</strong></p>
+
+  <p>Think about it this way. When you see a stock price, you&rsquo;re not seeing a measurement of some external reality (like a thermometer measuring temperature). You&rsquo;re seeing the <em>result</em> of thousands of people acting on their beliefs about what the stock is worth. Their beliefs drive their actions. Their actions change the price. The new price changes their beliefs. And around it goes.</p>
+
+  <p>This is the reflexive loop at the heart of all financial markets:</p>
+
+  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); padding: 2rem; border-radius: var(--r); margin: 2rem 0; text-align: center;">
+    <div style="font-size: 1.3rem; font-weight: 700; color: var(--heading); letter-spacing: 0.02em;">
+      Beliefs &rarr; Actions &rarr; World Changes &rarr; Beliefs Update &rarr; &hellip;
+    </div>
+    <p style="font-size: 0.88rem; color: var(--fg-dim); margin-top: 1rem; margin-bottom: 0;">This loop is not a bug to be linearised away. It is <em>the fundamental mechanism of financial markets.</em></p>
+  </div>
+
+  <p>RecWM&rsquo;s core equation captures this in four pieces:</p>
+
+  <div class="equation-block" style="font-size: 1.1rem;">W(t+1) = C( W(t), A(B(t)), &Phi;(t) )</div>
+
+  <p>In plain English:</p>
+  <ul>
+    <li><strong>W(t)</strong> &mdash; the world state right now (prices, order books, macro data, narratives)</li>
+    <li><strong>B(t)</strong> &mdash; what everyone believes about the world right now</li>
+    <li><strong>A(B)</strong> &mdash; the actions those beliefs produce (trades, speeches, regulations)</li>
+    <li><strong>&Phi;(t)</strong> &mdash; the constraints that filter what&rsquo;s possible (regulations, liquidity, physics)</li>
+    <li><strong>C(&middot;)</strong> &mdash; the construction operator that combines actions + constraints to produce the next world state</li>
+  </ul>
+
+  <p>Every other model asks: <em>&ldquo;Given the past, what happens next?&rdquo;</em> RecWM asks: <em>&ldquo;What can be constructed, by whom, under what constraints, and how will the act of construction change future possibilities?&rdquo;</em></p>
+</div>
+
+<!-- ================================================================ -->
+<!-- 4. WHAT THE MODEL IS -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-model">
+  <h2>What the Model Is</h2>
+
+  <p>RecWM is a <strong>structured intelligence engine</strong> that runs entirely on the client&rsquo;s own hardware. Let&rsquo;s be precise about what it is and what it is not:</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;">
+    <div style="background: var(--accent-wash); border: 1px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: var(--r);">
+      <h4 style="color: var(--accent); margin-top: 0;">What it IS</h4>
+      <ul style="font-size: 0.9rem; margin-bottom: 0;">
+        <li>A causal model of how financial markets work</li>
+        <li>Continuously learning &mdash; gets smarter every day</li>
+        <li>On-premise &mdash; your data never leaves your building</li>
+        <li>Traceable &mdash; every output links back to the data and logic that produced it</li>
+        <li>Reflexivity-aware &mdash; knows when its own predictions are affecting the market</li>
+        <li>Constraint-native &mdash; regulations and limits are baked in, not bolted on</li>
+      </ul>
+    </div>
+    <div style="background: var(--warn-bg); border: 1px solid var(--warn-border); padding: 1.2rem 1.5rem; border-radius: var(--r);">
+      <h4 style="color: var(--warn); margin-top: 0;">What it is NOT</h4>
+      <ul style="font-size: 0.9rem; margin-bottom: 0;">
+        <li>Not a chatbot sitting on a price feed</li>
+        <li>Not a dashboard that shows what already happened</li>
+        <li>Not a black box &mdash; every number is explainable</li>
+        <li>Not a prediction machine that says &ldquo;the market will go up&rdquo;</li>
+        <li>Not a 50-billion-parameter language model &mdash; it&rsquo;s much smaller and more structured</li>
+        <li>Not a cloud service &mdash; it runs on your own GPUs</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- 5. WHAT GOES IN -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-data">
+  <h2>What Goes In: The Data</h2>
+
+  <p>RecWM ingests the entire observable financial world. All from free, institutional-grade data sources &mdash; no Bloomberg terminal required.</p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Interest Rates &amp; Policy</h4>
+      <p style="font-size: 0.84rem;">Fed Funds Rate, Treasury yield curves (1M to 30Y), SOFR, global central bank policy rates, FOMC statements and minutes, ECB/BOJ/BOE communications</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Prices &amp; Markets</h4>
+      <p style="font-size: 0.84rem;">Equities, futures, FX, options chains (implied volatility, skew, open interest), commodity prices, real estate indices</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Credit &amp; Liquidity</h4>
+      <p style="font-size: 0.84rem;">Credit spreads (HY and IG), Fed balance sheet, reserve balances, reverse repo volumes, money supply, funding stress indicators</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Economic Fundamentals</h4>
+      <p style="font-size: 0.84rem;">GDP, CPI, unemployment, payrolls, PMI, trade data, IMF forecasts, World Bank structural indicators, debt-to-GDP ratios</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">News &amp; Sentiment</h4>
+      <p style="font-size: 0.84rem;">GDELT global event database (every 15 minutes), geopolitical event detection, news tone analysis, narrative regime identification</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Corporate Filings</h4>
+      <p style="font-size: 0.84rem;">SEC EDGAR: 10-K/10-Q financial statements (XBRL structured data), 8-K event filings, insider transactions, leverage ratios</p>
+    </div>
+  </div>
+
+  <p>The key insight: <strong>the raw data is free.</strong> FRED, BIS, EDGAR, Yahoo Finance &mdash; anyone can access it. The edge is not in the data. The edge is in how the data is structured: decomposed into seven typed fragments, each operating at its natural timescale, and processed through a model that understands causal relationships instead of just correlations.</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- 6. HOW IT WORKS -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-engine">
+  <h2>How It Works: The Engine</h2>
+
+  <p>The model works in seven stages. Think of it as an assembly line: raw data enters at the bottom, and actionable intelligence comes out at the top.</p>
+
+  <h3>Stage 1: Break the World into Pieces</h3>
+  <p>The first thing the model does is break the financial world into <strong>seven fragments</strong>, each capturing a different aspect of reality at its natural speed:</p>
+
+  <table>
+    <thead><tr><th>Fragment</th><th>What It Captures</th><th>Speed</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Liquidity</strong></td><td>Can you actually trade?</td><td>Hours to days</td><td>Bid-ask spreads widening, funding markets freezing</td></tr>
+      <tr><td><strong>Momentum</strong></td><td>Which way are things moving?</td><td>Days to weeks</td><td>Tech stocks rallying, EM currencies selling off</td></tr>
+      <tr><td><strong>Risk</strong></td><td>How much uncertainty is there?</td><td>Weeks to months</td><td>VIX spiking, correlations rising, tail risks growing</td></tr>
+      <tr><td><strong>Credit</strong></td><td>Who can pay their debts?</td><td>Months to quarters</td><td>Credit spreads widening, leverage building up</td></tr>
+      <tr><td><strong>Structure</strong></td><td>What are the deep trends?</td><td>Quarters to years</td><td>Demographic shifts, secular stagnation, de-globalisation</td></tr>
+      <tr><td><strong>Sentiment</strong></td><td>What&rsquo;s the narrative?</td><td>Hours to days</td><td>&ldquo;Soft landing&rdquo; narrative, geopolitical fear, AI hype</td></tr>
+      <tr><td><strong>Policy</strong></td><td>What are governments doing?</td><td>Months</td><td>Fed pivoting dovish, ECB holding, fiscal stimulus</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Why this matters:</strong> A volatility spike means completely different things at different timescales. At the 5-day scale, it&rsquo;s a liquidity event. At the 60-day scale, it&rsquo;s a regime shift. At the 250-day scale, it&rsquo;s a structural break. The model doesn&rsquo;t predict &ldquo;the market&rdquo; &mdash; it predicts each fragment at its natural timescale and composes the results.</p>
+
+  <h3>Stage 2: Learn What Matters (Compress)</h3>
+  <p>Each fragment has a huge amount of raw data. The model compresses each fragment down to only the information that helps predict the future. Fast, noisy fragments (like tick-by-tick price data) get compressed aggressively &mdash; most of the noise is market microstructure, not signal. Slow fragments (like policy signals) get compressed gently &mdash; every rare policy signal is valuable and must be preserved.</p>
+
+  <h3>Stage 3: Decide When to Update (Gate)</h3>
+  <p>Not every fragment needs to update at every moment. The model learns <em>when</em> each fragment should change its state. In practice:</p>
+  <ul>
+    <li><strong>Liquidity and Momentum</strong> update almost continuously &mdash; markets move fast</li>
+    <li><strong>Structure and Policy</strong> stay frozen 95%+ of the time, then spike open for a few steps when there&rsquo;s a genuine data release or regime break</li>
+  </ul>
+  <p>When a gate is closed, the fragment&rsquo;s state is preserved exactly as it was &mdash; no forgetting, no drift. This is the model&rsquo;s built-in memory: it naturally remembers what it learned about slow-moving dynamics while quickly adapting to fast-moving ones.</p>
+
+  <h3>Stage 4: Compose the Fragments</h3>
+  <p>The fragments don&rsquo;t exist in isolation. Liquidity affects risk. Credit affects structure. Policy affects everything. The model learns how fragments interact &mdash; not just correlations, but causal relationships (if liquidity dries up, <em>then</em> risk spikes, <em>because</em> market makers withdraw).</p>
+  <p>At this stage, constraints kick in. Four types of constraints filter every possible action:</p>
+  <ul>
+    <li><strong>Regulatory</strong> &mdash; leverage caps, position limits, capital requirements</li>
+    <li><strong>Liquidity</strong> &mdash; you can&rsquo;t sell what nobody will buy</li>
+    <li><strong>Physical</strong> &mdash; commodity delivery, settlement cycles, infrastructure limits</li>
+    <li><strong>Accounting</strong> &mdash; one party&rsquo;s asset is another&rsquo;s liability; balance sheets must balance</li>
+  </ul>
+
+  <h3>Stage 5: Measure Reflexivity</h3>
+  <p>This is where RecWM does something no other model does. It asks: <em>&ldquo;If I publish this prediction and people act on it, how much will the world change as a result?&rdquo;</em></p>
+  <p>The answer is a single number: the <strong>reflexivity coefficient &epsilon;(t)</strong>. Think of it as a dial:</p>
+  <ul>
+    <li><strong>&epsilon; near 0:</strong> Normal markets. Predictions are reliable. The model is observing, not influencing.</li>
+    <li><strong>&epsilon; around 0.3:</strong> Danger zone. Feedback loops are forming. Confidence intervals should be widened. Point estimates are becoming unreliable.</li>
+    <li><strong>&epsilon; above 0.4:</strong> Crisis dynamics. Selling begets selling. The model&rsquo;s predictions are becoming self-fulfilling. This is 2008, COVID, the UK gilt crisis territory.</li>
+  </ul>
+
+  <h3>Stage 6: Simulate the Future</h3>
+  <p>Starting from the current state of all seven fragments, the model runs 256&ndash;1,024 forward simulations. Each simulation samples from the model&rsquo;s uncertainty about each fragment, producing a <em>distribution</em> of possible futures &mdash; not a single prediction. Simulations that violate constraints (regulatory limits, liquidity floors) are removed, not patched. The surviving simulations represent the set of futures that are actually possible.</p>
+
+  <h3>Stage 7: Produce Intelligence</h3>
+  <p>From the simulated futures, four proprietary signals emerge. These are not technical indicators derived from price &mdash; they emerge from the structure of the world model itself:</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
+    <div style="background: var(--bg-alt); border-left: 4px solid var(--accent); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="color: var(--accent); margin-top: 0; font-size: 0.95rem;">Constructibility Index</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0;">What fraction of possible actions are currently feasible? When this drops, the economy is becoming rigid &mdash; fewer things are possible, fewer trades can execute, fewer policies can work. Leads traditional financial conditions indices by 1&ndash;4 weeks.</p>
+    </div>
+    <div style="background: var(--bg-alt); border-left: 4px solid var(--red); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="color: var(--red); margin-top: 0; font-size: 0.95rem;">Reflexive Instability</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0;">How much are predictions influencing reality? When this is high, self-fulfilling prophecy conditions exist. The market is not just being observed &mdash; it&rsquo;s being shaped by the models observing it. Values above 0.3 are dangerous.</p>
+    </div>
+    <div style="background: var(--bg-alt); border-left: 4px solid var(--amber); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="color: var(--amber); margin-top: 0; font-size: 0.95rem;">Composition Fragility</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0;">Can stable parts create an unstable whole? Two individually safe positions can become dangerous when combined. This is the mathematical definition of systemic risk &mdash; risk that exists only in the interaction, not in the components.</p>
+    </div>
+    <div style="background: var(--bg-alt); border-left: 4px solid var(--signal-purple); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="color: var(--signal-purple); margin-top: 0; font-size: 0.95rem;">Path Lock-In</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0;">How sensitive is the future to decisions made today? When this approaches 1, you&rsquo;re at a fork in the road &mdash; small choices now lock in trajectories that cannot be reversed later. Bifurcation points, tipping points, points of no return.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- 7. WHAT COMES OUT -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-output">
+  <h2>What Comes Out</h2>
+
+  <p>Every output from RecWM has three properties: it is <strong>quantified</strong> (numbers with confidence intervals, not vague assessments), <strong>traceable</strong> (every number links back to the specific data, fragments, and logic that produced it), and <strong>actionable</strong> (it tells you what to do, not just what happened).</p>
+
+  <h3>Example: Regime Change Alert</h3>
+  <p>The model continuously monitors all seven fragments for structural breaks. When it detects a regime shift, it produces an alert like this:</p>
+
+  <div style="background: #1e293b; color: #e2e8f0; padding: 1.5rem 1.8rem; border-radius: 8px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.8rem; line-height: 1.7; margin: 1.5rem 0; overflow-x: auto;">
+<span style="color: #f87171; font-weight: 700;">[REGIME SHIFT ALERT]</span><br>
+<span style="color: #94a3b8;">Transition:</span> &ldquo;Late-cycle credit expansion&rdquo; &rarr; &ldquo;Liquidity contraction&rdquo;<br>
+<span style="color: #94a3b8;">Confidence:</span> 68%<br>
+<br>
+<span style="color: #fbbf24;">What triggered it:</span><br>
+&nbsp;&nbsp;&bull; Funding costs jumped (USD basis widened 18bps in 3 days)<br>
+&nbsp;&nbsp;&bull; Correlations spiked (0.31 &rarr; 0.58 across asset classes)<br>
+&nbsp;&nbsp;&bull; Reflexivity rising (&epsilon;: 0.12 &rarr; 0.34 &mdash; selling is feeding on itself)<br>
+<br>
+<span style="color: #34d399;">This looks like:</span> August 2015 (81% similar), Feb 2018 VIX (74% similar)<br>
+<span style="color: #94a3b8;">But different because:</span> credit-to-GDP gap is 12pp wider than 2015,<br>
+&nbsp;&nbsp;and the Fed is cutting (not holding). This changes the recovery path.<br>
+<br>
+<span style="color: #94a3b8;">Full trace:</span> <span style="text-decoration: underline; color: #60a5fa;">[view data sources]</span> <span style="text-decoration: underline; color: #60a5fa;">[view causal graph]</span>
+  </div>
+
+  <p>Notice what&rsquo;s different from a Bloomberg alert: it tells you <em>why</em> the regime is shifting (not just that it happened), it identifies the <em>structural</em> analog (not just a similar price pattern), and it tells you where today <em>diverges</em> from the analog. The divergence is often the most valuable part.</p>
+
+  <h3>Example: Scenario Analysis</h3>
+  <p>A portfolio manager asks: <em>&ldquo;What happens if the Fed cuts 50bps and China devalues by 3%?&rdquo;</em></p>
+  <p>The model runs both interventions simultaneously through all seven fragments, capturing interaction effects (a Fed cut combined with China devaluation compounds EM outflow pressure beyond either shock alone). After 5,000 forward simulations:</p>
+
+  <div style="background: #1e293b; color: #e2e8f0; padding: 1.5rem 1.8rem; border-radius: 8px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.8rem; line-height: 1.7; margin: 1.5rem 0; overflow-x: auto;">
+<span style="color: #60a5fa; font-weight: 700;">Scenario: Fed &minus;50bps + China devalues 3%</span><br>
+<span style="color: #94a3b8;">20-day horizon &bull; 5,000 simulations &bull; 4,847 survived constraints</span><br>
+<br>
+S&amp;P 500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+1.8%&nbsp;&nbsp;&nbsp;(range: &minus;6.1% to +9.4%)<br>
+US Dollar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&minus;2.1%&nbsp;&nbsp;&nbsp;(range: &minus;4.8% to +0.3%)<br>
+EM Currencies&nbsp;&minus;4.7%&nbsp;&nbsp;&nbsp;(range: &minus;11.2% to &minus;0.9%)<br>
+Gold&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+3.2%&nbsp;&nbsp;&nbsp;(range: &minus;0.5% to +7.8%)<br>
+HY Spreads&nbsp;&nbsp;&nbsp;&nbsp;+38bp&nbsp;&nbsp;&nbsp;(range: +8bp to +95bp)<br>
+<br>
+<span style="color: #fbbf24;">Main story:</span> In 58% of simulations, equities rally initially<br>
+on the rate cut, then reverse within 8 days as EM outflows<br>
+overwhelm the tailwind.<br>
+<br>
+<span style="color: #f87171;">Reflexivity warning:</span> &epsilon;=0.34 &mdash; the initial market reaction<br>
+will itself alter the Fed&rsquo;s next move. This is path-dependent.
+  </div>
+
+  <p>The model doesn&rsquo;t just give you a point estimate. It gives you a <em>distribution</em> of outcomes, the <em>dominant transmission path</em> (which causal chain is most likely), and a <em>reflexivity warning</em> (will acting on this information change the outcome?).</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- 8. CAPABILITIES -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-capabilities">
+  <h2>What You Can Do With It</h2>
+
+  <table>
+    <thead><tr><th>Capability</th><th>What It Does</th><th>Why It&rsquo;s Different</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Real-Time Regime Detection</strong></td><td>Monitors all 7 fragments continuously for structural breaks. Alerts within minutes, not days.</td><td>Detects the <em>cause</em> of the shift, not just the price pattern. Finds structural analogs, not chart patterns.</td></tr>
+      <tr><td><strong>Scenario Analysis</strong></td><td>&ldquo;What if X happens?&rdquo; Run any combination of hypothetical interventions through the full causal model.</td><td>Captures interaction effects between simultaneous shocks. Accounts for reflexivity &mdash; will acting on this change the outcome?</td></tr>
+      <tr><td><strong>Structural Stress Testing</strong></td><td>Re-derives the causal mechanism from a historical crisis and propagates it through today&rsquo;s market structure.</td><td>Traditional stress tests replay old price paths. RecWM replays the <em>structural shock</em> through today&rsquo;s causal graph. The results are different (usually worse).</td></tr>
+      <tr><td><strong>Tail Risk Early Warning</strong></td><td>Decomposes why fragility is building: leverage, crowding, liquidity withdrawal, reflexivity loops.</td><td>Doesn&rsquo;t say &ldquo;crash probability = 12%.&rdquo; Says <em>why</em> the system is brittle and which specific mechanism could trigger a cascade.</td></tr>
+      <tr><td><strong>Cross-Asset Contagion Mapping</strong></td><td>Live directed graph showing causal transmission between assets &mdash; not just correlation, but which fragment pathway carries the stress.</td><td>Distinguishes liquidity contagion from sentiment contagion from structural contagion. Different transmission paths need different hedges.</td></tr>
+      <tr><td><strong>Portfolio Construction</strong></td><td>Optimise portfolios with constraints baked into the world model, not checked after the fact.</td><td>&ldquo;Only feasible constructions are considered&rdquo; vs. &ldquo;optimise then check limits.&rdquo; Produces portfolios that are constraint-aware from the start.</td></tr>
+      <tr><td><strong>Policy Impact Analysis</strong></td><td>Model interventions at calibrated strength. &ldquo;What if we signal 25bps vs 50bps?&rdquo;</td><td>Accounts for the fact that announcing a policy changes the conditions that made the policy necessary. Essential for central banks, where every action is market-moving.</td></tr>
+      <tr><td><strong>Historical Analog Search</strong></td><td>Finds structurally similar episodes from history &mdash; not price patterns, but similar causal structures.</td><td>Tells you where today <em>diverges</em> from the analog, not just where it matches. The divergence is often the most useful information.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ================================================================ -->
+<!-- 9. THE RESEARCH -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-math">
+  <h2>The Research: Why Nobody Built This Before</h2>
+
+  <p>The reason nobody has built a financial world model is not engineering &mdash; it&rsquo;s mathematics. The three problems (non-stationarity, reflexivity, evolving constraints) are not just hard to implement. They are <em>unsolved mathematical problems</em>. Each one has a large literature in its own field, but nobody has connected them.</p>
+
+  <p>RecWM&rsquo;s research contribution is to identify and fill three specific gaps in the academic literature where two well-known fields have never been combined:</p>
+
+  <div style="display: grid; grid-template-columns: 1fr; gap: 1.2rem; margin: 1.5rem 0;">
+    <div style="background: var(--bg-alt); border: 1px solid var(--border-light); padding: 1.3rem 1.6rem; border-radius: var(--r);">
+      <h4 style="color: var(--accent); margin-top: 0;">Gap 1: Causal Emergence + Reflexivity</h4>
+      <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Field A:</strong> Causal emergence (Hoel et al., 2013) &mdash; sometimes macro-level descriptions of a system carry <em>more</em> causal information than micro-level ones. The forest fire is better predicted at the level of &ldquo;wind speed + fuel moisture&rdquo; than at the level of individual tree combustion.</p>
+      <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Field B:</strong> Performative prediction (Perdomo et al., 2020) &mdash; when you deploy a model, the data distribution shifts in response. Your model of loan defaults changes who gets approved, which changes the default rate.</p>
+      <p style="font-size: 0.9rem; margin-bottom: 0;"><strong>The gap:</strong> To our knowledge, no prior work combines these two ideas. But in financial markets you need both: the right level of description (macro vs. micro) <em>and</em> the feedback loop between model and reality.</p>
+    </div>
+    <div style="background: var(--bg-alt); border: 1px solid var(--border-light); padding: 1.3rem 1.6rem; border-radius: var(--r);">
+      <h4 style="color: var(--accent); margin-top: 0;">Gap 2: Ergodicity Economics + Performativity</h4>
+      <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Field A:</strong> Ergodicity economics (Peters, 2019) &mdash; the average outcome for a group is different from the typical outcome for an individual over time. A coin flip that gains 50% or loses 40% has a positive <em>average</em> return (+5% per flip) but will bankrupt every individual player over time.</p>
+      <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Field B:</strong> Performative prediction (same as above).</p>
+      <p style="font-size: 0.9rem; margin-bottom: 0;"><strong>The gap:</strong> To our knowledge, nobody has asked: &ldquo;When a model changes the distribution, does the time-average diverge further from the ensemble-average?&rdquo; RecWM shows that it does &mdash; performative effects amplify ergodicity gaps.</p>
+    </div>
+    <div style="background: var(--bg-alt); border: 1px solid var(--border-light); padding: 1.3rem 1.6rem; border-radius: var(--r);">
+      <h4 style="color: var(--accent); margin-top: 0;">Gap 3: Continual Learning + Performativity</h4>
+      <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Field A:</strong> Elastic Weight Consolidation (Kirkpatrick et al., 2017) &mdash; a technique to prevent neural networks from forgetting old knowledge when learning new things. It works by protecting the parameters that were important for previous tasks.</p>
+      <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Field B:</strong> Performative prediction (same as above).</p>
+      <p style="font-size: 0.9rem; margin-bottom: 0;"><strong>The gap:</strong> Nobody has connected memory protection (don&rsquo;t forget the past) with distribution stability (your model changes the world). RecWM shows that protecting memories in the right way actually <em>reduces</em> how much your model destabilises the market.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- 10. THE FIVE THEOREMS -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-theorems">
+  <h2>The Five Theorems (Plain English)</h2>
+
+  <p>Each theorem fills one of the gaps above, providing a mathematical foundation for a specific aspect of the world model:</p>
+
+  <table>
+    <thead><tr><th>#</th><th>Theorem</th><th>What It Says (Plain English)</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td>Reflexive Causal Emergence</td>
+        <td>When you add reflexivity to a system, the macro level becomes <em>even more informative</em> relative to the micro level. The feedback loop between model and market creates macro patterns that cannot be seen at the individual-trade level. This justifies modelling at the fragment level rather than the tick level.</td>
+        <td style="color: var(--green);">Provable</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td>Ergodic-Performative Divergence</td>
+        <td>When a model changes the market, the difference between &ldquo;average across all traders&rdquo; and &ldquo;typical outcome for one trader over time&rdquo; gets bigger. Model deployment makes the ensemble average <em>more misleading</em> as a guide to individual outcomes. Traditional risk metrics based on ensemble averages understate real risk.</td>
+        <td style="color: var(--green);">Provable</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td>EWC-Stabilised Convergence</td>
+        <td>If you protect the model&rsquo;s important memories (via EWC) in the directions where the market is most sensitive, you simultaneously achieve two things: the model doesn&rsquo;t forget, <em>and</em> it destabilises the market less. Memory protection and market stability are the same mathematical operation viewed from different angles.</td>
+        <td style="color: var(--green);">Provable</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td>Constraint-Filtered Composition</td>
+        <td>You can compose fragment-level predictions into a global prediction while guaranteeing that every constraint (regulatory, liquidity, accounting) is satisfied at every step &mdash; not checked after the fact, but built into the composition itself. The composition operator is typed by timescale, so fast fragments and slow fragments compose correctly.</td>
+        <td style="color: var(--amber);">Conditional</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td>Endogenous Sensitivity &amp; Crisis</td>
+        <td>The reflexivity coefficient &epsilon;(t) is not constant &mdash; it changes endogenously. When &epsilon; exceeds a critical threshold, the system loses its contraction property and small perturbations cascade into crises. The theorem gives the exact threshold and shows that standard contraction-mapping proofs fail precisely when you need them most.</td>
+        <td style="color: var(--signal-purple);">Conjectural</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-size: 0.88rem; color: var(--fg-dim); margin-top: 1rem;"><strong>Additionally:</strong> Two further theorems (6 and 7) extend the framework to multi-agent settings and cohomological market consistency. Theorem 6 uses sheaf cohomology to detect market inconsistencies (early crisis warning). Theorem 7 shows that individually stable AI trading models can collectively destabilise the market &mdash; a compositional instability that no single-model analysis can detect.</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- 11. EWM THEORY -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-ewmt">
+  <h2>The New Field: Endogenous World Model Theory</h2>
+
+  <p>The research above is not just a set of theorems. It defines a new mathematical discipline: <strong>Endogenous World Model Theory (EWM-T)</strong> &mdash; the theory of world models where the model is inside the system it models.</p>
+
+  <p>Every existing world model in AI (JEPA, Dreamer, Genie, Sora) operates under the exogeneity assumption: the model is <em>outside</em> the system, observing from a privileged position. This is fine for video games, robotics, and protein folding. It is false for financial markets, political systems, social networks, and any domain where the model&rsquo;s existence changes the system.</p>
+
+  <p>EWM-T provides:</p>
+  <ul>
+    <li><strong>Seven fundamental units</strong> &mdash; the building blocks of endogenous modelling (world fragments, constructive units, construction operators, constraint fields, belief fields, reflexive charges, construction entropy)</li>
+    <li><strong>A compositional calculus</strong> &mdash; rules for how these units combine, typed by timescale, filtered by constraints</li>
+    <li><strong>Three new methodologies</strong> &mdash; reflexive causal analysis, constructive inference, and performative equilibrium computation</li>
+  </ul>
+
+  <p>The August 2026 Economic World Models survey (Han et al., arXiv 2608.06020) names this field and defines a six-level capability ladder. Most published work sits at L1&ndash;L3. L6 &mdash; a sim-to-real economic digital twin with an online correction loop &mdash; has zero occupants. RecWM is designed to be the first.</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- 12. LANDSCAPE -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-landscape">
+  <h2>Where We Sit in the World</h2>
+
+  <p>Nobody is building what RecWM builds. The landscape fragments into four categories, and we sit in the gap between all of them:</p>
+
+  <table>
+    <thead><tr><th>Category</th><th>Examples</th><th>What They Do</th><th>What They Can&rsquo;t Do</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Data Terminals</strong></td>
+        <td>Bloomberg ($25K/seat/yr), Refinitiv, FactSet</td>
+        <td>Show you data. Fast. Lots of it.</td>
+        <td>No intelligence. No causality. No predictions. You are still the model.</td>
+      </tr>
+      <tr>
+        <td><strong>Risk Vendors</strong></td>
+        <td>MSCI, Axioma, Quantifi</td>
+        <td>Pre-built factor models, VaR, portfolio analytics</td>
+        <td>Frozen weights. Black-box factors. No online learning. No reflexivity.</td>
+      </tr>
+      <tr>
+        <td><strong>Bank AI</strong></td>
+        <td>JPMorgan LLM Suite, Goldman AI Assistant</td>
+        <td>Chatbots, document processing, coding help</td>
+        <td>Language models, not world models. They generate text, not causal understanding.</td>
+      </tr>
+      <tr>
+        <td><strong>AI/ML Vendors</strong></td>
+        <td>Kensho (S&amp;P), Sooth Labs ($400M valuation), SymphonyAI</td>
+        <td>NLP on filings, sentiment analysis, forecasting</td>
+        <td>Exogenous forecasting only. No endogenous causal architecture. No reflexivity.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="background: var(--accent-wash); border: 1px solid var(--accent); padding: 1.3rem 1.6rem; border-radius: var(--r); margin: 1.5rem 0;">
+    <p style="margin: 0; font-size: 0.95rem;"><strong>The structural advantage:</strong> Scale barely helps on macro data. A well-structured ~1M parameter model (MACROCAST) beats 120M-parameter Chronos-2 on macro forecasting. The best macro foundation model improves on a simple autoregressive baseline by a median of only 2.9%. Domain structure beats scale. This is exactly the axis where a structured world model competes and trillion-dollar banks have no advantage.</p>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- 13. HOW WE BUILD IT -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-build">
+  <h2>How We Build It</h2>
+
+  <h3>Technology</h3>
+  <p>RecWM is built on mature, proven open-source tools: PyTorch for the core ML, NumPyro for Bayesian inference, cvxpy for constraint optimisation, Polars + DuckDB for data processing, FastAPI for the API layer. No exotic dependencies. No proprietary frameworks.</p>
+
+  <h3>Compute</h3>
+  <p>This is not a foundation model that needs a data centre. Full training requires ~400 GPU-hours (~$800 on cloud A100 spot pricing). Inference runs on 2&ndash;4 GPUs. The intelligence comes from architecture, not scale.</p>
+
+  <h3>Deployment</h3>
+  <p>Entirely on-premise. The model runs on the client&rsquo;s own hardware, behind their firewall. Data never leaves the building. This is designed from day one for regulatory compliance (EU DORA, EU AI Act, SEC/FINRA expectations).</p>
+
+  <h3>Continuous Learning</h3>
+  <p>The model doesn&rsquo;t retrain from scratch. Five layered continual learning mechanisms keep it current:</p>
+  <ol>
+    <li><strong>Gate-based memory:</strong> Closed gates preserve old knowledge automatically</li>
+    <li><strong>Streaming updates:</strong> Real-time parameter adjustment from new data</li>
+    <li><strong>Memory protection (EWC):</strong> Important parameters are protected from being overwritten</li>
+    <li><strong>Regime detection (BOCPD):</strong> When the world changes structurally, the model detects it and adapts</li>
+    <li><strong>Slow-fast blending:</strong> A stable slow model anchors a fast-adapting overlay</li>
+  </ol>
+
+  <h3>Governance &amp; Audit</h3>
+  <p>Every model update, every query, every alert is logged with full provenance: which data was used, which model version, which parameters were active. Any historical output can be reproduced exactly. This is designed for model risk management (SR 11-7) and regulatory examination.</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- 14. WHO IT'S FOR -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-who">
+  <h2>Who It&rsquo;s For</h2>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Hedge Funds &amp; Quant Desks</h4>
+      <p style="font-size: 0.86rem;">Earlier regime detection for tactical positioning. Reflexivity-aware tail hedging. Scenario-based alpha generation. <strong>Value:</strong> saving 50&ndash;200bps per drawdown event vs. reactive rebalancing.</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Asset Managers</h4>
+      <p style="font-size: 0.86rem;">Constraint-aware portfolio construction. Forward-looking risk instead of backward-looking tracking error. Investment committee-ready scenario memos. <strong>Value:</strong> 10&ndash;30bps/yr alpha from constraint-native optimisation.</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Central Banks</h4>
+      <p style="font-size: 0.86rem;">Policy counterfactuals with reflexivity built in. &ldquo;What happens if we signal 25bps vs 50bps?&rdquo; with calibrated uncertainty. <strong>Value:</strong> better-calibrated policy decisions where every action is market-moving.</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Corporate Finance Teams</h4>
+      <p style="font-size: 0.86rem;">FX/rate exposure scenario planning. Hedging policy stress testing. Capital structure decisions. <strong>Value:</strong> reduced hedging cost from pre-testing policy changes against hundreds of plausible futures.</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Sovereign Wealth Funds</h4>
+      <p style="font-size: 0.86rem;">Long-horizon cross-asset contagion mapping. Tail-risk budgeting across multi-decade mandates. <strong>Value:</strong> capital preservation through contagion-aware allocation.</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Regulators</h4>
+      <p style="font-size: 0.86rem;">System-wide contagion mapping. Fragility scoring. Macroprudential surveillance. <strong>Value:</strong> structural stress tests that account for feedback loops and liquidation spirals.</p>
+    </div>
+  </div>
+
+  <h3>Product Tiers</h3>
+  <table>
+    <thead><tr><th>Tier</th><th>What You Get</th><th>Annual Price</th><th>For</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Signal Feed</strong></td><td>Four derived signals via API, daily updates</td><td>$50K&ndash;200K</td><td>Quant funds, risk desks</td></tr>
+      <tr><td><strong>Scenario Engine</strong></td><td>Custom &ldquo;what if&rdquo; simulations, natural language query</td><td>$200K&ndash;500K</td><td>Asset managers, corporates</td></tr>
+      <tr><td><strong>World Model Platform</strong></td><td>Full on-premise deployment, all modules, custom fragments</td><td>$500K&ndash;2M</td><td>Central banks, large financial institutions</td></tr>
+      <tr><td><strong>Research Partnership</strong></td><td>Co-develop extensions, priority features, joint research</td><td>$1M&ndash;5M</td><td>Sovereign wealth funds, BIS, IMF</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 2.5rem 2rem; border-radius: var(--r); margin: 3rem 0 0; text-align: center;">
+  <p style="font-size: 1.15rem; color: #f1f5f9; margin-bottom: 0.5rem; font-weight: 600;">RecWM is not a better forecast. It is a new kind of understanding.</p>
+  <p style="font-size: 0.92rem; color: #94a3b8; margin: 0;">The first world model that knows it&rsquo;s inside the world it models.</p>
+</div>
+
+</div>
+
+    </div>
+
+
     <div class="pg" id="pg-overview">
 <div class="page">
 
@@ -15317,5 +15899,5 @@ function go(id){
 links.forEach(l=>l.addEventListener('click',e=>{e.preventDefault();go(l.dataset.page);}));
 btn.addEventListener('click',()=>{sb.classList.toggle('open');ov.classList.toggle('show');});
 ov.addEventListener('click',()=>{sb.classList.remove('open');ov.classList.remove('show');});
-go(location.hash.slice(1)||'overview');
+go(location.hash.slice(1)||'everything');
 </script>
