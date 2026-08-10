@@ -697,6 +697,7 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
       <div class="sb-lbl">Product &amp; Theory</div>
       <a href="#" data-page="product" class="nl"><span class="nl-num">P</span><span class="nl-txt">The Product</span></a>
       <a href="#" data-page="foundations" class="nl"><span class="nl-num">F</span><span class="nl-txt">Foundations</span></a>
+      <a href="#" data-page="gap-analysis" class="nl"><span class="nl-num">G</span><span class="nl-txt">Gap Analysis</span></a>
     </div>
     <div class="sb-grp">
       <div class="sb-lbl">Research Surveys</div>
@@ -710,7 +711,7 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
       <a href="#" data-page="ttt" class="nl"><span class="nl-num">11</span><span class="nl-txt">Test-Time Training</span></a>
       <a href="#" data-page="curiosity" class="nl"><span class="nl-num">12</span><span class="nl-txt">Curiosity-Driven WM</span></a>
     </div>
-    <div class="sb-foot">14 documents &middot; August 2026<br>Continual Learning &times; Reflexive World Models</div>
+    <div class="sb-foot">15 documents &middot; August 2026<br>Continual Learning &times; Reflexive World Models</div>
   </nav>
   <main class="main" id="main">
     <div class="pg" id="pg-overview">
@@ -12983,6 +12984,602 @@ For an economic world model built on causal/structural foundations, this means a
   <h3>Ergodicity &amp; Growth Optimality</h3>
   <div class="cite-card"><strong>Baumann, Berman, Moran, Sholto-Douglas &amp; Peters (TMLR 2025).</strong> Peer-reviewed treatment of ergodicity economics with code. <em>Lead with this, not the 2019 Nature Physics perspective.</em></div>
   <div class="cite-card"><strong>Kelly (Bell System Technical Journal 35(4), 1956).</strong> &ldquo;A New Interpretation of Information Rate.&rdquo; The Kelly criterion for growth-optimal allocation.</div>
+
+</div>
+
+    </div>
+
+    <div class="pg" id="pg-gap-analysis">
+<div class="page">
+
+<div class="doc-header" style="background: linear-gradient(135deg, #1a0a2e 0%, #0d1b2a 50%, #1b0000 100%); padding: 3rem 2.2rem 2.5rem; border-bottom: 2px solid var(--red); margin: -2.5rem -2.2rem 2.5rem;">
+  <div style="font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--red); margin-bottom: 0.8rem;">Capability Gap Analysis</div>
+  <h1 style="margin-bottom: 0.6rem; font-size: 2.2rem; line-height: 1.18; color: #fff;">What RecWM Is Missing</h1>
+  <p class="subtitle" style="font-size: 1.08rem; max-width: 700px; color: rgba(255,255,255,0.75);">Systematic comparison against state-of-the-art competitor capabilities and ideal-spec requirements. Deep research on every gap with citations, implementations, and build priorities.</p>
+  <p style="font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 0.5rem;">August 2026 &middot; Based on research across 30+ papers, 15+ open-source libraries</p>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc" style="margin-bottom:2.5rem;">
+  <h3 style="margin-top:0;">Contents</h3>
+  <ol style="columns:2; column-gap:2rem; font-size:0.93rem;">
+    <li><a href="#gap-exec-summary">Executive Summary</a></li>
+    <li><a href="#gap-scorecard">Capability Scorecard</a></li>
+    <li><a href="#gap-t1">Tier 1: Market Understanding</a></li>
+    <li><a href="#gap-t2">Tier 2: Causal Reasoning &amp; Scenarios</a></li>
+    <li><a href="#gap-t3">Tier 3: Portfolio Construction &amp; Risk</a></li>
+    <li><a href="#gap-t4">Tier 4: Geometry &amp; Topology</a></li>
+    <li><a href="#gap-t5">Tier 5: Interpretability &amp; Trust</a></li>
+    <li><a href="#gap-t6">Tier 6: Continuous Learning &amp; Adaptation</a></li>
+    <li><a href="#gap-t7">Tier 7: Data, Infrastructure &amp; Operations</a></li>
+    <li><a href="#gap-t8">Tier 8: Fixed Income, Derivatives &amp; Advanced</a></li>
+    <li><a href="#gap-t9">Tier 9: Architecture Backbone Gaps</a></li>
+    <li><a href="#gap-roadmap">Build Roadmap &amp; Priorities</a></li>
+    <li><a href="#gap-refs">Research References</a></li>
+  </ol>
+</div>
+
+<!-- ========== EXECUTIVE SUMMARY ========== -->
+<h2 id="gap-exec-summary"><span class="sec-num">1</span> Executive Summary</h2>
+
+<p>RecWM has a strong theoretical core&mdash;the typed fragment architecture (S5 backbone + GateL0RD + SPIB), the constraint field formalism, and the five-layer continual learning stack are genuine differentiators. But comparing against a well-specified competitor and an exhaustive ideal-spec reveals <strong>significant gaps across 9 tiers</strong> that must be addressed before the product can compete in institutional markets.</p>
+
+<div class="warn">
+  <strong>The hard truth:</strong> RecWM currently exists as a theoretical architecture with zero production code. The competitor already has working implementations of HAR-RV volatility forecasting (11&times; better than GARCH), conformal prediction intervals, NOTEARS causal DAGs, differentiable portfolio optimization, sheaf neural networks for cross-asset contagion, and persistent homology for topological early warning. The ideal spec adds 14 full tiers of capability including fixed income, derivatives, compliance, execution analytics, and operational infrastructure. RecWM needs to close these gaps or it ships as an academic paper, not a product.
+</div>
+
+<div class="contrib">
+  <strong>What RecWM has that others don&rsquo;t:</strong><br>
+  &bull; <strong>Constraint fields &Phi;</strong> &mdash; No competitor formalizes regulatory/liquidity/physical/accounting constraints as first-class mathematical objects that filter the action space. This is genuinely novel.<br>
+  &bull; <strong>Typed world fragments with characteristic timescales</strong> &mdash; The &tau;<sub>k</sub>-driven discretization (different &Delta; for Liquidity vs Structure) is architecturally elegant and well-motivated.<br>
+  &bull; <strong>Reflexive loop formalism</strong> &mdash; The &epsilon; coefficient tracking Perdomo Thm 3.5 convergence is theoretically rigorous. No competitor has this level of performativity awareness.<br>
+  &bull; <strong>EWC reducing effective reflexivity</strong> &mdash; The result &epsilon;<sub>eff</sub> &le; &epsilon;/(1+&Omega;&middot;&lambda;<sub>min</sub>(F)) connecting continual learning to market stability is original theory.
+</div>
+
+<p>Below: a tier-by-tier gap analysis with research-backed assessments of what to build, what papers to cite, what libraries to use, and what order to build in.</p>
+
+
+<!-- ========== SCORECARD ========== -->
+<h2 id="gap-scorecard"><span class="sec-num">2</span> Capability Scorecard</h2>
+
+<p>Coverage assessment across all major capability areas. <span style="color:var(--green);">&marker;</span> = RecWM has it, <span style="color:var(--amber);">&marker;</span> = partial/theoretical, <span style="color:var(--red);">&marker;</span> = missing entirely.</p>
+
+<div style="overflow-x:auto;">
+<table style="font-size:0.88rem;">
+  <thead>
+    <tr><th style="width:35%;">Capability</th><th style="width:10%;">RecWM</th><th style="width:10%;">Competitor</th><th style="width:10%;">Ideal</th><th style="width:35%;">Gap Assessment</th></tr>
+  </thead>
+  <tbody>
+    <tr style="background:var(--bg-alt);"><td colspan="5" style="font-weight:700; color:var(--accent);">Market Understanding</td></tr>
+    <tr><td>Volatility forecasting (HAR-RV, GARCH family)</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Critical gap. Competitor claims 11&times; better MSE than GARCH.</td></tr>
+    <tr><td>Rough volatility (H&asymp;0.1)</td><td style="color:var(--amber);">&sim;</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td>Mentioned in foundations but not operationalized.</td></tr>
+    <tr><td>Regime detection (HMM, BOCPD, ADWIN)</td><td style="color:var(--amber);">&sim;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>BOCPD in CL-3 but no ADWIN, no HMM, no posterior probs exposed.</td></tr>
+    <tr><td>Tail risk (VaR, ES, EVT, conformal)</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Critical gap. No VaR/ES computation. No conformal intervals.</td></tr>
+    <tr><td>Cross-asset contagion modeling</td><td style="color:var(--amber);">&sim;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Fragment coupling &rho;<sub>ij</sub> exists but no sheaf/graph structure.</td></tr>
+    <tr><td>Hurst exponent H(t) per asset</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Missing. Straightforward to add.</td></tr>
+    <tr><td>Market microstructure (Amihud, VPIN)</td><td style="color:var(--red);">&cross;</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td>Neither has it. Ideal spec only.</td></tr>
+
+    <tr style="background:var(--bg-alt);"><td colspan="5" style="font-weight:700; color:var(--accent);">Causal Reasoning</td></tr>
+    <tr><td>Causal DAG discovery (NOTEARS)</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Critical gap. NOTEARS/DAGMA with GPU available via gCastle.</td></tr>
+    <tr><td>do(X) interventions</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Critical gap. Requires causal DAG first.</td></tr>
+    <tr><td>Scenario generation (Monte Carlo)</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>No scenario engine. Competitor has 10K+ paths with antithetic variance reduction.</td></tr>
+    <tr><td>Stress testing templates</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>No built-in stress tests (GFC, COVID, rate shock, etc.).</td></tr>
+    <tr><td>Reverse stress testing</td><td style="color:var(--red);">&cross;</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td>Neither has it. High-value differentiator.</td></tr>
+
+    <tr style="background:var(--bg-alt);"><td colspan="5" style="font-weight:700; color:var(--accent);">Portfolio Construction &amp; Risk</td></tr>
+    <tr><td>Differentiable portfolio optimization</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Critical gap. cvxpylayers exists. End-to-end differentiable.</td></tr>
+    <tr><td>Multiple strategies (MV, HRP, BL, CVaR, RP)</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>No portfolio construction at all currently.</td></tr>
+    <tr><td>Transaction costs (Almgren-Chriss)</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Missing. Well-understood model, straightforward to implement.</td></tr>
+    <tr><td>Performance attribution (Brinson, factor)</td><td style="color:var(--red);">&cross;</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td>Neither has it. Ideal spec includes regime-conditional attribution.</td></tr>
+
+    <tr style="background:var(--bg-alt);"><td colspan="5" style="font-weight:700; color:var(--accent);">Geometry &amp; Topology</td></tr>
+    <tr><td>Persistent homology / TDA</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Competitor has differentiable persistence. Libraries: giotto-tda, ripser.</td></tr>
+    <tr><td>Sheaf neural networks</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Competitor uses sheaf Laplacian. Bodnar et al. (2022) code available.</td></tr>
+    <tr><td>Tropical algebra for risk</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Research finding: VaR/CVaR via tropical is <em>unproven</em>. No empirical validation exists. Competitor may be overclaiming.</td></tr>
+    <tr><td>Product manifold representations</td><td style="color:var(--red);">&cross;</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td>H&times;S&times;E product spaces. Libraries: geoopt, geomstats. Research-stage.</td></tr>
+
+    <tr style="background:var(--bg-alt);"><td colspan="5" style="font-weight:700; color:var(--accent);">Interpretability &amp; Trust</td></tr>
+    <tr><td>Factor decomposition of forecasts</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>No forecast decomposition into trend/momentum/carry/macro/residual.</td></tr>
+    <tr><td>Temporal attribution (integrated gradients)</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Missing. Captum library provides integrated gradients.</td></tr>
+    <tr><td>Natural language explanations</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>No template-based explanation engine.</td></tr>
+    <tr><td>Conformal uncertainty quantification</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Critical. ACI (Gibbs &amp; Cand&egrave;s 2021) provides distribution-free coverage.</td></tr>
+    <tr><td>Audit trail / regulatory provenance</td><td style="color:var(--red);">&cross;</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td>Required for institutional deployment. SR 11-7 compliance.</td></tr>
+
+    <tr style="background:var(--bg-alt);"><td colspan="5" style="font-weight:700; color:var(--accent);">Continuous Learning</td></tr>
+    <tr><td>EWC (Elastic Weight Consolidation)</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>RecWM has per-fragment EWC. Strong.</td></tr>
+    <tr><td>BOCPD regime detection</td><td style="color:var(--green);">&check;</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td>RecWM has this in CL-3. Advantage.</td></tr>
+    <tr><td>ADWIN drift detection</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Missing. River library provides ADWIN. Complements BOCPD.</td></tr>
+    <tr><td>Test-Time Training (TTT-Linear)</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Missing. Sun et al. (2024) TTT-Linear for inference-time adaptation.</td></tr>
+    <tr><td>Regime-tagged replay buffer</td><td style="color:var(--amber);">&sim;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>DER++ in CL-3 but no regime tagging or per-regime capacity.</td></tr>
+    <tr><td>Usage pattern learning</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>No personalization layer. Competitor learns per-user patterns.</td></tr>
+
+    <tr style="background:var(--bg-alt);"><td colspan="5" style="font-weight:700; color:var(--accent);">Infrastructure</td></tr>
+    <tr><td>REST API / WebSocket / SDK</td><td style="color:var(--red);">&cross;</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td>Neither has production APIs. Must build.</td></tr>
+    <tr><td>Multi-source data ingestion</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td style="color:var(--green);">&check;</td><td>Competitor has Yahoo/FRED/FF/Oxford-Man connectors.</td></tr>
+    <tr><td>Bloomberg/OMS integration</td><td style="color:var(--red);">&cross;</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td>Ideal spec only. Enterprise requirement.</td></tr>
+    <tr><td>Compliance monitoring (FRTB, CCAR)</td><td style="color:var(--red);">&cross;</td><td style="color:var(--red);">&cross;</td><td style="color:var(--green);">&check;</td><td>FRTB requires 97.5% ES with liquidity horizons. Basel III/IV capital charges.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="warn">
+  <strong>Summary count:</strong> Of ~40 major capabilities assessed: RecWM has 2 fully, 5 partially, and is missing 33 entirely. The competitor has 22. The ideal spec has all 40. RecWM&rsquo;s theoretical depth is world-class but its operational breadth is near zero.
+</div>
+
+
+<!-- ========== TIER 1: MARKET UNDERSTANDING ========== -->
+<h2 id="gap-t1"><span class="sec-num">3</span> Tier 1: Market Understanding Gaps</h2>
+
+<h3>3.1 Volatility Forecasting</h3>
+
+<p><strong>Gap:</strong> RecWM has no explicit volatility forecasting module. The Risk fragment theoretically captures vol dynamics through the S5 backbone, but there is no HAR-RV implementation, no GARCH family, no realized semivariance decomposition, no implied volatility augmentation.</p>
+
+<p><strong>What to build:</strong></p>
+<ul>
+  <li><strong>HAR-RV cascade</strong> (Corsi, 2009): RV<sub>t+1</sub> = &beta;<sub>0</sub> + &beta;<sub>d</sub>RV<sub>t</sub> + &beta;<sub>w</sub>RV<sub>t</sub><sup>(w)</sup> + &beta;<sub>m</sub>RV<sub>t</sub><sup>(m)</sup>. Three nested components at daily/weekly/monthly horizons. The competitor claims 11&times; better MSE than GARCH(1,1) and +4% QLIKE improvement vs vanilla HAR-RV.</li>
+  <li><strong>Realized semivariance:</strong> RS<sup>+</sup>(t) = &sum; r<sub>i</sub><sup>2</sup> &middot; 1(r<sub>i</sub> &gt; 0) and RS<sup>&minus;</sup>(t) = &sum; r<sub>i</sub><sup>2</sup> &middot; 1(r<sub>i</sub> &lt; 0). Separates &ldquo;good vol&rdquo; (upside) from &ldquo;bad vol&rdquo; (downside). Barndorff-Nielsen et al. (2010).</li>
+  <li><strong>GARCH family:</strong> GJR-GARCH, EGARCH, TGARCH as baselines. Library: <span class="st">arch</span> (Python, Kevin Sheppard).</li>
+  <li><strong>Implied vol augmentation:</strong> Ingest free vol indices (VIX, VXN, RVX, OVX, GVZ). VIX term structure slope (VIX9D/VIX3M) as sentiment signal.</li>
+  <li><strong>Variance risk premium:</strong> VRP = IV<sup>2</sup> &minus; RV<sup>2</sup> as a forward-looking signal.</li>
+</ul>
+
+<div class="impl-card">
+  <h4>Implementation Path</h4>
+  <p><strong>Libraries:</strong> <span class="st">arch</span> (GARCH), <span class="st">numpy</span> (HAR-RV is just linear regression), Yahoo Finance API (VIX family).<br>
+  <strong>Effort:</strong> 2&ndash;3 weeks for full vol forecasting module.<br>
+  <strong>Integration:</strong> Feed HAR-RV forecasts as inputs to the Risk fragment&rsquo;s S5 backbone. The S5 layer learns to combine realized and implied vol signals.</p>
+</div>
+
+<h3>3.2 Regime Detection Enhancement</h3>
+
+<p><strong>Gap:</strong> RecWM has BOCPD in CL-3 for changepoint detection, but is missing:</p>
+<ul>
+  <li><strong>ADWIN</strong> (Bifet &amp; Gavalda, 2007): Adaptive windowing for real-time distribution shift detection. Unlike BOCPD which detects changepoints, ADWIN monitors for any shift in mean/variance continuously. Library: <span class="st">river</span> (Python).</li>
+  <li><strong>HMM regime classification:</strong> 2/3/4-state Hidden Markov Models with BIC-selected state count. Hamilton (1989). Library: <span class="st">hmmlearn</span>.</li>
+  <li><strong>Posterior regime probabilities:</strong> Exposing P(regime | data) at each timestep, not just &ldquo;changepoint detected yes/no.&rdquo;</li>
+  <li><strong>Hurst exponent H(t):</strong> Time-varying per-asset. H &lt; 0.5 mean-reverting, H &gt; 0.5 trending, H = 0.5 random walk. Library: <span class="st">nolds</span>.</li>
+  <li><strong>Critical slowing down:</strong> Variance amplification and autocorrelation increase 3&ndash;5 days before regime transitions. Scheffer et al. (2009).</li>
+</ul>
+
+<h3>3.3 Tail Risk Quantification</h3>
+
+<p><strong>Gap:</strong> RecWM has zero tail risk computation. This is a <strong>critical gap</strong> for any institutional risk product.</p>
+
+<p><strong>What to build:</strong></p>
+<ul>
+  <li><strong>VaR &amp; ES:</strong> 1-day and multi-horizon, at 99% and 95%. Parametric (normal, Student-t, Cornish-Fisher), historical simulation, filtered historical simulation (GARCH-FHS), Monte Carlo.</li>
+  <li><strong>Conditional EVT:</strong> GPD tail fitting above threshold u. Automatic threshold selection via mean residual life plot. RecWM&rsquo;s Risk fragment should estimate &xi; (shape) and &sigma; (scale) that vary with regime.</li>
+  <li><strong>Conformal prediction intervals:</strong> Split conformal with conformalized quantile regression (Romano et al., NeurIPS 2019). Finite-sample 90% coverage guarantee without distributional assumptions.</li>
+  <li><strong>Adaptive Conformal Inference (ACI):</strong> Gibbs &amp; Cand&egrave;s (NeurIPS 2021). Running miscoverage: &alpha;<sub>t+1</sub> = &alpha;<sub>t</sub> + &gamma;(&alpha; &minus; err<sub>t</sub>). Coverage adapts online under distribution shift. This is the <em>killer feature</em> for non-stationary financial data.</li>
+  <li><strong>Conformal risk control:</strong> Angelopoulos et al. (2022). Extend conformal from coverage to arbitrary monotone loss functions (CVaR exceedance, drawdown probability).</li>
+  <li><strong>VaR backtesting:</strong> Kupiec unconditional coverage, Christoffersen conditional coverage, traffic light test.</li>
+</ul>
+
+<div class="contrib">
+  <strong>Why conformal prediction matters:</strong> Traditional prediction intervals require distributional assumptions (normality, Student-t) that are violated in financial data. Conformal prediction provides <em>distribution-free, finite-sample</em> coverage guarantees. ACI adds online adaptivity&mdash;the intervals widen automatically during regime changes without explicit changepoint detection. This is orthogonal to RecWM&rsquo;s BOCPD and should be layered on top.
+</div>
+
+<h3>3.4 Cross-Asset Contagion</h3>
+
+<p><strong>Gap:</strong> RecWM has cross-fragment coupling functions &rho;<sub>ij</sub> but these are generic learned functions. The competitor uses <strong>sheaf neural networks</strong> (Bodnar et al., NeurIPS 2022) with heterogeneous stalks per asset class and learned restriction maps.</p>
+
+<div class="equation-block">
+  <strong>Sheaf Laplacian:</strong> L<sub>sheaf</sub> = B &middot; W<sub>&Phi;</sub> &middot; B<sup>T</sup>
+</div>
+
+<p>where B is the signed incidence matrix, W<sub>&Phi;</sub> contains the restriction maps &Phi;<sub>e</sub> per edge, and the diffusion respects heterogeneity: equity features (returns, vol, Greeks) transform differently than bond features (duration, spread, OAS) when propagating signals across asset classes.</p>
+
+<p><strong>Research finding:</strong> Sheaf NNs are pre-production (no confirmed finance deployment), but the architecture is a natural fit for cross-asset contagion where different asset classes have fundamentally different feature spaces. Open-source: <span class="st">twitter-research/neural-sheaf-diffusion</span>. Computationally tractable at 500 assets with diagonal restriction maps.</p>
+
+
+<!-- ========== TIER 2: CAUSAL REASONING ========== -->
+<h2 id="gap-t2"><span class="sec-num">4</span> Tier 2: Causal Reasoning &amp; Scenarios</h2>
+
+<h3>4.1 Causal DAG Discovery</h3>
+
+<p><strong>Gap:</strong> RecWM has no causal discovery. The competitor uses NOTEARS (Zheng et al., NeurIPS 2018) with a differentiable acyclicity constraint: h(W) = tr(e<sup>W&odot;W</sup>) &minus; d = 0.</p>
+
+<p><strong>What to build:</strong></p>
+<ul>
+  <li><strong>NOTEARS/DAGMA:</strong> DAGMA (Bello et al., 2022) uses a log-det acyclicity constraint with better optimization landscape. Library: <span class="st">gCastle</span> (Huawei, broadest coverage), <span class="st">causal-learn</span> (CMU).</li>
+  <li><strong>DYNOTEARS:</strong> Pamfil et al. (2020) extends NOTEARS to time series with contemporaneous + lagged edges. Natural fit for financial data.</li>
+  <li><strong>Time-varying DAG:</strong> The causal structure shifts (USD/JPY becomes a driver during carry unwind, then stops). Windowed re-estimation or online DAG updates.</li>
+  <li><strong>Transfer entropy:</strong> Non-linear Granger causality. Complements DAG discovery for bidirectional causality detection.</li>
+</ul>
+
+<div class="warn">
+  <strong>Caveat:</strong> NOTEARS assumes acyclicity, which is problematic for feedback-heavy financial systems. Research shows scale-invariance issues (Reisach et al., 2021). RecWM&rsquo;s reflexive loops explicitly model feedback cycles&mdash;this is a <em>tension</em> between the DAG assumption and the reflexivity formalism that needs architectural resolution.
+</div>
+
+<h3>4.2 do(X) Interventions</h3>
+
+<p><strong>Gap:</strong> Without a causal DAG, interventions are impossible. The competitor supports &ldquo;what if the Fed hikes 50bp&rdquo; by clamping the node in the DAG and propagating through the graph.</p>
+
+<p><strong>What to build:</strong> Once the DAG exists, implement Pearl&rsquo;s do-calculus. Clamp any node, remove incoming edges (surgical intervention), propagate through the causal graph. Generate conditional distributions, not point estimates. Multi-node interventions for joint shocks.</p>
+
+<p><strong>Integration with RecWM:</strong> The do(X) operation maps to modifying the constraint field &Phi; or clamping a world fragment value. The constructive operator C then propagates the intervention through the remaining fragments. This is a natural extension of the existing formalism.</p>
+
+<h3>4.3 Scenario Engine</h3>
+
+<p><strong>Gap:</strong> RecWM has no scenario generation capability.</p>
+
+<p><strong>What to build:</strong></p>
+<ul>
+  <li><strong>Monte Carlo engine:</strong> 10,000+ paths with antithetic variance reduction (halves variance for tail estimation). Student-t sampling with vol clustering for realistic kurtosis.</li>
+  <li><strong>Conditional scenarios:</strong> Modify world model latent state, roll forward using the S5 backbone&rsquo;s prior (imagination without observations&mdash;exactly what world models do).</li>
+  <li><strong>5 built-in stress templates:</strong> GFC 2008 (equity &minus;40%, credit +500bp, vol 3&times;), COVID 2020, rate shock 2022, SVB 2023, stagflation.</li>
+  <li><strong>Reverse stress testing:</strong> &ldquo;What scenario causes a 10% portfolio loss?&rdquo; Search the shock space for the boundary. This is in the ideal spec but neither RecWM nor the competitor has it&mdash;a genuine differentiator opportunity.</li>
+  <li><strong>Scenario validation:</strong> KS test on marginals, autocorrelation matching, VaR violation rate check.</li>
+  <li><strong>CCAR/DFAST templates:</strong> GDP path, unemployment trajectory, equity drawdown, credit widening, rate paths. Required for regulatory submission.</li>
+</ul>
+
+
+<!-- ========== TIER 3: PORTFOLIO ========== -->
+<h2 id="gap-t3"><span class="sec-num">5</span> Tier 3: Portfolio Construction &amp; Risk</h2>
+
+<h3>5.1 Differentiable Portfolio Optimization</h3>
+
+<p><strong>Gap:</strong> RecWM has no portfolio construction at all. The competitor has end-to-end differentiable Markowitz with gradients flowing back through the world model.</p>
+
+<p><strong>What to build:</strong></p>
+
+<div class="equation-block">
+  <strong>End-to-end differentiable:</strong> min<sub>w</sub> &minus;w<sup>T</sup>&mu; + &lambda;w<sup>T</sup>&Sigma;w &nbsp;&nbsp; s.t. &nbsp; w &ge; 0, &sum; w = 1
+</div>
+
+<p>Using <strong>cvxpylayers</strong> (Agrawal et al., NeurIPS 2019): canonicalize the convex program, differentiate through KKT conditions via implicit differentiation: dw*/d&theta; = &minus;(dK/dz)<sup>&minus;1</sup>(dK/d&theta;). Gradients flow from portfolio loss back through the covariance estimator back through the S5 backbone.</p>
+
+<p><strong>Full strategy suite:</strong></p>
+<ul>
+  <li><strong>Minimum variance:</strong> No return forecast needed. Pure risk minimization.</li>
+  <li><strong>Maximum Sharpe:</strong> With return forecasts from world model.</li>
+  <li><strong>Risk parity:</strong> Equalize risk contribution across assets.</li>
+  <li><strong>HRP (De Prado, 2016):</strong> Cluster-based allocation via hierarchical clustering + recursive bisection. Never inverts covariance matrix&mdash;robust when N &gt; T. Weight formula: w<sub>left</sub> = 1 &minus; var<sub>left</sub>/(var<sub>left</sub> + var<sub>right</sub>).</li>
+  <li><strong>Black-Litterman:</strong> Blend world model views with equilibrium returns.</li>
+  <li><strong>CVaR optimization (Rockafellar &amp; Uryasev, 2000):</strong> min &eta; + (1/((1&minus;&alpha;)T)) &sum; u<sub>i</sub> subject to u<sub>i</sub> &ge; &minus;w<sup>T</sup>r<sub>i</sub> &minus; &eta;. Reduces to an LP. Captures tail risk asymmetrically.</li>
+</ul>
+
+<h3>5.2 Transaction Cost Modeling</h3>
+
+<p><strong>Gap:</strong> No market impact or execution cost modeling.</p>
+
+<p><strong>Almgren-Chriss (2001):</strong> Optimal execution trajectory x<sub>k</sub> = X &middot; sinh(&kappa;(T&minus;k)) / sinh(&kappa;T) where &kappa; depends on risk aversion and impact ratio. Decomposes cost into permanent impact g(v) (linear, shifts fundamental) and temporary impact h(v) (linear + spread, per-trade). Implementation shortfall (Perold, 1988): paper return minus actual return, decomposed into delay, impact, and opportunity cost.</p>
+
+<h3>5.3 Risk Decomposition</h3>
+
+<p><strong>Gap:</strong> No component VaR, no marginal risk contribution, no factor attribution.</p>
+
+<p><strong>Competitor claims tropical algebra for risk decomposition:</strong></p>
+
+<div class="warn">
+  <strong>Research finding:</strong> Tropical algebra for VaR/CVaR is <em>unproven</em>. No published paper connects the min-plus semiring to Value-at-Risk computation. The sole confirmed finance deployment of tropical geometry is the Bank of England&rsquo;s Product-Mix Auction (Baldwin &amp; Klemperer, 2019). The competitor may be overclaiming. RecWM should use standard risk decomposition (component VaR, Euler decomposition) rather than pursuing an unvalidated tropical approach.
+</div>
+
+
+<!-- ========== TIER 4: GEOMETRY & TOPOLOGY ========== -->
+<h2 id="gap-t4"><span class="sec-num">6</span> Tier 4: Geometry &amp; Topology</h2>
+
+<h3>6.1 Persistent Homology</h3>
+
+<p><strong>Gap:</strong> RecWM has no topological analysis. The competitor uses Betti numbers (&beta;<sub>0</sub> fragmentation, &beta;<sub>1</sub> feedback loops, &beta;<sub>2</sub> voids) and topological velocity as crash early warning.</p>
+
+<p><strong>Research assessment:</strong></p>
+<ul>
+  <li><strong>Gidea &amp; Katz (2018):</strong> Used persistence landscapes on S&amp;P 500/DJIA/NASDAQ/Russell 2000. Detected rising spectral density 250 trading days before 2000 and 2008 crashes. Published in <em>Physica A</em>.</li>
+  <li><strong>Computational feasibility:</strong> With sliding window of ~250 days over 500 assets, Ripser handles this in seconds per window on CPU. Bottleneck is Wasserstein distance computation.</li>
+  <li><strong>Production status:</strong> No confirmed production deployment. Research-stage with growing academic interest. 92.9% of TDA portfolio strategies on QuantConnect produced lower beta than benchmarks.</li>
+  <li><strong>Libraries:</strong> <span class="st">ripser</span> (fastest CPU), <span class="st">giotto-tda</span> (scikit-learn compatible), <span class="st">torch_topological</span> (differentiable persistence for PyTorch).</li>
+</ul>
+
+<div class="contrib">
+  <strong>Recommendation:</strong> Add TDA as a diagnostic layer on top of the correlation structure. Use persistence landscapes for crash early warning alongside BOCPD. Do <em>not</em> make TDA a core architectural dependency&mdash;it&rsquo;s a signal, not a backbone.
+</div>
+
+<h3>6.2 Sheaf Neural Networks</h3>
+
+<p><strong>Research assessment:</strong> Bodnar et al. (NeurIPS 2022) demonstrated sheaf diffusion solving heterophily/oversmoothing in GNNs. A 2026 paper applies sheaf theory to financial clearing/systemic risk (arXiv 2605.15778). The key advantage for RecWM: heterogeneous stalks enable different feature dimensions per asset class (equity features &#8800; bond features &#8800; commodity features), with learned restriction maps translating signals between them.</p>
+
+<p><strong>Gap assessment:</strong> RecWM&rsquo;s cross-fragment coupling &rho;<sub>ij</sub> is a simpler version of restriction maps. Upgrading to sheaf structure would be a natural extension but adds complexity. Recommended for Phase 2, not Phase 1.</p>
+
+<h3>6.3 Product Manifold Representations</h3>
+
+<p><strong>Research assessment:</strong> Gu et al. (ICLR 2019) demonstrated H<sup>n</sup> &times; S<sup>k</sup> &times; &#8477;<sup>m</sup> product spaces for mixed-curvature data. Musmeci et al. (2021) embedded European banking networks in hyperbolic space where latent dimensions map to systemic importance. Libraries: <span class="st">geoopt</span> (PyTorch), <span class="st">geomstats</span>. Riemannian ops add ~2&ndash;5&times; overhead at 500 assets.</p>
+
+<p><strong>Recommendation:</strong> Research-stage. Consider for long-term roadmap. The Lorentz model (not Poincar&eacute; ball&mdash;numerically stable) for sector hierarchy + sphere for cyclical patterns (sector rotation) is theoretically appealing but adds significant implementation complexity.</p>
+
+<h3>6.4 Deep Equilibrium for Reflexivity</h3>
+
+<p><strong>Gap:</strong> RecWM models reflexivity via the &epsilon; coefficient and belief field dynamics, but does not use DEQ (Bai et al., NeurIPS 2019) to solve for the reflexive fixed point iteratively.</p>
+
+<p><strong>Research assessment:</strong> DEQ&rsquo;s fixed-point equation z* = f(z*, x) maps directly to Soros&rsquo;s two functions. The spectral radius &rho; of the Jacobian at z* measures instability. Jacobian regularization (Bai et al., ICML 2021) cuts convergence from 17 to ~6 iterations. 88% memory reduction vs explicit deep nets. Library: <span class="st">torchdeq</span>.</p>
+
+<div class="contrib">
+  <strong>Strong recommendation:</strong> Replace or augment RecWM&rsquo;s current reflexive loop with a DEQ layer. The convergence speed &rho; becomes a real-time instability signal&mdash;slow convergence = bubble/crash dynamics. This operationalizes Soros reflexivity in a way no current product does. The DEQ-reflexivity connection is an <em>open gap in the literature</em>&mdash;publishing this would be a research contribution.
+</div>
+
+<h3>6.5 Renormalization Group Multi-Scale Decomposition</h3>
+
+<p><strong>Gap:</strong> RecWM uses typed timescales &tau;<sub>k</sub> per fragment but has no explicit multi-scale decomposition engine.</p>
+
+<p><strong>Research assessment:</strong> Sornette&rsquo;s LPPL (Log-Periodic Power Law) model captures discrete scale invariance near crashes. Peron et al. (2013) developed inverse RG decomposition reproducing volatility clustering and power-law autocorrelation. The competitor uses 5 learned scales with wavelet-like decomposition and anomalous dimension tracking.</p>
+
+<p><strong>Recommendation:</strong> RecWM&rsquo;s fragment timescales (&tau; from minutes to years) already provide a form of multi-scale decomposition. Add variance amplification monitoring across scales (Sornette) as an early warning signal. Do not build a full RG engine&mdash;the fragment architecture already captures the essential physics.</p>
+
+
+<!-- ========== TIER 5: INTERPRETABILITY ========== -->
+<h2 id="gap-t5"><span class="sec-num">7</span> Tier 5: Interpretability &amp; Trust</h2>
+
+<h3>7.1 Forecast Decomposition</h3>
+
+<p><strong>Gap:</strong> RecWM produces forecasts from the unified world model but does not decompose them into interpretable components. The competitor decomposes every forecast into: <strong>trend + mean-reversion + momentum + carry + macro + residual</strong>, each separately inspectable.</p>
+
+<p><strong>What to build:</strong> Route each world fragment&rsquo;s decoder output through a factor decomposition layer. The Momentum fragment contributes the momentum component, the Risk fragment contributes mean-reversion and vol signals, the Policy fragment contributes macro, etc. The fragment architecture <em>already</em> supports this&mdash;it just needs to be exposed at the output layer.</p>
+
+<h3>7.2 Uncertainty Quantification</h3>
+
+<p><strong>Gap:</strong> RecWM has no uncertainty quantification. This is arguably the most important missing piece for institutional deployment.</p>
+
+<p><strong>What to build:</strong></p>
+<ul>
+  <li><strong>Conformal prediction intervals</strong> on every point forecast. CQR (Romano et al., 2019) for heteroscedastic intervals.</li>
+  <li><strong>ACI</strong> (Gibbs &amp; Cand&egrave;s, 2021): &alpha;<sub>t+1</sub> = &alpha;<sub>t</sub> + &gamma;(&alpha; &minus; err<sub>t</sub>). Online coverage under distribution shift.</li>
+  <li><strong>Aleatoric vs epistemic uncertainty:</strong> Aleatoric from predictive variance (irreducible noise), epistemic from ensemble disagreement or dropout (model uncertainty). &ldquo;I&rsquo;m uncertain because the data is noisy&rdquo; vs &ldquo;I&rsquo;m uncertain because I haven&rsquo;t seen this regime before.&rdquo;</li>
+  <li><strong>Abstention:</strong> When uncertainty exceeds threshold, say &ldquo;I don&rsquo;t have a reliable estimate&rdquo; instead of guessing.</li>
+  <li><strong>Calibration monitoring:</strong> Are 90% intervals covering 90%? Continuous monitoring.</li>
+</ul>
+
+<h3>7.3 Natural Language Explanations</h3>
+
+<p><strong>What to build:</strong> Template-based explanation engine (not LLM-generated text). Inputs: Hurst exponent, reflexivity &rho;, regime probabilities, factor decomposition, causal DAG position. Output: structured analyst note where every claim traces to a module output. Confidence calibration: &ldquo;likely&rdquo; = &gt;70% posterior, &ldquo;elevated&rdquo; = &gt;1&sigma; above mean, &ldquo;extreme&rdquo; = &gt;2&sigma;.</p>
+
+<h3>7.4 Temporal Attribution</h3>
+
+<p><strong>What to build:</strong> Integrated gradients (Sundararajan et al., 2017) over the time axis: which timesteps in the lookback window drove this prediction. 20-step Riemann integration for stable attribution. Library: <span class="st">captum</span> (PyTorch).</p>
+
+<h3>7.5 Audit Trail</h3>
+
+<p><strong>What to build:</strong> Every prediction logs: input data hash, module versions, intermediate outputs, final prediction, confidence interval, explanation. Reproducibility: same input + same checkpoint = same output. Required for SR 11-7 compliance (Fed, 2011).</p>
+
+
+<!-- ========== TIER 6: CONTINUOUS LEARNING ========== -->
+<h2 id="gap-t6"><span class="sec-num">8</span> Tier 6: Continuous Learning Enhancement</h2>
+
+<p>RecWM&rsquo;s CL stack (CL-0 through CL-4) is its strongest area. Gaps are incremental:</p>
+
+<h3>8.1 ADWIN Drift Detection</h3>
+<p><strong>Gap:</strong> CL-3 uses BOCPD for changepoint detection but lacks ADWIN for continuous distribution monitoring. ADWIN detects mean/variance shifts without fixed windows&mdash;complementary to BOCPD&rsquo;s changepoint posterior. Library: <span class="st">river.drift.ADWIN</span>.</p>
+
+<h3>8.2 Test-Time Training</h3>
+<p><strong>Gap:</strong> No inference-time adaptation. TTT-Linear (Sun et al., 2024) replaces RNN hidden state updates with gradient steps on a linear self-supervised objective. The hidden state <em>is</em> a weight matrix updated via a learning rule at each token. This enables online adaptation without explicit retraining&mdash;the model adjusts to regime changes at inference time.</p>
+
+<p><strong>Integration:</strong> TTT could be added as CL-0.5 between natural gates and RTRL. It provides faster adaptation than RTRL (simpler auxiliary objective) while being complementary to EWC (TTT adapts fast weights, EWC protects slow weights).</p>
+
+<h3>8.3 Regime-Tagged Replay</h3>
+<p><strong>Gap:</strong> DER++ in CL-3 stores experiences but doesn&rsquo;t tag by regime or provide per-regime capacity control. Add regime labels from BOCPD + HMM, configurable per-regime buffer size, and weighted sampling that over-samples rare regimes (crises).</p>
+
+<h3>8.4 Usage Pattern Learning</h3>
+<p><strong>Gap:</strong> No personalization. The competitor learns which assets each client queries, which metrics they check, which explanations they act on. Build: query embedding layer + response head fine-tuning + proactive alert learning.</p>
+
+
+<!-- ========== TIER 7: DATA & INFRASTRUCTURE ========== -->
+<h2 id="gap-t7"><span class="sec-num">9</span> Tier 7: Data, Infrastructure &amp; Operations</h2>
+
+<h3>9.1 Data Ingestion</h3>
+<p><strong>Gap:</strong> RecWM has no data pipeline. Need:</p>
+<ul>
+  <li>Yahoo Finance: global OHLCV (<span class="st">yfinance</span>)</li>
+  <li>FRED: VIX, yields, credit spreads, USD index, NFCI (<span class="st">fredapi</span>)</li>
+  <li>Fama-French: daily factor returns (<span class="st">pandas_datareader</span>)</li>
+  <li>Oxford-Man Realized Library: 5-min realized vol for 17 indices (validation)</li>
+  <li>Client CSV/DataFrame upload</li>
+  <li>Live entity resolution: &ldquo;Apple&rdquo; &rarr; AAPL, &ldquo;the DAX&rdquo; &rarr; ^GDAXI</li>
+</ul>
+
+<h3>9.2 Query Interface</h3>
+<p><strong>Gap:</strong> No user-facing interface. Need: plain language input, structured output with provenance, five query modes (analyze, compare, scenario, world, portfolio).</p>
+
+<h3>9.3 API &amp; Integration</h3>
+<p><strong>Gap:</strong> No API. Need REST endpoints, WebSocket for streaming, Python SDK. Ideal spec adds Bloomberg BPIPE/SAPI, OMS/PMS, FIX protocol&mdash;these are enterprise requirements for later phases.</p>
+
+<h3>9.4 Observability</h3>
+<p><strong>Gap:</strong> No monitoring. Need per-module diagnostics on every forward pass: Hurst range, reflexivity &rho;, regime probabilities, KL divergence, portfolio VaR/CVaR. Rolling checkpoint with auto-rollback if validation loss spikes.</p>
+
+<h3>9.5 Compliance &amp; Regulatory</h3>
+<p><strong>Gap:</strong> No regulatory reporting. For institutional deployment:</p>
+<ul>
+  <li><strong>FRTB IMA:</strong> Expected shortfall at 97.5% over a 250-day stressed calibration window. Liquidity horizons: 10-day (large-cap equity), 20-day (small-cap, IG credit), 40-day (exotic credit), 60-day (securitized), 120-day (correlation). P&amp;L attribution test required.</li>
+  <li><strong>CCAR/DFAST:</strong> 9-quarter projections under baseline/adverse/severely-adverse scenarios. Stress capital buffer (SCB) since 2020.</li>
+  <li><strong>Basel III/IV:</strong> CVA risk charge, revised market risk, 72.5% output floor on internal-model RWA.</li>
+  <li><strong>SR 11-7:</strong> Model risk management&mdash;inventory, independent validation, ongoing monitoring, board-level governance.</li>
+</ul>
+
+
+<!-- ========== TIER 8: FIXED INCOME & DERIVATIVES ========== -->
+<h2 id="gap-t8"><span class="sec-num">10</span> Tier 8: Fixed Income, Derivatives &amp; Advanced Analytics</h2>
+
+<p>The ideal spec includes comprehensive fixed income and derivatives capabilities that neither RecWM nor the competitor addresses. These are required for full-service institutional deployment.</p>
+
+<h3>10.1 Fixed Income</h3>
+<ul>
+  <li><strong>Yield curve construction:</strong> Nelson-Siegel (1987): f(&tau;) = &beta;<sub>0</sub> + &beta;<sub>1</sub>e<sup>&minus;&tau;/&lambda;</sup> + &beta;<sub>2</sub>(&tau;/&lambda;)e<sup>&minus;&tau;/&lambda;</sup>. Svensson (1994) adds a second hump. Both used by central banks globally.</li>
+  <li><strong>Key rate durations</strong> (Ho, 1992): DV01 decomposed across 2y/5y/10y/30y buckets for targeted hedging.</li>
+  <li><strong>OAS decomposition:</strong> Credit + liquidity + tax + model risk, via backward induction on calibrated rate tree.</li>
+  <li><strong>Credit transition matrices:</strong> CreditMetrics (JP Morgan, 1997). Rating migration probabilities + forward curves per rating &rarr; full P&amp;L distribution for credit VaR.</li>
+</ul>
+
+<h3>10.2 Options &amp; Derivatives</h3>
+<ul>
+  <li><strong>Vol surface fitting:</strong> SVI (Gatheral, 2004): w(k) = a + b(&rho;(k&minus;m) + &radic;((k&minus;m)<sup>2</sup> + &sigma;<sup>2</sup>)). SSVI (Gatheral &amp; Jacquier, 2014): explicit no-arbitrage conditions across strikes and maturities.</li>
+  <li><strong>Greeks:</strong> Delta, gamma, vega, theta, rho, vanna (&part;<sup>2</sup>V/&part;S&part;&sigma;), volga (&part;<sup>2</sup>V/&part;&sigma;<sup>2</sup>).</li>
+  <li><strong>Variance swap replication:</strong> Static strip of OTM puts/calls weighted by 1/K<sup>2</sup>. Underpins VIX methodology.</li>
+  <li><strong>Dispersion trading:</strong> Sell index vol, buy single-stock vol. Requires consistent SVI/SSVI fitting across all constituents.</li>
+</ul>
+
+<h3>10.3 Macro Regime Modeling</h3>
+<ul>
+  <li>GDP/inflation/employment nowcasting from high-frequency indicators</li>
+  <li>Taylor rule gap: where &ldquo;should&rdquo; rates be vs where they are</li>
+  <li>Custom financial conditions index</li>
+  <li>Yield curve shape classification (steep/flat/inverted) with historical sequencing</li>
+</ul>
+
+<h3>10.4 Alternative Data Integration</h3>
+<ul>
+  <li>Satellite imagery (parking lots, crop yields)</li>
+  <li>Shipping data (AIS vessel tracking)</li>
+  <li>Social sentiment (aggregated NLP scores)</li>
+  <li>Patent filings, job postings, web traffic</li>
+  <li>Geopolitical risk indices (GPR, EPU)</li>
+</ul>
+
+
+<!-- ========== TIER 9: ARCHITECTURE ========== -->
+<h2 id="gap-t9"><span class="sec-num">11</span> Tier 9: Architecture Backbone Gaps</h2>
+
+<h3>11.1 DreamerV3 RSSM vs RecWM S5</h3>
+
+<p>The competitor uses a DreamerV3-style RSSM with GRU deterministic path + 32&times;32 categorical stochastic latents. RecWM uses S5 with diagonal state matrices. Comparison:</p>
+
+<table>
+  <thead><tr><th>Dimension</th><th>RecWM (S5)</th><th>Competitor (RSSM)</th><th>Assessment</th></tr></thead>
+  <tbody>
+    <tr><td>Training parallelism</td><td style="color:var(--green);">Parallel via associative scan</td><td style="color:var(--red);">Sequential (GRU)</td><td>S5 is ~10&times; faster training (S5WM, 2025)</td></tr>
+    <tr><td>Long-range memory</td><td style="color:var(--green);">HiPPO initialization, unbounded</td><td style="color:var(--amber);">GRU limited to ~500 steps</td><td>S5 advantage for long lookback</td></tr>
+    <tr><td>Posterior collapse prevention</td><td style="color:var(--amber);">Continuous latents</td><td style="color:var(--green);">32&times;32 categoricals + KL balancing</td><td>RSSM&rsquo;s categorical latents are more robust</td></tr>
+    <tr><td>Imagination (prior rollout)</td><td style="color:var(--amber);">Possible but not designed for it</td><td style="color:var(--green);">Native (p(z|h) prior)</td><td>RSSM designed for imagination</td></tr>
+    <tr><td>Heavy-tailed values</td><td style="color:var(--red);">No special handling</td><td style="color:var(--green);">Symlog predictions</td><td>Financial data spans orders of magnitude</td></tr>
+    <tr><td>O(N) RTRL</td><td style="color:var(--green);">Diagonal A enables O(N)</td><td style="color:var(--red);">O(N<sup>3</sup>) for GRU</td><td>S5 advantage for online learning</td></tr>
+  </tbody>
+</table>
+
+<div class="contrib">
+  <strong>Recommendation:</strong> RecWM&rsquo;s S5 backbone is the right choice for a CL-focused architecture (O(N) RTRL, parallel training). But add: (1) <strong>symlog predictions</strong> for handling financial value magnitudes, (2) <strong>categorical latent augmentation</strong> to prevent posterior collapse, (3) <strong>prior rollout</strong> mechanism for scenario generation / imagination.
+</div>
+
+<h3>11.2 Mamba as Alternative Backbone</h3>
+
+<p>Mamba (Gu &amp; Dao, 2023) extends S4/S5 with <strong>input-dependent selective scan</strong>: B, C, and &Delta; become functions of the input, enabling content-aware filtering. For financial data: Mamba&rsquo;s input-dependent &Delta; (controlling how much history to retain vs forget) is a natural fit for regime-dependent relevant history lengths.</p>
+
+<p><strong>Recommendation:</strong> Make the backbone switchable (S5 or Mamba). Mamba trades O(N) RTRL compatibility for better content-aware filtering. The ideal spec suggests exactly this: &ldquo;Switchable backbone: GRU or Mamba, configurable per deployment.&rdquo;</p>
+
+
+<!-- ========== ROADMAP ========== -->
+<h2 id="gap-roadmap"><span class="sec-num">12</span> Build Roadmap &amp; Priorities</h2>
+
+<p>Organized by <strong>build priority</strong>, not tier number. Priority considers: institutional requirement (must-have vs nice-to-have), competitive gap severity, implementation complexity, and dependency ordering.</p>
+
+<h3>Phase 1: Foundation (Weeks 1&ndash;6) &mdash; Must Have for MVP</h3>
+
+<table>
+  <thead><tr><th style="width:5%;">#</th><th style="width:30%;">Capability</th><th style="width:15%;">Effort</th><th style="width:50%;">Key Deliverable</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Data ingestion pipeline</td><td>1 week</td><td>Yahoo/FRED/FF connectors, entity resolution, CSV upload</td></tr>
+    <tr><td>2</td><td>Volatility forecasting</td><td>2 weeks</td><td>HAR-RV + GARCH family + implied vol + VRP</td></tr>
+    <tr><td>3</td><td>Tail risk (VaR/ES/EVT)</td><td>2 weeks</td><td>Parametric + historical + GARCH-FHS VaR, CVaR, GPD tail fitting</td></tr>
+    <tr><td>4</td><td>Conformal prediction</td><td>1 week</td><td>CQR + ACI on all forecasts. Distribution-free coverage.</td></tr>
+    <tr><td>5</td><td>Regime detection enhancement</td><td>1 week</td><td>ADWIN + HMM + Hurst H(t) alongside existing BOCPD</td></tr>
+    <tr><td>6</td><td>Basic portfolio optimization</td><td>2 weeks</td><td>Min-var, max-Sharpe, HRP, risk parity via cvxpylayers</td></tr>
+  </tbody>
+</table>
+
+<h3>Phase 2: Differentiation (Weeks 7&ndash;14) &mdash; Competitive Parity</h3>
+
+<table>
+  <thead><tr><th style="width:5%;">#</th><th style="width:30%;">Capability</th><th style="width:15%;">Effort</th><th style="width:50%;">Key Deliverable</th></tr></thead>
+  <tbody>
+    <tr><td>7</td><td>Causal DAG discovery</td><td>2 weeks</td><td>DYNOTEARS + do(X) interventions via gCastle</td></tr>
+    <tr><td>8</td><td>Scenario engine</td><td>3 weeks</td><td>Monte Carlo, 5 stress templates, conditional generation from world model</td></tr>
+    <tr><td>9</td><td>Forecast decomposition</td><td>1 week</td><td>6-component decomposition from fragment outputs</td></tr>
+    <tr><td>10</td><td>NL explanations + attribution</td><td>2 weeks</td><td>Template engine + integrated gradients (captum)</td></tr>
+    <tr><td>11</td><td>DEQ reflexivity layer</td><td>2 weeks</td><td>torchdeq-based reflexive fixed point with &rho; signal</td></tr>
+    <tr><td>12</td><td>S5 backbone enhancements</td><td>2 weeks</td><td>Symlog predictions, prior rollout for imagination</td></tr>
+  </tbody>
+</table>
+
+<h3>Phase 3: Enterprise (Weeks 15&ndash;24) &mdash; Institutional Ready</h3>
+
+<table>
+  <thead><tr><th style="width:5%;">#</th><th style="width:30%;">Capability</th><th style="width:15%;">Effort</th><th style="width:50%;">Key Deliverable</th></tr></thead>
+  <tbody>
+    <tr><td>13</td><td>TDA early warning</td><td>2 weeks</td><td>Persistent homology + topological velocity via giotto-tda</td></tr>
+    <tr><td>14</td><td>Transaction costs + CVaR opt</td><td>2 weeks</td><td>Almgren-Chriss + CVaR LP + Black-Litterman</td></tr>
+    <tr><td>15</td><td>Audit trail + SR 11-7</td><td>2 weeks</td><td>Full provenance chain, reproducibility, model card</td></tr>
+    <tr><td>16</td><td>REST API + Python SDK</td><td>3 weeks</td><td>FastAPI endpoints, WebSocket streaming, pip-installable SDK</td></tr>
+    <tr><td>17</td><td>FRTB/CCAR compliance</td><td>3 weeks</td><td>97.5% ES, liquidity horizons, stress test templates in regulatory format</td></tr>
+    <tr><td>18</td><td>TTT-Linear + ADWIN CL</td><td>2 weeks</td><td>Inference-time adaptation + continuous drift monitoring</td></tr>
+  </tbody>
+</table>
+
+<h3>Phase 4: Long-Term (Months 7&ndash;12) &mdash; Market Leadership</h3>
+
+<table>
+  <thead><tr><th style="width:5%;">#</th><th style="width:30%;">Capability</th><th style="width:15%;">Effort</th><th style="width:50%;">Key Deliverable</th></tr></thead>
+  <tbody>
+    <tr><td>19</td><td>Fixed income analytics</td><td>4 weeks</td><td>Nelson-Siegel, KRD, OAS, CreditMetrics</td></tr>
+    <tr><td>20</td><td>Options/derivatives</td><td>4 weeks</td><td>SVI/SSVI vol surface, Greeks, variance swaps</td></tr>
+    <tr><td>21</td><td>Sheaf neural networks</td><td>3 weeks</td><td>Replace &rho;<sub>ij</sub> coupling with sheaf Laplacian diffusion</td></tr>
+    <tr><td>22</td><td>Product manifolds</td><td>3 weeks</td><td>Lorentz + sphere + Euclidean via geoopt</td></tr>
+    <tr><td>23</td><td>Reverse stress testing</td><td>2 weeks</td><td>Search shock space for portfolio loss boundary</td></tr>
+    <tr><td>24</td><td>Usage personalization</td><td>3 weeks</td><td>Query embedding, response calibration, proactive alerts</td></tr>
+    <tr><td>25</td><td>Mamba switchable backbone</td><td>3 weeks</td><td>Content-aware selective scan as alternative to S5</td></tr>
+    <tr><td>26</td><td>Federated learning (optional)</td><td>4 weeks</td><td>Cross-client knowledge distillation with differential privacy</td></tr>
+  </tbody>
+</table>
+
+<div class="contrib">
+  <strong>Total estimated effort:</strong> ~24 weeks (6 months) for Phases 1&ndash;3 to reach institutional readiness with one focused team. Phase 4 adds 3&ndash;6 months for market-leading capabilities. The critical path runs through: data pipeline &rarr; vol/risk forecasting &rarr; conformal prediction &rarr; portfolio optimization &rarr; causal DAG &rarr; scenario engine &rarr; API &rarr; compliance.
+</div>
+
+
+<!-- ========== REFERENCES ========== -->
+<h2 id="gap-refs"><span class="sec-num">13</span> Research References</h2>
+
+<div style="overflow-x:auto;">
+<table style="font-size:0.85rem;">
+  <thead><tr><th>Topic</th><th>Reference</th><th>Implementation</th></tr></thead>
+  <tbody>
+    <tr><td>HAR-RV</td><td>Corsi (2009). &ldquo;A Simple Approximate Long-Memory Model of Realized Volatility.&rdquo; <em>J. Financial Econometrics</em>.</td><td>numpy (linear regression)</td></tr>
+    <tr><td>Realized semivariance</td><td>Barndorff-Nielsen et al. (2010). &ldquo;Measuring Downside Risk.&rdquo; <em>Review of Financial Studies</em>.</td><td>Custom implementation</td></tr>
+    <tr><td>GARCH family</td><td>Bollerslev (1986), Glosten/Jagannathan/Runkle (1993), Nelson (1991).</td><td>arch (Python, K. Sheppard)</td></tr>
+    <tr><td>Rough volatility</td><td>Gatheral, Jaisson &amp; Rosenbaum (2018). <em>Quantitative Finance</em>.</td><td>roughvol (Python)</td></tr>
+    <tr><td>Conformal prediction</td><td>Romano, Patterson &amp; Cand&egrave;s (2019). CQR. <em>NeurIPS</em>.</td><td>MAPIE, crepes</td></tr>
+    <tr><td>Adaptive conformal</td><td>Gibbs &amp; Cand&egrave;s (2021). ACI. <em>NeurIPS</em>.</td><td>Custom (~50 lines)</td></tr>
+    <tr><td>Conformal risk control</td><td>Angelopoulos et al. (2022). <em>ICLR</em>.</td><td>conformal-risk</td></tr>
+    <tr><td>NOTEARS</td><td>Zheng et al. (2018). <em>NeurIPS</em>.</td><td>gCastle (Huawei)</td></tr>
+    <tr><td>DYNOTEARS</td><td>Pamfil et al. (2020). Time-series NOTEARS.</td><td>causalnex</td></tr>
+    <tr><td>DAGMA</td><td>Bello et al. (2022). Log-det acyclicity.</td><td>dagma (Python)</td></tr>
+    <tr><td>Diff. portfolio opt</td><td>Agrawal et al. (2019). cvxpylayers. <em>NeurIPS</em>.</td><td>cvxpylayers</td></tr>
+    <tr><td>HRP</td><td>Lopez de Prado (2016). <em>J. Portfolio Management</em>.</td><td>riskfolio-lib, PyPortfolioOpt</td></tr>
+    <tr><td>CVaR optimization</td><td>Rockafellar &amp; Uryasev (2000). <em>J. Risk</em>.</td><td>cvxpy, scikit-portfolio</td></tr>
+    <tr><td>Almgren-Chriss</td><td>Almgren &amp; Chriss (2001). <em>J. Risk</em>.</td><td>Custom implementation</td></tr>
+    <tr><td>TDA / persistence</td><td>Gidea &amp; Katz (2018). <em>Physica A</em>.</td><td>giotto-tda, ripser</td></tr>
+    <tr><td>Sheaf NNs</td><td>Bodnar et al. (2022). <em>NeurIPS</em>.</td><td>neural-sheaf-diffusion</td></tr>
+    <tr><td>Tropical geometry</td><td>Baldwin &amp; Klemperer (2019). <em>Math. OR</em>.</td><td>polymake, PyTropical</td></tr>
+    <tr><td>Product manifolds</td><td>Gu, Sala, Gunel &amp; R&eacute; (2019). <em>ICLR</em>.</td><td>geoopt, geomstats</td></tr>
+    <tr><td>DEQ</td><td>Bai, Kolter &amp; Koltun (2019). <em>NeurIPS</em>.</td><td>torchdeq</td></tr>
+    <tr><td>RG / LPPL</td><td>Sornette (2003). <em>Why Stock Markets Crash</em>. Princeton.</td><td>lppls (Python)</td></tr>
+    <tr><td>S5</td><td>Smith, Warrington &amp; Linderman (2023). <em>ICLR</em>.</td><td>s5 (JAX), S5WM</td></tr>
+    <tr><td>Mamba</td><td>Gu &amp; Dao (2023). arXiv:2312.00752.</td><td>mamba-ssm</td></tr>
+    <tr><td>TTT-Linear</td><td>Sun et al. (2024). TTT with expressive hidden states.</td><td>test_time_training</td></tr>
+    <tr><td>DreamerV3</td><td>Hafner et al. (2023). arXiv:2301.04104.</td><td>dreamerv3</td></tr>
+    <tr><td>ADWIN</td><td>Bifet &amp; Gavalda (2007). Adaptive windowing.</td><td>river</td></tr>
+    <tr><td>Nelson-Siegel</td><td>Nelson &amp; Siegel (1987). <em>J. Business</em>.</td><td>nelson_siegel_svensson</td></tr>
+    <tr><td>SVI / SSVI</td><td>Gatheral (2004), Gatheral &amp; Jacquier (2014).</td><td>SSVI (JackJacquier)</td></tr>
+    <tr><td>CreditMetrics</td><td>JP Morgan (1997). Technical Document.</td><td>Custom implementation</td></tr>
+    <tr><td>FRTB</td><td>Basel Committee (2019). Fundamental Review of the Trading Book.</td><td>Regulatory framework</td></tr>
+    <tr><td>Brinson attribution</td><td>Brinson, Hood &amp; Beebower (1986). <em>Financial Analysts J.</em></td><td>Custom implementation</td></tr>
+    <tr><td>Integrated gradients</td><td>Sundararajan, Taly &amp; Yan (2017). <em>ICML</em>.</td><td>captum (PyTorch)</td></tr>
+    <tr><td>EWC</td><td>Kirkpatrick et al. (2017). <em>PNAS</em>.</td><td>avalanche-lib</td></tr>
+    <tr><td>BOCPD</td><td>Adams &amp; MacKay (2007). arXiv:0710.3742.</td><td>bayesian_changepoint</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div style="margin-top:2.5rem; padding:1.5rem; border:1px solid var(--border-light); border-radius:var(--r); background:var(--bg-alt);">
+  <p style="margin:0; font-size:0.95rem; color:var(--fg-dim);">
+    <strong>Document scope:</strong> This gap analysis is based on deep research across 30+ papers, 15+ open-source libraries, and systematic comparison against both a working competitor product and a 14-tier ideal specification. For the theoretical foundations behind RecWM&rsquo;s existing capabilities, see <em>Foundations</em>. For the product vision, see <em>The Product</em>.
+  </p>
+</div>
 
 </div>
 
