@@ -13592,7 +13592,7 @@ For an economic world model built on causal/structural foundations, this means a
 <div class="doc-header" style="background: linear-gradient(135deg, #0a0e1a 0%, #0d1b2a 30%, #1b2838 60%, #0a0e1a 100%); padding: 3.5rem 2.2rem 2.8rem; border-bottom: 3px solid var(--accent); margin: -2.5rem -2.2rem 2.5rem;">
   <div style="font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 1rem;">The Reflexive Constructive World Model</div>
   <h1 style="margin-bottom: 0.7rem; font-size: 2.3rem; line-height: 1.15; color: #fff; max-width: 780px;">RecWM: Five Theorems for Economic Reality</h1>
-  <p class="subtitle" style="font-size: 1.08rem; max-width: 740px; color: rgba(255,255,255,0.78); line-height: 1.55;">Economics has no world model because the mathematics does not exist. Reflexivity, evolving constraints, non-ergodicity, and performative forgetting are not engineering problems&mdash;they are unsolved mathematical problems. We solve five of them.</p>
+  <p class="subtitle" style="font-size: 1.08rem; max-width: 740px; color: rgba(255,255,255,0.78); line-height: 1.55;">Economics has no world model because the mathematics does not exist. Reflexivity, evolving constraints, non-ergodicity, and performative forgetting are not engineering problems&mdash;they are unsolved mathematical problems. We address all five with novel theorems&mdash;three provable, one conditional, one conjectural.</p>
   <p style="font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-top: 0.7rem;">August 2026 &middot; Treasury&#x2074; Research &middot; Five novel theorems, zero prior co-citations</p>
 </div>
 
@@ -13642,10 +13642,16 @@ For an economic world model built on causal/structural foundations, this means a
     </tbody>
   </table>
 
-  <p>RecWM addresses each of these with a novel theorem. The theorems are not assembled from existing pieces&mdash;each bridges two literatures that have <strong>zero prior co-citations</strong>. We verified this claim via exhaustive citation-graph searches across the papers citing Perdomo et al. (ICML 2020), Hoel et al. (PNAS 2013), and the full ergodicity economics, continual learning, and applied category theory literatures.</p>
+  <p>RecWM addresses each of these with a novel theorem. The theorems are not assembled from existing pieces&mdash;each bridges two literatures that have <strong>zero prior co-citations</strong>.</p>
+
+  <div style="font-size:0.85rem; color: var(--fg-dim); background: var(--bg-alt, #f5f5f5); border-radius: 6px; padding: 0.8rem 1.2rem; margin: 1rem 0;">
+    <strong>Notation guide.</strong> The symbol &#x3B5; denotes a Lipschitz sensitivity constant throughout, but refers to different maps: in Theorem 1, &#x3B5; is the Lipschitz constant of the reflexive transition map &#x3C6; &#x2192; T<sub>&#x3C6;</sub>; in Theorems 2, 3, and 5, &#x3B5; is the sensitivity of the distribution map D(&#x3B8;). The structural isomorphism (Section 2) connects these via D(&#x3B8;) &#x2194; T<sub>&#x3C6;</sub>. Similarly, &#x3B3; denotes strong <em>concavity</em> of the composed EI map in Theorem 1, and strong <em>convexity</em> of the loss in Theorems 3 and 5&mdash;opposite curvatures on different functions.
+  </div>
+
+  <p> We verified this claim via exhaustive citation-graph searches across the papers citing Perdomo et al. (ICML 2020), Hoel et al. (PNAS 2013), and the full ergodicity economics, continual learning, and applied category theory literatures.</p>
 
   <blockquote style="border-left: 3px solid var(--accent); padding: 0.8rem 1.2rem; margin: 1.5rem 0; font-style: italic; color: var(--fg-dim);">
-    The master equation of RecWM is: <strong>W(t+1) = C(W(t), A(B(t)), &#x3A6;(t))</strong>. The construction operator C (Theorem 4), the reflexive belief-action loop B &#x2192; A &#x2192; &#x394;W (Theorem 1), and the constraint field &#x3A6; (Theorem 4) are each grounded in a theorem below. B(t) itself is defined operationally as the model&rsquo;s latent state; its convergence properties follow from Theorems 3 and 5.
+    The master equation of RecWM is: <strong>W(t+1) = C(W(t), A(B(t)), &#x3A6;(t))</strong>. The construction operator C (Theorem 4), the reflexive belief-action loop B &#x2192; A &#x2192; &#x394;W (Theorem 1), and the constraint field &#x3A6; (Theorem 4) are each grounded in a theorem below. B(t) itself is defined operationally as the model&rsquo;s latent state; its stability inherits from parameter convergence (Theorems 3 and 5 prove &#x3B8;<sub>t</sub> convergence, which bounds the latent state via the encoder&rsquo;s Lipschitz constant).
   </blockquote>
 </div>
 
@@ -13851,7 +13857,7 @@ For an economic world model built on causal/structural foundations, this means a
 <!-- THEOREM 5: ENDOGENOUS SENSITIVITY -->
 <!-- ================================================================ -->
 <div class="sec" id="wm-t5">
-  <div class="sec-num">05.5</div>
+  <div class="sec-num">06</div>
   <h2>Theorem 5: Endogenous Sensitivity &amp; Crisis Transitions</h2>
 
   <h3>The Problem</h3>
@@ -13880,22 +13886,22 @@ For an economic world model built on causal/structural foundations, this means a
     <ol type="i">
       <li><strong>Time-varying convergence:</strong> If &#x3B5;<sub>t</sub> &lt; &#x3B3;/&#x3B2; for all t &#x2265; T<sub>0</sub>, then RRM from T<sub>0</sub> converges to a <em>moving</em> performative stable point &#x3B8;<sub>PS</sub>(t) with rate &#x2016;&#x3B8;<sub>t+1</sub> &minus; &#x3B8;<sub>PS</sub>(t)&#x2016; &#x2264; (&#x3B5;<sub>t</sub>&#x3B2;/&#x3B3;) &middot; &#x2016;&#x3B8;<sub>t</sub> &minus; &#x3B8;<sub>PS</sub>(t)&#x2016; + O(&#x2016;&#x3B8;<sub>PS</sub>(t+1) &minus; &#x3B8;<sub>PS</sub>(t)&#x2016;).</li>
       <li><strong>Uniform contraction regime:</strong> If sup<sub>t</sub> &#x3B5;<sub>t</sub> &lt; &#x3B3;/&#x3B2;, the system is uniformly contractive and tracking error remains bounded. Contraction rate varies: faster when &#x3B5;<sub>t</sub> is small (calm markets), slower as &#x3B5;<sub>t</sub> approaches the threshold (stressed markets).</li>
-      <li><strong>Crisis transition:</strong> When &#x3B5;<sub>t</sub> crosses &#x3B3;/&#x3B2; from below, the performative stable point <em>ceases to exist</em>. The contraction factor c<sub>t</sub> = &#x3B5;<sub>t</sub>&#x3B2;/&#x3B3; exceeds 1, and the system enters a self-amplifying regime: small perturbations grow exponentially. This crossing is a formal model of crisis onset&mdash;the transition from stable equilibrium to reflexive instability.</li>
+      <li><strong>Crisis transition:</strong> When &#x3B5;<sub>t</sub> crosses &#x3B3;/&#x3B2; from below, RRM loses contractivity&mdash;convergence to a performatively stable point is no longer guaranteed, and uniqueness may fail. The contraction factor c<sub>t</sub> = &#x3B5;<sub>t</sub>&#x3B2;/&#x3B3; exceeds 1, and the system enters a potentially self-amplifying regime. This crossing is a formal model of crisis onset&mdash;the transition from guaranteed stability to possible reflexive instability.</li>
     </ol>
-    <p style="font-size:0.88rem; color: var(--fg-dim); margin-bottom:0;"><strong>Proof technique:</strong> Follows Perdomo Theorem 3.5 line-by-line, replacing fixed &#x3B5; with time-varying &#x3B5;<sub>t</sub>. The strong convexity and smoothness arguments are pointwise and do not require &#x3B5; to be constant across iterations. For the moving fixed point (part i), the tracking error is bounded by contraction of current error plus drift of the fixed point itself&mdash;the standard non-autonomous contraction argument (Lohmiller &amp; Slotine 1998). For part (iii), by Proposition 3.6 of Perdomo et al., the bound is tight. <em>Honest caveat:</em> The proof is straightforward once one makes the conceptual move of replacing &#x3B5; with &#x3B5;<sub>t</sub>. The novelty is in the <em>framing</em>: recognising that state-dependent sensitivity converts a static existence condition into a dynamic crisis mechanism.</p>
+    <p style="font-size:0.88rem; color: var(--fg-dim); margin-bottom:0;"><strong>Proof technique:</strong> Adapts the contraction structure of Perdomo Theorem 3.5, replacing fixed &#x3B5; with time-varying &#x3B5;<sub>t</sub>. The strong convexity and smoothness arguments are pointwise and do not require &#x3B5; to be constant across iterations. However, the time-varying case is not a literal line-by-line substitution: part (i) requires non-autonomous contraction theory (Lohmiller &amp; Slotine, Automatica 1998) to bound tracking error as contraction of current error plus drift of the moving fixed point. For part (iii), by Proposition 3.6 of Perdomo et al., the bound is tight. <em>Honest caveat:</em> The proof is straightforward once one makes the conceptual move of replacing &#x3B5; with &#x3B5;<sub>t</sub>. The novelty is in the <em>framing</em>: recognising that state-dependent sensitivity converts a static existence condition into a dynamic crisis mechanism.</p>
   </div>
 
   <h3>What This Means for RecWM</h3>
   <p><strong>1. The Reflexive Instability signal is formalised.</strong> RecWM&rsquo;s early-warning signal is the empirical estimate of &#x3B5;<sub>t</sub> relative to &#x3B3;/&#x3B2;. When the estimated ratio &#x3B5;&#x0302;<sub>t</sub>&#x3B2;/&#x3B3; approaches 1 from below, the system is approaching the crisis boundary. This gives the signal a formal interpretation: it is the distance to loss of contractivity.</p>
 
-  <p><strong>2. EWC regularisation is a crisis brake.</strong> Per Theorem 3, EWC reduces effective sensitivity. In the endogenous setting, adaptive EWC can keep &#x3B5;<sub>eff</sub> below &#x3B3;/&#x3B2; even as bare sensitivity spikes during stress, coupling the continual learning mechanism directly to the reflexivity monitor.</p>
+  <p><strong>2. EWC regularisation is a crisis brake.</strong> Per Theorem 3, EWC raises the effective convergence threshold from &#x3B3;/&#x3B2; to &#x3B3;<sub>eff</sub>/&#x3B2;<sub>eff</sub>, allowing the system to tolerate higher sensitivity. In the endogenous setting, adaptive EWC can maintain convergence even as bare sensitivity &#x3B5;<sub>t</sub> spikes during stress, coupling the continual learning mechanism directly to the reflexivity monitor.</p>
 
   <p><strong>3. Three operational regimes emerge:</strong></p>
   <table style="width:100%; font-size:0.88rem; margin: 1rem 0;">
     <thead><tr><th>Regime</th><th>Condition</th><th>System Behavior</th><th>Model Response</th></tr></thead>
     <tbody>
       <tr><td><strong>Stable</strong></td><td>&#x3B5;<sub>t</sub> &lt; &#x3B3;/(2&#x3B2;)</td><td>Contractive and optimisable</td><td>Normal operation; full signal confidence</td></tr>
-      <tr><td><strong>Stable but non-optimisable</strong></td><td>&#x3B3;/(2&#x3B2;) &#x2264; &#x3B5;<sub>t</sub> &lt; &#x3B3;/&#x3B2;</td><td>Fixed point exists but performative risk is non-convex</td><td>Widen uncertainty bands</td></tr>
+      <tr><td><strong>Stable but PR non-convex</strong></td><td>&#x3B3;/(2&#x3B2;) &#x2264; &#x3B5;<sub>t</sub> &lt; &#x3B3;/&#x3B2;</td><td>RRM still converges but performative risk is non-convex; gradient methods may find local minima</td><td>Widen uncertainty bands</td></tr>
       <tr><td><strong>Crisis / reflexive instability</strong></td><td>&#x3B5;<sub>t</sub> &#x2265; &#x3B3;/&#x3B2;</td><td>No stable fixed point; self-amplifying feedback</td><td>Crisis mode: increase EWC, flag instability</td></tr>
     </tbody>
   </table>
@@ -13910,7 +13916,7 @@ For an economic world model built on causal/structural foundations, this means a
 <!-- THE CONSTRUCTION -->
 <!-- ================================================================ -->
 <div class="sec" id="wm-construction">
-  <div class="sec-num">06</div>
+  <div class="sec-num">07</div>
   <h2>The Construction</h2>
 
   <p>The five theorems compose into a single master equation:</p>
@@ -13951,7 +13957,7 @@ For an economic world model built on causal/structural foundations, this means a
     </div>
     <div style="background: var(--bg-alt); border-radius: 6px; padding: 1.2rem;">
       <h4 style="margin-top:0; font-size:0.95rem;">RL &mdash; Reflexivity Level</h4>
-      <p style="font-size:0.88rem; margin-bottom:0;">The effective performativity coefficient &#x3B5;<sub>eff</sub>: the Lipschitz constant of the reflexive transition map &#x3C6; &#x2192; T<sub>&#x3C6;</sub>. Measured, not assumed. When &#x3B5;<sub>eff</sub> approaches &#x3B3;/&#x3B2;, the system nears instability (Theorem 1).</p>
+      <p style="font-size:0.88rem; margin-bottom:0;">The effective performativity coefficient &#x3B5;<sub>eff</sub>: the Lipschitz constant of the distribution map D(&#x3B8;). Measured, not assumed. When &#x3B5;<sub>eff</sub> approaches &#x3B3;/&#x3B2;, the system nears instability (Theorems 3 and 5).</p>
     </div>
     <div style="background: var(--bg-alt); border-radius: 6px; padding: 1.2rem;">
       <h4 style="margin-top:0; font-size:0.95rem;">&#x2297; &mdash; Composition Operator</h4>
@@ -13988,10 +13994,10 @@ For an economic world model built on causal/structural foundations, this means a
 <!-- ARCHITECTURE -->
 <!-- ================================================================ -->
 <div class="sec" id="wm-architecture">
-  <div class="sec-num">07</div>
+  <div class="sec-num">08</div>
   <h2>Architecture</h2>
 
-  <p>RecWM implements the four theorems in a six-layer neural architecture:</p>
+  <p>RecWM implements the five theorems in a six-layer neural architecture:</p>
 
   <div style="overflow-x:auto;">
   <table style="width:100%; font-size:0.88rem; margin: 1.2rem 0;">
@@ -14036,14 +14042,14 @@ For an economic world model built on causal/structural foundations, this means a
 <!-- POSITION IN THE LANDSCAPE -->
 <!-- ================================================================ -->
 <div class="sec" id="wm-landscape">
-  <div class="sec-num">08</div>
+  <div class="sec-num">09</div>
   <h2>Position in the Landscape</h2>
 
   <h3>What RecWM Is Not</h3>
   <ul style="font-size:0.93rem;">
-    <li><strong>Not a forecaster.</strong> The output is a possibility landscape (feasible constructions under constraints), not a point prediction. Proper scoring rules fail under performativity (Boeken, Zoeter &amp; Mooij 2025); RecWM does not pretend otherwise.</li>
+    <li><strong>Not a forecaster.</strong> The output is a possibility landscape (feasible constructions under constraints), not a point prediction. Proper scoring rules fail under performativity (Boeken, Zoeter &amp; Mooij, NeurIPS 2025); RecWM does not pretend otherwise.</li>
     <li><strong>Not a DSGE model.</strong> DSGE assumes equilibrium and rational expectations. RecWM is constructive: it computes next states from typed primitives without asserting equilibrium existence.</li>
-    <li><strong>Not an LLM-based simulator.</strong> LLM-based economic agents (Park et al. 2023; Li et al. 2024) simulate conversations and narratives. They have no typed state, no constraint field, no convergence guarantees.</li>
+    <li><strong>Not an LLM-based simulator.</strong> LLM-based economic agents (Park et al. 2023; Li et al., EconAgent, ACL 2024) simulate conversations and narratives. They have no typed state, no constraint field, no convergence guarantees.</li>
   </ul>
 
   <h3>Nearest Neighbours</h3>
@@ -14053,13 +14059,16 @@ For an economic world model built on causal/structural foundations, this means a
       <tr><td><strong>Sooth Labs</strong><br><span style="font-size:0.8rem;">$50M seed, $335M valuation</span></td><td>Exogenous event forecasting&mdash;world models for geopolitical and market events</td><td>Exogenous only; no endogenous reflexivity, no typed constraints, no ergodic correction</td></tr>
       <tr><td><strong>Bridgewater&rsquo;s Economic Machine</strong></td><td>Macro regime model: credit cycles, deleveraging patterns</td><td>Verbal/qualitative, not formally constructive; no performativity theory</td></tr>
       <tr><td><strong>Agent-Based Models</strong><br><span style="font-size:0.8rem;">(Farmer &amp; Foley 2009; Hommes 2006; Axtell &amp; Farmer, JEL 2025)</span></td><td>Heterogeneous agent simulation with emergent dynamics</td><td>No formal constraint composition; no convergence guarantees; calibration difficult</td></tr>
-      <tr><td><strong>Macrocosm</strong><br><span style="font-size:0.8rem;">(J. Doyne Farmer, Oxford; est. 2023)</span></td><td>Differentiable global supply-network ABM; digital twin of world economy</td><td>No performativity theory; no ergodic correction; no typed constraint composition</td></tr>
+      <tr><td><strong>Macrocosm</strong><br><span style="font-size:0.8rem;">(J. Doyne Farmer, Oxford spinout; est. 2023)</span></td><td>Differentiable global supply-network ABM; digital twin of world economy</td><td>No performativity theory; no ergodic correction; no typed constraint composition</td></tr>
       <tr><td><strong>Microsoft MarS</strong><br><span style="font-size:0.8rem;">(Large Market Model, 2024)</span></td><td>Foundation model for order-level market simulation; proves scaling laws hold on financial data</td><td>L2&ndash;L3 only (market microstructure); no macro, no reflexivity, no constraints</td></tr>
       <tr><td><strong>JPMorgan ABIDES-Economist</strong><br><span style="font-size:0.8rem;">(Feb 2024)</span></td><td>Heterogeneous Households/Firms/CentralBank/Govt agents with RL learning; OpenAI Gym-compatible</td><td>No performativity theory; no categorical constraints; institutional but not reflexive</td></tr>
       <tr><td><strong>Time-Series Foundation Models</strong><br><span style="font-size:0.8rem;">(Chronos-2, Kronos, Lag-Llama)</span></td><td>Pre-trained general-purpose or financial time-series forecasting at L1&ndash;L2</td><td>Point forecasting only; no reflexivity, no constraints, no causal structure</td></tr>
       <tr><td><strong>Compositional Game Theory</strong><br><span style="font-size:0.8rem;">(Ghani, Hedges et al., LICS 2018)</span></td><td>Games as morphisms in a symmetric monoidal category; working Haskell engine</td><td>No world model dynamics; static games only; no performativity or continual learning</td></tr>
       <tr><td><strong>Performative Prediction</strong><br><span style="font-size:0.8rem;">(Perdomo et al., ICML 2020)</span></td><td>Formalises how deploying a model changes the distribution; convergence theory</td><td>No causal emergence, no ergodic correction, no constraint composition, no architecture</td></tr>
       <tr><td><strong>Constructive Economic Theory</strong><br><span style="font-size:0.8rem;">(Bridges 1982; Velupillai 2010; Tanaka 2012)</span></td><td>Bishop-style constructive proofs of economic theorems (utility, equilibrium, Nash)</td><td>Static existence results; no dynamics, no world model, no ML architecture</td></tr>
+      <tr><td><strong>TwinMarket</strong><br><span style="font-size:0.8rem;">(FreedomIntelligence; ICLR 2025 Financial AI Best Paper)</span></td><td>LLM-powered multi-agent stock market simulator using BDI cognitive framework; replicates stylised facts (fat tails, volatility clustering)</td><td>Market microstructure only (L2&ndash;L3); no macro, no typed constraints, no performative convergence theory</td></tr>
+      <tr><td><strong>Partially Performative Prediction</strong><br><span style="font-size:0.8rem;">(Lee &amp; Zrnic, arXiv 2606.07890, June 2026)</span></td><td>Generalises performative prediction to mixed endogenous/exogenous distribution shift</td><td>Theoretical extension; no world model, no ergodic correction, no architecture</td></tr>
+      <tr><td><strong>Algometrics</strong><br><span style="font-size:0.8rem;">(Schmitt, arXiv 2605.23978, May 2026)</span></td><td>Framework for time series under algorithmic feedback; proves deployment risk is not identifiable from passive data</td><td>Diagnostic framework; no constructive world model, no constraint composition</td></tr>
       <tr><td><strong>Categorical Economic Theory</strong><br><span style="font-size:0.8rem;">(Tohm&#x00E9; &amp; Auday, Routledge 2019; Pollicino, arXiv 2508.13233, Aug 2025)</span></td><td>Category theory as foundation for economic theory; preliminary applications to macro data</td><td>Programmatic, not yet operational; no world model, no performativity, no ML integration</td></tr>
     </tbody>
   </table>
@@ -14071,16 +14080,16 @@ For an economic world model built on causal/structural foundations, this means a
 <!-- OPEN PROBLEMS & HONEST LIMITATIONS -->
 <!-- ================================================================ -->
 <div class="sec" id="wm-open">
-  <div class="sec-num">09</div>
+  <div class="sec-num">10</div>
   <h2>Open Problems &amp; Honest Limitations</h2>
 
   <h3>What Is Proven vs. Conjectural</h3>
   <table style="width:100%; font-size:0.88rem; margin: 1.2rem 0;">
     <thead><tr><th style="text-align:left;">Claim</th><th style="text-align:center;">Status</th><th style="text-align:left;">Gap</th></tr></thead>
     <tbody>
-      <tr><td>Theorem 1 (parts i&ndash;ii): existence and convergence of performatively stable coarse-graining</td><td style="text-align:center; color: green; font-weight:600;">Provable</td><td>Direct application of Banach contraction under &#x3B5; &lt; &#x3B3;</td></tr>
+      <tr><td>Theorem 1 (parts i&ndash;ii): existence and convergence of performatively stable coarse-graining</td><td style="text-align:center; color: orange; font-weight:600;">Conditional</td><td>Banach contraction under &#x3B5; &lt; &#x3B3;, conditional on the &#x3B3;-concavity assumption (see Open Problem 7)</td></tr>
       <tr><td>Theorem 1 (part iii): amplification&mdash;reflexive EI exceeds standard EI</td><td style="text-align:center; color: orange; font-weight:600;">Constructive</td><td>Proof by construction of specific two-state chain; generality unclear</td></tr>
-      <tr><td>Theorem 2: ergodic-performative divergence</td><td style="text-align:center; color: green; font-weight:600;">Provable</td><td>FOC comparison under concavity of log; numerical example verified</td></tr>
+      <tr><td>Theorem 2: ergodic-performative divergence</td><td style="text-align:center; color: orange; font-weight:600;">Provable (pending reformulation)</td><td>FOC comparison under concavity of log; formal Perdomo convergence requires strongly convex loss formulation (developed in full paper)</td></tr>
       <tr><td>Theorem 3 (parts i&ndash;iii): EWC-stabilised convergence</td><td style="text-align:center; color: green; font-weight:600;">Provable</td><td>Direct from Perdomo Thm 3.5 applied to regularised loss</td></tr>
       <tr><td>Theorem 3 (part ii): condition &#x3BA;(F) &lt; &#x3B2;/&#x3B3;</td><td style="text-align:center; color: orange; font-weight:600;">Empirical</td><td>Whether real Fisher matrices satisfy this needs verification on financial data</td></tr>
       <tr><td>Theorem 4: fibered monoidal category structure</td><td style="text-align:center; color: orange; font-weight:600;">Conjectural</td><td>Category-theoretic construction is well-defined; verification that economic fragments satisfy the axioms requires formal proof</td></tr>
@@ -14117,7 +14126,7 @@ For an economic world model built on causal/structural foundations, this means a
 <!-- THE RESEARCH PROGRAM -->
 <!-- ================================================================ -->
 <div class="sec" id="wm-program">
-  <div class="sec-num">10</div>
+  <div class="sec-num">11</div>
   <h2>The Research Program</h2>
 
   <h3>Three Papers</h3>
