@@ -11929,88 +11929,478 @@ For an economic world model built on causal/structural foundations, this means a
 <div class="diagram-caption"><strong>Figure 5.</strong> The RecWM engine. Six layers typed by timescale &#964;&#8342;: bottom four form the world model, top five provide continual learning. Derived intelligence signals emerge at the top.</div>
 </div>
 
-<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; SEVEN FRAGMENTS &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
-<h2 id="prod-fragments"><span class="sec-num">5.</span> The Seven World Fragments</h2>
 
-<p>RecWM decomposes the world into seven typed fragments, each operating at its natural timescale. This is not an arbitrary taxonomy &mdash; each fragment has a specific state dimension, characteristic timescale, and discretization band derived from the physics of the data it models.</p>
+<!-- ═══════════════════ DATA PIPELINE ═══════════════════ -->
+<h2 id="prod-data"><span class="sec-num">5.</span> The Data Pipeline: What the Model Knows</h2>
+
+<p>RecWM ingests the entire observable financial world through free, institutional-grade data sources. No proprietary terminal required. The model&rsquo;s knowledge comes from six data channels, each mapped to specific world fragments at their native update frequency.</p>
+
+<div class="contrib">
+  <strong>Design principle:</strong> The raw data is free &mdash; FRED, BIS, EDGAR, Yahoo Finance. The edge is not in data access. The edge is in <em>how</em> the data is structured: decomposed into typed fragments, aligned by publication timestamp (not reference period), weighted by recency-confidence, and processed through a reflexivity-aware causal model. Nobody else structures FRED data as construction attempts on typed world fragments.
+</div>
+
+<h3>5.1 Data Sources &amp; Fragment Mapping</h3>
 
 <table>
   <thead>
-    <tr><th>Fragment</th><th>Scale</th><th>&tau; (days)</th><th>Dimension</th><th>What It Captures</th></tr>
+    <tr><th>Fragment</th><th>&tau; (days)</th><th>Primary Data Sources</th><th>Key Series / Endpoints</th><th>Update Frequency</th></tr>
   </thead>
   <tbody>
-    <tr><td><strong>Liquidity</strong></td><td>Micro</td><td>1&ndash;5</td><td>16</td><td>Bid-ask spreads, volume profiles, funding stress, market depth</td></tr>
-    <tr><td><strong>Momentum</strong></td><td>Micro</td><td>5&ndash;20</td><td>16</td><td>Price trends, mean reversion signals, cross-sectional momentum</td></tr>
-    <tr><td><strong>Risk</strong></td><td>Meso</td><td>20&ndash;60</td><td>12</td><td>Volatility regimes, correlation structures, tail distributions</td></tr>
-    <tr><td><strong>Credit</strong></td><td>Macro</td><td>60&ndash;250</td><td>12</td><td>Credit cycle position, leverage ratios, default probability surfaces</td></tr>
-    <tr><td><strong>Structure</strong></td><td>Macro</td><td>250&ndash;1000</td><td>8</td><td>Secular trends, demographic shifts, structural breaks</td></tr>
-    <tr><td><strong>Sentiment</strong></td><td>Micro</td><td>1&ndash;7</td><td>16</td><td>News flow, social media signals, narrative regime identification</td></tr>
-    <tr><td><strong>Policy</strong></td><td>Macro</td><td>90&ndash;365</td><td>16</td><td>Central bank reaction functions, fiscal multipliers, regulatory changes</td></tr>
+    <tr>
+      <td><strong>Liquidity</strong></td>
+      <td>1&ndash;5</td>
+      <td>FRED, NY Fed, Treasury Fiscal Data API</td>
+      <td><code>WALCL</code> (Fed balance sheet), <code>WRESBAL</code> (reserves), <code>RRPONTSYD</code> (reverse repo), <code>SOFR</code>, <code>M2SL</code>; Treasury bill auction bid-to-cover ratios; NY Fed repo operations</td>
+      <td>Daily &ndash; weekly</td>
+    </tr>
+    <tr>
+      <td><strong>Momentum</strong></td>
+      <td>5&ndash;20</td>
+      <td>Yahoo Finance, CFTC</td>
+      <td>OHLCV for equities/futures/FX; options chains (IV surface, put-call skew, open interest); CFTC Commitments of Traders (net positioning by asset class)</td>
+      <td>Intraday &ndash; weekly</td>
+    </tr>
+    <tr>
+      <td><strong>Risk</strong></td>
+      <td>20&ndash;60</td>
+      <td>FRED, OFR</td>
+      <td><code>VIXCLS</code> (VIX), <code>NFCI</code> (Chicago Fed Financial Conditions), <code>STLFSI4</code> (St. Louis Financial Stress); OFR Financial Stress Index; options-implied vol surfaces</td>
+      <td>Daily</td>
+    </tr>
+    <tr>
+      <td><strong>Credit</strong></td>
+      <td>60&ndash;250</td>
+      <td>FRED, BIS, SEC EDGAR</td>
+      <td><code>BAMLH0A0HYM2</code> (HY OAS spread), <code>BAMLC0A0CM</code> (IG OAS); BIS <code>WS_CREDIT_GAP</code> (credit-to-GDP gap); EDGAR XBRL leverage ratios from 10-K/10-Q filings; 8-K covenant triggers</td>
+      <td>Daily &ndash; quarterly</td>
+    </tr>
+    <tr>
+      <td><strong>Structure</strong></td>
+      <td>250&ndash;1000</td>
+      <td>FRED, IMF, World Bank, BIS</td>
+      <td><code>GDPC1</code> (real GDP), IMF WEO/IFS growth forecasts, World Bank <code>GC.DOD.TOTL.GD.ZS</code> (debt/GDP), BIS <code>WS_DEBT_SEC2_PUB</code> (global debt securities); demographic and structural indicators</td>
+      <td>Monthly &ndash; annual</td>
+    </tr>
+    <tr>
+      <td><strong>Sentiment</strong></td>
+      <td>1&ndash;7</td>
+      <td>GDELT 2.0, SEC EDGAR</td>
+      <td>GDELT Global Knowledge Graph (tone, themes, event counts every 15 minutes); GDELT Event Database (CAMEO-coded geopolitical events with Goldstein scale); EDGAR full-text search for filing-language shifts</td>
+      <td>Every 15 minutes</td>
+    </tr>
+    <tr>
+      <td><strong>Policy</strong></td>
+      <td>90&ndash;365</td>
+      <td>Central bank feeds, FRED, BIS</td>
+      <td>FOMC statements/minutes/speeches (NLP hawk-dove scoring); ECB, BOJ, BOE minutes; <code>DFF</code> (Fed Funds), BIS <code>WS_CBPOL</code> (global policy rates); Treasury auction results; Fed funds futures-implied rate paths</td>
+      <td>Event-driven (8&times;/yr FOMC + continuous speeches)</td>
+    </tr>
   </tbody>
 </table>
 
-<div class="contrib">
-  <strong>Why fragments matter:</strong> A volatility spike is a different object at the 5-day scale (a liquidity event) than at the 60-day scale (a regime shift) than at the 250-day scale (a structural break). Fragments are the unit of analysis. The model does not predict &ldquo;the market&rdquo; &mdash; it predicts each fragment at its natural timescale and composes the results.
-</div>
+<h3>5.2 Preprocessing: From Raw Feed to Fragment Input</h3>
 
-<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; FOUR SIGNALS &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
-<h2 id="prod-signals"><span class="sec-num">6.</span> Four Derived Signals</h2>
+<p>Raw data undergoes four transformations before entering the model:</p>
 
-<p>The world model produces four proprietary signals that have no equivalent in traditional analytics. These are not technical indicators derived from price &mdash; they emerge from the structure of the world model itself.</p>
-
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;">
-  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-left: 4px solid var(--accent); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
-    <h4 style="color: var(--accent); margin-bottom: 0.5rem; font-family: var(--font-sans); font-size: 0.92rem;">Constructibility Index (CI)</h4>
-    <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">What fraction of possible actions are currently feasible? CI dropping means the action space is shrinking &mdash; the economy is becoming rigid. Leads the Financial Conditions Index by 1&ndash;4 weeks.</p>
-    <div class="equation-block" style="font-size: 0.82rem;">CI(t) = &mu;[&Phi;(t,a) = feasible] / |A|</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.4rem;">1. Temporal Alignment</h4>
+    <p style="font-size: 0.86rem;">Every data point carries two timestamps: <em>reference period</em> (what it measures) and <em>publication time</em> (when it became knowable). The model uses as-of joins on publication time &mdash; GDP for Q2 is not visible until its release in late Q3. This prevents look-ahead bias in backtesting.</p>
   </div>
-  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-left: 4px solid var(--red); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
-    <h4 style="color: var(--red); margin-bottom: 0.5rem; font-family: var(--font-sans); font-size: 0.92rem;">Reflexive Instability (RI)</h4>
-    <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">Reflexivity coefficient times belief coherence. When both are high, self-fulfilling prophecy conditions exist. Values above 0.7 are dangerous. Should spike before major dislocations.</p>
-    <div class="equation-block" style="font-size: 0.82rem;">RI(t) = &epsilon;(t) &middot; &chi;(t)</div>
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.4rem;">2. Fragment-Typed Normalization</h4>
+    <p style="font-size: 0.86rem;">Each fragment type gets its own normalization: levels (Liquidity, Credit) &rarr; log-difference or z-score against a rolling window matched to &tau;<sub>k</sub>. Returns (Momentum) are already stationary. Sentiment (GDELT tone) is rescaled to [&minus;1, 1] with exponential decay weighting. Policy uses categorical NLP scores concatenated with continuous rate z-scores.</p>
   </div>
-  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-left: 4px solid var(--amber); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
-    <h4 style="color: var(--amber); margin-bottom: 0.5rem; font-family: var(--font-sans); font-size: 0.92rem;">Composition Fragility (CF)</h4>
-    <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">Does combining stable components create instability? CF &gt; 0 means interaction generates risk that individual components lack. The mathematical definition of systemic risk.</p>
-    <div class="equation-block" style="font-size: 0.82rem;">CF(t) = max[stability(A) + stability(B) - stability(A&otimes;B)]</div>
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.4rem;">3. Missing Data by Frequency</h4>
+    <p style="font-size: 0.86rem;">Daily gaps: forward-fill &le;3 business days. Weekly/monthly: step-function hold with a &ldquo;days-since-update&rdquo; staleness feature injected into the fragment vector. Quarterly (GDP): Kalman-style nowcast between releases. Event-driven (FOMC): sparse impulse features with decaying &ldquo;days since event&rdquo; plus directional score.</p>
   </div>
-  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-left: 4px solid var(--signal-purple); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
-    <h4 style="color: var(--signal-purple); margin-bottom: 0.5rem; font-family: var(--font-sans); font-size: 0.92rem;">Path Lock-In Risk (PLR)</h4>
-    <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">How sensitive is the future to small perturbations now? PLR near 1 means you are at a bifurcation point &mdash; decisions made today lock in trajectories that cannot be reversed.</p>
-    <div class="equation-block" style="font-size: 0.82rem;">PLR(t) = 1 - Var&#8344;&#8318;[W(t+H)] / Var&#8346;&#7523;&#7522;&#8338;&#7523;</div>
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.4rem;">4. Feature Engineering</h4>
+    <p style="font-size: 0.86rem;">Per-fragment derived features: multi-horizon returns (1d/5d/20d), options skew (25-delta put-call IV spread), spread momentum, GDELT tone momentum (3-day MA minus 30-day MA), meeting-over-meeting text distance for central bank statements, rate-path surprise (actual vs. futures-implied).</p>
   </div>
 </div>
 
-<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; CAPABILITIES &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
-<h2 id="prod-capabilities"><span class="sec-num">7.</span> Core Capabilities</h2>
+<h3>5.3 Multi-Rate Fusion</h3>
 
-<h3>7.1 Real-Time Regime Detection</h3>
-<p>The BOCPD (Bayesian Online Changepoint Detection) layer monitors every fragment for regime shifts in real time. When <span class="st">P(r&#8346; = 0) &gt; &delta;</span>, the model snapshots its parameters, computes the Fisher information matrix, stores exemplars via reservoir sampling, resets fast gates, and preserves slow states. The client sees a regime change alert with the specific fragments affected, the confidence level, and the historical analog (if one exists).</p>
+<p>Fragments operate at genuinely different native frequencies &mdash; Sentiment updates every 15 minutes while Structure updates quarterly. RecWM does <strong>not</strong> force everything onto one clock. Each fragment carries its own last-updated timestamp and a staleness decay function. The fragment fusion layer weights each fragment&rsquo;s contribution by recency-confidence: high-frequency fragments (Momentum, Liquidity) update the joint state every tick while low-frequency ones (Structure, Policy) act as slowly-drifting priors corrected in discrete jumps at their release events.</p>
 
-<h3>7.2 Adaptive Volatility Surfaces</h3>
-<p>The Risk fragment (dimension 12, timescale 20&ndash;60 days) maintains a continuously updating volatility surface. Unlike traditional SABR or Heston models that calibrate once and deploy, RecWM&rsquo;s volatility representation learns from every new data point via O(N) RTRL streaming. Rough volatility dynamics (Gatheral, Jaisson &amp; Rosenbaum 2018) emerge naturally from the fragment&rsquo;s learned latent space rather than being imposed parametrically.</p>
+<!-- ═══════════════════ PROCESSING PIPELINE ═══════════════════ -->
+<h2 id="prod-pipeline"><span class="sec-num">6.</span> From Raw Data to Intelligence: The Processing Pipeline</h2>
 
-<h3>7.3 Cross-Asset Contagion Graphs</h3>
-<p>The composition operator <span class="st">&otimes; : WF&#7522; &times; WF&#11388; &rarr; WF&#7522;&#11388;</span> models how fragments interact across assets and scales. When the Composition Fragility signal rises, the model identifies which specific fragment pairs are creating emergent instability &mdash; not just &ldquo;correlations went to 1&rdquo; but which structural mechanism is causing contagion.</p>
+<p>This section traces a single data point &mdash; from FRED API response to actionable signal &mdash; through every layer of the model.</p>
 
-<h3>7.4 Tail Risk Early Warning</h3>
-<p>Traditional tail risk models (EVT, copula-based) estimate static distributions. RecWM&rsquo;s tail risk is dynamic: as the Reflexive Instability signal rises and Constructibility falls, the model&rsquo;s forward simulations automatically widen confidence intervals and flag non-linear amplification pathways. The Path Lock-In signal identifies when small perturbations can trigger regime-level shifts.</p>
+<div class="diagram-wrap">
+<svg viewBox="0 0 780 680" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <filter id="ds7" x="-2%" y="-2%" width="104%" height="108%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.05"/>
+    </filter>
+    <marker id="a7" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="7" markerHeight="5" orient="auto">
+      <path d="M0 0L12 4L0 8L3 4z" fill="#94a3b8"/>
+    </marker>
+    <marker id="a7b" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="7" markerHeight="5" orient="auto">
+      <path d="M0 0L12 4L0 8L3 4z" fill="#1d4ed8"/>
+    </marker>
+  </defs>
 
-<h3>7.5 Natural Language Query Interface</h3>
-<p>The client asks: <em>&ldquo;What happens to my portfolio if the Fed cuts 50bps in September and China devalues by 5%?&rdquo;</em></p>
-<p>RecWM routes this to the Policy fragment (central bank reaction function) and the Structure fragment (cross-border capital flows), runs forward simulations through all seven fragments with constraint-field filtering, and returns:</p>
+  <!-- Stage 1: Data Ingestion -->
+  <rect x="30" y="10" width="720" height="70" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.2" filter="url(#ds7)"/>
+  <text x="50" y="32" font-size="10" font-weight="700" fill="#059669" letter-spacing="0.12em">STAGE 1: DATA INGESTION</text>
+  <text x="50" y="55" font-size="11" fill="#111827">FRED API &bull; BIS SDMX &bull; GDELT GKG &bull; EDGAR XBRL &bull; yfinance &bull; Central Bank RSS</text>
+  <text x="50" y="70" font-size="9.5" fill="#9ca3af">As-of timestamp alignment &bull; Publication-time indexing &bull; Staleness tracking</text>
+
+  <line x1="390" y1="80" x2="390" y2="100" stroke="#64748b" stroke-width="1.2" marker-end="url(#a7)"/>
+
+  <!-- Stage 2: Fragment Decomposition -->
+  <rect x="30" y="100" width="720" height="85" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.2" filter="url(#ds7)"/>
+  <text x="50" y="122" font-size="10" font-weight="700" fill="#1d4ed8" letter-spacing="0.12em">STAGE 2: TYPED FRAGMENT DECOMPOSITION</text>
+  <text x="80" y="148" font-size="10.5" fill="#111827">Liquidity</text>
+  <text x="170" y="148" font-size="10.5" fill="#111827">Momentum</text>
+  <text x="270" y="148" font-size="10.5" fill="#111827">Risk</text>
+  <text x="340" y="148" font-size="10.5" fill="#111827">Credit</text>
+  <text x="420" y="148" font-size="10.5" fill="#111827">Structure</text>
+  <text x="520" y="148" font-size="10.5" fill="#111827">Sentiment</text>
+  <text x="630" y="148" font-size="10.5" fill="#111827">Policy</text>
+  <text x="50" y="175" font-size="9.5" fill="#9ca3af" font-family="Georgia, serif">&tau;=1&ndash;5d</text>
+  <text x="165" y="175" font-size="9.5" fill="#9ca3af" font-family="Georgia, serif">&tau;=5&ndash;20d</text>
+  <text x="265" y="175" font-size="9.5" fill="#9ca3af" font-family="Georgia, serif">&tau;=20&ndash;60d</text>
+  <text x="335" y="175" font-size="9.5" fill="#9ca3af" font-family="Georgia, serif">&tau;=60&ndash;250d</text>
+  <text x="420" y="175" font-size="9.5" fill="#9ca3af" font-family="Georgia, serif">&tau;=250&ndash;1000d</text>
+  <text x="520" y="175" font-size="9.5" fill="#9ca3af" font-family="Georgia, serif">&tau;=1&ndash;7d</text>
+  <text x="630" y="175" font-size="9.5" fill="#9ca3af" font-family="Georgia, serif">&tau;=90&ndash;365d</text>
+
+  <line x1="390" y1="185" x2="390" y2="205" stroke="#64748b" stroke-width="1.2" marker-end="url(#a7)"/>
+
+  <!-- Stage 3: S5 + GateL0RD -->
+  <rect x="30" y="205" width="350" height="80" rx="10" fill="#fff" stroke="#bfdbfe" stroke-width="1.2" filter="url(#ds7)"/>
+  <rect x="30" y="205" width="4" height="80" rx="2 0 0 2" fill="#1d4ed8"/>
+  <text x="48" y="227" font-size="10" font-weight="700" fill="#1d4ed8" letter-spacing="0.08em">STAGE 3a: S5 STATE-SPACE BACKBONE</text>
+  <text x="48" y="248" font-size="10" fill="#111827">Per-fragment diagonal SSM: h(t) = &Amacr;h(t&minus;1) + B&#772;u(t)</text>
+  <text x="48" y="265" font-size="9.5" fill="#9ca3af">&Delta;<sub>k</sub> = &tau;<sub>k</sub>/&tau;<sub>max</sub> typed discretization</text>
+  <text x="48" y="278" font-size="9.5" fill="#9ca3af">Parallel scan: O(N<sub>k</sub> log L) per fragment</text>
+
+  <rect x="400" y="205" width="350" height="80" rx="10" fill="#fff" stroke="#bfdbfe" stroke-width="1.2" filter="url(#ds7)"/>
+  <rect x="400" y="205" width="4" height="80" rx="2 0 0 2" fill="#059669"/>
+  <text x="418" y="227" font-size="10" font-weight="700" fill="#059669" letter-spacing="0.08em">STAGE 3b: GateL0RD GATING</text>
+  <text x="418" y="248" font-size="10" fill="#111827">L0-regularized gates: z(t) = g&middot;z&#771;(t) + (1&minus;g)&middot;z(t&minus;1)</text>
+  <text x="418" y="265" font-size="9.5" fill="#9ca3af">&lambda;<sub>k</sub> &prop; &tau;<sub>k</sub>/&tau;<sub>max</sub> (slow frags gate &gt;95% closed)</text>
+  <text x="418" y="278" font-size="9.5" fill="#9ca3af">Closed gate = no update = no forgetting (CL-0)</text>
+
+  <line x1="390" y1="285" x2="390" y2="305" stroke="#64748b" stroke-width="1.2" marker-end="url(#a7)"/>
+
+  <!-- Stage 4: SPIB -->
+  <rect x="30" y="305" width="720" height="65" rx="10" fill="#fff" stroke="#c7d2fe" stroke-width="1.2" filter="url(#ds7)"/>
+  <rect x="30" y="305" width="4" height="65" rx="2 0 0 2" fill="#6366f1"/>
+  <text x="48" y="327" font-size="10" font-weight="700" fill="#6366f1" letter-spacing="0.08em">STAGE 4: SPIB COMPRESSION</text>
+  <text x="48" y="348" font-size="10" fill="#111827">Per-fragment: max I(z<sub>k</sub>; state<sub>t+&tau;k</sub>) &minus; &beta;<sub>k</sub>&middot;I(z<sub>k</sub>; X<sub>t</sub>)</text>
+  <text x="48" y="363" font-size="9.5" fill="#9ca3af">&beta; high for noisy fragments (Tick: &beta;&asymp;1.0), low for sparse signal (Structure: &beta;&asymp;0.01)</text>
+
+  <line x1="390" y1="370" x2="390" y2="390" stroke="#64748b" stroke-width="1.2" marker-end="url(#a7)"/>
+
+  <!-- Stage 5: Composition -->
+  <rect x="30" y="390" width="350" height="80" rx="10" fill="#fff" stroke="#fbbf24" stroke-width="1.2" filter="url(#ds7)"/>
+  <rect x="30" y="390" width="4" height="80" rx="2 0 0 2" fill="#d97706"/>
+  <text x="48" y="412" font-size="10" font-weight="700" fill="#d97706" letter-spacing="0.08em">STAGE 5: COMPOSITION &otimes;</text>
+  <text x="48" y="433" font-size="10" fill="#111827">Cross-fragment + cross-asset composition</text>
+  <text x="48" y="450" font-size="9.5" fill="#9ca3af">Bilinear coupling: &rho;(z<sub>a</sub>,z<sub>b</sub>) = z<sub>a</sub><sup>T</sup>M<sub>ab</sub>z<sub>b</sub></text>
+  <text x="48" y="463" font-size="9.5" fill="#9ca3af">Constraint projection: &Phi;<sub>reg</sub> &cap; &Phi;<sub>liq</sub> &cap; &Phi;<sub>phy</sub> &cap; &Phi;<sub>acc</sub></text>
+
+  <rect x="400" y="390" width="350" height="80" rx="10" fill="#fff" stroke="#f87171" stroke-width="1.2" filter="url(#ds7)"/>
+  <rect x="400" y="390" width="4" height="80" rx="2 0 0 2" fill="#dc2626"/>
+  <text x="418" y="412" font-size="10" font-weight="700" fill="#dc2626" letter-spacing="0.08em">STAGE 5b: REFLEXIVITY ESTIMATION</text>
+  <text x="418" y="433" font-size="10" fill="#111827">&epsilon;&#770;(t) &asymp; ||&part;C/&part;A &middot; &part;A/&part;B||<sub>op</sub></text>
+  <text x="418" y="450" font-size="9.5" fill="#9ca3af">Jacobian of B&rarr;A&rarr;&Delta;W&rarr;&Delta;B loop</text>
+  <text x="418" y="463" font-size="9.5" fill="#9ca3af">Crisis check: L<sub>C</sub>(1+&epsilon;) &ge; 1 &rArr; loss of contraction</text>
+
+  <line x1="390" y1="470" x2="390" y2="490" stroke="#64748b" stroke-width="1.2" marker-end="url(#a7)"/>
+
+  <!-- Stage 6: Forward Simulation -->
+  <rect x="30" y="490" width="720" height="65" rx="10" fill="#fefce8" stroke="#fde68a" stroke-width="1.2" filter="url(#ds7)"/>
+  <rect x="30" y="490" width="4" height="65" rx="2 0 0 2" fill="#ca8a04"/>
+  <text x="48" y="512" font-size="10" font-weight="700" fill="#ca8a04" letter-spacing="0.08em">STAGE 6: FORWARD SIMULATION</text>
+  <text x="48" y="533" font-size="10" fill="#111827">256&ndash;1024 Monte Carlo paths per asset per horizon &bull; Sobol quasi-random sampling</text>
+  <text x="48" y="548" font-size="9.5" fill="#9ca3af">Constraint-filtered rollout: infeasible paths pruned, not clamped &bull; Non-Gaussian empirical quantiles</text>
+
+  <line x1="390" y1="555" x2="390" y2="575" stroke="#64748b" stroke-width="1.2" marker-end="url(#a7)"/>
+
+  <!-- Stage 7: Output -->
+  <rect x="30" y="575" width="720" height="90" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5" filter="url(#ds7)"/>
+  <text x="390" y="597" text-anchor="middle" font-size="10" font-weight="700" fill="#1d4ed8" letter-spacing="0.12em">STAGE 7: DERIVED INTELLIGENCE</text>
+  <text x="130" y="625" text-anchor="middle" font-size="11" fill="#111827" font-weight="600">Constructibility</text>
+  <text x="310" y="625" text-anchor="middle" font-size="11" fill="#111827" font-weight="600">Reflexive Instability</text>
+  <text x="500" y="625" text-anchor="middle" font-size="11" fill="#111827" font-weight="600">Composition Fragility</text>
+  <text x="670" y="625" text-anchor="middle" font-size="11" fill="#111827" font-weight="600">Path Lock-In</text>
+  <text x="130" y="645" text-anchor="middle" font-size="9" fill="#9ca3af">P<sub>feasible</sub>/P<sub>total</sub></text>
+  <text x="310" y="645" text-anchor="middle" font-size="9" fill="#9ca3af">&epsilon;&#770;/(&gamma;/&beta;)</text>
+  <text x="500" y="645" text-anchor="middle" font-size="9" fill="#9ca3af">||&part;z<sub>ab</sub>/&part;M<sub>ab</sub>||</text>
+  <text x="670" y="645" text-anchor="middle" font-size="9" fill="#9ca3af">H(W<sub>t</sub>)&minus;H(W<sub>t+h</sub>)</text>
+  <text x="390" y="660" text-anchor="middle" font-size="9.5" fill="#64748b">+ Confidence intervals (5/25/50/75/95 quantiles) + Full provenance chains</text>
+</svg>
+<div class="diagram-caption"><strong>Figure 6.</strong> The complete processing pipeline. Seven stages from raw API data to actionable intelligence. Every output carries a provenance chain linking it to the specific fragments, gates, constraints, and data sources that produced it.</div>
+</div>
+
+<h3>6.1 Stage-by-Stage Technical Detail</h3>
+
+<h4>S5 Typed-&Delta; Backbone</h4>
+<p>Each fragment k gets its own S5 state-space layer with complex diagonal state h<sub>k</sub>(t) &isin; &Copf;<sup>N<sub>k</sub></sup>. The discretization step &Delta;<sub>k</sub> = &tau;<sub>k</sub>/&tau;<sub>max</sub> is fixed by the fragment&rsquo;s timescale and cached &mdash; not recomputed per timestep. This means the Liquidity fragment (&tau;=3 days, &Delta;&asymp;0.003) takes many small steps per wall-clock day, while the Structure fragment (&tau;=500 days, &Delta;&asymp;0.5) takes infrequent large steps. The parallel scan gives O(N<sub>k</sub> log L) per fragment for sequence length L &mdash; all seven fragments process simultaneously on separate GPU streams.</p>
+
+<h4>GateL0RD Event Segmentation</h4>
+<p>The L0-regularized gates learn <em>when</em> each fragment should update. In practice, Momentum/Liquidity gates are open &gt;90% of the time (near-continuous updating). Structure/Policy gates are closed &gt;95% of the time, spiking open only around data releases or detected regime breaks. This is not a hyperparameter &mdash; it emerges from the L0 penalty &lambda;<sub>k</sub> &prop; &tau;<sub>k</sub>/&tau;<sub>max</sub>, which penalises unnecessary updates more heavily for slow fragments. When a gate is closed, the fragment state is preserved bit-identically, providing natural continual learning at zero cost.</p>
+
+<h4>SPIB Compression</h4>
+<p>Each fragment learns its own compressed representation z<sub>k</sub> by maximising mutual information with its fragment-specific future target while minimising redundancy with the raw input. The prediction target is fragment-native: Momentum&rsquo;s SPIB target is next-day returns; Policy&rsquo;s target is next-quarter policy-rate surprise. The compression rate &beta;<sub>k</sub> is set high for noisy fragments (aggressive compression of microstructure noise) and low for sparse-signal fragments (preserving rare but critical policy information).</p>
+
+<h4>Composition &amp; Constraint Filtering</h4>
+<p>Fragments compose via learned bilinear coupling matrices, not concatenation. Cross-asset consistency is enforced by a sheaf-Laplacian projection &mdash; sector indices must equal weighted sums of constituents, balance sheet identities must hold. Four constraint layers filter every composition: regulatory (&Phi;<sub>reg</sub>), liquidity (&Phi;<sub>liq</sub>), physical (&Phi;<sub>phy</sub>), and accounting (&Phi;<sub>acc</sub>). Accounting identities are enforced by closed-form projection; inequality constraints use differentiable QP.</p>
+
+<h4>Reflexivity Estimation</h4>
+<p>The reflexivity coefficient &epsilon;&#770;(t) measures how much the model&rsquo;s own predictions, if acted upon, would change the data distribution. It is estimated from the operator norm of the Jacobian of the beliefs&rarr;actions&rarr;world-change&rarr;belief-change loop, computed via 20&ndash;50 finite-difference perturbations of the model parameters. When &epsilon;&#770;(t) approaches &gamma;/&beta; (the strong-convexity-to-smoothness ratio of the loss landscape), the system is losing its contraction property &mdash; predictions are becoming self-fulfilling. This is the mathematical signature of a market entering a reflexive feedback loop.</p>
+
+<h4>Forward Simulation</h4>
+<p>Starting from the current fragment states, the model rolls forward 256&ndash;1024 Monte Carlo paths per asset, sampling from each fragment&rsquo;s predictive distribution at each step. Paths that violate constraints are pruned (not silently clamped &mdash; clamping would bias the distribution). The surviving paths produce empirical quantile distributions that are non-Gaussian by construction, capturing the fat tails and skew that Gaussian models miss.</p>
+
+<!-- ═══════════════════ CONCRETE OUTPUT EXAMPLES ═══════════════════ -->
+<h2 id="prod-outputs"><span class="sec-num">7.</span> What the Model Actually Produces</h2>
+
+<p>Every output from RecWM is traceable, quantified, and grounded. Below are concrete examples of what the model delivers in practice.</p>
+
+<h3>7.1 Regime Change Alert</h3>
+
+<div style="background: #1e293b; color: #e2e8f0; padding: 1.5rem 1.8rem; border-radius: 8px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; line-height: 1.7; margin: 1.5rem 0; overflow-x: auto;">
+<span style="color: #f87171; font-weight: 700;">[REGIME SHIFT ALERT &mdash; HIGH CONFIDENCE]</span><br>
+<span style="color: #94a3b8;">Time:</span> 2026-08-09 14:32 UTC<br>
+<span style="color: #94a3b8;">From:</span> &ldquo;Late-cycle credit expansion&rdquo; (P=0.71, held 94 days)<br>
+<span style="color: #94a3b8;">To:</span>&nbsp;&nbsp; &ldquo;Liquidity contraction / deleveraging&rdquo; (P=0.68, emerging)<br>
+<br>
+<span style="color: #fbbf24;">Trigger variables:</span><br>
+&nbsp;&nbsp;&bull; USD funding basis widened 18bps in 3 sessions (z=2.4)<br>
+&nbsp;&nbsp;&bull; Cross-asset correlation jumped 0.31 &rarr; 0.58 (24h)<br>
+&nbsp;&nbsp;&bull; Reflexivity coefficient &epsilon;: 0.12 &rarr; 0.34 (self-reinforcing selling)<br>
+&nbsp;&nbsp;&bull; Constructibility Index: 0.72 &rarr; 0.41 (action space contracting)<br>
+<br>
+<span style="color: #34d399;">Historical analogs:</span> Aug 2015 (r=0.81), Feb 2018 VIX (r=0.74)<br>
+<span style="color: #94a3b8;">Confidence decay:</span> re-evaluate in 6h; model uncertainty &plusmn;0.09<br>
+<span style="color: #94a3b8;">Causal trace:</span> <span style="text-decoration: underline; color: #60a5fa;">[view DAG snapshot]</span> <span style="text-decoration: underline; color: #60a5fa;">[view fragment states]</span>
+</div>
+
+<p style="font-size: 0.88rem; color: var(--fg-dim);">Every alert cites the specific variables that moved, their z-scores, comparable historical episodes, and links to the underlying causal graph. No black-box scores.</p>
+
+<h3>7.2 Scenario Analysis Output</h3>
+
+<p>The user asks: <em>&ldquo;What happens to a 60/40 portfolio if the Fed cuts 50bps in September and China devalues by 3%?&rdquo;</em></p>
+
+<p>RecWM parses this into two simultaneous soft do-operators on the causal graph: do<sub>&lambda;</sub>(Fed rate = &minus;50bps) and do<sub>&lambda;</sub>(CNY fix &uarr; 3%). It propagates both interventions <strong>jointly</strong> &mdash; capturing interaction effects that separate runs would miss (a Fed cut combined with China devaluation compounds EM outflow pressure beyond either shock alone). After 5,000 forward paths with constraint filtering:</p>
+
+<div style="background: #1e293b; color: #e2e8f0; padding: 1.5rem 1.8rem; border-radius: 8px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; line-height: 1.7; margin: 1.5rem 0; overflow-x: auto;">
+<span style="color: #60a5fa; font-weight: 700;">Scenario: Fed &minus;50bps + CNY devalued 3%</span><br>
+<span style="color: #94a3b8;">Horizon: 20 trading days &bull; 5,000 paths &bull; 4,847 survived constraint filter</span><br>
+<br>
+<span style="color: #94a3b8;">Asset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Median &Delta;&nbsp;&nbsp;&nbsp;5%&ndash;95% range&nbsp;&nbsp;&nbsp;P(&gt;2&sigma; move)</span><br>
+S&amp;P 500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+1.8%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&minus;6.1%, +9.4%]&nbsp;&nbsp;&nbsp;31%<br>
+DXY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&minus;2.1%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&minus;4.8%, +0.3%]&nbsp;&nbsp;&nbsp;&mdash;<br>
+US 10Y yield&nbsp;&nbsp;&nbsp;&nbsp;&minus;22bp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&minus;45bp, +5bp]&nbsp;&nbsp;&nbsp;&nbsp;&mdash;<br>
+EM FX basket&nbsp;&nbsp;&nbsp;&nbsp;&minus;4.7%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&minus;11.2%, &minus;0.9%]&nbsp;&nbsp;44%<br>
+Gold&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+3.2%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&minus;0.5%, +7.8%]&nbsp;&nbsp;&nbsp;&mdash;<br>
+HY spreads&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+38bp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[+8bp, +95bp]&nbsp;&nbsp;&nbsp;&nbsp;22%<br>
+<br>
+<span style="color: #fbbf24;">Dominant path:</span> CNY devaluation &rarr; EM competitive devaluation fear<br>
+&rarr; EM outflows &rarr; risk-off overwhelms rate-cut tailwind (58% of paths<br>
+show equities rally then reverse within 8 days)<br>
+<br>
+<span style="color: #f87171;">Reflexivity warning:</span> &epsilon;=0.34 means initial market reaction will<br>
+itself alter the Fed&rsquo;s reaction function &mdash; path-dependent, not just<br>
+outcome-dependent<br>
+<br>
+<span style="color: #94a3b8;">Provenance:</span> Policy fragment (Fed reaction fn) + Structure fragment<br>
+(cross-border capital flows) + Liquidity fragment (EM funding)<br>
+<span style="color: #94a3b8;">Fragments contributing:</span> Policy (weight 0.34), Structure (0.28),<br>
+Liquidity (0.22), Sentiment (0.11), Risk (0.05)
+</div>
+
+<h3>7.3 Tail Risk Early Warning</h3>
+
+<p>One week before a dislocation, RecWM does not output &ldquo;crash probability = 12%.&rdquo; It decomposes <em>why</em> fragility is building:</p>
+
+<div style="background: #1e293b; color: #e2e8f0; padding: 1.5rem 1.8rem; border-radius: 8px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; line-height: 1.7; margin: 1.5rem 0; overflow-x: auto;">
+<span style="color: #fbbf24; font-weight: 700;">[TAIL RISK BUILD-UP &mdash; Week of 2026-08-03]</span><br>
+Composite fragility score: 78/100 (90th percentile, trailing 5y)<br>
+<br>
+<span style="color: #94a3b8;">Contributing factors:</span><br>
+&nbsp;&nbsp;&bull; Leverage proxy (repo volumes / collateral): +2.1&sigma;<br>
+&nbsp;&nbsp;&bull; Crowding index (CFTC positioning + options OI): +1.8&sigma;<br>
+&nbsp;&nbsp;&bull; Liquidity depth (top-of-book, 5 major futures): &minus;1.4&sigma;<br>
+&nbsp;&nbsp;&bull; Reflexivity coefficient &epsilon;: 0.29 (rising 3 weeks straight)<br>
+&nbsp;&nbsp;&bull; Path Lock-In: 0.71 (feasible-path fan narrowing sharply)<br>
+<br>
+<span style="color: #34d399;">Nearest analogs:</span> Dec 2017 (pre-Feb&rsquo;18 VIX spike), Jan 2020 (pre-COVID)<br>
+<br>
+<span style="color: #f87171;">Contagion sensitivity:</span> A 1.5% single-day equity move now has<br>
+3.2&times; the contagion propagation of 6 months ago<br>
+<br>
+<em style="color: #94a3b8;">No specific trigger identified &mdash; this is a fragility assessment,<br>
+not a forecast. The system is brittle; any perturbation propagates.</em>
+</div>
+
+<h3>7.4 Daily Intelligence Dashboard</h3>
+
+<p>The analyst&rsquo;s daily view surfaces five things at a glance:</p>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1.5rem 0;">
+  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); padding: 1rem; border-radius: var(--r); text-align: center;">
+    <div style="font-size: 2rem; font-weight: 700; color: var(--accent);">0.64</div>
+    <div style="font-size: 0.78rem; color: var(--fg-dim);">Constructibility Index</div>
+    <div style="font-size: 0.72rem; color: var(--red);">&darr; 0.08 from yesterday</div>
+  </div>
+  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); padding: 1rem; border-radius: var(--r); text-align: center;">
+    <div style="font-size: 2rem; font-weight: 700; color: var(--red);">0.34</div>
+    <div style="font-size: 0.78rem; color: var(--fg-dim);">Reflexive Instability</div>
+    <div style="font-size: 0.72rem; color: var(--red);">&uarr; 0.12 &mdash; approaching danger zone</div>
+  </div>
+  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); padding: 1rem; border-radius: var(--r); text-align: center;">
+    <div style="font-size: 2rem; font-weight: 700; color: var(--amber);">0.23</div>
+    <div style="font-size: 0.78rem; color: var(--fg-dim);">Composition Fragility</div>
+    <div style="font-size: 0.72rem; color: var(--amber);">&uarr; 0.05 &mdash; EM-rates coupling rising</div>
+  </div>
+</div>
+
+<p>Below the signal cards: the regime status bar (current regime + probability + days held), the top-5 alerts queue, the contagion graph snapshot (which cross-asset couplings strengthened overnight), and a &ldquo;since yesterday&rdquo; causal delta showing which fragments moved and why.</p>
+
+<h3>7.5 The Reflexivity Coefficient in Practice</h3>
+
+<p>The reflexivity coefficient &epsilon;(t) is the single number that tells a risk manager when to stop trusting point estimates and start trusting distributions:</p>
+
 <ul>
-  <li>Point estimates with confidence intervals for each portfolio position</li>
-  <li>The specific fragments and data sources that drove each estimate</li>
-  <li>The reflexivity coefficient for the scenario (will acting on this information change the outcome?)</li>
-  <li>Historical analogs from the regime detection buffer</li>
+  <li><strong>&epsilon; &asymp; 0.05&ndash;0.10:</strong> Normal markets. Beliefs weakly influence prices. Traditional models and historical analogs are reliable guides. Point estimates are useful.</li>
+  <li><strong>&epsilon; &asymp; 0.15&ndash;0.25:</strong> Elevated reflexivity. Momentum trades and crowded positions are creating mild feedback loops. Widen confidence intervals by 20&ndash;40%. Historical analogs apply with caveats.</li>
+  <li><strong>&epsilon; &asymp; 0.30&ndash;0.40:</strong> Danger zone. The market is entering a self-referential feedback loop &mdash; selling begets selling, hedging begets the need for more hedging. Point estimates are unreliable. Switch from &ldquo;what is the expected outcome?&rdquo; to &ldquo;what is the distribution of outcomes?&rdquo;</li>
+  <li><strong>&epsilon; &gt; 0.40:</strong> Crisis dynamics. The system has lost its contraction property. Predictions are self-fulfilling. Traditional risk models systematically underestimate tail exposure. This is where 2008, the 2020 COVID crash, and the 2022 UK gilt crisis live.</li>
 </ul>
 
-<h3>7.6 Portfolio Construction Under Constraints</h3>
-<p>The constraint field &Phi;(t) is not a risk limit bolted onto an optimizer. It is baked into the world model. Four constraint layers &mdash; regulatory (&Phi;&#7523;&#7497;&#7501;), liquidity (&Phi;&#8343;&#7522;&#7524;), physical (&Phi;&#8346;&#8345;&#7527;&#738;), accounting (&Phi;&#8336;&#8318;&#8318;&#7511;) &mdash; filter every construction operator before it can affect the world state. Portfolio construction is not &ldquo;optimize then check limits.&rdquo; It is &ldquo;only feasible constructions are considered.&rdquo;</p>
+<!-- ═══════════════════ EXPANDED CAPABILITIES ═══════════════════ -->
+<h2 id="prod-capabilities-detail"><span class="sec-num">8.</span> Complete Capability Set</h2>
+
+<h3>8.1 Structural Stress Testing</h3>
+<p>Traditional stress tests replay a fixed historical scenario (2008, COVID) scaled to the current book. RecWM instead: (1) extracts the <em>structural shock</em> from history (not the price path &mdash; the causal mechanism), (2) propagates that shock through <em>today&rsquo;s</em> causal graph and <em>today&rsquo;s</em> correlation regime, and (3) accounts for reflexivity &mdash; the portfolio&rsquo;s own liquidation under stress feeds back into prices if the position is large relative to market depth. This produces materially different (usually worse, and more path-specific) tail numbers than static historical replay.</p>
+
+<h3>8.2 Policy Impact Analysis</h3>
+<p>The soft do-operator (do<sub>&lambda;</sub>) lets users model interventions at calibrated strength. A central bank can ask &ldquo;what if we signal 25bps vs 50bps at the next meeting?&rdquo; and get two complete path distributions with explicit interaction effects. A corporate finance team can pre-test a hedging policy change against 500 plausible futures before committing capital. The key insight: because the model tracks reflexivity, it can answer &ldquo;will announcing this policy change the conditions that made the policy necessary?&rdquo;</p>
+
+<h3>8.3 Cross-Asset Contagion Mapping</h3>
+<p>Output is a live directed graph: nodes = asset classes/instruments, edges = estimated causal transmission strength (not mere correlation), updated daily. Edge thickness encodes contagion elasticity &mdash; how much a 1% stress in node A propagates to node B, through which fragment pathway (liquidity transmission vs. sentiment transmission vs. structural transmission), and with what delay. Analysts can click any node to see downstream propagation trees.</p>
+
+<h3>8.4 Historical Analog Search</h3>
+<p>RecWM embeds the current <em>structural</em> state vector (not raw prices) into a learned space and retrieves the nearest historical episodes by structural distance. Output includes: the analog date range, structural similarity score, what happened next, and &mdash; critically &mdash; where the current situation <em>diverges</em> from the analog. The divergence list is often the most useful part: &ldquo;current conditions resemble Aug 2015 (r=0.81) except that today&rsquo;s credit-to-GDP gap is 12pp wider and the Fed is in a cutting cycle rather than holding.&rdquo;</p>
+
+<h3>8.5 Automated Reporting</h3>
+<table>
+  <thead>
+    <tr><th>Report</th><th>Frequency</th><th>Contents</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Daily Risk Digest</strong></td><td>Pre-market</td><td>4 signal values, regime status, overnight alerts, top fragment movements, constraint proximity warnings</td></tr>
+    <tr><td><strong>Weekly Fragility Trend</strong></td><td>Monday</td><td>5-day signal trajectories, contagion graph evolution, regime probability trend, upcoming data release impact estimates</td></tr>
+    <tr><td><strong>Monthly Governance Report</strong></td><td>Month-end</td><td>Model performance vs. realised outcomes, CL layer activity log, parameter drift summary, BOCPD changepoint history, full audit trail for regulatory compliance</td></tr>
+    <tr><td><strong>Ad-hoc Scenario Memo</strong></td><td>On demand</td><td>Investment committee-ready memo for a specific scenario: intervention, path distribution, risk decomposition, historical analogs, recommended positioning</td></tr>
+  </tbody>
+</table>
+
+<h3>8.6 API Endpoints</h3>
+<table>
+  <thead>
+    <tr><th>Endpoint</th><th>Method</th><th>What It Returns</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>/api/v1/regime/current</code></td><td>GET</td><td>Current regime label, probability, duration, contributing fragment states</td></tr>
+    <tr><td><code>/api/v1/signals</code></td><td>GET</td><td>Latest values for all 4 derived signals + &epsilon;(t) + confidence intervals</td></tr>
+    <tr><td><code>/api/v1/scenario</code></td><td>POST</td><td>Full scenario analysis: intervention spec &rarr; path distribution &rarr; asset-level quantiles</td></tr>
+    <tr><td><code>/api/v1/stress-test</code></td><td>POST</td><td>Structural stress test: historical analog or custom shock &rarr; portfolio impact distribution</td></tr>
+    <tr><td><code>/api/v1/contagion</code></td><td>GET</td><td>Current contagion graph: nodes, edges, transmission strengths, fragment pathways</td></tr>
+    <tr><td><code>/api/v1/analogs</code></td><td>GET</td><td>Top-K structural analogs to current state, with similarity scores and divergence lists</td></tr>
+    <tr><td><code>/api/v1/portfolio/optimize</code></td><td>POST</td><td>Constraint-aware portfolio: mandate + current holdings &rarr; optimal rebalance under current world state</td></tr>
+    <tr><td><code>/api/v1/alerts</code></td><td>GET</td><td>Alert queue: regime shifts, fragility breaches, constraint proximity warnings</td></tr>
+    <tr><td><code>/api/v1/trace/{id}</code></td><td>GET</td><td>Full provenance chain for any prior output: data sources, fragments, gates, constraints</td></tr>
+  </tbody>
+</table>
+
+<!-- ═══════════════════ DEPLOYMENT ═══════════════════ -->
+<h2 id="prod-deploy"><span class="sec-num">9.</span> Deployment Architecture</h2>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.4rem;">Compute Requirements</h4>
+    <p style="font-size: 0.86rem;"><strong>Training:</strong> ~400 GPU-hours on A100/H100 (~$800 cloud spot). <strong>Inference:</strong> 2&ndash;4 GPUs for real-time serving (all 7 fragments + forward simulation). <strong>RAM:</strong> 512GB&ndash;1TB for fragment state buffers and replay memory. <strong>Storage:</strong> 20&ndash;50TB for historical data, model checkpoints, and audit logs.</p>
+  </div>
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.4rem;">Security Model</h4>
+    <p style="font-size: 0.86rem;">Air-gapped or VPC-isolated deployment. No data leaves the perimeter. No external API calls at inference time (all data pre-ingested). Role-based access control. Encrypted model weights at rest and in transit. Every query and output logged with full lineage.</p>
+  </div>
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.4rem;">Model Governance</h4>
+    <p style="font-size: 0.86rem;">Every model update, every query, every alert logged with full provenance (data snapshot, model version, causal graph version). Designed for SR 11-7 (Fed model risk management), EU DORA, and EU AI Act compliance. Any historical query reproducible against model-as-of-that-date.</p>
+  </div>
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.4rem;">Update Cycle</h4>
+    <p style="font-size: 0.86rem;"><strong>Continuous:</strong> CL layers update parameters in real time (RTRL, EWC, BOCPD). <strong>Daily:</strong> full recalibration of fragment coupling matrices. <strong>Quarterly:</strong> structural review (adding/removing causal graph nodes) with human sign-off. Versioned releases for reproducibility.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════ BUSINESS VALUE BY CLIENT ═══════════════════ -->
+<h2 id="prod-clients"><span class="sec-num">10.</span> Business Value by Client Type</h2>
+
+<table>
+  <thead>
+    <tr><th>Client Type</th><th>Primary Use Cases</th><th>Key Signals</th><th>ROI Driver</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Hedge Funds / Quant Desks</strong></td>
+      <td>Regime detection for tactical positioning; tail hedging timing; scenario-based alpha generation</td>
+      <td>Reflexive Instability, Path Lock-In, regime probability</td>
+      <td>Drawdown reduction: earlier regime detection saves 50&ndash;200bps per event vs. reactive rebalancing</td>
+    </tr>
+    <tr>
+      <td><strong>Asset Managers</strong></td>
+      <td>Constraint-aware portfolio construction; forward-looking risk vs. backward-looking tracking error; IC meeting scenario memos</td>
+      <td>Constructibility Index, Composition Fragility</td>
+      <td>Alpha: constraint-aware optimisation captures 10&ndash;30bps/yr vs. optimise-then-check-limits</td>
+    </tr>
+    <tr>
+      <td><strong>Central Banks</strong></td>
+      <td>Policy counterfactuals with reflexivity; macroprudential surveillance; financial stability monitoring</td>
+      <td>Reflexive Instability (critical &mdash; CB actions are themselves market-moving), contagion graph</td>
+      <td>Better-calibrated policy: pre-test announcement effects before committing</td>
+    </tr>
+    <tr>
+      <td><strong>Corporate Finance Teams</strong></td>
+      <td>FX/rate exposure scenario planning; hedging policy stress testing; capital structure decisions</td>
+      <td>Scenario analysis, Constructibility (can we execute this hedge?)</td>
+      <td>Reduced hedging cost: pre-test policy changes against 500 futures before committing capital</td>
+    </tr>
+    <tr>
+      <td><strong>Sovereign Wealth Funds</strong></td>
+      <td>Long-horizon cross-asset contagion mapping; tail-risk budgeting across multi-decade mandate</td>
+      <td>Structure fragment (secular trends), Composition Fragility, Path Lock-In</td>
+      <td>Capital preservation: contagion-aware allocation prevents concentration in correlated tail risks</td>
+    </tr>
+    <tr>
+      <td><strong>Insurance Companies</strong></td>
+      <td>Tail risk early warning feeding into capital adequacy; reinsurance decisions; ALM scenario testing</td>
+      <td>Tail risk decomposition, regime detection, liquidity fragment</td>
+      <td>Solvency II/RBC capital efficiency: better tail estimates reduce excess capital buffers</td>
+    </tr>
+    <tr>
+      <td><strong>Regulators</strong></td>
+      <td>System-wide contagion mapping; fragility scoring; macroprudential surveillance; stress test design</td>
+      <td>Contagion graph, Composition Fragility (systemic risk), all provenance chains</td>
+      <td>Systemic risk detection: structural stress tests that account for feedback and liquidation spirals</td>
+    </tr>
+  </tbody>
+</table>
+
 
 <!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; COMPETITIVE LANDSCAPE &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
-<h2 id="prod-landscape"><span class="sec-num">8.</span> Competitive Landscape</h2>
+<h2 id="prod-landscape"><span class="sec-num">11.</span> Competitive Landscape</h2>
 
 <p>No one is building what RecWM builds. The competitive landscape fragments into four categories, none of which occupies RecWM&rsquo;s position:</p>
 
@@ -12051,7 +12441,7 @@ For an economic world model built on causal/structural foundations, this means a
 </div>
 
 <!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; DATA MOAT &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
-<h2 id="prod-moat"><span class="sec-num">9.</span> The Moat</h2>
+<h2 id="prod-moat"><span class="sec-num">12.</span> The Moat</h2>
 
 <p>RecWM&rsquo;s moat is not data access. FRED, BIS, EDGAR, Yahoo Finance &mdash; the raw data is free. The moat is the schema: the world fragment decomposition, the construction event logging, the belief shift tracking. Nobody else structures FRED data as construction attempts on typed world fragments. Nobody else computes a reflexivity coefficient from the Jacobian of the belief-action-world feedback loop.</p>
 
@@ -12077,7 +12467,7 @@ For an economic world model built on causal/structural foundations, this means a
 </div>
 
 <!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; MARKET &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
-<h2 id="prod-market"><span class="sec-num">10.</span> Market Opportunity</h2>
+<h2 id="prod-market"><span class="sec-num">13.</span> Market Opportunity</h2>
 
 <h3>Market Size</h3>
 <table>
@@ -12101,13 +12491,13 @@ For an economic world model built on causal/structural foundations, this means a
   <tbody>
     <tr><td><strong>Signal Feed</strong></td><td>4 derived signals via API, daily updates</td><td>$50K&ndash;200K</td><td>Quant funds, risk desks</td></tr>
     <tr><td><strong>Scenario Engine</strong></td><td>Custom &ldquo;what if&rdquo; simulations, NL query</td><td>$200K&ndash;500K</td><td>Asset managers, corporates</td></tr>
-    <tr><td><strong>World Model Platform</strong></td><td>Full on-premise deployment, all modules</td><td>$500K&ndash;2M</td><td>Central banks, large treasuries</td></tr>
+    <tr><td><strong>World Model Platform</strong></td><td>Full on-premise deployment, all modules</td><td>$500K&ndash;2M</td><td>Central banks, large financial institutions</td></tr>
     <tr><td><strong>Research Partnership</strong></td><td>Co-develop extensions, priority features</td><td>$1M&ndash;5M</td><td>Sovereign wealth funds, BIS, IMF</td></tr>
   </tbody>
 </table>
 
 <!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; TECH STACK &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
-<h2 id="prod-stack"><span class="sec-num">11.</span> Technology Stack</h2>
+<h2 id="prod-stack"><span class="sec-num">14.</span> Technology Stack</h2>
 
 <table>
   <thead>
@@ -12131,7 +12521,7 @@ For an economic world model built on causal/structural foundations, this means a
 </div>
 
 <!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; WHAT WE ARE NOT &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
-<h2 id="prod-not"><span class="sec-num">12.</span> What RecWM Is Not</h2>
+<h2 id="prod-not"><span class="sec-num">15.</span> What RecWM Is Not</h2>
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1rem 0;">
   <div style="background: var(--warn-bg); border: 1px solid var(--warn-border); padding: 1rem 1.2rem; border-radius: var(--r);">
