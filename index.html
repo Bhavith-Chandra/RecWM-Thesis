@@ -13611,6 +13611,7 @@ For an economic world model built on causal/structural foundations, this means a
     <li><a href="#wm-cl">Continual Learning Stack</a></li>
     <li><a href="#wm-signals">Four Derived Signals</a></li>
     <li><a href="#wm-math">Mathematical Foundations</a></li>
+    <li><a href="#wm-limits">Open Problems &amp; Honest Limitations</a></li>
     <li><a href="#wm-landscape">Position in the Landscape</a></li>
     <li><a href="#wm-research">The Research Program</a></li>
     <li><a href="#wm-build">The Build</a></li>
@@ -13732,7 +13733,7 @@ For an economic world model built on causal/structural foundations, this means a
     <br>
     Axioms:<br>
     &nbsp;&nbsp;1. Associativity<br>
-    &nbsp;&nbsp;2. Constraint preservation: &#x3A6;(WF<sub>i</sub> &#x2297; WF<sub>j</sub>) &#x2286; &#x3A6;(WF<sub>i</sub>) &#x2229; &#x3A6;(WF<sub>j</sub>)<br>
+    &nbsp;&nbsp;2. Constraint preservation: &#x3A6;(WF<sub>i</sub>) &#x2229; &#x3A6;(WF<sub>j</sub>) &#x2286; &#x3A6;(WF<sub>i</sub> &#x2297; WF<sub>j</sub>)<br>
     &nbsp;&nbsp;3. Scale consistency: &#x3C4;<sub>ij</sub> = min(&#x3C4;<sub>i</sub>, &#x3C4;<sub>j</sub>)
   </div>
   <p>Composition can fail. Two individually stable fragments can produce an infeasible composite &mdash; this is the mathematical definition of systemic risk. The Composition Fragility signal (Section 08) detects exactly this.</p>
@@ -13767,7 +13768,7 @@ For an economic world model built on causal/structural foundations, this means a
         <td><strong>L2</strong></td>
         <td>SPIB Per-Fragment Objective</td>
         <td style="font-family: var(--font-mono); font-size: 0.82rem;">max I(z<sub>k</sub>; state<sub>t+&#x3C4;<sub>k</sub></sub>) &minus; &#x3B2;<sub>k</sub> I(z<sub>k</sub>; X<sub>t</sub>)</td>
-        <td>State Predictive Information Bottleneck (Wang et al. 2021). Each fragment predicts at its own timescale &#x3C4;<sub>k</sub>. Compresses away non-predictive information. VampPrior for the marginal.</td>
+        <td>State Predictive Information Bottleneck (Wang &amp; Tiwary, <em>J. Chem. Phys.</em> 2021). Originally developed for molecular dynamics; RecWM adapts it to financial fragment compression. Each fragment predicts at its own timescale &#x3C4;<sub>k</sub>. Compresses away non-predictive information. VampPrior for the marginal.</td>
       </tr>
       <tr>
         <td><strong>L3</strong></td>
@@ -13804,12 +13805,12 @@ For an economic world model built on causal/structural foundations, this means a
       <tr><td>L<sub>SPIB</sub></td><td>&minus;I(z<sub>k</sub>; state<sub>t+&#x3C4;<sub>k</sub></sub>) + &#x3B2;<sub>k</sub> I(z<sub>k</sub>; X<sub>t</sub>)</td><td>Predictive compression at fragment timescale</td></tr>
       <tr><td>L<sub>sparsity</sub></td><td>&#x2211;<sub>j&#x2260;k</sub> |&#x2202;g<sub>k</sub>/&#x2202;z<sub>j</sub>|</td><td>Cross-fragment Jacobian sparsity (identifiability)</td></tr>
       <tr><td>L<sub>gate</sub></td><td>&#x3BB;<sub>k</sub> P(g<sub>k</sub> &#x2260; 0)</td><td>GateL0RD L0 penalty (sparse updates)</td></tr>
-      <tr><td>L<sub>MZ</sub></td><td>E[(r<sub>t</sub> &minus; r<sub>f</sub>) &#x00B7; z<sub>t</sub>]&#xB2;</td><td>Martingale / no-arbitrage consistency</td></tr>
+      <tr><td>L<sub>MZ</sub></td><td>E[ &#x2016;E[r<sub>t</sub> &minus; r<sub>f</sub> | z<sub>t</sub>]&#x2016;&#xB2; ]</td><td>Conditional no-arbitrage proxy</td></tr>
       <tr><td>L<sub>coupling</sub></td><td>&#x2211;<sub>j,k</sub> &#x2016;&#x3C1;<sub>jk</sub> &minus; &#x3C1;&#x0302;<sub>jk</sub>(z)&#x2016;&#xB2;</td><td>Cross-fragment coupling accuracy</td></tr>
     </tbody>
   </table>
   </div>
-  <p>L<sub>MZ</sub> is unique to RecWM. It enforces the no-arbitrage principle directly in the loss function, ensuring the learned representations are consistent with financial theory.</p>
+  <p>L<sub>MZ</sub> penalises latent states that are conditionally predictive of excess returns &mdash; a necessary (but not sufficient) condition for no-arbitrage consistency. The conditional expectation is estimated via a small auxiliary network. Note: this operates under the physical measure P, not the risk-neutral measure Q; a true martingale loss would require the Radon-Nikodym derivative dQ/dP, which is itself unknown. L<sub>MZ</sub> is therefore a soft regulariser, not a theoretical guarantee.</p>
 </div>
 
 <!-- ========================================== -->
@@ -13840,7 +13841,7 @@ For an economic world model built on causal/structural foundations, this means a
 
   <div class="contrib" style="margin: 1.5rem 0;">
     <h4 style="margin-top:0;">Why typed discretisation matters</h4>
-    <p>In standard S4/S5, the discretisation step &#x394; is learned or fixed globally. In RecWM, &#x394;<sub>k</sub> = &#x3C4;<sub>k</sub>/&#x3C4;<sub>max</sub> is <em>semantically typed</em>. The Liquidity fragment (&#x3C4; = 1&ndash;5 days) has &#x394; &#x2248; 0.005; the Structure fragment (&#x3C4; = 250&ndash;1000 days) has &#x394; &#x2248; 1.0. This means the S5 state matrix A&#x0304;<sub>k</sub> = exp(A &#x00B7; &#x394;<sub>k</sub>) has different eigenvalue decay rates for different fragment types &mdash; fast fragments forget fast, slow fragments remember long. <strong>No existing SSM architecture does this.</strong> The LS4 line (ICML 2023) attempted multi-timescale SSMs but was abandoned; no follow-up since 2023.</p>
+    <p>In standard S4/S5, the discretisation step &#x394; is learned or fixed globally. In RecWM, &#x394;<sub>k</sub> = &#x3C4;<sub>k</sub>/&#x3C4;<sub>max</sub> is <em>semantically typed</em>. The Liquidity fragment (&#x3C4; = 1&ndash;5 days) has &#x394; &#x2248; 0.005; the Structure fragment (&#x3C4; = 250&ndash;1000 days) has &#x394; &#x2248; 1.0. This means the S5 state matrix A&#x0304;<sub>k</sub> = exp(A &#x00B7; &#x394;<sub>k</sub>) has different eigenvalue decay rates for different fragment types &mdash; fast fragments forget fast, slow fragments remember long. <strong>No existing SSM architecture does this.</strong> LS4 (Zhou et al. ICML 2023) explored latent state space models for generation but targeted a different problem (time-series generation with irregular sampling, not multi-timescale dynamics). No SSM architecture has implemented semantically typed discretisation steps.</p>
   </div>
 </div>
 
@@ -13872,13 +13873,13 @@ For an economic world model built on causal/structural foundations, this means a
   <div style="background: var(--bg-alt, #f5f5f5); border-radius: 6px; padding: 1rem 1.4rem; font-family: var(--font-mono); font-size: 0.9rem; margin: 0.8rem 0; text-align: center;">
     &#x3B5;<sub>eff</sub> &#x2264; &#x3B5; / (1 + &#x3A9; &#x00B7; &#x3BB;<sub>min</sub>(F))
   </div>
-  <p>Strong EWC regularisation can push &#x3B5;<sub>eff</sub> below &#x3B3;/&#x3B2; even when bare &#x3B5; exceeds it, stabilising an otherwise oscillating system. This is a novel theoretical result: <strong>continual learning is not just preventing forgetting &mdash; it is a stability mechanism for reflexive systems.</strong></p>
+  <p>The intuition: EWC penalises large parameter changes, bounding per-step distribution shift. If the model cannot move far in parameter space, it cannot shift the distribution it predicts, reducing effective reflexivity. This bound is conjectural &mdash; a rigorous proof would require showing that the sensitivity supremum is achieved along directions of high Fisher information. The precise formula depends on the geometry of the Fisher relative to the directions of maximum performative sensitivity. Nevertheless, the qualitative claim is robust: any regulariser that restricts parameter movement reduces distribution shift, and therefore reduces effective reflexivity. This is a genuinely novel connection: <strong>continual learning is not just preventing forgetting &mdash; it is a candidate stability mechanism for reflexive systems.</strong></p>
 
   <h3>Belief fields and coherence</h3>
   <div style="background: var(--bg-alt, #f5f5f5); border-radius: 6px; padding: 1rem 1.4rem; font-family: var(--font-mono); font-size: 0.85rem; margin: 0.8rem 0; overflow-x: auto;">
     b<sub>i</sub>(t+1) = (1&minus;&#x3B1;) U(b<sub>i</sub>(t), o<sub>i</sub>(t)) + &#x3B1; &#x2211;<sub>j</sub> w<sub>ij</sub> b<sub>j</sub>(t)<br><br>
-    Coherence: &#x3C7;(t) = 1 &minus; (1/N(N&minus;1)) &#x2211;<sub>i&#x2260;j</sub> D<sub>KL</sub>(b<sub>i</sub> &#x2016; b<sub>j</sub>)<br>
-    &#x3C7; &#x2192; 1: consensus (herding risk) &nbsp;&nbsp; &#x3C7; &#x2192; 0: maximum diversity (healthy)
+    Coherence: &#x3C7;(t) = exp( &minus;(1/N(N&minus;1)) &#x2211;<sub>i&#x2260;j</sub> D<sub>KL</sub>(b<sub>i</sub> &#x2016; b<sub>j</sub>) )<br>
+    &#x3C7; &#x2208; (0, 1]: &#x3C7; &#x2192; 1 consensus (herding risk); &#x3C7; &#x2192; 0 maximum diversity
   </div>
   <p>High coherence + high reflexivity = mathematical signature of a bubble about to pop. The Reflexive Instability signal RI(t) = &#x3B5;(t) &#x00B7; &#x3C7;(t) tracks this continuously.</p>
 
@@ -13914,7 +13915,7 @@ For an economic world model built on causal/structural foundations, this means a
         <td>O(N) RTRL Streaming</td>
         <td>Every timestep</td>
         <td>O(N)</td>
-        <td>Diagonal A &#x21D2; sensitivity matrix is diagonal &#x21D2; true streaming one-pass learning. No BPTT, no replay buffer needed. (Irie et al. ICLR 2025: RTRL for diagonal SSMs is exact and tractable.)</td>
+        <td>Diagonal A &#x21D2; sensitivity matrix is diagonal &#x21D2; true streaming one-pass learning. No BPTT, no replay buffer needed. (Irie et al. ICLR 2024: RTRL for diagonal SSMs is exact and tractable.)</td>
       </tr>
       <tr>
         <td><strong>CL-2</strong></td>
@@ -13948,9 +13949,9 @@ For an economic world model built on causal/structural foundations, this means a
 
   <h3>Key research grounding</h3>
   <ul style="font-size: 0.9rem;">
-    <li><strong>SSM + CL is an open gap:</strong> Of the SSM-specific CL papers found (Mamba-CL, Inf-SSM, CLDSSM, S6MOD, MambaCL), all target vision classification. The intersection {SSM architecture} &#x00D7; {continual learning} &#x00D7; {time series forecasting} has <em>zero papers</em> as of mid-2026.</li>
+    <li><strong>SSM-CL intersection is nascent, not empty:</strong> CLDSSM (Zhang et al. 2024) applies EWC/MAS regularisation to deep SSMs for multi-task forecasting; S6MOD (Liu et al. CVPR 2025) introduces class-conditional discretisation for online CL. But neither addresses typed multi-timescale fragments, performativity, or streaming financial data. The full five-way intersection &mdash; {typed SSMs} &#x00D7; {streaming CL} &#x00D7; {performative prediction} &#x00D7; {causal emergence} &#x00D7; {constraint-aware dynamics} &mdash; remains unoccupied.</li>
     <li><strong>GateL0RD provides architectural CL for free:</strong> Gumbsch et al. (NeurIPS 2021) showed sparse gating learns event-based state updates. RecWM is the first to connect this to continual learning: gate-closed dimensions are protected from forgetting by construction.</li>
-    <li><strong>RTRL for diagonal SSMs is O(N):</strong> Irie et al. (ICLR 2025) proved diagonal recurrences admit exact O(N) RTRL. RecWM exploits this: the S5 backbone is diagonal, so streaming gradient updates are as cheap as inference.</li>
+    <li><strong>RTRL for diagonal SSMs is O(N):</strong> Irie et al. (ICLR 2024) proved diagonal recurrences admit exact O(N) RTRL. RecWM exploits this: the S5 backbone is diagonal, so streaming gradient updates are as cheap as inference.</li>
   </ul>
 </div>
 
@@ -14022,8 +14023,9 @@ For an economic world model built on causal/structural foundations, this means a
   <ol style="font-size: 0.9rem;">
     <li><strong>Structural sparsity of the measurement map</strong> (Zheng, Ng &amp; Zhang, NeurIPS 2022): for each latent source, there exists a set of observed variables whose only common influence is that source &#x21D2; identified up to permutation + component-wise invertible reparameterisation.</li>
     <li><strong>Mechanism sparsity of the fragment transition graph</strong> (Lachapelle et al. CLeaR 2022): self-loops + no 2-cycles &#x21D2; permutation equivalence. Combined with independent mechanism principle, gives identification from distribution shifts (= regime changes).</li>
-    <li><strong>SlowVAE Laplace prior</strong> (Klindt et al. ICML 2021): p(z<sub>t</sub>|z<sub>t&minus;1</sub>) &#x221D; exp(&minus;|z<sub>t</sub> &minus; z<sub>t&minus;1</sub>|/&#x3BB;). Temporal slowness is sufficient for nonlinear ICA.</li>
+    <li><strong>SlowVAE Laplace prior</strong> (Klindt et al. ICLR 2021): p(z<sub>t</sub>|z<sub>t&minus;1</sub>) &#x221D; exp(&minus;|z<sub>t</sub> &minus; z<sub>t&minus;1</sub>|/&#x3BB;). Temporal slowness is sufficient for nonlinear ICA.</li>
   </ol>
+  <div class="warn" style="margin: 1rem 0;"><strong>Compatibility caveat.</strong> These three results assume different latent structures. SlowVAE requires independent sources; mechanism sparsity requires causal dependence between sources. In RecWM, we apply them to different components: SlowVAE temporal priors to within-fragment dynamics (where independence across fragments is a design assumption), and mechanism sparsity to the cross-fragment transition graph (where causal structure is the object of interest). Whether these can be composed into a single identifiability guarantee is an open theoretical question.</div>
 
   <h3>9.3 Causal emergence</h3>
   <p>Detected via SVD of the fragment interaction matrix. For a VAR system x(t+1) = A x(t) + &#x3B5;:</p>
@@ -14043,6 +14045,34 @@ For an economic world model built on causal/structural foundations, this means a
 </div>
 
 <!-- ========================================== -->
+<!-- SECTION 9.5: OPEN PROBLEMS & HONEST LIMITATIONS -->
+<!-- ========================================== -->
+<div class="sec" id="wm-limits">
+  <div class="sec-num">09.5</div>
+  <h2>Open Problems &amp; Honest Limitations</h2>
+
+  <p>Everything above is a design. Some of it is proven; much of it is not yet. This section states plainly what RecWM has not established, so the architecture can be evaluated for what it is: a coherent, buildable research program, not a finished theory.</p>
+
+  <h3>What we have not proven</h3>
+  <p>The master equation W(t+1) = C(W(t), A(B(t)), &#x3A6;(t)) is a schematic, not a theorem. Function spaces, metrics, and topology for W, B, and &#x3A6; are unspecified &mdash; the convergence analysis in Section 9.1 is standard Banach contraction mapping theory, not a novel result. It becomes meaningful only once C, A, and B are given concrete, well-defined domains and a metric on W. The EWC-reflexivity bound (Section 06) is conjectural, not proven.</p>
+
+  <h3>Engineering unknowns</h3>
+  <p>The composition of GateL0RD gating with the S5 backbone is not fully specified: at least three interpretations are plausible (gating the input, gating the state update, or gating the output), each with different stability and identifiability properties, and the architecture does not yet commit to one. The unified loss function (Section 04) has 30+ hyperparameters with competing gradients and no established tuning procedure. SPIB estimation is unreliable for slow fragments &mdash; the Structure and Policy fragments have effective sample sizes around 80 quarterly observations, far too few for a stable information-bottleneck estimate. The 400 GPU-hour training estimate (Section 12) is optimistic by 10&ndash;50x once hyperparameter search and multi-resolution data processing are included.</p>
+
+  <h3>Data gaps</h3>
+  <p>There is no historical order book data for the fastest timescales of the Liquidity and Momentum fragments &mdash; tick-level depth and queue dynamics are not available from free sources and are expensive to backfill. Yahoo Finance, listed among the minimum-viable data sources, is unsuitable for production use (rate-limited, unofficial, inconsistent point-in-time integrity). In practice, until order book data is accumulated, RecWM ships as a 5-fragment system, with Liquidity and Momentum's fastest components unmodeled.</p>
+
+  <h3>The equilibrium tension</h3>
+  <p>The page claims to reject equilibrium economics (Section 02: &ldquo;it does not assert the existence of equilibrium&rdquo;) but then studies fixed points via Banach&rsquo;s theorem throughout Sections 06 and 9.1. The honest position: RecWM does not assume an equilibrium exists a priori, but it uses fixed-point analysis as a diagnostic tool. When the fixed point exists and the contraction condition holds, the system describes a performatively stable state. When it doesn&rsquo;t &mdash; when L<sub>C</sub>(1+&#x3B5;) &#x2265; 1 &mdash; the system flags instability rather than forcing a prediction. Fixed-point machinery is a lens, not a metaphysical commitment.</p>
+
+  <h3>What we cannot compute</h3>
+  <p>&#x3B5;, the reflexivity coefficient, is defined as a supremum over all parameter perturbations (Section 03, Object 4). This supremum is not directly computable from a finite model and finite data. In practice it must be estimated from historical sensitivity &mdash; a lower bound, not the true value. The example output in Section 12 is aspirational: the inference pipeline carrying a 96-dimensional latent state through to a portfolio-level dollar impact, with calibrated confidence intervals, is not yet specified end-to-end.</p>
+
+  <h3>Missing literatures</h3>
+  <p>This document does not engage with agent-based computational economics (Farmer &amp; Foley 2009, LeBaron 2006), heterogeneous-agent DSGE (Kaplan, Moll &amp; Violante), deep hedging (Buehler et al. 2019), or the FinRL/FinGPT line of applied financial ML. These are adjacent and potentially complementary literatures, and a full accounting of RecWM&rsquo;s position in the field requires engaging with them.</p>
+</div>
+
+<!-- ========================================== -->
 <!-- SECTION 10: POSITION IN THE LANDSCAPE -->
 <!-- ========================================== -->
 <div class="sec" id="wm-landscape">
@@ -14058,7 +14088,7 @@ For an economic world model built on causal/structural foundations, this means a
       <tr style="background: var(--bg-alt, #f8f8f8);"><td>L2</td><td>Scenario generation</td><td>Many (Monte Carlo, stress testing frameworks)</td><td>&#x2713; (constraint-filtered forward simulation)</td></tr>
       <tr><td>L3</td><td>Causal reasoning</td><td>Some (FANTOM, NOTEARS applications)</td><td>&#x2713; (DAGMA on PCA factors + reflexive loop)</td></tr>
       <tr style="background: var(--bg-alt, #f8f8f8);"><td>L4</td><td>Multi-agent simulation</td><td>Few (MarS/Microsoft)</td><td>&#x2713; (constructive units + belief fields)</td></tr>
-      <tr><td>L5</td><td>Performativity-aware</td><td>Nearly empty</td><td>&#x2713; (&#x3B5;-tracking, EWC stability, named gap conjecture)</td></tr>
+      <tr><td>L5</td><td>Performativity-aware</td><td>Nearly empty. Performative Market Making (Kleitsikas et al. 2025) and Algometrics (Schmitt 2026) are beginning to fill L5, but no deployed product yet occupies this level.</td><td>&#x2713; (&#x3B5;-tracking, EWC stability, named gap conjecture)</td></tr>
       <tr style="background: var(--bg-alt, #f8f8f8);"><td><strong>L6</strong></td><td><strong>Sim-to-real digital twin with continuous online correction</strong></td><td><strong>Empty</strong></td><td><strong>&#x2713; (5-layer CL, BOCPD regime detection, O(N) RTRL)</strong></td></tr>
     </tbody>
   </table>
@@ -14069,12 +14099,13 @@ For an economic world model built on causal/structural foundations, this means a
   <table style="width:100%; font-size:0.85rem; margin: 1rem 0;">
     <thead><tr><th>Competitor</th><th>What They Have</th><th>What They Lack</th></tr></thead>
     <tbody>
-      <tr><td>Bloomberg Terminal</td><td>40M data points, 325K terminals, $28&ndash;40B market</td><td>Zero causal understanding, no world model, no CL</td></tr>
+      <tr><td>Bloomberg Terminal</td><td>35M+ financial instruments, 325K terminals, $28&ndash;40B market</td><td>Zero causal understanding, no world model, no CL</td></tr>
       <tr style="background: var(--bg-alt, #f8f8f8);"><td>MarS (Microsoft)</td><td>Order-level generative market simulation</td><td>No causal structure, no performativity, no CL</td></tr>
-      <tr><td>FANTOM (ICLR 2025)</td><td>Regime-switching temporal causal discovery</td><td>No simulation, no reflexivity, no constraint fields</td></tr>
-      <tr style="background: var(--bg-alt, #f8f8f8);"><td>Sooth Labs ($335M)</td><td>Exogenous forecasting, conformal prediction, NOTEARS</td><td>No endogenous causal architecture, no reflexivity, no typed fragments</td></tr>
-      <tr><td>Kronos (AAAI 2025)</td><td>Financial foundation model, 12B K-lines</td><td>Forecasting only (L1), no causal reasoning, no CL</td></tr>
+      <tr><td>FANTOM (NeurIPS 2025)</td><td>Regime-switching temporal causal discovery</td><td>No simulation, no reflexivity, no constraint fields</td></tr>
+      <tr style="background: var(--bg-alt, #f8f8f8);"><td>Sooth Labs ($50M seed, $335M valuation)</td><td>Exogenous event forecasting, world models for geopolitical and market events</td><td>No endogenous causal architecture, no reflexivity, no typed fragments</td></tr>
+      <tr><td>Kronos (AAAI 2026)</td><td>Financial foundation model, 12B K-lines</td><td>Forecasting only (L1), no causal reasoning, no CL</td></tr>
       <tr style="background: var(--bg-alt, #f8f8f8);"><td>MACROCAST</td><td>~1M params beats 120M Chronos-2 on macro</td><td>Domain-specific, not a world model, no reflexivity</td></tr>
+      <tr><td>Agent-Based Models</td><td>Decades of literature, micro-founded, heterogeneous agents (Farmer &amp; Foley 2009, LeBaron 2006)</td><td>No learned representations, no streaming adaptation, brittle calibration</td></tr>
     </tbody>
   </table>
   </div>
@@ -14104,7 +14135,7 @@ For an economic world model built on causal/structural foundations, this means a
       <tr><td>3</td><td>Reflexive causal emergence</td><td>All CE frameworks (Hoel, Liu, Barnett &amp; Seth) assume fixed generative process</td><td>Macro description feeds back into micro dynamics; extension of dynamical independence</td></tr>
       <tr style="background: var(--bg-alt, #f8f8f8);"><td>4</td><td>Formal counterperformativity</td><td>MacKenzie &amp; Bamford (2018): &ldquo;no mathematics&rdquo;</td><td>When does a model invalidate itself? Formal criterion.</td></tr>
       <tr><td>5</td><td>Performativity + ergodicity composition</td><td>Unclaimed</td><td>Which distribution (performativity) &#x00D7; which functional (ergodicity)</td></tr>
-      <tr style="background: var(--bg-alt, #f8f8f8);"><td>6</td><td>O(N) RTRL for typed-&#x394; SSMs</td><td>Irie et al. (ICLR 2025) proved O(N) for diagonal; never applied to typed &#x394;</td><td>Streaming CL for multi-timescale economic state estimation</td></tr>
+      <tr style="background: var(--bg-alt, #f8f8f8);"><td>6</td><td>O(N) RTRL for typed-&#x394; SSMs</td><td>Irie et al. (ICLR 2024) proved O(N) for diagonal; never applied to typed &#x394;</td><td>Streaming CL for multi-timescale economic state estimation</td></tr>
       <tr><td>7</td><td>Interventional benchmark</td><td>No vintage-consistent, real-data interventional benchmark for economic models exists</td><td>&ldquo;Can Economic World Models Answer &lsquo;What If?&rsquo;&rdquo; &mdash; zero data cost, no competitor</td></tr>
     </tbody>
   </table>
@@ -14143,7 +14174,7 @@ For an economic world model built on causal/structural foundations, this means a
   </div>
 
   <h3>Compute requirements</h3>
-  <p>~400 GPU-hours for full training (~$800 on A100 spot). Single GPU node for inference. Total production infrastructure: $5,000&ndash;10,000/month including data, storage, and monitoring. The model is small by design &mdash; MACROCAST (~1M params) beats 120M Chronos-2 on macro forecasting. Domain structure beats scale.</p>
+  <p>~400 GPU-hours for a single training run (~$800 on A100 spot). With hyperparameter search (100+ configurations), multi-resolution data processing, and validation: budget $10,000&ndash;20,000 for the initial research phase. This is 10&ndash;50x the single-run cost, consistent with comparable architectures (DreamerV3 required hundreds of GPU-hours for Atari alone). Single GPU node for inference. Total production infrastructure: $5,000&ndash;10,000/month including data, storage, and monitoring. The model is small by design &mdash; MACROCAST (~1M params) beats 120M Chronos-2 on macro forecasting. Domain structure beats scale.</p>
 
   <h3>Data sources (verified August 2026)</h3>
   <p>Minimum viable data stack: $0&ndash;228/month. FRED (free, 800K+ series), BIS (free, quarterly), EDGAR (free, SEC filings), Yahoo Finance (free but unofficial), GDELT (free, global events). Paid: Tiingo ($30/mo), Databento ($79/mo). The data moat is in inference, classification, and point-in-time archives &mdash; not raw access.</p>
@@ -14158,6 +14189,7 @@ For an economic world model built on causal/structural foundations, this means a
     <p><strong>Reflexivity:</strong> &#x3B5; = 0.31, &#x3C7; = 0.64, RI = 0.20 (low). Your action will not materially move the market.</p>
     <p style="margin-bottom:0;"><strong>Confidence:</strong> High (91% coverage over trailing 90 days).</p>
   </div>
+  <div class="warn" style="margin: 1rem 0;"><strong>Aspiration, not demonstration.</strong> This output format illustrates what RecWM aims to produce. The inference pipeline from 96-dimensional latent state to portfolio-level impact &mdash; including the mapping through asset-level returns, confidence interval calibration, and real-time &#x3B5; estimation &mdash; is not yet built. The numbers shown are illustrative, not from a running system.</div>
   <p>The user never sees S5, DAGMA, DEQ, SPIB, GateL0RD, Fisher matrices, or Lyapunov functions. They see intelligence.</p>
 </div>
 
