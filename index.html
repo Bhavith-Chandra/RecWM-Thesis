@@ -694,6 +694,11 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
       <a href="#" data-page="masterplan" class="nl"><span class="nl-num">3</span><span class="nl-txt">Master Plan</span></a>
     </div>
     <div class="sb-grp">
+      <div class="sb-lbl">Product &amp; Theory</div>
+      <a href="#" data-page="product" class="nl"><span class="nl-num">P</span><span class="nl-txt">The Product</span></a>
+      <a href="#" data-page="foundations" class="nl"><span class="nl-num">F</span><span class="nl-txt">Foundations</span></a>
+    </div>
+    <div class="sb-grp">
       <div class="sb-lbl">Research Surveys</div>
       <a href="#" data-page="cl-methods" class="nl"><span class="nl-num">4</span><span class="nl-txt">Continual Learning</span></a>
       <a href="#" data-page="bocpd" class="nl"><span class="nl-num">5</span><span class="nl-txt">BOCPD</span></a>
@@ -705,7 +710,7 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
       <a href="#" data-page="ttt" class="nl"><span class="nl-num">11</span><span class="nl-txt">Test-Time Training</span></a>
       <a href="#" data-page="curiosity" class="nl"><span class="nl-num">12</span><span class="nl-txt">Curiosity-Driven WM</span></a>
     </div>
-    <div class="sb-foot">12 documents &middot; August 2026<br>Continual Learning &times; Reflexive World Models</div>
+    <div class="sb-foot">14 documents &middot; August 2026<br>Continual Learning &times; Reflexive World Models</div>
   </nav>
   <main class="main" id="main">
     <div class="pg" id="pg-overview">
@@ -11756,6 +11761,1232 @@ For an economic world model built on causal/structural foundations, this means a
 </div>
 
 </div>
+
+    <div class="pg" id="pg-product">
+<div class="page">
+
+<div class="doc-header" style="background: linear-gradient(135deg, var(--accent-wash) 0%, var(--bg) 100%); padding: 3rem 2.2rem 2.5rem; border-bottom: 2px solid var(--accent); margin: -2.5rem -2.2rem 2.5rem;">
+  <div style="font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.8rem;">The Product</div>
+  <h1 style="margin-bottom: 0.6rem; font-size: 2.4rem; line-height: 1.18;">A World Model for Financial Markets</h1>
+  <p class="subtitle" style="font-size: 1.08rem; max-width: 640px;">On-premise intelligence that understands volatility, tail risk, cross-asset contagion, regime shifts, and portfolio construction &mdash; and gets smarter every day from the client&rsquo;s own data.</p>
+</div>
+
+<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; WHAT IT IS &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
+<h2 id="prod-what"><span class="sec-num">1.</span> What RecWM Is</h2>
+
+<p>RecWM is a calibrated, modular world model for financial markets that runs entirely on the client&rsquo;s own hardware. It is not a dashboard. Not a chatbot sitting on a price feed. Not a black-box vendor model with frozen weights. It is a structured intelligence engine that models the causal dynamics of financial markets &mdash; volatility surfaces, tail risk distributions, cross-asset contagion networks, regime transitions, and portfolio construction constraints &mdash; and continuously improves from the client&rsquo;s own data and usage patterns.</p>
+
+<div class="contrib">
+  <strong>The core difference:</strong> Traditional models ask &ldquo;what will happen next?&rdquo; RecWM asks &ldquo;what can be constructed, by whom, under what constraints, and how will the act of construction change future possibilities?&rdquo;
+</div>
+
+<p>The client asks questions in plain language. The model fetches live market data, routes the question to the right specialist modules, runs the computation, and explains every number it returns. Every output is traceable to the module that produced it. The model cannot fabricate &mdash; every prediction is grounded in a specific fragment of the world state, computed through a specific mathematical pathway, and bounded by explicit confidence intervals.</p>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin: 2rem 0;">
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.4rem;">On-Premise</h4>
+    <p style="font-size: 0.88rem;">Runs on client hardware. Data never leaves the building. Full sovereignty over model weights, training data, and inference.</p>
+  </div>
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.4rem;">Continual Learning</h4>
+    <p style="font-size: 0.88rem;">No frozen weights. The model learns from every new data point, every market regime, every client interaction &mdash; without catastrophic forgetting.</p>
+  </div>
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.4rem;">Traceable Outputs</h4>
+    <p style="font-size: 0.88rem;">Every number traces to the module, fragment, and data that produced it. No hallucination. No black-box opacity.</p>
+  </div>
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.4rem;">Modular Architecture</h4>
+    <p style="font-size: 0.88rem;">Seven typed fragments, five continual learning layers, four constraint fields. Each component is independently testable and replaceable.</p>
+  </div>
+</div>
+
+<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; THE PROBLEM &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
+<h2 id="prod-problem"><span class="sec-num">2.</span> The Problem We Solve</h2>
+
+<p>The financial intelligence industry is trapped in three failures that compound each other:</p>
+
+<h3>Failure 1: The Dashboard Trap</h3>
+<p>Bloomberg Terminal, Refinitiv Workspace, FactSet &mdash; these are visualization engines, not intelligence engines. They show you what happened. They cannot tell you why it happened, what will happen next, or how your actions will change the outcome. A $25,000/year Bloomberg seat gives you 40 million data points and zero causal understanding. The analyst staring at the screen is still the model.</p>
+
+<div class="warn">
+  <strong>The cost of the dashboard trap:</strong> Banks spend $28&ndash;40 billion annually on financial data and analytics (Burton-Taylor 2025). Most of that spending buys faster access to the same numbers everyone else sees. The edge is in interpretation, and interpretation is still manual.
+</div>
+
+<h3>Failure 2: Frozen Intelligence</h3>
+<p>Every major AI model in production at financial institutions today &mdash; Bloomberg&rsquo;s GPT (50B parameters, no public updates since 2023), vendor risk models from MSCI and Axioma, even JPMorgan&rsquo;s LLM Suite &mdash; trains on historical data and deploys with frozen weights. The model that ships is the model that stays.</p>
+
+<p>This is catastrophic in non-stationary markets. The relationship between interest rates and investment behaves differently in 2007 (pre-crisis) vs. 2009 (zero-lower-bound) vs. 2022 (fastest hiking cycle in 40 years). A model trained on one regime degrades the moment the regime changes. No existing time-series foundation model &mdash; Chronos-2, TimesFM, Moirai &mdash; supports native online learning. They are offline-only. Bolting continual learning onto a frozen architecture is a patch, not a solution.</p>
+
+<h3>Failure 3: The Reflexivity Blind Spot</h3>
+<p>Standard models assume the world is exogenous &mdash; that the model observes but does not affect the data distribution. This assumption is false in financial markets. A model that predicts a crisis and is acted upon changes the probability of that crisis. The distribution shift is endogenous, caused by the model itself. George Soros called this reflexivity. Donald MacKenzie called it performativity. Every risk model deployed at scale faces it. None accounts for it.</p>
+
+<p>RecWM&rsquo;s core equation &mdash; <span class="st">W(t+1) = C(W(t), A(B(t)), &Phi;(t))</span> &mdash; is the only architecture that formally models this feedback loop. Beliefs drive actions, actions change the world, the changed world updates beliefs. The reflexivity coefficient &epsilon; is computed at every timestep. When &epsilon; approaches 1, the model knows its own predictions are becoming self-fulfilling and adjusts accordingly.</p>
+
+<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; WHY NOW &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
+<h2 id="prod-why-now"><span class="sec-num">3.</span> Why Now</h2>
+
+<p>Three forces are converging to make this product inevitable:</p>
+
+<h3>3.1 Regulatory Mandate for On-Premise</h3>
+<p>The regulatory environment is forcing financial institutions toward on-premise AI:</p>
+<ul>
+  <li><strong>EU DORA</strong> (Digital Operational Resilience Act, effective January 2025): Requires financial entities to maintain full control over critical ICT systems, with strict third-party risk management obligations. AI models that drive trading or risk decisions are ICT-critical.</li>
+  <li><strong>EU AI Act</strong> (2024): Classifies financial AI as high-risk, demanding transparency, human oversight, conformity assessments, and full audit trails. Black-box vendor models cannot comply.</li>
+  <li><strong>SEC/FINRA expectations</strong>: Focus on automated systems documentation, risk controls, and model governance. Every output must be explainable.</li>
+  <li><strong>MAS Guidelines</strong> (Monetary Authority of Singapore): Fairness, Ethics, Accountability, and Transparency (FEAT) principles for AI in financial services.</li>
+  <li><strong>Bank of England</strong>: SS1/23 on model risk management explicitly covers AI/ML models.</li>
+</ul>
+
+<div class="contrib">
+  <strong>The compliance gap:</strong> No major vendor &mdash; Bloomberg, MSCI, Refinitiv &mdash; currently offers an on-premise AI world model with full audit trails and traceable outputs. RecWM is designed for regulatory compliance from day one.
+</div>
+
+<h3>3.2 Hardware Inflection</h3>
+<p>On-premise AI is now economically viable:</p>
+<ul>
+  <li>BNY (formerly BNY Mellon) deployed the first NVIDIA DGX SuperPOD at a global bank. Deutsche Bank entered a multi-year NVIDIA partnership. The infrastructure exists.</li>
+  <li>An 8-way H200 node costs ~$300,000 upfront but breaks even versus cloud at 18 months and 80% utilization (Lenovo 2026 TCO analysis). For high-utilization inference workloads, on-premise achieves 60&ndash;70% of equivalent cloud costs.</li>
+  <li>The BFSI sector already leads the global private cloud market at $22.5 billion (19.7% of total private cloud revenue, 2024).</li>
+  <li>RecWM&rsquo;s compute requirement is modest: ~400 GPU-hours for full training (~$800 on cloud A100 spot). This is not a 50-billion-parameter language model. It is a structured world model that fits on a single node.</li>
+</ul>
+
+<h3>3.3 The Capability Vacuum</h3>
+<p>The Economic World Models survey (arXiv 2608.06020, August 2026) defines a six-level capability ladder for economic world models. Almost everything published sits at L1&ndash;L3 (single-variable forecasting, multi-variate prediction, scenario analysis). L6 &mdash; a sim-to-real economic digital twin with continuous online correction &mdash; is &ldquo;nearly absent.&rdquo;</p>
+
+<p>JPMorgan has 500+ AI use cases in production with $17 billion in annual tech spend and $1.3 billion dedicated to AI. Goldman Sachs rolled out AI to all 46,000+ employees. But none of them have a world model. They have chatbots, coding assistants, document processors, and signal generators &mdash; valuable tools, but not intelligence engines that understand the causal structure of markets.</p>
+
+<p>The gap between what the biggest banks are building (L1&ndash;L3 tools) and what the market needs (L6 intelligence) is the opportunity RecWM fills.</p>
+
+<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; ARCHITECTURE &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
+<h2 id="prod-arch"><span class="sec-num">4.</span> How It Works</h2>
+
+<p>The RecWM engine is a six-layer system. The bottom four layers are the world model; the top two are the continual learning mechanisms that keep it alive. Every component is typed by timescale &mdash; the same &tau;<sub>k</sub> parameter governs the neural backbone step size, the gate penalty, the prediction horizon, the memory consolidation strength, and the replay buffer size.</p>
+
+<svg viewBox="0 0 780 520" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:780px; display:block; margin:2rem auto;">
+  <defs>
+    <linearGradient id="prod-grad1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="prod-grad2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="var(--green)" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="var(--green)" stop-opacity="0.03"/>
+    </linearGradient>
+  </defs>
+
+  <!-- World Model layers -->
+  <rect x="30" y="320" width="720" height="185" rx="8" fill="url(#prod-grad1)" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="50" y="345" font-family="var(--font-sans)" font-size="11" fill="var(--accent)" font-weight="700" text-anchor="start">WORLD MODEL</text>
+
+  <rect x="50" y="440" width="330" height="50" rx="6" fill="var(--diagram-bg)" stroke="var(--accent)" stroke-width="1.2"/>
+  <text x="215" y="462" font-family="var(--font-sans)" font-size="12" fill="var(--diagram-text)" text-anchor="middle" font-weight="600">L0: S5 Typed-&Delta; Backbone</text>
+  <text x="215" y="478" font-family="var(--font-mono)" font-size="10" fill="var(--fg-dim)" text-anchor="middle">h(t) = &#256;h(t-1) + &#274;u(t)</text>
+
+  <rect x="400" y="440" width="330" height="50" rx="6" fill="var(--diagram-bg)" stroke="var(--accent)" stroke-width="1.2"/>
+  <text x="565" y="462" font-family="var(--font-sans)" font-size="12" fill="var(--diagram-text)" text-anchor="middle" font-weight="600">L1: GateL0RD Fragment Updates</text>
+  <text x="565" y="478" font-family="var(--font-mono)" font-size="10" fill="var(--fg-dim)" text-anchor="middle">z(t) = g&middot;z&#771;(t) + (1-g)&middot;z(t-1)</text>
+
+  <rect x="50" y="370" width="330" height="50" rx="6" fill="var(--diagram-bg)" stroke="var(--accent)" stroke-width="1.2"/>
+  <text x="215" y="392" font-family="var(--font-sans)" font-size="12" fill="var(--diagram-text)" text-anchor="middle" font-weight="600">L2: SPIB Per-Fragment Objective</text>
+  <text x="215" y="408" font-family="var(--font-mono)" font-size="10" fill="var(--fg-dim)" text-anchor="middle">max I(z; s&#8346;&#8330;&#916;) - &beta; I(z; X)</text>
+
+  <rect x="400" y="370" width="330" height="50" rx="6" fill="var(--diagram-bg)" stroke="var(--accent)" stroke-width="1.2"/>
+  <text x="565" y="392" font-family="var(--font-sans)" font-size="12" fill="var(--diagram-text)" text-anchor="middle" font-weight="600">L3: K Decoders + Identifiability</text>
+  <text x="565" y="408" font-family="var(--font-mono)" font-size="10" fill="var(--fg-dim)" text-anchor="middle">x&#770;(t) = &Sigma; g&#8342;(z&#8342;(t))</text>
+
+  <!-- Continual Learning layers -->
+  <rect x="30" y="100" width="720" height="200" rx="8" fill="url(#prod-grad2)" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="50" y="125" font-family="var(--font-sans)" font-size="11" fill="var(--green)" font-weight="700" text-anchor="start">CONTINUAL LEARNING</text>
+
+  <rect x="50" y="140" width="220" height="45" rx="6" fill="var(--diagram-bg)" stroke="var(--green)" stroke-width="1.2"/>
+  <text x="160" y="162" font-family="var(--font-sans)" font-size="11" fill="var(--diagram-text)" text-anchor="middle" font-weight="600">CL-0: Natural Gates</text>
+  <text x="160" y="176" font-family="var(--font-mono)" font-size="9" fill="var(--fg-dim)" text-anchor="middle">&eta;&#7497;&#7584;&#7584; = p &middot; &eta;</text>
+
+  <rect x="285" y="140" width="220" height="45" rx="6" fill="var(--diagram-bg)" stroke="var(--green)" stroke-width="1.2"/>
+  <text x="395" y="162" font-family="var(--font-sans)" font-size="11" fill="var(--diagram-text)" text-anchor="middle" font-weight="600">CL-1: O(N) RTRL</text>
+  <text x="395" y="176" font-family="var(--font-mono)" font-size="9" fill="var(--fg-dim)" text-anchor="middle">streaming, no BPTT</text>
+
+  <rect x="520" y="140" width="220" height="45" rx="6" fill="var(--diagram-bg)" stroke="var(--green)" stroke-width="1.2"/>
+  <text x="630" y="162" font-family="var(--font-sans)" font-size="11" fill="var(--diagram-text)" text-anchor="middle" font-weight="600">CL-2: Per-Fragment EWC</text>
+  <text x="630" y="176" font-family="var(--font-mono)" font-size="9" fill="var(--fg-dim)" text-anchor="middle">&Omega;&#8342; &prop; &tau;&#8342; / &tau;&#8344;&#8336;&#8339;</text>
+
+  <rect x="50" y="200" width="340" height="45" rx="6" fill="var(--diagram-bg)" stroke="var(--green)" stroke-width="1.2"/>
+  <text x="220" y="222" font-family="var(--font-sans)" font-size="11" fill="var(--diagram-text)" text-anchor="middle" font-weight="600">CL-3: BOCPD Regime Detection + Replay</text>
+  <text x="220" y="236" font-family="var(--font-mono)" font-size="9" fill="var(--fg-dim)" text-anchor="middle">Adams-MacKay + DER++ + reservoir sampling</text>
+
+  <rect x="405" y="200" width="335" height="45" rx="6" fill="var(--diagram-bg)" stroke="var(--green)" stroke-width="1.2"/>
+  <text x="572" y="222" font-family="var(--font-sans)" font-size="11" fill="var(--diagram-text)" text-anchor="middle" font-weight="600">CL-4: Slow-Fast Weights + Adaptive &epsilon;</text>
+  <text x="572" y="236" font-family="var(--font-mono)" font-size="9" fill="var(--fg-dim)" text-anchor="middle">&theta;&#8347;&#8343;&#8338;&#8353; &larr; &rho;&middot;&theta;&#8347;&#8343;&#8338;&#8353; + (1-&rho;)&middot;&theta;&#7584;&#7424;&#738;&#7511;</text>
+
+  <!-- Derived Signals output -->
+  <rect x="30" y="15" width="720" height="70" rx="8" fill="var(--accent-wash)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="390" y="38" font-family="var(--font-sans)" font-size="11" fill="var(--accent)" font-weight="700" text-anchor="middle">DERIVED SIGNALS &mdash; ACTIONABLE INTELLIGENCE</text>
+  <text x="130" y="62" font-family="var(--font-sans)" font-size="12" fill="var(--diagram-text)" text-anchor="middle" font-weight="600">Constructibility</text>
+  <text x="310" y="62" font-family="var(--font-sans)" font-size="12" fill="var(--diagram-text)" text-anchor="middle" font-weight="600">Reflexive Instability</text>
+  <text x="500" y="62" font-family="var(--font-sans)" font-size="12" fill="var(--diagram-text)" text-anchor="middle" font-weight="600">Composition Fragility</text>
+  <text x="670" y="62" font-family="var(--font-sans)" font-size="12" fill="var(--diagram-text)" text-anchor="middle" font-weight="600">Path Lock-In</text>
+
+  <!-- Arrows -->
+  <line x1="390" y1="300" x2="390" y2="320" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow-prod)"/>
+  <line x1="390" y1="85" x2="390" y2="100" stroke="var(--green)" stroke-width="1.5" marker-end="url(#arrow-prod-g)"/>
+  <defs>
+    <marker id="arrow-prod" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6Z" fill="var(--accent)"/></marker>
+    <marker id="arrow-prod-g" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6Z" fill="var(--green)"/></marker>
+  </defs>
+
+  <!-- Data input -->
+  <rect x="130" y="260" width="520" height="35" rx="6" fill="var(--bg-alt)" stroke="var(--border)" stroke-width="1"/>
+  <text x="390" y="282" font-family="var(--font-sans)" font-size="11" fill="var(--fg-dim)" text-anchor="middle">Live Market Data: FRED &middot; BIS &middot; EDGAR &middot; Yahoo Finance &middot; GDELT &middot; CB Speeches</text>
+</svg>
+
+<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; SEVEN FRAGMENTS &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
+<h2 id="prod-fragments"><span class="sec-num">5.</span> The Seven World Fragments</h2>
+
+<p>RecWM decomposes the world into seven typed fragments, each operating at its natural timescale. This is not an arbitrary taxonomy &mdash; each fragment has a specific state dimension, characteristic timescale, and discretization band derived from the physics of the data it models.</p>
+
+<table>
+  <thead>
+    <tr><th>Fragment</th><th>Scale</th><th>&tau; (days)</th><th>Dimension</th><th>What It Captures</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Liquidity</strong></td><td>Micro</td><td>1&ndash;5</td><td>16</td><td>Bid-ask spreads, volume profiles, funding stress, market depth</td></tr>
+    <tr><td><strong>Momentum</strong></td><td>Micro</td><td>5&ndash;20</td><td>16</td><td>Price trends, mean reversion signals, cross-sectional momentum</td></tr>
+    <tr><td><strong>Risk</strong></td><td>Meso</td><td>20&ndash;60</td><td>12</td><td>Volatility regimes, correlation structures, tail distributions</td></tr>
+    <tr><td><strong>Credit</strong></td><td>Macro</td><td>60&ndash;250</td><td>12</td><td>Credit cycle position, leverage ratios, default probability surfaces</td></tr>
+    <tr><td><strong>Structure</strong></td><td>Macro</td><td>250&ndash;1000</td><td>8</td><td>Secular trends, demographic shifts, structural breaks</td></tr>
+    <tr><td><strong>Sentiment</strong></td><td>Micro</td><td>1&ndash;7</td><td>16</td><td>News flow, social media signals, narrative regime identification</td></tr>
+    <tr><td><strong>Policy</strong></td><td>Macro</td><td>90&ndash;365</td><td>16</td><td>Central bank reaction functions, fiscal multipliers, regulatory changes</td></tr>
+  </tbody>
+</table>
+
+<div class="contrib">
+  <strong>Why fragments matter:</strong> A volatility spike is a different object at the 5-day scale (a liquidity event) than at the 60-day scale (a regime shift) than at the 250-day scale (a structural break). Fragments are the unit of analysis. The model does not predict &ldquo;the market&rdquo; &mdash; it predicts each fragment at its natural timescale and composes the results.
+</div>
+
+<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; FOUR SIGNALS &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
+<h2 id="prod-signals"><span class="sec-num">6.</span> Four Derived Signals</h2>
+
+<p>The world model produces four proprietary signals that have no equivalent in traditional analytics. These are not technical indicators derived from price &mdash; they emerge from the structure of the world model itself.</p>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;">
+  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-left: 4px solid var(--accent); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+    <h4 style="color: var(--accent); margin-bottom: 0.5rem; font-family: var(--font-sans); font-size: 0.92rem;">Constructibility Index (CI)</h4>
+    <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">What fraction of possible actions are currently feasible? CI dropping means the action space is shrinking &mdash; the economy is becoming rigid. Leads the Financial Conditions Index by 1&ndash;4 weeks.</p>
+    <div class="equation-block" style="font-size: 0.82rem;">CI(t) = &mu;[&Phi;(t,a) = feasible] / |A|</div>
+  </div>
+  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-left: 4px solid var(--red); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+    <h4 style="color: var(--red); margin-bottom: 0.5rem; font-family: var(--font-sans); font-size: 0.92rem;">Reflexive Instability (RI)</h4>
+    <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">Reflexivity coefficient times belief coherence. When both are high, self-fulfilling prophecy conditions exist. Values above 0.7 are dangerous. Should spike before major dislocations.</p>
+    <div class="equation-block" style="font-size: 0.82rem;">RI(t) = &epsilon;(t) &middot; &chi;(t)</div>
+  </div>
+  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-left: 4px solid var(--amber); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+    <h4 style="color: var(--amber); margin-bottom: 0.5rem; font-family: var(--font-sans); font-size: 0.92rem;">Composition Fragility (CF)</h4>
+    <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">Does combining stable components create instability? CF &gt; 0 means interaction generates risk that individual components lack. The mathematical definition of systemic risk.</p>
+    <div class="equation-block" style="font-size: 0.82rem;">CF(t) = max[stability(A) + stability(B) - stability(A&otimes;B)]</div>
+  </div>
+  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-left: 4px solid var(--signal-purple); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+    <h4 style="color: var(--signal-purple); margin-bottom: 0.5rem; font-family: var(--font-sans); font-size: 0.92rem;">Path Lock-In Risk (PLR)</h4>
+    <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">How sensitive is the future to small perturbations now? PLR near 1 means you are at a bifurcation point &mdash; decisions made today lock in trajectories that cannot be reversed.</p>
+    <div class="equation-block" style="font-size: 0.82rem;">PLR(t) = 1 - Var&#8344;&#8318;[W(t+H)] / Var&#8346;&#7523;&#7522;&#8338;&#7523;</div>
+  </div>
+</div>
+
+<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; CAPABILITIES &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
+<h2 id="prod-capabilities"><span class="sec-num">7.</span> Core Capabilities</h2>
+
+<h3>7.1 Real-Time Regime Detection</h3>
+<p>The BOCPD (Bayesian Online Changepoint Detection) layer monitors every fragment for regime shifts in real time. When <span class="st">P(r&#8346; = 0) &gt; &delta;</span>, the model snapshots its parameters, computes the Fisher information matrix, stores exemplars via reservoir sampling, resets fast gates, and preserves slow states. The client sees a regime change alert with the specific fragments affected, the confidence level, and the historical analog (if one exists).</p>
+
+<h3>7.2 Adaptive Volatility Surfaces</h3>
+<p>The Risk fragment (dimension 12, timescale 20&ndash;60 days) maintains a continuously updating volatility surface. Unlike traditional SABR or Heston models that calibrate once and deploy, RecWM&rsquo;s volatility representation learns from every new data point via O(N) RTRL streaming. Rough volatility dynamics (Gatheral, Jaisson &amp; Rosenbaum 2018) emerge naturally from the fragment&rsquo;s learned latent space rather than being imposed parametrically.</p>
+
+<h3>7.3 Cross-Asset Contagion Graphs</h3>
+<p>The composition operator <span class="st">&otimes; : WF&#7522; &times; WF&#11388; &rarr; WF&#7522;&#11388;</span> models how fragments interact across assets and scales. When the Composition Fragility signal rises, the model identifies which specific fragment pairs are creating emergent instability &mdash; not just &ldquo;correlations went to 1&rdquo; but which structural mechanism is causing contagion.</p>
+
+<h3>7.4 Tail Risk Early Warning</h3>
+<p>Traditional tail risk models (EVT, copula-based) estimate static distributions. RecWM&rsquo;s tail risk is dynamic: as the Reflexive Instability signal rises and Constructibility falls, the model&rsquo;s forward simulations automatically widen confidence intervals and flag non-linear amplification pathways. The Path Lock-In signal identifies when small perturbations can trigger regime-level shifts.</p>
+
+<h3>7.5 Natural Language Query Interface</h3>
+<p>The client asks: <em>&ldquo;What happens to my portfolio if the Fed cuts 50bps in September and China devalues by 5%?&rdquo;</em></p>
+<p>RecWM routes this to the Policy fragment (central bank reaction function) and the Structure fragment (cross-border capital flows), runs forward simulations through all seven fragments with constraint-field filtering, and returns:</p>
+<ul>
+  <li>Point estimates with confidence intervals for each portfolio position</li>
+  <li>The specific fragments and data sources that drove each estimate</li>
+  <li>The reflexivity coefficient for the scenario (will acting on this information change the outcome?)</li>
+  <li>Historical analogs from the regime detection buffer</li>
+</ul>
+
+<h3>7.6 Portfolio Construction Under Constraints</h3>
+<p>The constraint field &Phi;(t) is not a risk limit bolted onto an optimizer. It is baked into the world model. Four constraint layers &mdash; regulatory (&Phi;&#7523;&#7497;&#7501;), liquidity (&Phi;&#8343;&#7522;&#7524;), physical (&Phi;&#8346;&#8345;&#7527;&#738;), accounting (&Phi;&#8336;&#8318;&#8318;&#7511;) &mdash; filter every construction operator before it can affect the world state. Portfolio construction is not &ldquo;optimize then check limits.&rdquo; It is &ldquo;only feasible constructions are considered.&rdquo;</p>
+
+<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; COMPETITIVE LANDSCAPE &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
+<h2 id="prod-landscape"><span class="sec-num">8.</span> Competitive Landscape</h2>
+
+<p>No one is building what RecWM builds. The competitive landscape fragments into four categories, none of which occupies RecWM&rsquo;s position:</p>
+
+<table>
+  <thead>
+    <tr><th>Category</th><th>Examples</th><th>What They Do</th><th>What They Cannot Do</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Data Terminals</strong></td>
+      <td>Bloomberg, Refinitiv, FactSet</td>
+      <td>Real-time data access, visualization, basic analytics</td>
+      <td>No causal modeling, no continual learning, no world model</td>
+    </tr>
+    <tr>
+      <td><strong>Risk Vendors</strong></td>
+      <td>MSCI, Axioma, Quantifi</td>
+      <td>Pre-built factor models, VaR, portfolio analytics</td>
+      <td>Frozen weights, no online learning, black-box factors, no reflexivity</td>
+    </tr>
+    <tr>
+      <td><strong>Bank AI Platforms</strong></td>
+      <td>JPMorgan LLM Suite, Goldman AI Assistant</td>
+      <td>Internal chatbots, document processing, coding assistance</td>
+      <td>Not world models. Language models, not causal models. No fragment decomposition.</td>
+    </tr>
+    <tr>
+      <td><strong>AI/ML Vendors</strong></td>
+      <td>Kensho (S&amp;P), SymphonyAI, Sooth Labs</td>
+      <td>NLP on filings, sentiment analysis, exogenous forecasting</td>
+      <td>No endogenous causal architecture, no performativity modeling, no on-premise world model</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="warn" style="border-left-color: var(--accent); background: var(--accent-wash);">
+  <strong style="color: var(--accent);">The structural advantage:</strong> Scale barely helps on macro data. MACROCAST (~1M parameters) beats 120M Chronos-2 on macro forecasting. The best macro foundation model improves on AR(1) by a median of only 2.9% RMSFE. Domain structure beats scale. A well-structured latent model competes on exactly the axis where trillion-dollar banks have no advantage.
+</div>
+
+<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; DATA MOAT &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
+<h2 id="prod-moat"><span class="sec-num">9.</span> The Moat</h2>
+
+<p>RecWM&rsquo;s moat is not data access. FRED, BIS, EDGAR, Yahoo Finance &mdash; the raw data is free. The moat is the schema: the world fragment decomposition, the construction event logging, the belief shift tracking. Nobody else structures FRED data as construction attempts on typed world fragments. Nobody else computes a reflexivity coefficient from the Jacobian of the belief-action-world feedback loop.</p>
+
+<p>The moat deepens with every deployment. Each client&rsquo;s continual learning produces a model that is structurally identical but empirically unique &mdash; calibrated to their specific portfolio, their specific risk tolerance, their specific regulatory environment. The model cannot be replicated by reading a paper. It can only be replicated by running it.</p>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Schema Moat</h4>
+    <p style="font-size: 0.86rem;">World fragment decomposition + typed timescales + composition operators + constraint fields. The structure is the IP.</p>
+  </div>
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Learning Moat</h4>
+    <p style="font-size: 0.86rem;">Each deployment learns from its own data. After 6 months, the model is empirically unique &mdash; calibrated to the client&rsquo;s specific world.</p>
+  </div>
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Reflexivity Moat</h4>
+    <p style="font-size: 0.86rem;">The endogenous feedback modeling is mathematically novel. No competitor has the theory or the architecture to compute &epsilon;(t).</p>
+  </div>
+  <div class="impl-card">
+    <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Regulation Moat</h4>
+    <p style="font-size: 0.86rem;">On-premise + traceable outputs + audit trails. Designed for DORA/EU AI Act compliance. Vendors who built cloud-first cannot retrofit this.</p>
+  </div>
+</div>
+
+<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; MARKET &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
+<h2 id="prod-market"><span class="sec-num">10.</span> Market Opportunity</h2>
+
+<h3>Market Size</h3>
+<table>
+  <thead>
+    <tr><th>Segment</th><th>2024</th><th>2030 Projected</th><th>CAGR</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>AI in Financial Services (total)</td><td>$37&ndash;38B</td><td>~$190B</td><td>30.6%</td></tr>
+    <tr><td>AI Servers in Finance</td><td>$9.2B</td><td>$72.9B (2034)</td><td>23.0%</td></tr>
+    <tr><td>BFSI Private Cloud</td><td>$22.5B</td><td>&mdash;</td><td>&mdash;</td></tr>
+    <tr><td>Trade Surveillance Systems</td><td>$2.9B</td><td>$9.7B (2031)</td><td>18.6%</td></tr>
+    <tr><td>Tier-1 Bank AI Spend (annual)</td><td>~$40B</td><td>&mdash;</td><td>&mdash;</td></tr>
+  </tbody>
+</table>
+
+<h3>Product Tiers</h3>
+<table>
+  <thead>
+    <tr><th>Tier</th><th>What You Get</th><th>Annual Price</th><th>Target Client</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Signal Feed</strong></td><td>4 derived signals via API, daily updates</td><td>$50K&ndash;200K</td><td>Quant funds, risk desks</td></tr>
+    <tr><td><strong>Scenario Engine</strong></td><td>Custom &ldquo;what if&rdquo; simulations, NL query</td><td>$200K&ndash;500K</td><td>Asset managers, corporates</td></tr>
+    <tr><td><strong>World Model Platform</strong></td><td>Full on-premise deployment, all modules</td><td>$500K&ndash;2M</td><td>Central banks, large treasuries</td></tr>
+    <tr><td><strong>Research Partnership</strong></td><td>Co-develop extensions, priority features</td><td>$1M&ndash;5M</td><td>Sovereign wealth funds, BIS, IMF</td></tr>
+  </tbody>
+</table>
+
+<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; TECH STACK &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
+<h2 id="prod-stack"><span class="sec-num">11.</span> Technology Stack</h2>
+
+<table>
+  <thead>
+    <tr><th>Component</th><th>Technology</th><th>Why</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Core ML</td><td>PyTorch 2.x</td><td>Best ecosystem, torch.compile for production speed</td></tr>
+    <tr><td>Path Signatures</td><td>pysiglib</td><td>CUDA + autograd, supports PyTorch/JAX/NumPy</td></tr>
+    <tr><td>Bayesian Inference</td><td>NumPyro (JAX)</td><td>Fast MCMC/VI for belief field updates</td></tr>
+    <tr><td>Optimization</td><td>cvxpy + cvxpylayers</td><td>Differentiable convex optimization for constraint fields</td></tr>
+    <tr><td>Agent Graphs</td><td>PyTorch Geometric</td><td>Agent interaction networks, belief propagation</td></tr>
+    <tr><td>Data Pipeline</td><td>Polars + DuckDB</td><td>Fast local-first data processing</td></tr>
+    <tr><td>API Layer</td><td>FastAPI</td><td>Async, typed, auto-documented endpoints</td></tr>
+    <tr><td>SDEs</td><td>torchsde</td><td>Differentiable stochastic differential equation solvers</td></tr>
+    <tr><td>Testing</td><td>pytest + hypothesis</td><td>Property-based testing for algebraic guarantees</td></tr>
+  </tbody>
+</table>
+
+<div class="contrib">
+  <strong>Compute requirement:</strong> ~400 GPU-hours for full training (~$800 on cloud A100 spot pricing). This is not a foundation model that needs a data center. It is a structured world model that fits on a single GPU node. The intelligence comes from architecture, not scale.
+</div>
+
+<!-- &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; WHAT WE ARE NOT &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; -->
+<h2 id="prod-not"><span class="sec-num">12.</span> What RecWM Is Not</h2>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1rem 0;">
+  <div style="background: var(--warn-bg); border: 1px solid var(--warn-border); padding: 1rem 1.2rem; border-radius: var(--r);">
+    <h4 style="color: var(--warn); margin-bottom: 0.3rem; font-family: var(--font-sans); font-size: 0.88rem;">Not a Chatbot</h4>
+    <p style="font-size: 0.84rem; color: var(--warn-text);">It has a natural language interface, but it is not a language model. It does not generate text. It routes queries to mathematical modules and returns computed, traceable results.</p>
+  </div>
+  <div style="background: var(--warn-bg); border: 1px solid var(--warn-border); padding: 1rem 1.2rem; border-radius: var(--r);">
+    <h4 style="color: var(--warn); margin-bottom: 0.3rem; font-family: var(--font-sans); font-size: 0.88rem;">Not a Dashboard</h4>
+    <p style="font-size: 0.84rem; color: var(--warn-text);">It does not visualize data for humans to interpret. It interprets data itself and presents conclusions with full provenance chains.</p>
+  </div>
+  <div style="background: var(--warn-bg); border: 1px solid var(--warn-border); padding: 1rem 1.2rem; border-radius: var(--r);">
+    <h4 style="color: var(--warn); margin-bottom: 0.3rem; font-family: var(--font-sans); font-size: 0.88rem;">Not a Black Box</h4>
+    <p style="font-size: 0.84rem; color: var(--warn-text);">Every output traces to a specific fragment, a specific module, a specific data source. The model&rsquo;s reasoning is inspectable at every level.</p>
+  </div>
+  <div style="background: var(--warn-bg); border: 1px solid var(--warn-border); padding: 1rem 1.2rem; border-radius: var(--r);">
+    <h4 style="color: var(--warn); margin-bottom: 0.3rem; font-family: var(--font-sans); font-size: 0.88rem;">Not a Prediction Machine</h4>
+    <p style="font-size: 0.84rem; color: var(--warn-text);">It does not predict &ldquo;the market will go up.&rdquo; It models the constructive dynamics of the world and tells you what is possible, what is likely, and what your actions will change.</p>
+  </div>
+</div>
+
+</div>
+
+    </div>
+
+    <div class="pg" id="pg-foundations">
+<div class="page">
+
+  <div class="doc-header">
+    <h1>Theoretical Foundations</h1>
+    <p class="subtitle">Reflexive Constructive World Model (RecWM) &mdash; the mathematical substrate for modelling financial markets as continuously constructed realities under reflexive dynamics and hard constraints.</p>
+  </div>
+
+  <!-- ============ TABLE OF CONTENTS ============ -->
+  <nav class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#core-eq">The Core Equation</a></li>
+      <li><a href="#five-objects">Five Fundamental Objects</a></li>
+      <li><a href="#belief-fields">Belief Fields</a></li>
+      <li><a href="#fixed-points">Reflexive Fixed Points</a></li>
+      <li><a href="#lineage">World Models: Theoretical Lineage</a></li>
+      <li><a href="#s5-backbone">State Space Models: S5 Typed-Delta Backbone</a></li>
+      <li><a href="#gatel0rd">GateL0RD Fragment Updates</a></li>
+      <li><a href="#info-theory">Information-Theoretic Foundations</a></li>
+      <li><a href="#identifiability">Identifiability and Causal Structure</a></li>
+      <li><a href="#loss">The Unified Loss Function</a></li>
+      <li><a href="#continual">Continual Learning Theory</a></li>
+      <li><a href="#finmath">Financial Mathematics</a></li>
+      <li><a href="#reflexivity">Reflexivity and Performativity</a></li>
+      <li><a href="#active-inf">Active Inference and Free Energy</a></li>
+      <li><a href="#convergence">Convergence Guarantees</a></li>
+      <li><a href="#refs">Must-Cite List</a></li>
+    </ol>
+  </nav>
+
+  <!-- ============ 1. CORE EQUATION ============ -->
+  <h2 id="core-eq"><span class="sec-num">1</span>The Core Equation</h2>
+
+  <p>Every financial model implicitly answers the question: <em>given the current state of the world, what happens next?</em> Traditional approaches&mdash;DSGE, VAR, GARCH&mdash;treat the state as exogenous to the agents observing it. RecWM rejects this. The world is <em>constructed</em> by agent actions that are themselves driven by beliefs <em>about</em> that world. The master equation is:</p>
+
+  <div class="equation-block">
+    W(t+1) = C( W(t), A(B(t)), &Phi;(t) )
+  </div>
+
+  <p>where:</p>
+  <ul>
+    <li><span class="st">W(t)</span> &mdash; the <strong>world state</strong> at time <em>t</em>, a structured collection of typed world fragments (prices, order books, institutional states, macro aggregates, narratives).</li>
+    <li><span class="st">B(t)</span> &mdash; the <strong>belief field</strong>, a joint distribution over all constructive units&rsquo; beliefs about W(t), each other, and themselves.</li>
+    <li><span class="st">A(&middot;)</span> &mdash; the <strong>action map</strong>, transforming beliefs into concrete market actions (orders, speeches, regulation, portfolio rebalancing).</li>
+    <li><span class="st">C(&middot;)</span> &mdash; the <strong>construction operator</strong>, the mechanism by which actions, filtered through hard constraints, produce the next world state.</li>
+    <li><span class="st">&Phi;(t)</span> &mdash; the <strong>constraint field</strong>, encoding regulatory limits, liquidity floors, accounting identities, and physical resource bounds that no agent can violate.</li>
+  </ul>
+
+  <div class="contrib">
+    <strong>Why this is different.</strong> Classical models separate the &ldquo;model&rdquo; from the &ldquo;system.&rdquo; RecWM embeds the model&rsquo;s own predictions inside the system: beliefs drive actions that construct the world that updates beliefs. The loop B &rarr; A &rarr; &Delta;W &rarr; &Delta;B is not a bug to be linearized away&mdash;it is the fundamental mechanism of financial markets.
+  </div>
+
+  <p>The equation is deliberately <em>constructive</em>: we do not assert the existence of an equilibrium and study perturbations around it. Instead, we compute the next state from typed primitives, in finite time, with checkable constraints. This is closer to algebraic topology (pushout diagrams, colimits over typed data) than to equilibrium economics.</p>
+
+  <!-- ============ 2. FIVE OBJECTS ============ -->
+  <h2 id="five-objects"><span class="sec-num">2</span>Five Fundamental Objects</h2>
+
+  <p>The core equation is instantiated through five formally defined objects. Together they span the ontology of RecWM.</p>
+
+  <!-- DIAGRAM: Five Fundamental Objects -->
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 780 420" xmlns="http://www.w3.org/2000/svg" style="font-family: var(--font-sans); font-size: 13px;">
+      <!-- Background -->
+      <rect x="0" y="0" width="780" height="420" rx="12" fill="var(--diagram-bg, #f8f9fa)"/>
+
+      <!-- CU node -->
+      <rect x="30" y="40" width="160" height="90" rx="8" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="110" y="65" text-anchor="middle" fill="var(--diagram-text, #1a1a2e)" font-weight="700" font-size="14">Constructive Units</text>
+      <text x="110" y="82" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="11">CU_i = (s_i, b_i, A_i, &kappa;_i)</text>
+      <text x="110" y="100" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="10">central_bank | fund | corp</text>
+      <text x="110" y="115" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="10">retail | government</text>
+
+      <!-- WF node -->
+      <rect x="590" y="40" width="160" height="90" rx="8" fill="var(--signal-purple)" opacity="0.15" stroke="var(--signal-purple)" stroke-width="1.5"/>
+      <text x="670" y="65" text-anchor="middle" fill="var(--diagram-text, #1a1a2e)" font-weight="700" font-size="14">World Fragments</text>
+      <text x="670" y="82" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="11">WF_j = (v_j, &sigma;_j, &tau;_j, &rho;_j)</text>
+      <text x="670" y="100" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="10">7 types: tick &rarr; narrative</text>
+      <text x="670" y="115" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="10">dim 1&ndash;512, &tau; 1ms&ndash;years</text>
+
+      <!-- Phi node -->
+      <rect x="310" y="40" width="160" height="90" rx="8" fill="var(--red)" opacity="0.12" stroke="var(--red)" stroke-width="1.5"/>
+      <text x="390" y="65" text-anchor="middle" fill="var(--diagram-text, #1a1a2e)" font-weight="700" font-size="14">Constraint Fields</text>
+      <text x="390" y="82" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="11">&Phi; = (&Phi;_reg, &Phi;_liq, &Phi;_phy, &Phi;_acc)</text>
+      <text x="390" y="100" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="10">Hard boundaries agents</text>
+      <text x="390" y="115" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="10">cannot violate</text>
+
+      <!-- RL node -->
+      <rect x="100" y="250" width="200" height="90" rx="8" fill="var(--green)" opacity="0.12" stroke="var(--green)" stroke-width="1.5"/>
+      <text x="200" y="275" text-anchor="middle" fill="var(--diagram-text, #1a1a2e)" font-weight="700" font-size="14">Reflexive Loops</text>
+      <text x="200" y="295" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="11">B &rarr; A &rarr; &Delta;W &rarr; &Delta;B</text>
+      <text x="200" y="315" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="10">Reflexivity coefficient &epsilon;</text>
+      <text x="200" y="330" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="10">Perdomo Thm 3.5: &epsilon; &lt; &gamma;/&beta;</text>
+
+      <!-- Composition node -->
+      <rect x="460" y="250" width="200" height="90" rx="8" fill="var(--amber)" opacity="0.15" stroke="var(--amber)" stroke-width="1.5"/>
+      <text x="560" y="275" text-anchor="middle" fill="var(--diagram-text, #1a1a2e)" font-weight="700" font-size="14">Composition Operators</text>
+      <text x="560" y="295" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="11">WF_a &otimes; WF_b &rarr; WF_ab</text>
+      <text x="560" y="315" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="10">Associativity, constraint</text>
+      <text x="560" y="330" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="10">preservation, scale consistency</text>
+
+      <!-- C operator in center -->
+      <circle cx="390" cy="195" r="28" fill="var(--accent)" opacity="0.9"/>
+      <text x="390" y="200" text-anchor="middle" fill="#fff" font-weight="700" font-size="14">C(&middot;)</text>
+
+      <!-- Arrows -->
+      <line x1="190" y1="115" x2="365" y2="170" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <line x1="590" y1="115" x2="415" y2="170" stroke="var(--signal-purple)" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <line x1="390" y1="130" x2="390" y2="167" stroke="var(--red)" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <line x1="250" y1="250" x2="365" y2="220" stroke="var(--green)" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <line x1="510" y1="250" x2="415" y2="220" stroke="var(--amber)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+      <!-- Reflexive loop arc -->
+      <path d="M 200 340 C 200 400, 670 400, 670 130" stroke="var(--green)" stroke-width="1.5" fill="none" stroke-dasharray="6,4" marker-end="url(#arrow-green)"/>
+      <text x="430" y="395" text-anchor="middle" fill="var(--green)" font-size="11" font-style="italic">&Delta;W feeds back to &Delta;B</text>
+
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/>
+        </marker>
+        <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--green)"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+
+  <h3>2.1 Constructive Units (CU)</h3>
+
+  <div class="def-block">
+    <p class="def-term">Definition 2.1 (Constructive Unit)</p>
+    <p>A constructive unit is a 4-tuple <span class="st">CU_i = (s_i, b_i, A_i, &kappa;_i)</span> where:</p>
+    <ul>
+      <li><span class="st">s_i &isin; S</span> &mdash; internal state (capital, positions, mandate parameters)</li>
+      <li><span class="st">b_i : W &rarr; &Delta;(W)</span> &mdash; belief map (current world &rarr; distribution over world states)</li>
+      <li><span class="st">A_i : S &times; &Delta;(W) &rarr; Actions</span> &mdash; action policy (state &times; beliefs &rarr; market actions)</li>
+      <li><span class="st">&kappa;_i &isin; {central_bank, fund, corporate, retail, government}</span> &mdash; unit type, determining the action space, constraint set, and characteristic timescale</li>
+    </ul>
+  </div>
+
+  <p>The type <span class="st">&kappa;_i</span> is not a label&mdash;it determines structural properties:</p>
+
+  <table>
+    <thead>
+      <tr><th>Type</th><th>Action Space</th><th>Timescale</th><th>Constraint Set</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>central_bank</td><td>Rate decisions, QE/QT, forward guidance</td><td>Weeks&ndash;quarters</td><td>Mandate, credibility</td></tr>
+      <tr><td>fund</td><td>Portfolio trades, leverage adjustment</td><td>Milliseconds&ndash;months</td><td>Risk limits, margin, redemptions</td></tr>
+      <tr><td>corporate</td><td>Issuance, buyback, capex, M&amp;A</td><td>Quarters&ndash;years</td><td>Covenants, cash flow, rating</td></tr>
+      <tr><td>retail</td><td>Buy/sell, deposit/withdraw</td><td>Days&ndash;months</td><td>Capital, attention, sentiment</td></tr>
+      <tr><td>government</td><td>Fiscal policy, regulation, sanctions</td><td>Months&ndash;years</td><td>Legislative process, political</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2.2 World Fragments (WF)</h3>
+
+  <div class="def-block">
+    <p class="def-term">Definition 2.2 (World Fragment)</p>
+    <p>A world fragment is a 4-tuple <span class="st">WF_j = (v_j, &sigma;_j, &tau;_j, &rho;_j)</span> where:</p>
+    <ul>
+      <li><span class="st">v_j &isin; R^{d_j}</span> &mdash; value vector of dimensionality d_j</li>
+      <li><span class="st">&sigma;_j</span> &mdash; schema defining the fragment&rsquo;s internal structure and valid operations</li>
+      <li><span class="st">&tau;_j &isin; R+</span> &mdash; characteristic timescale (the natural rate of change)</li>
+      <li><span class="st">&rho;_j : WF &times; WF &rarr; R</span> &mdash; coupling function measuring interaction strength with other fragments</li>
+    </ul>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Fragment Type</th><th>Dimensionality</th><th>Timescale &tau;</th><th>Example</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tick</td><td>1&ndash;5</td><td>1ms&ndash;1s</td><td>Individual trade, quote update</td></tr>
+      <tr><td>Microstructure</td><td>10&ndash;50</td><td>1s&ndash;5min</td><td>Order book shape, spread dynamics</td></tr>
+      <tr><td>Price</td><td>5&ndash;20</td><td>1min&ndash;1day</td><td>OHLCV bar, implied vol surface</td></tr>
+      <tr><td>Flow</td><td>20&ndash;100</td><td>1hr&ndash;1week</td><td>Fund flows, positioning data</td></tr>
+      <tr><td>Macro</td><td>50&ndash;200</td><td>1week&ndash;1quarter</td><td>GDP, CPI, employment, PMI</td></tr>
+      <tr><td>Institutional</td><td>100&ndash;300</td><td>1month&ndash;1year</td><td>Regulatory state, credit conditions</td></tr>
+      <tr><td>Narrative</td><td>128&ndash;512</td><td>1week&ndash;years</td><td>Dominant market story, regime label</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2.3 Constraint Fields (&Phi;)</h3>
+
+  <div class="def-block">
+    <p class="def-term">Definition 2.3 (Constraint Field)</p>
+    <p>The constraint field <span class="st">&Phi;(t) = (&Phi;_reg(t), &Phi;_liq(t), &Phi;_phy(t), &Phi;_acc(t))</span> is a 4-layer structure:</p>
+    <ul>
+      <li><span class="st">&Phi;_reg</span> &mdash; <strong>Regulatory constraints</strong>: capital requirements (Basel III/IV), position limits, short-sale bans, circuit breakers. Formalized via IG 2.0 / ADICO grammar (Crawford &amp; Ostrom 1995).</li>
+      <li><span class="st">&Phi;_liq</span> &mdash; <strong>Liquidity constraints</strong>: margin requirements, funding availability, collateral haircuts, market depth. These are <em>endogenous</em>&mdash;they tighten under stress.</li>
+      <li><span class="st">&Phi;_phy</span> &mdash; <strong>Physical constraints</strong>: settlement cycles (T+1/T+2), network latency, computational limits, storage capacity for commodities.</li>
+      <li><span class="st">&Phi;_acc</span> &mdash; <strong>Accounting constraints</strong>: double-entry identities, balance sheet mechanics (assets = liabilities + equity), flow-of-funds consistency. These are <em>inviolable</em>&mdash;they hold by definition.</li>
+    </ul>
+  </div>
+
+  <p>Constraint fields interact with the construction operator <span class="st">C</span> by projection: any proposed next state <span class="st">W&#x27;(t+1)</span> is projected onto the feasible set <span class="st">F(&Phi;(t)) = {W : &Phi;_reg(W) &le; 0 &and; &Phi;_liq(W) &le; 0 &and; &Phi;_phy(W) &le; 0 &and; &Phi;_acc(W) = 0}</span>. The projection is not optional&mdash;it is load-bearing. Violations of accounting identities are not &ldquo;small errors&rdquo;; they are incoherent states.</p>
+
+  <h3>2.4 Reflexive Loops (RL)</h3>
+
+  <div class="def-block">
+    <p class="def-term">Definition 2.4 (Reflexive Loop)</p>
+    <p>A reflexive loop is the cyclic dependency <span class="st">B &rarr; A &rarr; &Delta;W &rarr; &Delta;B</span> where beliefs drive actions, actions change the world, and the changed world updates beliefs. The <strong>reflexivity coefficient</strong> <span class="st">&epsilon;</span> measures the sensitivity:</p>
+  </div>
+
+  <div class="equation-block">
+    &epsilon; = sup_(&theta;, &theta;') || D(&theta;) - D(&theta;') ||_W / || &theta; - &theta;' ||
+  </div>
+
+  <p>where <span class="st">D(&theta;)</span> is the data distribution induced when agents act on model parameters <span class="st">&theta;</span>, and <span class="st">||&middot;||_W</span> is the Wasserstein-1 distance. This is exactly the &ldquo;&epsilon;-sensitivity&rdquo; of Perdomo et al. (ICML 2020, Def. 3.1). When <span class="st">&epsilon;</span> is large, the model strongly affects the data it learns from&mdash;the hallmark of financial markets where published forecasts, algorithmic strategies, and central bank guidance all reshape the very quantities they predict.</p>
+
+  <h3>2.5 Composition Operators</h3>
+
+  <div class="def-block">
+    <p class="def-term">Definition 2.5 (Fragment Composition)</p>
+    <p>The tensor product <span class="st">WF_a &otimes; WF_b &rarr; WF_{ab}</span> composes two world fragments into a joint fragment, satisfying three axioms:</p>
+    <ol>
+      <li><strong>Associativity:</strong> <span class="st">(WF_a &otimes; WF_b) &otimes; WF_c = WF_a &otimes; (WF_b &otimes; WF_c)</span></li>
+      <li><strong>Constraint preservation:</strong> <span class="st">&Phi;(WF_a &otimes; WF_b) &sube; &Phi;(WF_a) &cap; &Phi;(WF_b)</span> (composition cannot relax constraints)</li>
+      <li><strong>Scale consistency:</strong> <span class="st">&tau;_{ab} = min(&tau;_a, &tau;_b)</span> (the composite updates at the faster timescale)</li>
+    </ol>
+  </div>
+
+  <p>Composition operators enable hierarchical world construction. A &ldquo;market microstructure&rdquo; fragment composes tick-level and order-book fragments. A &ldquo;credit conditions&rdquo; fragment composes institutional-state and flow fragments. The composition is <em>not</em> concatenation&mdash;it creates genuine interaction terms through the coupling functions <span class="st">&rho;</span>.</p>
+
+  <!-- ============ 3. BELIEF FIELDS ============ -->
+  <h2 id="belief-fields"><span class="sec-num">3</span>Belief Fields</h2>
+
+  <p>Beliefs are not static parameters&mdash;they form a <em>field</em> over the space of constructive units, evolving through a combination of private updating and social contagion.</p>
+
+  <div class="equation-block">
+    b_i(t+1) = (1 - &alpha;) &middot; U(b_i(t), o_i(t)) + &alpha; &middot; &Sigma;_j w_{ij} &middot; b_j(t)
+  </div>
+
+  <p>where:</p>
+  <ul>
+    <li><span class="st">U(b, o)</span> &mdash; private Bayesian update of belief b given observation o (or an approximate update via a learned recognition model)</li>
+    <li><span class="st">&alpha; &isin; [0,1]</span> &mdash; social influence weight (how much agent i is swayed by others&rsquo; beliefs)</li>
+    <li><span class="st">w_{ij}</span> &mdash; influence weight from agent j to agent i, typically sparse (most agents don&rsquo;t directly observe each other)</li>
+    <li><span class="st">o_i(t)</span> &mdash; agent i&rsquo;s observation at time t, which depends on W(t) and the agent&rsquo;s observation function</li>
+  </ul>
+
+  <div class="def-block">
+    <p class="def-term">Definition 3.1 (Belief Coherence)</p>
+    <p>The coherence measure <span class="st">&chi;(t) = 1 - (1/N(N-1)) &Sigma;_{i&ne;j} D_KL(b_i(t) || b_j(t))</span> ranges from 0 (complete disagreement) to 1 (consensus). Low coherence signals fragile markets; high coherence signals herding risk.</p>
+  </div>
+
+  <p>The social influence term connects to Morris and Shin&rsquo;s global games framework (AER 2002): when agents share a strong common signal, coherence spikes, and actions correlate&mdash;producing the coordination cascades observed in currency crises, bank runs, and liquidity spirals. The weight matrix <span class="st">w_{ij}</span> can be learned from observed co-movement patterns using DCC-GARCH (Engle 2002) or network inference methods.</p>
+
+  <!-- ============ 4. FIXED POINTS ============ -->
+  <h2 id="fixed-points"><span class="sec-num">4</span>Reflexive Fixed Points</h2>
+
+  <p>A reflexive fixed point is a pair <span class="st">(B*, W*)</span> satisfying:</p>
+
+  <div class="equation-block">
+    B* = U(B*, W*) &nbsp;&nbsp;&nbsp; and &nbsp;&nbsp;&nbsp; W* = C(W*, A(B*), &Phi;)
+  </div>
+
+  <p>This is the performative stable point (Perdomo et al. 2020, Def. 3.2): the model parameters at which retraining on the distribution they induce produces the same parameters. Existence requires the composed map <span class="st">F = U &circ; C &circ; A</span> to be a contraction.</p>
+
+  <h3>Stability Analysis</h3>
+
+  <p>Linearize around the fixed point. Let <span class="st">&delta;B = B - B*</span> and <span class="st">&delta;W = W - W*</span>. The Jacobian of the coupled system is:</p>
+
+  <div class="equation-block">
+    J = &part;(B(t+1), W(t+1)) / &part;(B(t), W(t)) = <br/>
+    [ (1-&alpha;) &middot; &part;U/&part;b + &alpha;W , (1-&alpha;) &middot; &part;U/&part;o &middot; &part;o/&part;W ]<br/>
+    [ &part;C/&part;A &middot; &part;A/&part;B , &part;C/&part;W ]
+  </div>
+
+  <p>Stability requires <span class="st">&rho;(J) &lt; 1</span> where <span class="st">&rho;</span> denotes spectral radius. The off-diagonal blocks encode reflexivity: <span class="st">&part;C/&part;A &middot; &part;A/&part;B</span> is the &ldquo;beliefs shape the world&rdquo; channel; <span class="st">&part;U/&part;o &middot; &part;o/&part;W</span> is the &ldquo;world shapes beliefs&rdquo; channel. Their product controls stability.</p>
+
+  <div class="cite-card">
+    <strong>Perdomo, Zrnic, Mendler-D&uuml;nner &amp; Hardt (ICML 2020).</strong> &ldquo;Performative Prediction.&rdquo; Theorem 3.5: Repeated Risk Minimization converges to a performative stable point if <span class="st">&epsilon; &lt; &gamma;/&beta;</span>, where &epsilon; is sensitivity, &gamma; is strong convexity, and &beta; is smoothness of the loss. Proposition 3.6 proves the bound is tight.
+  </div>
+
+  <div class="warn">
+    <strong>Attribution warning.</strong> The convergence condition <span class="st">&epsilon; &lt; &gamma;/&beta;</span> is Theorem 3.5 of Perdomo et al. ICML 2020, <em>not</em> the survey by Hardt &amp; Mendler-D&uuml;nner (Statistical Science 2025). The survey cites this result but does not originate it. A referee would catch this.
+  </div>
+
+  <!-- ============ 5. LINEAGE ============ -->
+  <h2 id="lineage"><span class="sec-num">5</span>World Models: Theoretical Lineage</h2>
+
+  <p>RecWM inherits ideas from four lines of research in deep learning-based world models, while extending each in fundamental ways.</p>
+
+  <div class="impl-card">
+    <h4>Ha &amp; Schmidhuber (2018) &mdash; &ldquo;World Models&rdquo;</h4>
+    <p>Introduced the V-M-C architecture: a Vision model (VAE) compresses observations, a Memory model (MDN-RNN) predicts future latent states, and a Controller selects actions. Key insight: you can train the controller entirely inside the learned dream. <strong>Limitation:</strong> untyped latent space, no constraint enforcement, no reflexivity. (NeurIPS 2018)</p>
+  </div>
+
+  <div class="impl-card">
+    <h4>Dreamer / DreamerV2 / DreamerV3 (Hafner et al. 2020&ndash;2023)</h4>
+    <p>Replaced the MDN-RNN with a Recurrent State Space Model (RSSM): a deterministic path plus a stochastic branch, enabling long-horizon imagination. DreamerV3 introduced symlog predictions, free bits for KL balancing, and showed a single architecture could master 150+ tasks without tuning. <strong>Limitation:</strong> single homogeneous latent state; no multi-timescale fragments. (ICLR 2020, NeurIPS 2021, arXiv 2023)</p>
+  </div>
+
+  <div class="impl-card">
+    <h4>JEPA &mdash; LeCun (2022)</h4>
+    <p>Joint Embedding Predictive Architecture: instead of predicting raw observations (pixel-level), predict in latent space. Avoids the generative model&rsquo;s curse of modelling irrelevant detail. <strong>Limitation:</strong> no notion of actions or interventions; static architecture. (Position paper, Meta AI)</p>
+  </div>
+
+  <div class="impl-card">
+    <h4>State Space Models: S4, S5, Mamba</h4>
+    <p>Gu et al. (2022) S4 showed structured state spaces can model long-range dependencies with O(N log N) complexity. S5 (Smith et al. 2023) simplified to parallel scan over diagonal A, enabling O(N) training. Mamba (Gu &amp; Dao 2024) added input-dependent selection. <strong>Limitation:</strong> untyped, single timescale, no constraint awareness. (ICLR 2022, ICLR 2023, arXiv 2024)</p>
+  </div>
+
+  <div class="contrib">
+    <strong>How RecWM extends these.</strong> (1) <em>Typed fragments</em> replace the homogeneous latent state, each with its own timescale and schema. (2) <em>Constraint fields</em> are first-class objects, not post-hoc projections. (3) <em>Reflexivity</em> is modelled explicitly: the loop B &rarr; A &rarr; &Delta;W &rarr; &Delta;B is the architecture, not a nuisance. (4) <em>Continual learning</em> is native: financial regimes change, so the model must update without catastrophic forgetting.
+  </div>
+
+  <!-- ============ 6. S5 BACKBONE ============ -->
+  <h2 id="s5-backbone"><span class="sec-num">6</span>State Space Models: S5 Typed-Delta Backbone</h2>
+
+  <p>RecWM uses S5 (Smith et al. 2023) as the backbone dynamics model, but with a critical extension: <strong>typed discretization step sizes</strong> matched to fragment timescales.</p>
+
+  <h3>Continuous Form</h3>
+  <div class="equation-block">
+    dh/dt = A &middot; h(t) + B &middot; u(t)<br/>
+    y(t) = Re(C &middot; h(t)) + D &middot; u(t)
+  </div>
+
+  <p>where <span class="st">h(t) &isin; C^N</span> is the hidden state, <span class="st">u(t)</span> is the input, <span class="st">y(t)</span> is the output, and <span class="st">A</span> is diagonal (the key S5 simplification from S4&rsquo;s DPLR parameterization).</p>
+
+  <h3>ZOH Discretization with Typed Step Sizes</h3>
+
+  <p>The standard zero-order hold (ZOH) discretization uses a uniform step size &Delta;. RecWM replaces this with fragment-typed step sizes:</p>
+
+  <div class="equation-block">
+    A_k = exp(A &middot; &Delta;_k), &nbsp;&nbsp; B_k = A^{-1}(A_k - I) &middot; B
+  </div>
+
+  <p>where <span class="st">&Delta;_k = &tau;_k / &tau;_max</span> is the normalized timescale for fragment type k. This means tick-level fragments update with fine temporal resolution while narrative fragments use coarse steps&mdash;matching the natural dynamics of each.</p>
+
+  <table>
+    <thead>
+      <tr><th>Fragment Type</th><th>&tau; (seconds)</th><th>&Delta;_k (normalized)</th><th>Effective Horizon</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tick</td><td>0.001&ndash;1</td><td>~10^{-8}</td><td>Next milliseconds</td></tr>
+      <tr><td>Microstructure</td><td>1&ndash;300</td><td>~10^{-5}</td><td>Next minutes</td></tr>
+      <tr><td>Price</td><td>60&ndash;86400</td><td>~10^{-3}</td><td>Next hours&ndash;day</td></tr>
+      <tr><td>Flow</td><td>3600&ndash;604800</td><td>~10^{-2}</td><td>Next days&ndash;week</td></tr>
+      <tr><td>Macro</td><td>604800&ndash;7.9&times;10^6</td><td>~10^{-1}</td><td>Next weeks&ndash;quarter</td></tr>
+      <tr><td>Institutional</td><td>2.6&times;10^6&ndash;3.15&times;10^7</td><td>~0.5</td><td>Next months&ndash;year</td></tr>
+      <tr><td>Narrative</td><td>604800&ndash;3.15&times;10^7</td><td>1.0</td><td>Next weeks&ndash;years</td></tr>
+    </tbody>
+  </table>
+
+  <div class="contrib">
+    <strong>Why diagonal A enables O(N) RTRL.</strong> With diagonal A, the Jacobian <span class="st">&part;h(t)/&part;h(t-1) = diag(A_k)</span> is diagonal, so real-time recurrent learning (RTRL) requires only O(N) per step instead of O(N^3). This is critical for continual learning (Section 11): the model can update online without ever unrolling through time.
+  </div>
+
+  <!-- ============ 7. GATEL0RD ============ -->
+  <h2 id="gatel0rd"><span class="sec-num">7</span>GateL0RD Fragment Updates</h2>
+
+  <p>Not every fragment should update at every timestep. The GateL0RD mechanism (Gumbsch et al., ICML 2022) provides a principled way to learn <em>when</em> to update each fragment, using hard-concrete gates with L0 regularization.</p>
+
+  <h3>Hard-Concrete Sampling</h3>
+
+  <p>The gate variable <span class="st">g(t) &isin; {0, 1}</span> is sampled from a stretched hard-concrete distribution:</p>
+
+  <div class="equation-block">
+    u ~ Uniform(0, 1)<br/>
+    s = sigmoid((log(u/(1-u)) + log(&alpha;)) / &beta;)<br/>
+    s_bar = s &middot; (&zeta; - &gamma;) + &gamma;<br/>
+    g = min(1, max(0, s_bar))
+  </div>
+
+  <p>where <span class="st">&alpha;</span> is a learned location parameter (per fragment), <span class="st">&beta;</span> is a temperature, and <span class="st">&gamma; &lt; 0, &zeta; &gt; 1</span> are the stretch parameters ensuring exact zeros and ones.</p>
+
+  <h3>State Update Rule</h3>
+
+  <div class="equation-block">
+    z(t) = g(t) &middot; z&#x303;(t) + (1 - g(t)) &middot; z(t-1)
+  </div>
+
+  <p>When <span class="st">g(t) = 0</span>, the fragment is <em>perfectly</em> preserved (not approximately&mdash;exactly copied). When <span class="st">g(t) = 1</span>, the fragment updates to the new candidate <span class="st">z&#x303;(t)</span>. The L0 penalty encourages sparsity:</p>
+
+  <div class="equation-block">
+    L_gate = &Sigma;_k &lambda;_k &middot; P(g_k &ne; 0)
+  </div>
+
+  <p>where <span class="st">&lambda;_k &propto; &tau;_k / &tau;_max</span>: slow fragments (narrative, institutional) are penalized more heavily for updating, naturally encoding the prior that slow things should change rarely.</p>
+
+  <div class="cite-card">
+    <strong>Gumbsch, Sajid, Mazzaglia &amp; Friston (ICML 2022).</strong> &ldquo;GateL0RD: Gated Latent Representations with L0 Regularized Dynamics.&rdquo; Demonstrated that L0-gated RNNs naturally segment temporal sequences into events, with the gate providing interpretable &ldquo;event boundaries.&rdquo;
+  </div>
+
+  <p>The connection to continual learning is immediate: when a gate is closed, the effective learning rate for that fragment is zero, providing <em>natural protection</em> against catastrophic forgetting without any explicit memory mechanism.</p>
+
+  <!-- ============ 8. INFORMATION THEORY ============ -->
+  <h2 id="info-theory"><span class="sec-num">8</span>Information-Theoretic Foundations</h2>
+
+  <h3>Stochastic Predictive Information Bottleneck (SPIB)</h3>
+
+  <p>The representation for each fragment is trained via the SPIB objective (Wang et al. 2021):</p>
+
+  <div class="equation-block">
+    max I(z; state_{t+&Delta;}) - &beta; &middot; I(z; X_t)
+  </div>
+
+  <p>This is a stochastic extension of the Information Bottleneck (Tishby et al. 1999): compress the input <span class="st">X_t</span> into a latent <span class="st">z</span> that is maximally predictive of the <em>future</em> state at horizon &Delta;, while discarding information about the present that is not predictive. The trade-off parameter <span class="st">&beta;</span> controls compression.</p>
+
+  <h3>Rate-Distortion Theory</h3>
+
+  <p>SPIB is a special case of rate-distortion theory (Shannon 1948, Berger 1971). The rate-distortion function <span class="st">R(D) = min_{p(z|x): E[d(x,z)] &le; D} I(X; Z)</span> gives the minimum number of bits needed to represent the source at distortion level D. In RecWM, &ldquo;distortion&rdquo; is prediction error at the fragment&rsquo;s characteristic horizon.</p>
+
+  <h3>Why &Delta;_k = &tau;_k</h3>
+
+  <p>A critical design choice: the prediction horizon for each fragment equals its characteristic timescale. This ensures that:</p>
+  <ul>
+    <li>Tick fragments predict the next milliseconds (where they have signal)</li>
+    <li>Macro fragments predict the next quarter (where they have signal)</li>
+    <li>No fragment is asked to predict faster or slower than its natural dynamics</li>
+  </ul>
+
+  <h3>VampPrior for the Marginal</h3>
+
+  <p>The marginal <span class="st">p(z) = (1/K) &Sigma;_k q(z | x_k)</span> is approximated via the Variational Mixture of Posteriors (VampPrior, Tomczak &amp; Welling, AISTATS 2018). This avoids the over-regularization that a standard Gaussian prior causes in VAEs, and naturally clusters the latent space by regime.</p>
+
+  <!-- ============ 9. IDENTIFIABILITY ============ -->
+  <h2 id="identifiability"><span class="sec-num">9</span>Identifiability and Causal Structure</h2>
+
+  <p>A world model is only useful if its latent variables correspond to real quantities. RecWM achieves identifiability through four complementary mechanisms.</p>
+
+  <h3>9.1 Independent Decoders with Sparse Jacobians</h3>
+
+  <p>Each fragment type k has its own decoder <span class="st">g_k : z_k &rarr; x_k</span>. The Jacobian <span class="st">&part;g_k / &part;z</span> is constrained to be sparse: fragment k&rsquo;s reconstruction depends only on its own latents and a small set of coupling terms. This is the multi-decoder approach of Locatello et al. (ICML 2020), extended with typing.</p>
+
+  <h3>9.2 SlowVAE Laplace Prior</h3>
+
+  <p>The SlowVAE (Klindt et al., ICML 2021) imposes a Laplace prior on temporal differences: <span class="st">p(z_t | z_{t-1}) &propto; exp(-|z_t - z_{t-1}| / &lambda;)</span>. This biases latent variables toward slow features (Wiskott &amp; Sejnowski 2002), which are identifiable up to component-wise transformations under mild conditions.</p>
+
+  <div class="cite-card">
+    <strong>Klindt, Schott, Sharma, Ustyuzhaninov, Brendel, Bethge &amp; Paiton (ICML 2021).</strong> &ldquo;Towards Nonlinear Disentanglement in Natural Data with Temporal Sparse Coding.&rdquo; Proved that slow features in nonlinear ICA are identifiable with Laplace transition priors.
+  </div>
+
+  <h3>9.3 Structural Sparsity</h3>
+
+  <p>The causal structure among latent fragments is recovered via structural sparsity constraints. Zheng, Ng &amp; Zhang (NeurIPS 2022) showed that with sparse mixing functions and sufficient diversity in the data, latent causal variables are identifiable from observational data alone. RecWM applies this at the fragment level: the coupling functions <span class="st">&rho;_j</span> are regularized toward sparsity.</p>
+
+  <h3>9.4 Mechanism Sparsity and Causal Emergence</h3>
+
+  <p>Lachapelle et al. (CLeaR 2022) formalized mechanism sparsity: each causal mechanism depends on few parents. Combined with the independent mechanism principle (Sch&ouml;lkopf et al. 2012), this gives identification of the causal graph from distribution shifts&mdash;exactly what regime changes provide in financial data.</p>
+
+  <p>Causal emergence is detected via SVD of the fragment interaction matrix: when a set of micro-level fragments can be compressed into a macro-fragment with <em>higher</em> effective information (Liu, Yuan &amp; Zhang, Entropy 2024), the macro-fragment is &ldquo;more causal&rdquo; than its components. This provides a principled criterion for fragment hierarchy.</p>
+
+  <div class="cite-card">
+    <strong>Liu, Yuan &amp; Zhang (Entropy 26(8):618, 2024).</strong> &ldquo;Exact Causal Emergence for Linear Stochastic Iteration Systems.&rdquo; Closed-form optimal coarse-graining from principal eigenvectors of the transition matrix. Complexity O(n^3) in the number of variables. A &ldquo;linear stochastic iteration system&rdquo; is a VAR model.
+  </div>
+
+  <!-- ============ 10. LOSS FUNCTION ============ -->
+  <h2 id="loss"><span class="sec-num">10</span>The Unified Loss Function</h2>
+
+  <p>RecWM is trained end-to-end with a composite loss that balances reconstruction, prediction, sparsity, gating, martingale consistency, and cross-fragment coupling:</p>
+
+  <div class="equation-block">
+    L = L_recon + &Sigma;_k L_SPIB^{(k)} + &alpha; &middot; L_sparsity + &Sigma;_k L_gate^{(k)} + &mu; &middot; L_MZ + &nu; &middot; L_coupling
+  </div>
+
+  <p>Each term:</p>
+
+  <table>
+    <thead>
+      <tr><th>Term</th><th>Definition</th><th>Role</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="st">L_recon</span></td>
+        <td>&Sigma;_k || x_k - g_k(z_k) ||^2</td>
+        <td>Reconstruction accuracy per fragment type</td>
+      </tr>
+      <tr>
+        <td><span class="st">L_SPIB^{(k)}</span></td>
+        <td>-I(z_k; state_{t+&tau;_k}) + &beta;_k &middot; I(z_k; X_t)</td>
+        <td>Predictive compression at fragment timescale</td>
+      </tr>
+      <tr>
+        <td><span class="st">L_sparsity</span></td>
+        <td>&Sigma;_{j&ne;k} |&part;g_k / &part;z_j|</td>
+        <td>Cross-fragment Jacobian sparsity (identifiability)</td>
+      </tr>
+      <tr>
+        <td><span class="st">L_gate^{(k)}</span></td>
+        <td>&lambda;_k &middot; P(g_k &ne; 0)</td>
+        <td>GateL0RD L0 penalty, stronger for slow fragments</td>
+      </tr>
+      <tr>
+        <td><span class="st">L_MZ</span></td>
+        <td>E[(r_t - r_f) &middot; z_t]^2</td>
+        <td>Martingale / no-arbitrage consistency</td>
+      </tr>
+      <tr>
+        <td><span class="st">L_coupling</span></td>
+        <td>&Sigma;_{j,k} |&rho;_{jk} - &rho;&#x302;_{jk}(z)|^2</td>
+        <td>Cross-fragment coupling accuracy</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="contrib">
+    <strong>The martingale term <span class="st">L_MZ</span> is unique to RecWM.</strong> It enforces the no-arbitrage principle directly in the loss: under the risk-neutral measure, discounted price processes must be martingales. This is not a soft preference&mdash;violations indicate the model has learned a spurious arbitrage that cannot exist in liquid markets.
+  </div>
+
+  <!-- ============ 11. CONTINUAL LEARNING ============ -->
+  <h2 id="continual"><span class="sec-num">11</span>Continual Learning Theory</h2>
+
+  <p>Financial markets are non-stationary by nature. Regimes change, regulations evolve, new instruments appear. RecWM addresses this through a five-layer continual learning stack, each layer providing progressively stronger protection against catastrophic forgetting.</p>
+
+  <!-- DIAGRAM: Continual Learning Layers -->
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 780 480" xmlns="http://www.w3.org/2000/svg" style="font-family: var(--font-sans); font-size: 12px;">
+      <rect x="0" y="0" width="780" height="480" rx="12" fill="var(--diagram-bg, #f8f9fa)"/>
+
+      <text x="390" y="30" text-anchor="middle" fill="var(--diagram-text, #1a1a2e)" font-size="16" font-weight="700">Continual Learning Stack</text>
+
+      <!-- CL-0 -->
+      <rect x="40" y="50" width="700" height="70" rx="8" fill="var(--green)" opacity="0.12" stroke="var(--green)" stroke-width="1.5"/>
+      <text x="60" y="72" fill="var(--green)" font-weight="700" font-size="13">CL-0: GateL0RD Natural CL</text>
+      <text x="60" y="90" fill="var(--diagram-text, #1a1a2e)" font-size="11">When g_k = 0, effective learning rate &eta;_eff = p &middot; &eta; &asymp; 0. Closed gates = frozen parameters.</text>
+      <text x="60" y="106" fill="var(--fg-dim, #666)" font-size="11">Cost: zero (built into forward pass). Mechanism: gate-mediated gradient blocking.</text>
+
+      <!-- CL-1 -->
+      <rect x="40" y="130" width="700" height="70" rx="8" fill="var(--accent)" opacity="0.12" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="60" y="152" fill="var(--accent)" font-weight="700" font-size="13">CL-1: O(N) RTRL Streaming</text>
+      <text x="60" y="170" fill="var(--diagram-text, #1a1a2e)" font-size="11">Diagonal A &rArr; Jacobian is diagonal &rArr; RTRL in O(N) per step. No BPTT, no unrolling, no replay buffer.</text>
+      <text x="60" y="186" fill="var(--fg-dim, #666)" font-size="11">Cost: O(N) per step. Mechanism: diagonal state-space structure (S5).</text>
+
+      <!-- CL-2 -->
+      <rect x="40" y="210" width="700" height="70" rx="8" fill="var(--signal-purple)" opacity="0.12" stroke="var(--signal-purple)" stroke-width="1.5"/>
+      <text x="60" y="232" fill="var(--signal-purple)" font-weight="700" font-size="13">CL-2: Per-Fragment EWC</text>
+      <text x="60" y="250" fill="var(--diagram-text, #1a1a2e)" font-size="11">Elastic Weight Consolidation with online Fisher (Schwarz et al. 2018). Penalty per fragment:</text>
+      <text x="60" y="266" fill="var(--diagram-text, #1a1a2e)" font-size="11" font-family="var(--font-mono)">L_EWC^{(k)} = (&lambda;_k / 2) &middot; &Sigma;_i F_i^{(k)} &middot; (&theta;_i - &theta;*_i)^2</text>
+
+      <!-- CL-3 -->
+      <rect x="40" y="290" width="700" height="70" rx="8" fill="var(--amber)" opacity="0.12" stroke="var(--amber)" stroke-width="1.5"/>
+      <text x="60" y="312" fill="var(--amber)" font-weight="700" font-size="13">CL-3: BOCPD Regime Detection + DER++ Replay</text>
+      <text x="60" y="330" fill="var(--diagram-text, #1a1a2e)" font-size="11">Adams &amp; MacKay (2007) detects regime change points. Dark Experience Replay++ (Buzzega et al. 2020)</text>
+      <text x="60" y="346" fill="var(--fg-dim, #666)" font-size="11">stores logits from regime transitions. Replay triggered only at detected change points.</text>
+
+      <!-- CL-4 -->
+      <rect x="40" y="370" width="700" height="70" rx="8" fill="var(--red)" opacity="0.12" stroke="var(--red)" stroke-width="1.5"/>
+      <text x="60" y="392" fill="var(--red)" font-weight="700" font-size="13">CL-4: Slow-Fast Weights</text>
+      <text x="60" y="410" fill="var(--diagram-text, #1a1a2e)" font-size="11">&theta;_slow &larr; (1-&eta;_slow) &middot; &theta;_slow + &eta;_slow &middot; &theta;_fast. Adaptive schedule: &eta;_slow shrinks when</text>
+      <text x="60" y="426" fill="var(--fg-dim, #666)" font-size="11">BOCPD posterior on &ldquo;same regime&rdquo; is high, grows at regime transitions.</text>
+
+      <!-- Vertical arrow -->
+      <line x1="20" y1="50" x2="20" y2="440" stroke="var(--fg-dim, #666)" stroke-width="2" marker-end="url(#arrow-dim)"/>
+      <text x="14" y="250" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="11" transform="rotate(-90, 14, 250)">Increasing protection &amp; cost</text>
+
+      <defs>
+        <marker id="arrow-dim" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--fg-dim, #666)"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+
+  <h3>CL-0: GateL0RD Natural Continual Learning</h3>
+  <p>The simplest and cheapest layer. When a gate <span class="st">g_k(t) = 0</span>, the state <span class="st">z_k(t) = z_k(t-1)</span> exactly. Gradients with respect to the parameters of fragment k are multiplied by the gate opening probability p, giving an effective learning rate <span class="st">&eta;_eff = p &middot; &eta;</span>. For slow fragments (narrative, institutional), p is typically 0.01&ndash;0.05, providing ~20&ndash;100x natural forgetting protection.</p>
+
+  <h3>CL-1: O(N) RTRL Streaming</h3>
+  <p>Because the S5 backbone has diagonal A, the sensitivity matrix <span class="st">dh(t)/d&theta;</span> can be maintained in O(N) per timestep via Real-Time Recurrent Learning (Williams &amp; Zipser 1989). This enables true streaming: the model processes each timestep once, updates parameters, and discards the observation. No truncated BPTT, no replay buffer, no epoch.</p>
+
+  <h3>CL-2: Per-Fragment EWC</h3>
+  <p>Elastic Weight Consolidation (Kirkpatrick et al., PNAS 2017) penalizes movement away from previously important parameters. RecWM applies EWC <em>per fragment</em>, using the online Fisher approximation of Schwarz et al. (2018). The regularization strength <span class="st">&lambda;_k</span> scales with the fragment timescale: slow fragments resist change more.</p>
+
+  <h3>CL-3: BOCPD + DER++</h3>
+  <p>Bayesian Online Change Point Detection (Adams &amp; MacKay, arXiv 2007) monitors the fragment prediction errors for structural breaks. When a change point is detected with posterior probability &gt; 0.8, the system triggers Dark Experience Replay++ (Buzzega et al. 2020): stored logits from the previous regime are replayed alongside new data, enabling graceful transition without destroying old knowledge.</p>
+
+  <h3>CL-4: Slow-Fast Weights</h3>
+  <p>A Polyak-averaged &ldquo;slow&rdquo; copy of the parameters tracks the long-term structure. The averaging rate adapts: during stable regimes, <span class="st">&eta;_slow &rarr; 0</span> (the slow copy barely moves); at regime transitions, <span class="st">&eta;_slow &rarr; 0.01</span> (the slow copy absorbs the new regime quickly). Inference uses the slow weights for stability, with fast weights contributing residual corrections.</p>
+
+  <!-- ============ 12. FINANCIAL MATH ============ -->
+  <h2 id="finmath"><span class="sec-num">12</span>Financial Mathematics</h2>
+
+  <p>RecWM is grounded in five pillars of modern financial mathematics, each contributing specific structural constraints or modelling techniques.</p>
+
+  <h3>12.1 Rough Volatility</h3>
+
+  <p>Gatheral, Jaisson &amp; Rosenbaum (Quantitative Finance 2018) showed that log-volatility behaves as fractional Brownian motion with Hurst exponent H &asymp; 0.1, far rougher than the H = 0.5 of standard Brownian motion. This implies:</p>
+
+  <div class="equation-block">
+    log &sigma;(t) ~ fBM_H, &nbsp;&nbsp; H &asymp; 0.1
+  </div>
+
+  <p>RecWM&rsquo;s state-space backbone naturally captures rough dynamics because the diagonal A matrix can represent arbitrary spectral densities, including the power-law spectrum <span class="st">S(f) &propto; f^{-(2H+1)}</span> characteristic of rough processes. The fragment type &ldquo;microstructure&rdquo; is specifically designed for this timescale.</p>
+
+  <div class="cite-card">
+    <strong>Gatheral, Jaisson &amp; Rosenbaum (Quantitative Finance 18(6):933&ndash;949, 2018).</strong> &ldquo;Volatility is Rough.&rdquo; Demonstrated that H &asymp; 0.1 across virtually all equity option markets, rendering classical stochastic volatility models (Heston H=0.5) misspecified.
+  </div>
+
+  <h3>12.2 Regime-Switching Models</h3>
+
+  <p>Hamilton (Econometrica 1989) introduced Markov-switching models where the economy transitions between discrete regimes (expansion/recession) with state-dependent dynamics. RecWM generalizes this in two ways: (1) regimes are <em>continuous</em> (the narrative fragment, not a discrete label); (2) regime transitions are <em>endogenous</em> (driven by belief field dynamics, not an exogenous Markov chain).</p>
+
+  <h3>12.3 BOCPD</h3>
+
+  <p>Adams &amp; MacKay (arXiv 0710.3742, 2007) provided a Bayesian framework for online change point detection with O(1) per-timestep updates (with pruning). RecWM uses BOCPD at CL-3 to detect regime transitions in fragment prediction errors, triggering replay and adaptation.</p>
+
+  <h3>12.4 Online Convex Optimization</h3>
+
+  <p>Hazan (Foundations and Trends in Optimization 2016) provides the regret framework for online learning. RecWM&rsquo;s streaming updates achieve sublinear regret <span class="st">R_T = O(sqrt(T))</span> under the assumption that the loss sequence has bounded variation. The constraint field &Phi; ensures the decision set is convex at each step.</p>
+
+  <h3>12.5 Adaptive Kalman Filtering</h3>
+
+  <p>The S5 backbone can be interpreted as a nonlinear Kalman filter with learned dynamics. The fragment-typed step sizes correspond to different process noise covariances per fragment, and the GateL0RD gates implement an adaptive measurement selection (only incorporating observations when the gate opens).</p>
+
+  <h3>12.6 Cross-Asset Contagion</h3>
+
+  <p>RecWM models contagion through the coupling functions <span class="st">&rho;_{jk}</span>. Three classical frameworks inform this:</p>
+  <ul>
+    <li><strong>DCC-GARCH</strong> (Engle 2002): dynamic conditional correlations as time-varying coupling strengths</li>
+    <li><strong>Copulas</strong> (Joe 1997, Nelsen 2006): tail dependence beyond linear correlation, especially Clayton/Gumbel for asymmetric crash dependence</li>
+    <li><strong>Network models</strong> (Acemoglu et al. 2015): contagion through interconnected balance sheets, where the adjacency matrix is learned from the fragment coupling structure</li>
+  </ul>
+
+  <!-- ============ 13. REFLEXIVITY ============ -->
+  <h2 id="reflexivity"><span class="sec-num">13</span>Reflexivity and Performativity</h2>
+
+  <p>Reflexivity is the central intellectual contribution of RecWM. We synthesize three traditions.</p>
+
+  <h3>13.1 Soros Reflexivity Theory</h3>
+
+  <p>George Soros (1987, 2013) argued that financial markets are fundamentally reflexive: participants&rsquo; biased views influence events, and events influence views, creating a two-way feedback. This was a philosophical claim, not a formal theory. RecWM provides the formalization.</p>
+
+  <h3>13.2 MacKenzie: An Engine, Not a Camera</h3>
+
+  <p>Donald MacKenzie (2006) documented how the Black-Scholes model did not merely describe options markets&mdash;it <em>created</em> them. Option prices converged toward Black-Scholes predictions as traders adopted the formula, a phenomenon MacKenzie called &ldquo;Barnesian performativity.&rdquo; RecWM generalizes this: every model deployed in a market is potentially performative; the reflexivity coefficient &epsilon; quantifies how strongly.</p>
+
+  <div class="cite-card">
+    <strong>MacKenzie (2006).</strong> <em>An Engine, Not a Camera: How Financial Models Shape Markets.</em> MIT Press. The foundational sociological account of financial model performativity, documenting how Black-Scholes changed the very markets it claimed to describe.
+  </div>
+
+  <h3>13.3 Performative Prediction</h3>
+
+  <p>Perdomo et al. (ICML 2020) formalized performativity in machine learning: when predictions influence the data-generating process, standard ERM assumptions break. Their framework defines:</p>
+
+  <ul>
+    <li><strong>&epsilon;-sensitivity</strong> (Def. 3.1): the distribution shift per unit parameter change</li>
+    <li><strong>Performative stability</strong> (Def. 3.2): the fixed point where retraining reproduces the same model</li>
+    <li><strong>Performative optimality</strong> (Def. 3.3): the parameters minimizing true performative risk</li>
+  </ul>
+
+  <h3>13.4 The &epsilon; &lt; &gamma;/&beta; Condition</h3>
+
+  <div class="equation-block">
+    &epsilon; &lt; &gamma; / &beta;
+  </div>
+
+  <p>This is Theorem 3.5 of Perdomo et al. (ICML 2020): Repeated Risk Minimization converges to a performative stable point if the sensitivity &epsilon; is less than the ratio of strong convexity &gamma; to smoothness &beta;. Proposition 3.6 shows the bound is tight. Three distinct thresholds emerge:</p>
+
+  <table>
+    <thead>
+      <tr><th>Condition</th><th>Guarantee</th><th>Source</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="st">&epsilon; &lt; &gamma;/&beta;</span></td>
+        <td>RRM converges to performative stable point</td>
+        <td>Perdomo et al. 2020, Thm 3.5</td>
+      </tr>
+      <tr>
+        <td><span class="st">&epsilon; &lt; &gamma;/[(&beta;+&gamma;)(1+1.5&eta;&beta;)]</span></td>
+        <td>Repeated Gradient Descent converges</td>
+        <td>Perdomo et al. 2020, Thm 3.8</td>
+      </tr>
+      <tr>
+        <td><span class="st">&epsilon; &le; &gamma;/(2&beta;)</span></td>
+        <td>Performative risk is convex (optimum findable)</td>
+        <td>Miller, Perdomo &amp; Zrnic, ICML 2021, Thm 3.1</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="warn">
+    <strong>The unnamed gap.</strong> The region <span class="st">&gamma;/(2&beta;) &lt; &epsilon; &lt; &gamma;/&beta;</span> is stable but <em>not optimizable</em>: the system converges to a fixed point, but that fixed point may not minimize performative risk. This gap is unnamed in the literature. We conjecture that real financial markets live in this gap: stable enough to trade, but not optimizable enough for convergence to a social optimum.
+  </div>
+
+  <h3>13.5 How EWC Reduces Effective Reflexivity</h3>
+
+  <p>EWC (CL-2) has an unexpected benefit for reflexivity. By penalizing large parameter changes, EWC reduces <span class="st">||&theta;_{t+1} - &theta;_t||</span>, which in turn reduces the distribution shift <span class="st">||D(&theta;_{t+1}) - D(&theta;_t)||_W</span>. The <em>effective</em> reflexivity becomes:</p>
+
+  <div class="equation-block">
+    &epsilon;_eff = &epsilon; / (1 + &lambda;_EWC &middot; F_max)
+  </div>
+
+  <p>where <span class="st">F_max</span> is the largest Fisher diagonal entry. Strong EWC regularization can push <span class="st">&epsilon;_eff</span> below <span class="st">&gamma;/&beta;</span> even when bare <span class="st">&epsilon;</span> exceeds it, <em>stabilizing a system that would otherwise oscillate</em>.</p>
+
+  <!-- ============ 14. ACTIVE INFERENCE ============ -->
+  <h2 id="active-inf"><span class="sec-num">14</span>Active Inference and Free Energy</h2>
+
+  <h3>14.1 Friston&rsquo;s Free Energy Principle</h3>
+
+  <p>The Free Energy Principle (Friston 2010) states that any system that persists in a changing environment must minimize a free energy functional:</p>
+
+  <div class="equation-block">
+    F = E_q [log q(&theta;) - log p(o, &theta;)] = D_KL(q(&theta;) || p(&theta; | o)) + const
+  </div>
+
+  <p>where <span class="st">q(&theta;)</span> is the agent&rsquo;s approximate posterior over world parameters, and <span class="st">p(o, &theta;)</span> is the generative model. Minimizing F is equivalent to maximizing model evidence <span class="st">log p(o)</span> while keeping the posterior close to the prior.</p>
+
+  <h3>14.2 Active Inference for Decision-Making</h3>
+
+  <p>Active inference (Friston et al. 2017) extends this to action selection: agents select actions that minimize <em>expected</em> free energy (EFE):</p>
+
+  <div class="equation-block">
+    G(&pi;) = E_{p(o,s|&pi;)} [log q(s|&pi;) - log p(o, s)] = -I(o; s | &pi;) + D_KL(p(o|&pi;) || p&#x303;(o))
+  </div>
+
+  <p>The first term drives <strong>epistemic</strong> behavior (explore to reduce uncertainty); the second drives <strong>pragmatic</strong> behavior (act to achieve preferred outcomes <span class="st">p&#x303;(o)</span>). In financial markets, this naturally decomposes into information-gathering (research, monitoring) and position-taking (trading).</p>
+
+  <h3>14.3 Connection to Portfolio Optimization</h3>
+
+  <p>The niche construction formulation (Constant &amp; Friston): the environment (&ldquo;niche&rdquo;) infers the agent back, via <span class="st">d&eta;/dt = -&nabla;F(&eta; | a)</span>. In financial markets, this is literal: a large fund&rsquo;s trades move prices, changing the environment, which changes the optimal portfolio, which changes the trades. The dual flow <span class="st">d&mu;/dt = -&nabla;F(&mu; | s)</span> and <span class="st">d&eta;/dt = -&nabla;F(&eta; | a)</span> is the active inference formulation of reflexivity.</p>
+
+  <div class="contrib">
+    <strong>Planning as inference.</strong> Under active inference, planning reduces to inference over policies (sequences of actions). Combined with the S5 backbone for fast imagined rollouts, this provides a principled framework for multi-step portfolio planning that naturally trades off exploration and exploitation.
+  </div>
+
+  <!-- ============ 15. CONVERGENCE ============ -->
+  <h2 id="convergence"><span class="sec-num">15</span>Convergence Guarantees</h2>
+
+  <p>RecWM&rsquo;s convergence theory rests on showing that the master equation defines a contraction mapping.</p>
+
+  <div class="def-block">
+    <p class="def-term">Theorem 15.1 (Contraction)</p>
+    <p>Define <span class="st">F(W) = C(W, A(B(W)), &Phi;)</span>. If:</p>
+    <ol>
+      <li><span class="st">C</span> is <span class="st">L_C</span>-Lipschitz in its first argument</li>
+      <li>The composed map <span class="st">A &circ; B</span> is <span class="st">&epsilon;</span>-sensitive (Perdomo Def. 3.1)</li>
+      <li><span class="st">L_C &middot; (1 + &epsilon;) &lt; 1</span></li>
+    </ol>
+    <p>then F is a contraction mapping with rate <span class="st">r = L_C &middot; (1 + &epsilon;) &lt; 1</span>, and by the Banach fixed-point theorem, iteration <span class="st">W_{n+1} = F(W_n)</span> converges to a unique fixed point <span class="st">W*</span>.</p>
+  </div>
+
+  <h3>Exponential Convergence Rate</h3>
+
+  <div class="equation-block">
+    || W_n - W* || &le; r^n &middot; || W_0 - W* ||, &nbsp;&nbsp;&nbsp; r = L_C(1 + &epsilon;)
+  </div>
+
+  <p>The convergence is exponential with rate <span class="st">-log(r) = -log(L_C(1+&epsilon;))</span>. Faster convergence requires either reducing <span class="st">L_C</span> (tighter constraint fields, smoother construction) or reducing <span class="st">&epsilon;</span> (less reflexive markets, stronger EWC regularization).</p>
+
+  <h3>Role of Constraint Field Tightness</h3>
+
+  <p>Constraint fields reduce <span class="st">L_C</span> by projecting the construction operator onto a smaller feasible set. Tighter constraints (higher capital requirements, position limits, circuit breakers) directly shrink the Lipschitz constant of C, making convergence easier. This formalizes the intuition that regulation stabilizes markets&mdash;not by eliminating reflexivity, but by reducing the amplification of the reflexive loop.</p>
+
+  <p>Conversely, relaxing constraints (deregulation, shadow banking, regulatory arbitrage) increases <span class="st">L_C</span>. If <span class="st">L_C(1+&epsilon;)</span> exceeds 1, the system loses its contraction property and can enter unstable oscillations&mdash;a formal description of financial crises as loss of contractivity.</p>
+
+  <div class="contrib">
+    <strong>The crisis condition: L_C(1+&epsilon;) &ge; 1.</strong> This is our formal criterion for systemic instability. RecWM monitors both <span class="st">L_C</span> (estimated from the Jacobian of the construction operator) and <span class="st">&epsilon;</span> (estimated from the sensitivity of predictions to parameter perturbation) in real time. A rising product signals approaching instability before it manifests in prices.
+  </div>
+
+  <!-- ============ 16. MUST-CITE ============ -->
+  <h2 id="refs"><span class="sec-num">16</span>Must-Cite List</h2>
+
+  <h3>World Models &amp; Representation Learning</h3>
+  <div class="cite-card"><strong>Ha &amp; Schmidhuber (NeurIPS 2018).</strong> &ldquo;World Models.&rdquo; V-M-C architecture for learning world models in latent space.</div>
+  <div class="cite-card"><strong>Hafner, Lillicrap, Ba &amp; Norouzi (ICLR 2020).</strong> &ldquo;Dream to Control: Learning Behaviors by Latent Imagination.&rdquo; Dreamer / RSSM.</div>
+  <div class="cite-card"><strong>Hafner, Pasukonis, Ba &amp; Lillicrap (2023).</strong> &ldquo;Mastering Diverse Domains through World Models.&rdquo; DreamerV3.</div>
+  <div class="cite-card"><strong>LeCun (2022).</strong> &ldquo;A Path Towards Autonomous Machine Intelligence.&rdquo; JEPA architecture.</div>
+
+  <h3>State Space Models</h3>
+  <div class="cite-card"><strong>Gu, Goel &amp; R&eacute; (ICLR 2022).</strong> &ldquo;Efficiently Modeling Long Sequences with Structured State Spaces.&rdquo; S4.</div>
+  <div class="cite-card"><strong>Smith, Warrington &amp; Linderman (ICLR 2023).</strong> &ldquo;Simplified State Space Layers for Sequence Modeling.&rdquo; S5 with diagonal A and parallel scan.</div>
+  <div class="cite-card"><strong>Gu &amp; Dao (arXiv 2024).</strong> &ldquo;Mamba: Linear-Time Sequence Modeling with Selective State Spaces.&rdquo;</div>
+
+  <h3>Continual Learning</h3>
+  <div class="cite-card"><strong>Kirkpatrick et al. (PNAS 114(13), 2017).</strong> &ldquo;Overcoming Catastrophic Forgetting in Neural Networks.&rdquo; Elastic Weight Consolidation.</div>
+  <div class="cite-card"><strong>Schwarz et al. (ICML 2018).</strong> &ldquo;Progress &amp; Compress: A Scalable Framework for Continual Learning.&rdquo; Online EWC with Fisher accumulation.</div>
+  <div class="cite-card"><strong>Buzzega, Boschini, Porrello, Abati &amp; Calderara (NeurIPS 2020).</strong> &ldquo;Dark Experience for General Continual Learning.&rdquo; DER++.</div>
+  <div class="cite-card"><strong>Williams &amp; Zipser (Neural Computation 1(2), 1989).</strong> &ldquo;A Learning Algorithm for Continually Running Fully Recurrent Neural Networks.&rdquo; RTRL.</div>
+
+  <h3>Gating &amp; Temporal Abstraction</h3>
+  <div class="cite-card"><strong>Gumbsch, Sajid, Mazzaglia &amp; Friston (ICML 2022).</strong> &ldquo;GateL0RD.&rdquo; L0-regularized gating for event segmentation and natural continual learning.</div>
+  <div class="cite-card"><strong>Louizos, Welling &amp; Kingma (ICLR 2018).</strong> &ldquo;Learning Sparse Neural Networks through L0 Regularization.&rdquo; Hard-concrete distribution.</div>
+
+  <h3>Information Theory &amp; Identifiability</h3>
+  <div class="cite-card"><strong>Wang, Mey &amp; No&eacute; (J. Chem. Phys. 154, 2021).</strong> &ldquo;State Predictive Information Bottleneck.&rdquo; SPIB.</div>
+  <div class="cite-card"><strong>Tishby, Pereira &amp; Bialek (1999).</strong> &ldquo;The Information Bottleneck Method.&rdquo;</div>
+  <div class="cite-card"><strong>Tomczak &amp; Welling (AISTATS 2018).</strong> &ldquo;VAE with a VampPrior.&rdquo; Variational Mixture of Posteriors.</div>
+  <div class="cite-card"><strong>Klindt et al. (ICML 2021).</strong> &ldquo;Towards Nonlinear Disentanglement in Natural Data with Temporal Sparse Coding.&rdquo; SlowVAE.</div>
+  <div class="cite-card"><strong>Zheng, Ng &amp; Zhang (NeurIPS 2022).</strong> Structural sparsity for latent causal variable identification.</div>
+  <div class="cite-card"><strong>Lachapelle et al. (CLeaR 2022).</strong> &ldquo;Disentanglement via Mechanism Sparsity Regularization.&rdquo;</div>
+
+  <h3>Causal Emergence</h3>
+  <div class="cite-card"><strong>Liu, Yuan &amp; Zhang (Entropy 26(8):618, 2024).</strong> Exact causal emergence for linear stochastic iteration systems (= VAR). Closed-form optimal coarse-graining.</div>
+  <div class="cite-card"><strong>Barnett &amp; Seth (Phys. Rev. E 108:014304, 2023).</strong> Dynamical independence. Cleanest emergence framework, speaks VAR/Granger, no arbitrary intervention distribution.</div>
+  <div class="cite-card"><strong>Rosas et al. (PLOS Computational Biology, 2020; PNAS 122, 2025).</strong> &Phi;ID: integrated information decomposition, partial information decomposition for emergence.</div>
+
+  <h3>Reflexivity &amp; Performativity</h3>
+  <div class="cite-card"><strong>Perdomo, Zrnic, Mendler-D&uuml;nner &amp; Hardt (ICML 2020).</strong> &ldquo;Performative Prediction.&rdquo; The formal foundation: &epsilon;-sensitivity, performative stability, the &epsilon; &lt; &gamma;/&beta; condition.</div>
+  <div class="cite-card"><strong>Miller, Perdomo &amp; Zrnic (ICML 2021).</strong> &ldquo;Outside the Echo Chamber: Optimizing the Performative Risk.&rdquo; Convexity condition &epsilon; &le; &gamma;/(2&beta;).</div>
+  <div class="cite-card"><strong>MacKenzie (MIT Press 2006).</strong> <em>An Engine, Not a Camera.</em> Sociological foundations of financial model performativity.</div>
+  <div class="cite-card"><strong>Soros (1987, 2013).</strong> <em>The Alchemy of Finance</em> and <em>Fallibility, Reflexivity, and the Human Uncertainty Principle.</em></div>
+  <div class="cite-card"><strong>Morris &amp; Shin (AER 92(5), 2002).</strong> &ldquo;Social Value of Public Information.&rdquo; Common knowledge and coordination cascades.</div>
+
+  <h3>Financial Mathematics</h3>
+  <div class="cite-card"><strong>Gatheral, Jaisson &amp; Rosenbaum (Quant. Finance 18(6), 2018).</strong> &ldquo;Volatility is Rough.&rdquo; H &asymp; 0.1 for log-volatility.</div>
+  <div class="cite-card"><strong>Hamilton (Econometrica 57(2), 1989).</strong> &ldquo;A New Approach to the Economic Analysis of Nonstationary Time Series.&rdquo; Markov regime switching.</div>
+  <div class="cite-card"><strong>Adams &amp; MacKay (arXiv 0710.3742, 2007).</strong> &ldquo;Bayesian Online Changepoint Detection.&rdquo;</div>
+  <div class="cite-card"><strong>Hazan (Foundations and Trends in Optimization, 2016).</strong> <em>Introduction to Online Convex Optimization.</em></div>
+  <div class="cite-card"><strong>Engle (JBES 20(3), 2002).</strong> &ldquo;Dynamic Conditional Correlation.&rdquo; DCC-GARCH.</div>
+
+  <h3>Active Inference</h3>
+  <div class="cite-card"><strong>Friston (Nature Reviews Neuroscience 11, 2010).</strong> &ldquo;The Free-Energy Principle: A Unified Brain Theory?&rdquo;</div>
+  <div class="cite-card"><strong>Friston, FitzGerald, Rigoli, Schwartenbeck &amp; Pezzulo (2017).</strong> &ldquo;Active Inference and Learning.&rdquo; Expected free energy for action selection.</div>
+  <div class="cite-card"><strong>Constant &amp; Friston.</strong> Niche construction as dual inference: d&mu;/dt = -&nabla;F(&mu;|s), d&eta;/dt = -&nabla;F(&eta;|a).</div>
+
+  <h3>Constraint Formalization</h3>
+  <div class="cite-card"><strong>Crawford &amp; Ostrom (APSR 89(3), 1995).</strong> &ldquo;A Grammar of Institutions.&rdquo; ADICO framework: Attribute, Deontic, aIm, Condition, Or-else.</div>
+  <div class="cite-card"><strong>Greif &amp; Laitin (APSR 98(4), 2004).</strong> &ldquo;A Theory of Endogenous Institutional Change.&rdquo; Quasi-parameters as endogenous crisis mechanisms.</div>
+
+  <h3>Ergodicity &amp; Growth Optimality</h3>
+  <div class="cite-card"><strong>Baumann, Berman, Moran, Sholto-Douglas &amp; Peters (TMLR 2025).</strong> Peer-reviewed treatment of ergodicity economics with code. <em>Lead with this, not the 2019 Nature Physics perspective.</em></div>
+  <div class="cite-card"><strong>Kelly (Bell System Technical Journal 35(4), 1956).</strong> &ldquo;A New Interpretation of Information Rate.&rdquo; The Kelly criterion for growth-optimal allocation.</div>
+
+</div>
+
+    </div>
   </main>
 </div>
 
