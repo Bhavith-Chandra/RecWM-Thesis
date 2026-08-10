@@ -12516,7 +12516,7 @@ For an economic world model built on causal/structural foundations, this means a
   <!-- ============ 7. GATEL0RD ============ -->
   <h2 id="gatel0rd"><span class="sec-num">7</span>GateL0RD Fragment Updates</h2>
 
-  <p>Not every fragment should update at every timestep. The GateL0RD mechanism (Gumbsch et al., ICML 2022) provides a principled way to learn <em>when</em> to update each fragment, using hard-concrete gates with L0 regularization.</p>
+  <p>Not every fragment should update at every timestep. The GateL0RD mechanism (Gumbsch, Butz &amp; Martius, NeurIPS 2021) provides a principled way to learn <em>when</em> to update each fragment, using hard-concrete gates with L0 regularization.</p>
 
   <h3>Hard-Concrete Sampling</h3>
 
@@ -12546,7 +12546,7 @@ For an economic world model built on causal/structural foundations, this means a
   <p>where <span class="st">&lambda;_k &propto; &tau;_k / &tau;_max</span>: slow fragments (narrative, institutional) are penalized more heavily for updating, naturally encoding the prior that slow things should change rarely.</p>
 
   <div class="cite-card">
-    <strong>Gumbsch, Sajid, Mazzaglia &amp; Friston (ICML 2022).</strong> &ldquo;GateL0RD: Gated Latent Representations with L0 Regularized Dynamics.&rdquo; Demonstrated that L0-gated RNNs naturally segment temporal sequences into events, with the gate providing interpretable &ldquo;event boundaries.&rdquo;
+    <strong>Gumbsch, Butz &amp; Martius (NeurIPS 2021).</strong> &ldquo;Sparsely Changing Latent States for Prediction and Planning in Partially Observable Domains.&rdquo; Introduced GateL0RD: L0-gated RNNs that naturally segment temporal sequences into events, with the gate providing interpretable &ldquo;event boundaries.&rdquo;
   </div>
 
   <p>The connection to continual learning is immediate: when a gate is closed, the effective learning rate for that fragment is zero, providing <em>natural protection</em> against catastrophic forgetting without any explicit memory mechanism.</p>
@@ -12777,7 +12777,7 @@ For an economic world model built on causal/structural foundations, this means a
 
   <h3>12.3 BOCPD</h3>
 
-  <p>Adams &amp; MacKay (arXiv 0710.3742, 2007) provided a Bayesian framework for online change point detection with O(1) per-timestep updates (with pruning). RecWM uses BOCPD at CL-3 to detect regime transitions in fragment prediction errors, triggering replay and adaptation.</p>
+  <p>Adams &amp; MacKay (arXiv 0710.3742, 2007) provided a Bayesian framework for online change point detection with O(E[r]) amortised per-timestep updates, where r is the run length (with pruning to cap worst-case cost; without pruning the naive algorithm is O(t) per step). RecWM uses BOCPD at CL-3 to detect regime transitions in fragment prediction errors, triggering replay and adaptation.</p>
 
   <h3>12.4 Online Convex Optimization</h3>
 
@@ -12954,11 +12954,11 @@ For an economic world model built on causal/structural foundations, this means a
   <div class="cite-card"><strong>Williams &amp; Zipser (Neural Computation 1(2), 1989).</strong> &ldquo;A Learning Algorithm for Continually Running Fully Recurrent Neural Networks.&rdquo; RTRL.</div>
 
   <h3>Gating &amp; Temporal Abstraction</h3>
-  <div class="cite-card"><strong>Gumbsch, Sajid, Mazzaglia &amp; Friston (ICML 2022).</strong> &ldquo;GateL0RD.&rdquo; L0-regularized gating for event segmentation and natural continual learning.</div>
+  <div class="cite-card"><strong>Gumbsch, Butz &amp; Martius (NeurIPS 2021).</strong> &ldquo;GateL0RD.&rdquo; L0-regularized gating for event segmentation and natural continual learning.</div>
   <div class="cite-card"><strong>Louizos, Welling &amp; Kingma (ICLR 2018).</strong> &ldquo;Learning Sparse Neural Networks through L0 Regularization.&rdquo; Hard-concrete distribution.</div>
 
   <h3>Information Theory &amp; Identifiability</h3>
-  <div class="cite-card"><strong>Wang, Mey &amp; No&eacute; (J. Chem. Phys. 154, 2021).</strong> &ldquo;State Predictive Information Bottleneck.&rdquo; SPIB.</div>
+  <div class="cite-card"><strong>Wang &amp; Tiwary (J. Chem. Phys. 154, 2021).</strong> &ldquo;State Predictive Information Bottleneck.&rdquo; SPIB.</div>
   <div class="cite-card"><strong>Tishby, Pereira &amp; Bialek (1999).</strong> &ldquo;The Information Bottleneck Method.&rdquo;</div>
   <div class="cite-card"><strong>Tomczak &amp; Welling (AISTATS 2018).</strong> &ldquo;VAE with a VampPrior.&rdquo; Variational Mixture of Posteriors.</div>
   <div class="cite-card"><strong>Klindt et al. (ICML 2021).</strong> &ldquo;Towards Nonlinear Disentanglement in Natural Data with Temporal Sparse Coding.&rdquo; SlowVAE.</div>
@@ -12994,7 +12994,7 @@ For an economic world model built on causal/structural foundations, this means a
   <div class="cite-card"><strong>Greif &amp; Laitin (APSR 98(4), 2004).</strong> &ldquo;A Theory of Endogenous Institutional Change.&rdquo; Quasi-parameters as endogenous crisis mechanisms.</div>
 
   <h3>Ergodicity &amp; Growth Optimality</h3>
-  <div class="cite-card"><strong>Baumann, Berman, Moran, Sholto-Douglas &amp; Peters (TMLR 2025).</strong> Peer-reviewed treatment of ergodicity economics with code. <em>Lead with this, not the 2019 Nature Physics perspective.</em></div>
+  <div class="cite-card"><strong>Baumann, Noorani, Price, Peters, Connaughton &amp; Sch&ouml;n (TMLR 2025).</strong> &ldquo;Reinforcement Learning with Non-Ergodic Reward Increments.&rdquo; Peer-reviewed treatment of ergodicity economics with code. <em>Lead with this, not the 2019 Nature Physics perspective.</em></div>
   <div class="cite-card"><strong>Kelly (Bell System Technical Journal 35(4), 1956).</strong> &ldquo;A New Interpretation of Information Rate.&rdquo; The Kelly criterion for growth-optimal allocation.</div>
 
 </div>
@@ -13638,15 +13638,15 @@ For an economic world model built on causal/structural foundations, this means a
   <div style="background: var(--bg-alt, #f5f5f5); border-radius: 8px; padding: 1.5rem 1.8rem; margin: 1.2rem 0; border-left: 4px solid var(--accent);">
     <h4 style="margin-top:0;">The Dual-Position Axiom</h4>
     <p style="font-size: 1.05rem; margin-bottom:0;"><strong>The model is simultaneously inside the system it models and outside it. This duality is not a contradiction&mdash;it is a fixed point.</strong></p>
-    <p>Every existing world model&mdash;JEPA, RSSM, Genie, Dreamer, Sora&mdash;operates under the exogeneity assumption: the model observes a system from outside. Pure endogeneity (the model is only inside) is equally wrong&mdash;a business world model must also observe, predict, and provide actionable intelligence from an external vantage point. The real situation is dual: the model is a <em>participant</em> (inside&mdash;its predictions move markets, its risk assessments trigger margin calls) and an <em>observer</em> (outside&mdash;it must provide accurate forecasts, risk signals, and scenario analysis). Mathematically, this duality resolves as a <strong>Lawvere fixed point</strong>: in a cartesian closed category modelling the economy, with the model M as an object, any point-surjective evaluation morphism e: M &times; M &rarr; C guarantees a fixed point f* where M(f*) = f*&mdash;the state where the model&rsquo;s prediction and the system&rsquo;s reality coincide. The model is &ldquo;inside&rdquo; when it perturbs the system (Soros&rsquo;s manipulative function), &ldquo;outside&rdquo; when it observes (Soros&rsquo;s cognitive function), and the fixed point is where both perspectives collapse into identity.</p>
-    <p style="font-size:0.88rem; color: var(--fg-dim);">The system is also inside a larger environment (pandemics, geopolitics, natural disasters) that the model cannot fully control. Filimonov &amp; Sornette (2012) measure the endogenous fraction of price moves at 30&ndash;90% depending on market conditions&mdash;the remainder is genuinely exogenous. A complete world model must handle both channels simultaneously.</p>
+    <p>Every existing world model&mdash;JEPA, RSSM, Genie, Dreamer, Sora&mdash;operates under the exogeneity assumption: the model observes a system from outside. Pure endogeneity (the model is only inside) is equally wrong&mdash;a business world model must also observe, predict, and provide actionable intelligence from an external vantage point. The real situation is dual: the model is a <em>participant</em> (inside&mdash;its predictions move markets, its risk assessments trigger margin calls) and an <em>observer</em> (outside&mdash;it must provide accurate forecasts, risk signals, and scenario analysis). Mathematically, this duality is motivated by <strong>Lawvere&rsquo;s fixed-point theorem</strong> (1969): in a cartesian closed category, if there exists a point-surjective morphism &phi;: A &rarr; B<sup>A</sup>, then every endomorphism f: B &rarr; B has a fixed point s with f &middot; s = s. Applied to economic self-reference: the economy&rsquo;s capacity for models to represent their own effects (the point-surjection) guarantees fixed points where the model&rsquo;s prediction and the system&rsquo;s reality coincide. The model is &ldquo;inside&rdquo; when it perturbs the system (Soros&rsquo;s manipulative function), &ldquo;outside&rdquo; when it observes (Soros&rsquo;s cognitive function), and the fixed point is where both perspectives collapse into identity.</p>
+    <p style="font-size:0.88rem; color: var(--fg-dim);">The system is also inside a larger environment (pandemics, geopolitics, natural disasters) that the model cannot fully control. Filimonov &amp; Sornette (2012) measure the endogenous fraction of price moves at ~30% (late 1990s) to ~70%+ (post-2007) for E-mini S&amp;P 500 futures&mdash;the remainder is genuinely exogenous. A complete world model must handle both channels simultaneously.</p>
   </div>
 
   <p>From this dual-position axiom, EWM-T derives an entirely new theoretical apparatus: new fundamental units of economic reality, new processing paradigms, new mathematical objects, and new methodologies for building and evaluating world models that are simultaneously participants in and observers of the systems they model. RecWM is the first architecture built on EWM-T.</p>
 
   <div style="background: var(--bg-alt, #f5f5f5); border-radius: 8px; padding: 1.2rem 1.8rem; margin: 1.2rem 0;">
     <h4 style="margin-top:0;">Mathematical foundation: Lawvere&rsquo;s Fixed-Point Theorem</h4>
-    <p style="font-size:0.9rem; margin-bottom:0;">The dual-position axiom has a precise categorical formalization. Lawvere (1969) proved that in any cartesian closed category, if there exists a point-surjective morphism A &times; A &rarr; Y, then every endomorphism Y &rarr; Y has a fixed point. For EWM-T: the economy is the category, the model M is an object within it, and the evaluation morphism e: M &times; M &rarr; C captures the model&rsquo;s capacity to represent its own functions. The guaranteed fixed point f* is the state where the model&rsquo;s prediction and the system&rsquo;s reality coincide. The Yoneda lemma complements this: an object&rsquo;s external relational embedding is naturally isomorphic to its internal structure. The model&rsquo;s self-representation (participant view) and its relational embedding in the economy (observer view) are categorically equivalent at fixed points. This replaces verbal axioms with theorem. References: Lawvere (1969); Yanofsky, &ldquo;A Universal Approach to Self-Referential Paradoxes&rdquo; (Bull. Symbolic Logic, 2003); Schlenker, &ldquo;A Survey on Lawvere&rsquo;s Fixed-Point Theorem&rdquo; (arXiv:2503.13536, 2025).</p>
+    <p style="font-size:0.9rem; margin-bottom:0;">The dual-position axiom has a precise categorical formalization. Lawvere (1969) proved that in any cartesian closed category, if there exists a point-surjective morphism &phi;: A &rarr; B<sup>A</sup> (from an object A to the exponential object B<sup>A</sup>), then every endomorphism f: B &rarr; B has a fixed point&mdash;a global element s: 1 &rarr; B satisfying f &middot; s = s. For EWM-T: the economy is modelled as a cartesian closed category; the model M and the economic state space C are objects within it; and the model&rsquo;s capacity to represent its own effect constitutes a point-surjective morphism into the internal hom-object. The guaranteed fixed point is the state where prediction and reality coincide. <em>Caveat:</em> Verifying that a given economic category satisfies the cartesian closed and point-surjection conditions requires formal construction beyond what is given here; the theorem motivates the dual-position axiom but does not yet prove it for a specific economic model. The Yoneda lemma complements this: an object&rsquo;s external relational embedding is naturally isomorphic to its internal structure. References: Lawvere, &ldquo;Diagonal Arguments and Cartesian Closed Categories&rdquo; (Springer LNM 92, 1969); Yanofsky, &ldquo;A Universal Approach to Self-Referential Paradoxes, Incompleteness and Fixed Points&rdquo; (Bull. Symbolic Logic 9(3), 2003); Barreto, &ldquo;A Survey on Lawvere&rsquo;s Fixed-Point Theorem&rdquo; (arXiv:2503.13536, 2025).</p>
   </div>
 </div>
 
@@ -13762,7 +13762,7 @@ For an economic world model built on causal/structural foundations, this means a
 <!-- ================================================================ -->
 <div class="sec" id="ewmt-algebra">
   <div class="sec-num">III</div>
-  <h2>The Constructon Algebra: New Processing Paradigm</h2>
+  <h2>The Constructon Algebra: New Processing Paradigm <span style="font-size:0.7rem; font-weight:normal; color:var(--fg-dim);">(a compositional calculus; not yet a formal algebra in the ring/group-theoretic sense)</span></h2>
 
   <p>EWM-T processes economic reality not through time series, not through agent-based simulation, not through equilibrium computation, but through <strong>constructon algebra</strong>&mdash;a new computational paradigm for composing atomic economic actions under constraints with reflexive feedback.</p>
 
@@ -14046,7 +14046,7 @@ For an economic world model built on causal/structural foundations, this means a
     <li><strong>Observer-dependent emergence</strong> (Abrah&atilde;o &amp; Zenil 2022): Emergence relative to observer, but observer does not change the system</li>
     <li><strong>Causal emergence in agents</strong> (Pae, arXiv 2607.20708, July 2026): Architectural conditions for causal emergence in active inference agents via perspective latents; closer to Hoel&rsquo;s framework but agents do not reflexively change their own dynamics</li>
   </ul>
-  <p><strong>The gap:</strong> Zero papers cite both Hoel 2013 and Perdomo 2020. The two literatures are completely disjoint.</p>
+  <p><strong>The gap:</strong> To our knowledge, no prior work formally composes causal emergence (Hoel 2013) with performative prediction (Perdomo 2020). The two literatures are completely disjoint.</p>
 
   <h3>The New Object</h3>
   <p>We introduce the <strong>reflexive transition map</strong>: a function &#x3C6; &#x2192; T<sub>&#x3C6;</sub> that maps each coarse-graining &#x3C6;: S &#x2192; S<sub>macro</sub> to the micro transition matrix T<sub>&#x3C6;</sub> that results from adopting &#x3C6; as the operative macro description. This object is absent from all existing causal emergence frameworks.</p>
@@ -14112,7 +14112,7 @@ For an economic world model built on causal/structural foundations, this means a
     </tbody>
   </table>
 
-  <p>Zero papers cite both Perdomo et al. (ICML 2020) and Peters (Nat. Phys. 2019) / Baumann et al. (TMLR 2025). The closest work&mdash;distributionally robust performative optimisation (Jia et al., NeurIPS 2025)&mdash;adds robustness over <em>which</em> distribution map D(&#x3B8;), but never questions whether E[loss] is the right functional.</p>
+  <p>To our knowledge, no prior work formally composes performative prediction (Perdomo et al., ICML 2020) with ergodicity economics (Peters, Nat. Phys. 2019; Baumann et al., TMLR 2025). The closest work&mdash;distributionally robust performative optimisation (Jia et al., NeurIPS 2025)&mdash;adds robustness over <em>which</em> distribution map D(&#x3B8;), but never questions whether E[loss] is the right functional.</p>
 
   <div style="background: var(--bg-alt, #f5f5f5); border-radius: 8px; padding: 1.5rem 1.8rem; margin: 1.2rem 0; border-left: 4px solid var(--accent);">
     <h4 style="margin-top:0;">Theorem 2 (Ergodic-Performative Divergence)</h4>
@@ -14155,7 +14155,7 @@ For an economic world model built on causal/structural foundations, this means a
 
   <p>Elastic Weight Consolidation (Kirkpatrick et al., PNAS 2017) was developed for continual learning: it penalises parameter movement in directions important for previous tasks, weighted by the Fisher information matrix F. It prevents catastrophic forgetting.</p>
 
-  <p><strong>Nobody has connected these.</strong> Zero papers cite both Kirkpatrick 2017 and Perdomo 2020. The two literatures are completely disjoint. Existing work on regularisation for performative systems (Cyffers, Mirrokni &amp; Mondelli, arXiv 2510.12249; Hardt, arXiv 2607.15623, July 2026) uses isotropic regularisation; neither exploits the anisotropic structure of the Fisher information matrix.</p>
+  <p><strong>To our knowledge, nobody has connected these.</strong> No prior work cites both Kirkpatrick 2017 and Perdomo 2020. The two literatures are completely disjoint. Existing work on regularisation for performative systems (Cyffers, Mirrokni &amp; Mondelli, arXiv 2510.12249; Hardt, arXiv 2607.15623, July 2026) uses isotropic regularisation; neither exploits the anisotropic structure of the Fisher information matrix.</p>
 
   <div style="background: var(--bg-alt, #f5f5f5); border-radius: 8px; padding: 1.5rem 1.8rem; margin: 1.2rem 0; border-left: 4px solid var(--accent);">
     <h4 style="margin-top:0;">Theorem 3 (EWC-Stabilized Performative Convergence)</h4>
@@ -14193,7 +14193,7 @@ For an economic world model built on causal/structural foundations, this means a
   <h3>The Problem</h3>
   <p>In standard economics, constraints (budget sets, regulatory limits, accounting identities) are boundary conditions&mdash;fixed at model specification time. Even in dynamic models (DSGE), the constraint <em>structure</em> is fixed; only parameters change. Yet in reality, constraints evolve endogenously: regulations are rewritten, new financial instruments are created, accounting rules change in response to crises.</p>
 
-  <p>Institutional economics (North 1990; Greif &amp; Laitin 2004; Acemoglu &amp; Robinson 2006) has the <em>intuition</em> of evolving constraints: institutions are &ldquo;humanly devised constraints that shape human interaction.&rdquo; But the treatment remains verbal and descriptive, or at best discrete regime-switching between pre-specified constraint types. <strong>Nobody has built the mathematics for constraints as first-class, typed, composable objects whose types themselves co-evolve dynamically with the system state.</strong> (Compositional game theory gives typed, composable game interfaces, but the composition is static&mdash;constraint structure does not change during play.)</p>
+  <p>Institutional economics (North 1990; Greif &amp; Laitin 2004; Acemoglu &amp; Robinson 2006) has the <em>intuition</em> of evolving constraints: institutions are &ldquo;humanly devised constraints that shape human interaction.&rdquo; But the treatment remains verbal and descriptive, or at best discrete regime-switching between pre-specified constraint types. <strong>While category-theoretic treatments of composable constraints exist (Wilson &amp; Vanrietvelde 2021; Ghani, Hedges et al. 2018), nobody has applied composable constraint mathematics to financial world models, or built a framework where constraint types co-evolve dynamically with economic state.</strong> (Compositional game theory gives typed, composable game interfaces, but the composition is static&mdash;constraint structure does not change during play.)</p>
 
   <h3>Prior Art</h3>
   <ul style="font-size:0.93rem;">
@@ -14402,7 +14402,7 @@ For an economic world model built on causal/structural foundations, this means a
       <tr><td style="font-family: var(--font-mono);">L<sub>slow</sub></td><td>SlowVAE temporal-slowness penalty: encourages latent stability at each timescale</td></tr>
       <tr><td style="font-family: var(--font-mono);">L<sub>gate</sub></td><td>L0 gate regularisation: penalises unnecessary state updates (sparsity)</td></tr>
       <tr><td style="font-family: var(--font-mono);">L<sub>EWC</sub></td><td>EWC penalty: (&#x2126;/2)(&#x3B8; &minus; &#x3B8;*)<sup>T</sup>F(&#x3B8; &minus; &#x3B8;*) (Theorem 3)</td></tr>
-      <tr><td style="font-family: var(--font-mono);">L<sub>MZ</sub></td><td>Martingale regulariser: E[&#x2016;E[r<sub>t</sub> &minus; r<sub>f</sub> | z<sub>t</sub>]&#x2016;&#xB2;]. Penalises predicted excess returns under the model&rsquo;s own latent&mdash;enforces that the model does not hallucinate arbitrage. <em>Note: this requires specifying which probability measure (physical vs. risk-neutral); we use the physical measure with the caveat that true risk-neutral testing requires options-implied distributions.</em></td></tr>
+      <tr><td style="font-family: var(--font-mono);">L<sub>MZ</sub></td><td>Excess return orthogonality regulariser: E[&#x2016;E[r<sub>t</sub> &minus; r<sub>f</sub> | z<sub>t</sub>]&#x2016;&#xB2;]. Penalises short-horizon predictability of excess returns from the model&rsquo;s own latents, preventing the model from learning spurious predictive patterns. <em>Note: this is an unpredictability regulariser under the physical measure, not a true no-arbitrage (martingale) condition. A genuine martingale condition requires the risk-neutral measure Q (via Girsanov change of measure), which in turn requires options-implied distributions. Under the physical measure P, expected excess returns are positive (equity risk premium), so L<sub>MZ</sub> penalises deviations from the risk premium, not from zero. We retain the term for its regularising effect on spurious short-horizon signals.</em></td></tr>
     </tbody>
   </table>
 
@@ -14439,7 +14439,7 @@ For an economic world model built on causal/structural foundations, this means a
       <tr><td><strong>Compositional Game Theory</strong><br><span style="font-size:0.8rem;">(Ghani, Hedges et al., LICS 2018)</span></td><td>Games as morphisms in a symmetric monoidal category; working Haskell engine</td><td>No world model dynamics; static games only; no performativity or continual learning</td></tr>
       <tr><td><strong>Performative Prediction</strong><br><span style="font-size:0.8rem;">(Perdomo et al., ICML 2020)</span></td><td>Formalises how deploying a model changes the distribution; convergence theory</td><td>No causal emergence, no ergodic correction, no constraint composition, no architecture</td></tr>
       <tr><td><strong>Constructive Economic Theory</strong><br><span style="font-size:0.8rem;">(Bridges 1982; Velupillai 2010; Tanaka 2012)</span></td><td>Bishop-style constructive proofs of economic theorems (utility, equilibrium, Nash)</td><td>Static existence results; no dynamics, no world model, no ML architecture</td></tr>
-      <tr><td><strong>TwinMarket</strong><br><span style="font-size:0.8rem;">(FreedomIntelligence; ICLR 2025 Financial AI Workshop Best Paper; NeurIPS 2025)</span></td><td>LLM-powered multi-agent stock market simulator using BDI cognitive framework; replicates stylised facts (fat tails, volatility clustering)</td><td>Market microstructure only (L2&ndash;L3); no macro, no typed constraints, no performative convergence theory</td></tr>
+      <tr><td><strong>TwinMarket</strong><br><span style="font-size:0.8rem;">(FreedomIntelligence; ICLR 2025 Financial AI Workshop Best Paper [workshop, not main conference]; NeurIPS 2025)</span></td><td>LLM-powered multi-agent stock market simulator using BDI cognitive framework; replicates stylised facts (fat tails, volatility clustering)</td><td>Market microstructure only (L2&ndash;L3); no macro, no typed constraints, no performative convergence theory</td></tr>
       <tr><td><strong>Partially Performative Prediction</strong><br><span style="font-size:0.8rem;">(Lee &amp; Zrnic, arXiv 2606.07890, June 2026)</span></td><td>Generalises performative prediction to mixed endogenous/exogenous distribution shift</td><td>Theoretical extension; no world model, no ergodic correction, no architecture</td></tr>
       <tr><td><strong>Algometrics</strong><br><span style="font-size:0.8rem;">(Schmitt, arXiv 2605.23978, May 2026)</span></td><td>Framework for time series under algorithmic feedback; proves deployment risk is not identifiable from passive data</td><td>Diagnostic framework; no constructive world model, no constraint composition</td></tr>
       <tr><td><strong>Categorical Economic Theory</strong><br><span style="font-size:0.8rem;">(Tohm&#x00E9; &amp; Auday, Routledge 2019; Pollicino, arXiv 2508.13233, Aug 2025)</span></td><td>Category theory as foundation for economic theory; preliminary applications to macro data</td><td>Programmatic, not yet operational; no world model, no performativity, no ML integration</td></tr>
@@ -14544,10 +14544,10 @@ For an economic world model built on causal/structural foundations, this means a
     <ol type="i">
       <li><strong>Consistency equivalence:</strong> A global market state&mdash;a single probability measure consistent with all fragment observations&mdash;exists if and only if H<sup>1</sup>(U; F) = 0.</li>
       <li><strong>Obstruction classification:</strong> When H<sup>1</sup>(U; F) &ne; 0, the non-trivial cohomology classes classify the <em>types</em> of inconsistency: each class corresponds to a distinct pattern of inter-fragment disagreement (e.g., equity-credit disconnect vs. rates-volatility disconnect).</li>
-      <li><strong>Computable monitoring:</strong> For finite fragment covers with discrete approximations, H<sup>1</sup> is computable in O(K<sup>2</sup> &middot; |S|) time, where K is the number of fragments and |S| is the discretised state space size. The norm &Vert;[&alpha;]&Vert; of the obstruction cocycle provides a continuous crisis intensity measure.</li>
+      <li><strong>Computable monitoring:</strong> For finite fragment covers with discrete approximations, the &Ccaron;ech complex can be constructed in O(K<sup>2</sup> &middot; |S|) time, where K is the number of fragments and |S| is the discretised state space size. Solving the resulting linear system for H<sup>1</sup> adds O(K<sup>4</sup>) to O(K<sup>6</sup>) depending on method. The norm &Vert;[&alpha;]&Vert; of the obstruction cocycle provides a continuous crisis intensity measure.</li>
       <li><strong>Reflexive amplification:</strong> Under the reflexive transition map of Theorem 1, obstruction classes can be self-amplifying: market participants who observe the inconsistency act on it, widening the disagreement. The dynamics of &Vert;H<sup>1</sup>(t)&Vert; under reflexive feedback are governed by &epsilon;<sub>t</sub> (Theorem 5).</li>
     </ol>
-    <p style="font-size:0.88rem; color: var(--fg-dim); margin-bottom:0;"><strong>Proof technique:</strong> Part (i) is the standard sheaf condition (Hartshorne, Ch. II.1) applied to the economic presheaf. Part (ii) uses the long exact sequence in &Ccaron;ech cohomology to decompose H<sup>1</sup> into contributions from each pairwise fragment overlap. Part (iii) follows from the finiteness of the Nerve complex of U for K fragments. Part (iv) connects the cohomological dynamics to the performative stability framework via the reflexive transition map. <em>Honest caveat:</em> (1) The presheaf F must satisfy the gluing axiom for this to be a genuine sheaf, which requires that fragment observations carry sufficient information for marginal agreement to imply joint agreement. This holds for Gaussian fragments (marginal consistency implies joint consistency) but fails in general. (2) No existing literature applies sheaf <em>cohomology</em> (as opposed to persistent homology from TDA) to financial crisis detection. Gidea (2017) and Majumdar et al. (2020) used persistent homology successfully for early warning signals, but our sheaf-theoretic approach is genuinely novel and unverified empirically. (3) Computing H<sup>1</sup> on real market data requires discretisation choices (cover selection, resolution) that can dominate the signal. Both the sheaf construction and its empirical utility require verification.</p>
+    <p style="font-size:0.88rem; color: var(--fg-dim); margin-bottom:0;"><strong>Proof technique:</strong> Part (i) is the standard sheaf condition (cf. Bredon, &ldquo;Sheaf Theory,&rdquo; Ch. II; see also Abramsky &amp; Brandenburger 2011 for the analogous construction in quantum contextuality) applied to the economic presheaf. Part (ii) uses the long exact sequence in &Ccaron;ech cohomology to decompose H<sup>1</sup> into contributions from each pairwise fragment overlap. Part (iii) follows from the finiteness of the Nerve complex of U for K fragments. Part (iv) connects the cohomological dynamics to the performative stability framework via the reflexive transition map. <em>Honest caveat:</em> (1) The presheaf F must satisfy the gluing axiom for this to be a genuine sheaf, which requires that fragment observations carry sufficient information for marginal agreement to imply joint agreement. This holds for Gaussian fragments (marginal consistency implies joint consistency) but fails in general. (2) No existing literature applies sheaf <em>cohomology</em> (as opposed to persistent homology from TDA) to financial crisis detection. Gidea (2017) and Majumdar et al. (2020) used persistent homology successfully for early warning signals, but our sheaf-theoretic approach is genuinely novel and unverified empirically. (3) Computing H<sup>1</sup> on real market data requires discretisation choices (cover selection, resolution) that can dominate the signal. Both the sheaf construction and its empirical utility require verification.</p>
   </div>
 
   <h3>What This Means for RecWM</h3>
@@ -14572,8 +14572,8 @@ For an economic world model built on causal/structural foundations, this means a
   <h3>Prior Art</h3>
   <ul style="font-size:0.93rem;">
     <li><strong>Piliouras &amp; Yu (EC 2023):</strong> Multi-agent performative prediction can transition from stability to chaos depending on coupling strength. Proves that individually contractive agents can be collectively unstable.</li>
-    <li><strong>Narang, Faulkner &amp; Drusvyatskiy (NeurIPS 2022):</strong> Multiplayer performative prediction with convergence analysis for coupled systems.</li>
-    <li><strong>Dean, Curmei &amp; Haskell (COLT 2024):</strong> Performative equilibrium for populations of learners; existence requires conditions strictly beyond single-agent convergence.</li>
+    <li><strong>Narang, Faulkner, Drusvyatskiy, Fazel &amp; Ratliff (AISTATS 2022):</strong> Multiplayer performative prediction with convergence analysis for coupled systems.</li>
+    <li><strong>Li, Shen &amp; Bodik (arXiv 2406.03766, 2024):</strong> Multi-learner performative prediction with population-level dynamics; convergence analysis for interacting learners under distribution shift.</li>
     <li><strong>Lee &amp; Zrnic (arXiv 2606.07890, June 2026):</strong> Partially performative prediction&mdash;mixed endogenous/exogenous distribution shift. Single-agent only.</li>
   </ul>
   <p><strong>The gap:</strong> All multi-agent performative work analyses abstract game-theoretic properties. Nobody has connected multi-agent performativity to the specific structure of economic world models (typed fragments, constraints, ergodic objectives). The question &ldquo;what happens when N ergodic-performative models with different constraint fields interact?&rdquo; is unaddressed.</p>
@@ -14598,7 +14598,7 @@ For an economic world model built on causal/structural foundations, this means a
       <li><strong>Strategy correlation amplification:</strong> When models share training data or architecture (as in production ML), the cross-sensitivity &Sigma;<sub>ij</sub> increases. Herding (correlated strategies) amplifies the spectral radius, reducing the stability basin.</li>
       <li><strong>Ecological EWC:</strong> Applying EWC regularisation (Theorem 3) to each model in the ecology raises the effective convergence threshold from 1/&rho;(&Sigma; &middot; B/&Gamma;) to 1/&rho;(&Sigma; &middot; B<sub>eff</sub>/&Gamma;<sub>eff</sub>), extending ecological stability.</li>
     </ol>
-    <p style="font-size:0.88rem; color: var(--fg-dim); margin-bottom:0;"><strong>Proof technique:</strong> Part (i) extends the Banach contraction mapping theorem to the product space &prod;&Theta;<sub>i</sub>, where the contraction constant becomes the spectral radius of the sensitivity matrix (standard for coupled fixed-point iterations). Part (ii) constructs a 2-model example where individual contraction holds but the product does not, using off-diagonal cross-sensitivity. Part (iii) follows from Weyl&rsquo;s inequality: rank-1 perturbations to &Sigma; from correlated strategies increase &rho;(&Sigma;) monotonically. Part (iv) substitutes the EWC-effective parameters from Theorem 3. <em>Honest caveat:</em> Estimating the full N&times;N cross-sensitivity matrix &Sigma; requires observing how each model&rsquo;s deployment affects others&mdash;practically difficult for N &gt; 10. The theorem is most useful for small ecologies (e.g., 2&ndash;5 dominant market-making algorithms) or for bounding worst-case spectral radius via matrix norm bounds.</p>
+    <p style="font-size:0.88rem; color: var(--fg-dim); margin-bottom:0;"><strong>Proof technique:</strong> Part (i) extends the Banach contraction mapping theorem to the product space &prod;&Theta;<sub>i</sub>, where the contraction constant becomes the spectral radius of the sensitivity matrix (standard for coupled fixed-point iterations). Part (ii) constructs a 2-model example where individual contraction holds but the product does not, using off-diagonal cross-sensitivity. Part (iii) follows from Elsner&rsquo;s theorem (1985) for spectral radius perturbation of general (non-symmetric) matrices: rank-1 perturbations to &Sigma; from correlated strategies increase &rho;(&Sigma;). <em>Note:</em> Weyl&rsquo;s inequality applies only to Hermitian matrices; since &Sigma; is generally non-symmetric (agent i&rsquo;s impact on j &ne; j&rsquo;s on i), we use Elsner&rsquo;s bound instead. Part (iv) substitutes the EWC-effective parameters from Theorem 3. <em>Honest caveat:</em> Estimating the full N&times;N cross-sensitivity matrix &Sigma; requires observing how each model&rsquo;s deployment affects others&mdash;practically difficult for N &gt; 10. The theorem is most useful for small ecologies (e.g., 2&ndash;5 dominant market-making algorithms) or for bounding worst-case spectral radius via matrix norm bounds.</p>
   </div>
 
   <h3>What This Means for RecWM</h3>
@@ -14617,8 +14617,8 @@ For an economic world model built on causal/structural foundations, this means a
 
   <h3>Prior Art</h3>
   <ul style="font-size:0.93rem;">
-    <li><strong>Cerra, Fatass &amp; Saxena (JEL 2023):</strong> Comprehensive survey establishing hysteresis as a structural feature of business cycles, not an anomaly. Output losses from financial crises are permanent in 60%+ of cases.</li>
-    <li><strong>Gopinath, Gourinchas &amp; Presbitero (IMF WP 2024):</strong> Irreversible scarring from financial crises&mdash;sectoral reallocation creates permanent structural shifts.</li>
+    <li><strong>Cerra, Fat&aacute;s &amp; Saxena (JEL 2023):</strong> Comprehensive survey establishing hysteresis as a structural feature of business cycles, not an anomaly. Permanent components explain 60&ndash;80% of output variation at business-cycle horizons; financial crises cause output losses that show no recovery in the majority of episodes (Cerra &amp; Saxena, AER 2008).</li>
+    <li><strong>Ball (IMF WP/14/168, 2014):</strong> &ldquo;Long-Term Damage from the Great Recession in OECD Countries.&rdquo; Documents permanent output losses averaging 8.4% in countries hardest hit, with hysteresis in potential output. See also Blanchard, Cerutti &amp; Summers (2015) on inflation and activity.</li>
     <li><strong>Arizmendi (SSRN 7106658, 2026):</strong> Formal hysteresis in narrative-driven equilibria via operator theory&mdash;narrative state transitions form a partially ordered set, not a group.</li>
   </ul>
   <p><strong>The gap:</strong> All world model architectures (RSSM, JEPA, S5, transformers) have invertible or approximately invertible dynamics. No world model architecture enforces irreversibility as an axiom.</p>
@@ -14652,8 +14652,8 @@ For an economic world model built on causal/structural foundations, this means a
   <h3>Prior Art</h3>
   <ul style="font-size:0.93rem;">
     <li><strong>Aubin, Bayen &amp; Saint-Pierre (&ldquo;Viability Theory: New Directions,&rdquo; Springer 2011):</strong> The definitive treatment. The viability kernel Viab(K) is the set of initial states from which at least one trajectory remains within constraint set K for all time.</li>
-    <li><strong>Doyen &amp; De Lara (J. Math. Bio., 2010):</strong> Stochastic viability&mdash;probability of remaining viable under uncertainty. Connection to sustainable management.</li>
-    <li><strong>Chapel et al. (arXiv 2107.02684):</strong> Viability for environmental commons with multiple usage types. The closest to economic application but no financial market treatment.</li>
+    <li><strong>Doyen &amp; De Lara (Systems and Control Letters, 2010):</strong> Stochastic viability&mdash;probability of remaining viable under uncertainty. Connection to sustainable management.</li>
+    <li><strong>Alvarez, Zaleski, Briot &amp; Irving (arXiv 2107.02684):</strong> Viability for environmental commons with multiple usage types. The closest to economic application but no financial market treatment.</li>
   </ul>
   <p><strong>The gap:</strong> No paper computes viability kernels for performative economic systems. The key novelty: in a performative system, the constraint set K <em>itself</em> changes with the model&rsquo;s behaviour (via Theorem 4&rsquo;s constraint field &Phi;). The viability kernel is computed against a moving target.</p>
 
@@ -14734,9 +14734,14 @@ For an economic world model built on causal/structural foundations, this means a
   <ul style="font-size:0.93rem;">
     <li><strong>CausalVAE (arXiv 2604.07712, April 2026):</strong> A structural causal module attachable to any encoder-transition backbone, supporting do-operator counterfactual generation. Achieves +102.5% on counterfactual benchmarks. But the do-operator fully severs feedback.</li>
     <li><strong>Causal-JEPA (arXiv 2602.11389, February 2026):</strong> Object-level latent masking that induces counterfactual-like interventions during training. No partial-feedback mechanism.</li>
-    <li><strong>Mandal et al. (ICML 2023):</strong> Performative RL&mdash;MDP transition dynamics shift with deployed policy. Regularised occupancy-measure optimisation converging to performatively stable policies. No interventional framework.</li>
+    <li><strong>Mandal, Triantafyllou, Woodworth &amp; Zrnic (ICML 2023):</strong> &ldquo;Performative Power.&rdquo; Measures the ability of a learner to steer the data distribution toward a target through performative effects. Theoretical analysis of when and how models can strategically use their performative influence. No interventional framework.</li>
   </ul>
-  <p><strong>The gap:</strong> Nobody has defined a &ldquo;soft do-operator&rdquo; that partially attenuates rather than fully severs feedback loops. This is exactly what economic policy analysis needs: the ability to model interventions while preserving the reflexive structure at controllable strength.</p>
+  <h3>Additional Prior Art</h3>
+  <ul style="font-size:0.93rem;">
+    <li><strong>Correa &amp; Bareinboim (AAAI 2020):</strong> &ldquo;A Calculus for Stochastic Interventions.&rdquo; Formalises inference rules for soft (non-atomic) interventions that preserve causal connections at reduced strength. The &sigma;-calculus generalises do-calculus to parametric intervention regimes.</li>
+    <li><strong>Geiger et al. (arXiv 2211.12270, 2022):</strong> &ldquo;Causal Abstraction with Soft Interventions.&rdquo; Defines soft interventions for causal abstraction checking.</li>
+  </ul>
+  <p><strong>The gap:</strong> Existing soft intervention frameworks operate on static causal graphs. Nobody has composed soft interventions with <em>performative feedback</em>&mdash;where the intervention strength &lambda; interacts with the endogenous sensitivity &epsilon; of Theorem 5. The do<sub>&lambda;</sub> operator below integrates soft interventions into the performative stability framework, providing a reflexivity-aware policy analysis tool.</p>
 
   <div style="background: var(--bg-alt, #f5f5f5); border-radius: 8px; padding: 1.5rem 1.8rem; margin: 1.2rem 0;">
     <h4 style="margin-top:0;">Definition (Soft Intervention Operator)</h4>
@@ -14753,7 +14758,7 @@ For an economic world model built on causal/structural foundations, this means a
     <h4 style="margin-top:0;">Proposition (Interventional Separability)</h4>
     <ol type="i">
       <li><strong>Continuity:</strong> The counterfactual distribution P(Y | do<sub>&lambda;</sub>(X = x)) is continuous in &lambda;. Policy effects do not exhibit discontinuous jumps as intervention strength varies.</li>
-      <li><strong>Monotone reflexive attenuation:</strong> The effective performativity parameter under do<sub>&lambda;</sub> is &epsilon;<sub>eff</sub>(&lambda;) = (1 &minus; &lambda;) &middot; &epsilon;. Full intervention eliminates reflexivity; partial intervention reduces it proportionally.</li>
+      <li><strong>Reflexive attenuation:</strong> To first order, the effective performativity parameter under do<sub>&lambda;</sub> is &epsilon;<sub>eff</sub>(&lambda;) &asymp; (1 &minus; &lambda;) &middot; &epsilon;. Full intervention eliminates reflexivity; partial intervention reduces it. <em>Caveat:</em> The linear approximation holds when intervention strength is small relative to the system&rsquo;s nonlinear feedback structure. In practice, the relationship may be nonlinear&mdash;a small intervention below a credibility threshold may have no effect, while an intervention that triggers a regime change may have disproportionate impact. The linear form is a tractable first approximation, not a proven relationship.</li>
       <li><strong>Policy credibility spectrum:</strong> The parameter &lambda; has a natural economic interpretation: it is the <em>credibility</em> of the policy intervention. &lambda; = 1 is a perfectly credible commitment (markets fully believe it); &lambda; &lt; 1 reflects partial credibility (markets partially discount the announcement). This connects the do-operator to the rational expectations literature on policy credibility.</li>
       <li><strong>Composition with Theorem 3:</strong> Under do<sub>&lambda;</sub>, the EWC convergence condition becomes &epsilon; &middot; (1 &minus; &lambda;) &lt; &gamma;<sub>eff</sub>/&beta;<sub>eff</sub>. Sufficiently credible interventions (&lambda; close to 1) can stabilise otherwise-divergent systems.</li>
     </ol>
@@ -14776,8 +14781,8 @@ For an economic world model built on causal/structural foundations, this means a
   <h3>Prior Art</h3>
   <ul style="font-size:0.93rem;">
     <li><strong>Brunnermeier &amp; Pedersen (RFS 2009):</strong> Market liquidity and funding liquidity are distinct but coupled. Liquidity spirals arise from their interaction. Canonical but no world model framework.</li>
-    <li><strong>Wiersema, Kemp &amp; Farmer (ECB WP 3169, 2025):</strong> Liquidity as a coupled state variable with multiple equilibria. Formalises the endogeneity of liquidity.</li>
-    <li><strong>Foster et al. (SSRN 2024):</strong> Endogenous liquidity regime-switching in microstructure models.</li>
+    <li><strong>Wiersema, Kemp &amp; Farmer (ECB WP 3169, 2026):</strong> Liquidity as a coupled state variable with multiple equilibria. Formalises the endogeneity of liquidity.</li>
+    <li><strong>Paddrik, Hayes, Todd, Yang, Beling &amp; Scherer (J. Artificial Societies and Social Simulation, 2012):</strong> Agent-based model of market liquidity with endogenous regime-switching via order-driven dynamics.</li>
   </ul>
 
   <div style="background: var(--bg-alt, #f5f5f5); border-radius: 8px; padding: 1.5rem 1.8rem; margin: 1.2rem 0;">
@@ -14785,7 +14790,7 @@ For an economic world model built on causal/structural foundations, this means a
     <p>Extend the fragment algebra with a distinguished object WF<sub>liq</sub> that acts as a <strong>catalyst</strong> in the monoidal category <strong>Frag</strong>:</p>
     <ul>
       <li><strong>Feasibility gate:</strong> A composition WF<sub>i</sub> &otimes; WF<sub>j</sub> is <em>instantiable</em> only if WF<sub>liq</sub> &ge; L<sub>ij</sub>, where L<sub>ij</sub> is the minimum liquidity required for the composition. Different compositions require different liquidity levels.</li>
-      <li><strong>Non-consumption:</strong> WF<sub>liq</sub> is not consumed by composition: the output of an instantiated construction includes WF<sub>liq</sub> (possibly at a different level). Liquidity is redistributed, not destroyed.</li>
+      <li><strong>Partial conservation:</strong> During normal markets, WF<sub>liq</sub> is approximately conserved by composition: the output includes WF<sub>liq</sub> at a similar level (redistributed across participants). <em>However, during crises, liquidity IS consumed</em>&mdash;it evaporates as market makers withdraw, counterparties disappear, and bid-ask spreads widen to infinity. The &ldquo;catalyst&rdquo; analogy is therefore imperfect: unlike a chemical catalyst, liquidity can be endogenously created and destroyed. More precisely, liquidity is an <em>enabling resource</em> with approximate conservation in calm regimes and rapid depletion in stressed regimes.</li>
       <li><strong>Endogenous evolution:</strong> WF<sub>liq</sub> evolves via a coupled equation: L(t+1) = L(t) &middot; h(&epsilon;<sub>t</sub>, &Phi;(t), volatility), where h captures the empirical fact that liquidity dries up precisely when it is most needed (reflexive liquidity spirals).</li>
     </ul>
   </div>
