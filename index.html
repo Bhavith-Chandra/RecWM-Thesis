@@ -7,7 +7,7 @@
    &#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552; */
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 
   /* Ground */
   --bg: #ffffff; --bg-alt: #f5f7fb; --bg-card: #f8f9fc; --bg-cite: #f0f4fa;
@@ -88,109 +88,7 @@
   --sidebar-w: 268px; --content-w: 780px; --r: 6px;
 }
 
-/* &#9472;&#9472; Dark theme &#9472;&#9472; */
-@media (prefers-color-scheme: dark) { :root {
-  --bg: #0c1220; --bg-alt: #111827; --bg-card: #1e293b; --bg-cite: #1e293b;
-  --bg-code: #151d2e; --bg-eq: #151d2e; --bg-inset: #1e293b; --bg-raised: #1e293b;
-  --bg-surface: #111827; --bg-warm: #111827; --bg-panel: #1e293b; --bg-sidebar: #0e1525;
-  --ground: #0c1220; --ground-sub: #111827; --paper: #0c1220; --paper-raised: #1e293b;
-  --surface: #111827; --card-bg: #1e293b;
-  --border: #1e3050; --border-light: #1a2844; --border-accent: #2a4a7a; --rule: #1e3050; --rule-faint: #1a2844;
-  --ink: #e2e8f0; --ink-secondary: #cbd5e1; --fg: #e2e8f0; --fg-dim: #94a3b8;
-  --fg-faint: #64748b; --fg-muted: #94a3b8; --fg-secondary: #cbd5e1; --fg-tertiary: #64748b;
-  --text: #e2e8f0; --text-dim: #94a3b8; --text-faint: #64748b; --text-muted: #94a3b8;
-  --text-secondary: #cbd5e1; --text-tertiary: #64748b; --heading: #f1f5f9; --muted: #64748b;
-  --accent: #60a5fa; --accent-light: #93c5fd; --accent-dark: #3b82f6; --accent-dim: #2563eb;
-  --accent-bg: #172554; --accent-text: #93c5fd; --accent-wash: #172554; --accent-wash-strong: #1e3a5f;
-  --highlight: #60a5fa; --highlight-light: #93c5fd; --highlight-wash: #172554;
-  --link: #60a5fa; --link-hover: #93c5fd; --nav-bg: #0e1525; --nav-active: #60a5fa;
-  --diagram-bg: #111827; --diagram-stroke: #94a3b8; --diagram-fill: #1e3050;
-  --diagram-accent: #60a5fa; --diagram-accent2: #34d399; --diagram-accent3: #a78bfa; --diagram-text: #e2e8f0;
-  --green: #34d399; --green-dim: #065f46; --signal-green: #34d399; --contrib: #34d399; --contrib-bg: #064e3b;
-  --red: #f87171; --red-dim: #7f1d1d; --signal-red: #f87171;
-  --warn: #f87171; --warn-bg: #1c1010; --warn-border: #4a2020; --warn-text: #fca5a5;
-  --warning-bg: #1c1010; --warning-border: #4a2020; --warning-text: #fca5a5;
-  --amber: #fbbf24; --amber-dim: #78350f; --signal-amber: #fbbf24;
-  --cyan: #22d3ee; --copper: #fb923c; --copper-dim: #7c2d12; --sienna: #fbbf24; --sienna-bg: #451a03;
-  --signal-purple: #a78bfa; --slate: #94a3b8;
-  --math: #e2e8f0; --math-bg: #151d2e; --math-border: #2a4a7a; --math-dim: #94a3b8;
-  --katex-color: #e2e8f0; --theorem-bg: #172554; --theorem-border: #2a4a7a; --eq-bg: #151d2e;
-  --code-bg: #151d2e; --code-border: #1e3050; --code-fg: #e2e8f0; --code-text: #e2e8f0;
-  --code-comment: #64748b; --code-keyword: #60a5fa; --code-string: #34d399;
-  --code-tag: #a78bfa; --code-tag-bg: #1e1040; --cite-bg: #1e293b;
-  --tag-bg: #172554; --tag-fg: #60a5fa; --tag-text: #60a5fa;
-  --method-tag: #60a5fa; --method-tag-bg: #172554;
-  --table-stripe: #111827;
-  --shadow: 0 1px 3px rgba(0,0,0,0.4); --card-shadow: 0 2px 8px rgba(0,0,0,0.4);
-}}
-:root[data-theme="dark"] {
-  --bg: #0c1220; --bg-alt: #111827; --bg-card: #1e293b; --bg-cite: #1e293b;
-  --bg-code: #151d2e; --bg-eq: #151d2e; --bg-inset: #1e293b; --bg-raised: #1e293b;
-  --bg-surface: #111827; --bg-warm: #111827; --bg-panel: #1e293b; --bg-sidebar: #0e1525;
-  --ground: #0c1220; --ground-sub: #111827; --paper: #0c1220; --paper-raised: #1e293b;
-  --surface: #111827; --card-bg: #1e293b;
-  --border: #1e3050; --border-light: #1a2844; --border-accent: #2a4a7a; --rule: #1e3050; --rule-faint: #1a2844;
-  --ink: #e2e8f0; --ink-secondary: #cbd5e1; --fg: #e2e8f0; --fg-dim: #94a3b8;
-  --fg-faint: #64748b; --fg-muted: #94a3b8; --fg-secondary: #cbd5e1; --fg-tertiary: #64748b;
-  --text: #e2e8f0; --text-dim: #94a3b8; --text-faint: #64748b; --text-muted: #94a3b8;
-  --text-secondary: #cbd5e1; --text-tertiary: #64748b; --heading: #f1f5f9; --muted: #64748b;
-  --accent: #60a5fa; --accent-light: #93c5fd; --accent-dark: #3b82f6; --accent-dim: #2563eb;
-  --accent-bg: #172554; --accent-text: #93c5fd; --accent-wash: #172554; --accent-wash-strong: #1e3a5f;
-  --highlight: #60a5fa; --highlight-light: #93c5fd; --highlight-wash: #172554;
-  --link: #60a5fa; --link-hover: #93c5fd; --nav-bg: #0e1525; --nav-active: #60a5fa;
-  --diagram-bg: #111827; --diagram-stroke: #94a3b8; --diagram-fill: #1e3050;
-  --diagram-accent: #60a5fa; --diagram-accent2: #34d399; --diagram-accent3: #a78bfa; --diagram-text: #e2e8f0;
-  --green: #34d399; --green-dim: #065f46; --signal-green: #34d399; --contrib: #34d399; --contrib-bg: #064e3b;
-  --red: #f87171; --red-dim: #7f1d1d; --signal-red: #f87171;
-  --warn: #f87171; --warn-bg: #1c1010; --warn-border: #4a2020; --warn-text: #fca5a5;
-  --warning-bg: #1c1010; --warning-border: #4a2020; --warning-text: #fca5a5;
-  --amber: #fbbf24; --amber-dim: #78350f; --signal-amber: #fbbf24;
-  --cyan: #22d3ee; --copper: #fb923c; --copper-dim: #7c2d12; --sienna: #fbbf24; --sienna-bg: #451a03;
-  --signal-purple: #a78bfa; --slate: #94a3b8;
-  --math: #e2e8f0; --math-bg: #151d2e; --math-border: #2a4a7a; --math-dim: #94a3b8;
-  --katex-color: #e2e8f0; --theorem-bg: #172554; --theorem-border: #2a4a7a; --eq-bg: #151d2e;
-  --code-bg: #151d2e; --code-border: #1e3050; --code-fg: #e2e8f0; --code-text: #e2e8f0;
-  --code-comment: #64748b; --code-keyword: #60a5fa; --code-string: #34d399;
-  --code-tag: #a78bfa; --code-tag-bg: #1e1040; --cite-bg: #1e293b;
-  --tag-bg: #172554; --tag-fg: #60a5fa; --tag-text: #60a5fa;
-  --method-tag: #60a5fa; --method-tag-bg: #172554;
-  --table-stripe: #111827;
-  --shadow: 0 1px 3px rgba(0,0,0,0.4); --card-shadow: 0 2px 8px rgba(0,0,0,0.4);
-}
-:root[data-theme="light"] {
-  --bg: #ffffff; --bg-alt: #f5f7fb; --bg-card: #f8f9fc; --bg-cite: #f0f4fa;
-  --bg-code: #f4f6fb; --bg-eq: #f4f6fb; --bg-inset: #eef2f9; --bg-raised: #ffffff;
-  --bg-surface: #f5f7fb; --bg-warm: #f8f9fc; --bg-panel: #eef2f9; --bg-sidebar: #f5f7fb;
-  --ground: #ffffff; --ground-sub: #f5f7fb; --paper: #ffffff; --paper-raised: #ffffff;
-  --surface: #f5f7fb; --card-bg: #ffffff;
-  --border: #d6dde8; --border-light: #e4e9f2; --border-accent: #a8c0e8; --rule: #d6dde8; --rule-faint: #e4e9f2;
-  --ink: #111827; --ink-secondary: #374151; --fg: #111827; --fg-dim: #4b5563;
-  --fg-faint: #9ca3af; --fg-muted: #6b7280; --fg-secondary: #374151; --fg-tertiary: #9ca3af;
-  --text: #111827; --text-dim: #4b5563; --text-faint: #9ca3af; --text-muted: #6b7280;
-  --text-secondary: #374151; --text-tertiary: #9ca3af; --heading: #0f172a; --muted: #9ca3af;
-  --accent: #1d4ed8; --accent-light: #3b82f6; --accent-dark: #1e3a8a; --accent-dim: #93c5fd;
-  --accent-bg: #eff6ff; --accent-text: #1d4ed8; --accent-wash: #eff6ff; --accent-wash-strong: #dbeafe;
-  --highlight: #1d4ed8; --highlight-light: #3b82f6; --highlight-wash: #eff6ff;
-  --link: #2563eb; --link-hover: #1d4ed8; --nav-bg: #f5f7fb; --nav-active: #1d4ed8;
-  --diagram-bg: #f8faff; --diagram-stroke: #374151; --diagram-fill: #dbeafe;
-  --diagram-accent: #1d4ed8; --diagram-accent2: #059669; --diagram-accent3: #7c3aed; --diagram-text: #111827;
-  --green: #059669; --green-dim: #a7f3d0; --signal-green: #059669; --contrib: #059669; --contrib-bg: #ecfdf5;
-  --red: #dc2626; --red-dim: #fca5a5; --signal-red: #dc2626;
-  --warn: #b91c1c; --warn-bg: #fef2f2; --warn-border: #fecaca; --warn-text: #991b1b;
-  --warning-bg: #fef2f2; --warning-border: #fecaca; --warning-text: #991b1b;
-  --amber: #d97706; --amber-dim: #fde68a; --signal-amber: #d97706;
-  --cyan: #0891b2; --copper: #c2410c; --copper-dim: #fdba74; --sienna: #92400e; --sienna-bg: #fef3c7;
-  --signal-purple: #7c3aed; --slate: #64748b;
-  --math: #111827; --math-bg: #f4f6fb; --math-border: #a8c0e8; --math-dim: #4b5563;
-  --katex-color: #111827; --theorem-bg: #eff6ff; --theorem-border: #93c5fd; --eq-bg: #f4f6fb;
-  --code-bg: #f4f6fb; --code-border: #d6dde8; --code-fg: #111827; --code-text: #111827;
-  --code-comment: #9ca3af; --code-keyword: #1d4ed8; --code-string: #059669;
-  --code-tag: #7c3aed; --code-tag-bg: #f5f3ff; --cite-bg: #f0f4fa;
-  --tag-bg: #eff6ff; --tag-fg: #1d4ed8; --tag-text: #1d4ed8;
-  --method-tag: #1d4ed8; --method-tag-bg: #eff6ff;
-  --table-stripe: #f8faff;
-  --shadow: 0 1px 3px rgba(0,0,0,0.06); --card-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
+/* &#9472;&#9472; Light-only theme (dark mode removed) &#9472;&#9472; */
 
 /* &#9552;&#9552; RESET &#9552;&#9552; */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -12993,11 +12891,11 @@ For an economic world model built on causal/structural foundations, this means a
     <div class="pg" id="pg-gap-analysis">
 <div class="page">
 
-<div class="doc-header" style="background: linear-gradient(135deg, #1a0a2e 0%, #0d1b2a 50%, #1b0000 100%); padding: 3rem 2.2rem 2.5rem; border-bottom: 2px solid var(--red); margin: -2.5rem -2.2rem 2.5rem;">
+<div class="doc-header" style="background: linear-gradient(135deg, #fef2f2 0%, #f0f4fa 50%, #fff5f5 100%); padding: 3rem 2.2rem 2.5rem; border-bottom: 2px solid var(--red); margin: -2.5rem -2.2rem 2.5rem;">
   <div style="font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--red); margin-bottom: 0.8rem;">Capability Gap Analysis</div>
-  <h1 style="margin-bottom: 0.6rem; font-size: 2.2rem; line-height: 1.18; color: #fff;">What RecWM Is Missing</h1>
-  <p class="subtitle" style="font-size: 1.08rem; max-width: 700px; color: rgba(255,255,255,0.75);">Systematic comparison against state-of-the-art competitor capabilities and ideal-spec requirements. Deep research on every gap with citations, implementations, and build priorities.</p>
-  <p style="font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 0.5rem;">August 2026 &middot; Based on research across 30+ papers, 15+ open-source libraries</p>
+  <h1 style="margin-bottom: 0.6rem; font-size: 2.2rem; line-height: 1.18; color: var(--heading);">What RecWM Is Missing</h1>
+  <p class="subtitle" style="font-size: 1.08rem; max-width: 700px; color: var(--fg-dim);">Systematic comparison against state-of-the-art competitor capabilities and ideal-spec requirements. Deep research on every gap with citations, implementations, and build priorities.</p>
+  <p style="font-size: 0.85rem; color: var(--fg-faint); margin-top: 0.5rem;">August 2026 &middot; Based on research across 30+ papers, 15+ open-source libraries</p>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -13589,11 +13487,11 @@ For an economic world model built on causal/structural foundations, this means a
     <div class="pg" id="pg-final-product">
 <div class="page">
 
-<div class="doc-header" style="background: linear-gradient(135deg, #0a0e1a 0%, #0d1b2a 30%, #1b2838 60%, #0a0e1a 100%); padding: 3.5rem 2.2rem 2.8rem; border-bottom: 3px solid var(--accent); margin: -2.5rem -2.2rem 2.5rem;">
+<div class="doc-header" style="background: linear-gradient(135deg, #f0f4fa 0%, #e8eef8 30%, #eff6ff 60%, #f5f7fb 100%); padding: 3.5rem 2.2rem 2.8rem; border-bottom: 3px solid var(--accent); margin: -2.5rem -2.2rem 2.5rem;">
   <div style="font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 1rem;">The Reflexive Constructive World Model</div>
-  <h1 style="margin-bottom: 0.7rem; font-size: 2.3rem; line-height: 1.15; color: #fff; max-width: 780px;">RecWM: Five Theorems for Economic Reality</h1>
-  <p class="subtitle" style="font-size: 1.08rem; max-width: 740px; color: rgba(255,255,255,0.78); line-height: 1.55;">Economics has no world model because the mathematics does not exist. Reflexivity, evolving constraints, non-ergodicity, and performative forgetting are not engineering problems&mdash;they are unsolved mathematical problems. We address all five with novel theorems&mdash;three provable, one conditional, one conjectural.</p>
-  <p style="font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-top: 0.7rem;">August 2026 &middot; Treasury&#x2074; Research &middot; Five novel theorems, zero prior co-citations</p>
+  <h1 style="margin-bottom: 0.7rem; font-size: 2.3rem; line-height: 1.15; color: var(--heading); max-width: 780px;">RecWM: Five Theorems for Economic Reality</h1>
+  <p class="subtitle" style="font-size: 1.08rem; max-width: 740px; color: var(--fg-dim); line-height: 1.55;">Economics has no world model because the mathematics does not exist. Reflexivity, evolving constraints, non-ergodicity, and performative forgetting are not engineering problems&mdash;they are unsolved mathematical problems. We address all five with novel theorems&mdash;three provable, one conditional, one conjectural.</p>
+  <p style="font-size: 0.82rem; color: var(--fg-faint); margin-top: 0.7rem;">August 2026 &middot; Treasury&#x2074; Research &middot; Five novel theorems, zero prior co-citations</p>
 </div>
 
 <!-- TABLE OF CONTENTS -->
