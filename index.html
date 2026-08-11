@@ -3001,7 +3001,7 @@ prevented from influencing predictions.
   <div class="wrap">
     <div class="hero-eyebrow">Technical Briefing &middot; August 2026</div>
     <h1>RecWM: Concepts, Mathematics, and the 90-Day Build Plan</h1>
-    <p class="hero-sub">A complete technical reference for the team. Every concept defined, every equation explained, every deliverable scheduled week-by-week for the next 12 weeks.</p>
+    <p class="hero-sub">A complete technical reference for the team. Every concept defined, every equation explained, every deliverable scheduled. RecWM is a new class of world model invented from scratch &mdash; not an SSM, not a transformer, not a fine-tuned foundation model.</p>
   </div>
 </div>
 
@@ -3035,6 +3035,7 @@ prevented from influencing predictions.
       <a href="#s24"><span>24</span> Must-Cite List (50 Papers)</a>
       <a href="#s25" style="color:var(--red)"><span>25</span> EWS AUROC Audit</a>
       <a href="#s26" style="color:var(--green)"><span>26</span> Data Stack &amp; Signal Landscape</a>
+      <a href="#s27" style="color:var(--red)"><span>27</span> Causal Triangulation Engine</a>
     </div>
   </div>
 </div>
@@ -3069,8 +3070,10 @@ prevented from influencing predictions.
     <p>When you write code for RecWM, you are never writing a predictor. You are writing a system that:</p>
     <ol>
       <li>Decomposes reality into composable fragments</li>
+      <li>Discovers and tracks <strong>causal structure</strong> between fragments &mdash; not just correlations</li>
       <li>Tracks what agents believe and how beliefs propagate</li>
       <li>Enumerates what transformations are feasible under current constraints</li>
+      <li>Validates every prediction through <strong>four-channel triangulation</strong> (temporal dynamics, causal graph, sheaf coherence, economic theory)</li>
       <li>Simulates how construction attempts by agents change the fragments</li>
       <li>Detects when the system is becoming reflexive (beliefs creating the reality they describe)</li>
     </ol>
@@ -6344,6 +6347,46 @@ is a viable recurrence mechanism.
     <div class="callout success">
       <strong>The contribution claim for continual learning.</strong> No existing work combines: (1) per-fragment Fisher information with typed timescales, (2) O(N) RTRL streaming updates on a typed-&Delta; SSM backbone, (3) BOCPD-triggered adaptation protocols with slow-fast weight blending, (4) adaptive CL scheduling driven by the reflexivity coefficient &epsilon;. Each mechanism exists; the composition for economic world models does not. The key novelty is the GateL0RD-as-natural-CL insight (&sect;28.3) and the performativity-CL interaction (&sect;28.9) where EWC provably reduces &epsilon;.
     </div>
+  </div>
+</section>
+
+
+<!-- SECTION 27: CAUSAL TRIANGULATION -->
+<section class="prose" id="s27">
+  <div class="wrap">
+    <div class="sec-label">Section 27</div>
+    <h2>The Causal Triangulation Engine</h2>
+
+    <p>RecWM is not just a prediction engine. It is a <strong>causal reasoning engine</strong> that validates every prediction through four independent channels before trusting it. This is the architectural component that separates RecWM from every other financial model.</p>
+
+    <div class="def-block">
+      <div class="def-term">Four-Channel Triangulation</div>
+      <p><strong>Channel 1 &mdash; Temporal Dynamics:</strong> The world model&rsquo;s state evolution makes a prediction from learned fragment dynamics.</p>
+      <p><strong>Channel 2 &mdash; Causal Graph:</strong> A structural causal model (discovered via PCMCI/NOTEARS on latent states) checks whether the prediction respects known causal structure.</p>
+      <p><strong>Channel 3 &mdash; Sheaf Coherence:</strong> Cross-fragment consistency via Sheaf-Laplacian mathematics checks whether all seven fragments tell a coherent story.</p>
+      <p><strong>Channel 4 &mdash; Economic Theory:</strong> Hard constraints (no-arbitrage, flow conservation, covered interest parity) check whether the prediction violates any known economic law.</p>
+      <p><strong>Confidence:</strong> &kappa; = min(&kappa;<sub>temporal</sub>, &kappa;<sub>causal</sub>, &kappa;<sub>coherence</sub>, &kappa;<sub>theory</sub>) &mdash; weakest link, not average.</p>
+    </div>
+
+    <h3>Three-Way Coupling: The Core Invention</h3>
+    <p>The causal graph, the world model engine, and the continual learning mechanisms are <strong>mutually coupled</strong>:</p>
+    <ol>
+      <li><strong>BOCPD detects regime shift</strong> &rarr; triggers causal re-discovery (the graph may have changed)</li>
+      <li><strong>New causal graph</strong> &rarr; updates the world model&rsquo;s coupling mask (A<sub>coupled</sub> = M &odot; A<sub>full</sub>)</li>
+      <li><strong>Changed coupling</strong> &rarr; triggers EWC re-anchoring around new parameter region</li>
+    </ol>
+    <p>This three-way coupling is a genuine invention. No existing system couples causal discovery with temporal dynamics training with continual learning. It is also <strong>entirely untested</strong>.</p>
+
+    <h3>Why This Matters for the Team</h3>
+    <p>When you build the causal triangulation engine, you are building the component that makes RecWM a <em>new class of model</em> rather than an SSM with extras. The triangulation engine is what gives the model its ability to:</p>
+    <ul>
+      <li>Explain <em>why</em> a prediction was made (causal attribution)</li>
+      <li>Detect when the causal structure has changed (regime-aware causal discovery)</li>
+      <li>Answer interventional questions: &ldquo;What happens if the Fed cuts 50bps?&rdquo; via do-calculus</li>
+      <li>Know when to trust its own predictions (&kappa; confidence score)</li>
+    </ul>
+
+    <p style="font-size: 0.9rem; color: var(--fg-dim);"><a href="javascript:go('causal-engine')" style="color: var(--accent);">&rarr; Full Causal Engine Specification</a> with detailed mathematics, SCM equations, and PM integration outputs.</p>
   </div>
 </section>
 
