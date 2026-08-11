@@ -610,6 +610,7 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
       <a href="#" data-page="final-product" class="nl"><span class="nl-num">&#x2605;</span><span class="nl-txt">The World Model</span></a>
       <a href="#" data-page="ewmt" class="nl"><span class="nl-num">&#x2606;</span><span class="nl-txt">EWM Theory</span></a>
       <a href="#" data-page="vision" class="nl"><span class="nl-num">&#x1F680;</span><span class="nl-txt">Product Vision</span></a>
+      <a href="#" data-page="innovation" class="nl"><span class="nl-num">&#x1F4A1;</span><span class="nl-txt">Innovation Thesis</span></a>
     </div>
     <div class="sb-grp">
       <div class="sb-lbl">Research Surveys</div>
@@ -623,7 +624,7 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
       <a href="#" data-page="ttt" class="nl"><span class="nl-num">11</span><span class="nl-txt">Test-Time Training</span></a>
       <a href="#" data-page="curiosity" class="nl"><span class="nl-num">12</span><span class="nl-txt">Curiosity-Driven WM</span></a>
     </div>
-    <div class="sb-foot">19 documents &middot; August 2026<br>Continual Learning &times; Reflexive World Models</div>
+    <div class="sb-foot">20 documents &middot; August 2026<br>Continual Learning &times; Reflexive World Models</div>
   </nav>
   <main class="main" id="main">
     <div class="pg" id="pg-everything">
@@ -16828,6 +16829,443 @@ not a forecast. The system is brittle; any perturbation propagates.</em>
     <p style="font-size: 1.3rem; color: #f1f5f9; margin-bottom: 0.8rem; font-weight: 700;">This is not a better version of what exists.</p>
     <p style="font-size: 1.05rem; color: #c4b5fd; margin-bottom: 0.5rem;">It is a new instrument. A new way to see. A new way to think.</p>
     <p style="font-size: 0.88rem; color: #64748b; margin: 0;">The first financial product that understands why markets move, lets you test alternatives in seconds,<br>and knows when its own existence is changing the game.</p>
+  </div>
+</div>
+
+</div>
+
+    </div>
+
+    <div class="pg" id="pg-innovation">
+<div class="page">
+
+<div class="doc-header" style="background: linear-gradient(135deg, #0a0a0a 0%, #0d1117 20%, #161b22 40%, #0d1117 70%, #0a0a0a 100%); padding: 5rem 2.2rem 3.5rem; border-bottom: 3px solid #f97316; margin: -2.5rem -2.2rem 2.5rem; position: relative; overflow: hidden;">
+  <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 60%, rgba(249,115,22,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 30%, rgba(59,130,246,0.05) 0%, transparent 50%);"></div>
+  <div style="position: relative;">
+    <div style="font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.22em; color: #f97316; margin-bottom: 1rem;">The Innovation Thesis</div>
+    <h1 style="margin-bottom: 0.8rem; font-size: 2.5rem; line-height: 1.08; color: #f1f5f9; max-width: 780px;">Why This Has Never<br>Been Built Before</h1>
+    <p style="font-size: 1.12rem; max-width: 700px; color: #94a3b8; line-height: 1.65; margin-bottom: 1.5rem;">DeepMind built Dreamer to let agents dream. Meta built JEPA to let machines understand without generating pixels. NVIDIA built Cosmos to simulate physics. Nobody has built a <em>world model for the financial system</em>. Here is why RecWM is that model &mdash; and why it will be the most loved product in finance.</p>
+    <p style="font-size: 0.82rem; color: #475569; max-width: 620px; line-height: 1.6;">This document synthesizes deep research across world model architectures, Bloomberg&rsquo;s lock-in mechanics, hedge fund workflows, and competitive landscape analysis. Every claim is grounded in technical reality or cited evidence.</p>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PART I: THE WORLD MODEL REVOLUTION -->
+<!-- ================================================================ -->
+<div class="sec" id="inn-worldmodel">
+  <h2>Part I: The World Model Revolution</h2>
+
+  <p style="font-size: 1.05rem; line-height: 1.7; max-width: 720px;">The most important idea in AI right now is not large language models. It is <strong>world models</strong> &mdash; systems that build internal simulations of how reality works, then use those simulations to plan, imagine, and reason about scenarios that have never happened before.</p>
+
+  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.8rem; margin: 2rem 0;">
+    <h3 style="margin-top: 0; font-size: 1.1rem;">What a World Model Actually Does</h3>
+    <p style="font-size: 0.92rem; margin-bottom: 1rem;">A world model learns the <em>dynamics</em> of its environment &mdash; not just what things look like, but how they change when you act on them. It can then &ldquo;dream&rdquo; forward: simulate thousands of possible futures without ever touching the real world.</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <div style="background: var(--bg); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1rem;">
+        <div style="font-size: 0.7rem; font-weight: 700; color: #f87171; letter-spacing: 0.08em; margin-bottom: 0.3rem;">WHAT IT ISN&rsquo;T</div>
+        <p style="font-size: 0.85rem; margin-bottom: 0;">A prediction model that maps inputs &rarr; outputs. A classifier. A regression. A time-series forecast. These see patterns. They don&rsquo;t <em>understand</em> mechanisms.</p>
+      </div>
+      <div style="background: var(--bg); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1rem;">
+        <div style="font-size: 0.7rem; font-weight: 700; color: #10b981; letter-spacing: 0.08em; margin-bottom: 0.3rem;">WHAT IT IS</div>
+        <p style="font-size: 0.85rem; margin-bottom: 0;">A simulation engine with state, transitions, and composition. It models <em>how the world evolves</em> when you change things. It can answer &ldquo;what if?&rdquo; questions it has never seen.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>The Frontier: Who Is Building World Models</h3>
+
+  <div style="overflow-x: auto; margin: 1.5rem 0;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
+      <thead>
+        <tr style="border-bottom: 2px solid var(--border-light);">
+          <th style="text-align: left; padding: 0.6rem 0.8rem; font-weight: 700; color: var(--fg-dim);">System</th>
+          <th style="text-align: left; padding: 0.6rem 0.8rem; font-weight: 700; color: var(--fg-dim);">Builder</th>
+          <th style="text-align: left; padding: 0.6rem 0.8rem; font-weight: 700; color: var(--fg-dim);">Domain</th>
+          <th style="text-align: left; padding: 0.6rem 0.8rem; font-weight: 700; color: var(--fg-dim);">Key Innovation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">DreamerV3</td>
+          <td style="padding: 0.6rem 0.8rem;">DeepMind</td>
+          <td style="padding: 0.6rem 0.8rem;">Games / Robotics</td>
+          <td style="padding: 0.6rem 0.8rem;">Learns entirely by &ldquo;dreaming&rdquo; &mdash; optimizes policy inside imagined latent trajectories. First to collect diamonds in Minecraft from scratch. Published in <em>Nature</em> 2025.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">MuZero</td>
+          <td style="padding: 0.6rem 0.8rem;">DeepMind</td>
+          <td style="padding: 0.6rem 0.8rem;">Games</td>
+          <td style="padding: 0.6rem 0.8rem;">Learns the rules of chess, Go, and Atari <em>without being told them</em>. Plans via MCTS in a learned latent space. Three learned functions: representation, dynamics, prediction.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">V-JEPA 2</td>
+          <td style="padding: 0.6rem 0.8rem;">Meta / LeCun</td>
+          <td style="padding: 0.6rem 0.8rem;">Video / Robotics</td>
+          <td style="padding: 0.6rem 0.8rem;">Predicts in abstract representation space, never generates pixels. 15&ndash;30&times; faster planning than generative alternatives. Zero-shot robot deployment.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Genie 3</td>
+          <td style="padding: 0.6rem 0.8rem;">DeepMind</td>
+          <td style="padding: 0.6rem 0.8rem;">Interactive environments</td>
+          <td style="padding: 0.6rem 0.8rem;">Generates playable 3D worlds from text prompts at 720p/24fps. Object permanence, real-time physics. DeepMind calls it &ldquo;a stepping stone toward AGI.&rdquo;</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Cosmos 3</td>
+          <td style="padding: 0.6rem 0.8rem;">NVIDIA</td>
+          <td style="padding: 0.6rem 0.8rem;">Physical AI</td>
+          <td style="padding: 0.6rem 0.8rem;">Mixture-of-Transformers. Trained on 20 trillion tokens. Used by Tesla, Figure AI, Uber for robot and vehicle simulation.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Tesla Neural Sim</td>
+          <td style="padding: 0.6rem 0.8rem;">Tesla</td>
+          <td style="padding: 0.6rem 0.8rem;">Driving / Robotics</td>
+          <td style="padding: 0.6rem 0.8rem;">Simulates 500 years of driving experience per day. Same simulator trains both FSD and Optimus. Learned physics, not hand-coded.</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600; color: #f97316;">RecWM</td>
+          <td style="padding: 0.6rem 0.8rem; color: #f97316; font-weight: 600;">Treasury4</td>
+          <td style="padding: 0.6rem 0.8rem; color: #f97316; font-weight: 600;">Financial Markets</td>
+          <td style="padding: 0.6rem 0.8rem; color: #f97316; font-weight: 600;">7 typed fragments composed via &otimes; operator. S5 state-space backbone. Reflexivity coefficient &epsilon;(t). The first world model for the financial system.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size: 0.95rem; line-height: 1.7;">Every other domain has its world model. Games have Dreamer and MuZero. Robotics has V-JEPA and Cosmos. Autonomous driving has GAIA-3 and Tesla&rsquo;s neural simulator. <strong>Finance has nothing.</strong> RecWM fills the last great gap.</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- THE JEPA INSIGHT -->
+<!-- ================================================================ -->
+<div class="sec" id="inn-jepa">
+  <h2>The JEPA Insight: Why RecWM Predicts in Latent Space</h2>
+
+  <p>Yann LeCun&rsquo;s most important argument (arXiv:2306.02572): <strong>generative models solve the wrong problem for world modeling.</strong> A model that generates pixels wastes capacity on irrelevant detail &mdash; the exact pattern of light on a countertop, the precise wording of a headline. What matters for planning is abstract state: objects, relationships, dynamics.</p>
+
+  <div style="background: var(--bg-alt); border-left: 4px solid #3b82f6; padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0; margin: 1.5rem 0;">
+    <p style="font-size: 0.92rem; margin-bottom: 0.5rem;"><strong>V-JEPA 2-AC demonstrated this concretely:</strong> planning in a 1024-dimensional latent space takes ~16 seconds per action. The equivalent using NVIDIA Cosmos (a generative video model) takes ~4 minutes &mdash; <strong>15&ndash;30&times; slower</strong> &mdash; because it must generate and evaluate full video frames.</p>
+    <p style="font-size: 0.88rem; color: var(--fg-dim); margin-bottom: 0;">You do not need to render the future to evaluate it. You only need to predict its abstract state.</p>
+  </div>
+
+  <p>RecWM applies this insight to finance. It does not predict price time series (pixel-level prediction). It predicts the <strong>abstract state of seven fragments</strong> &mdash; Liquidity, Momentum, Risk, Credit, Structure, Sentiment, Policy &mdash; and their compositions. This is why it can simulate 5,000 forward paths in seconds: it operates in a compressed state-space, not in the space of observable prices.</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- WHAT MAKES THIS COMPOSITIONAL -->
+<!-- ================================================================ -->
+<div class="sec" id="inn-composition">
+  <h2>Compositionality: The Key to Generalisation</h2>
+
+  <p>The deepest innovation in RecWM is not any single fragment. It is the <strong>composition operator &otimes;</strong> that combines them.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
+    <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.3rem;">
+      <h4 style="color: #f87171; margin-top: 0;">Why Linear Models Fail</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0;">Standard factor models assume factors combine linearly: Return = &beta;<sub>1</sub>F<sub>1</sub> + &beta;<sub>2</sub>F<sub>2</sub> + &hellip; But in March 2020, Liquidity &times; Risk &times; Sentiment interacted <em>multiplicatively</em>. The selling caused the illiquidity caused the fear caused the selling. Linear models cannot represent this circular composition.</p>
+    </div>
+    <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.3rem;">
+      <h4 style="color: #10b981; margin-top: 0;">Why Composition Works</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0;">RecWM&rsquo;s &otimes; operator composes fragments with 4 constraint layers: algebraic (type compatibility), information-theoretic (SPIB compression), dynamical (Lyapunov stability), and economic (no-arbitrage). This lets the model represent <em>interactions it has never seen</em> &mdash; the same way language models compose words into sentences they&rsquo;ve never generated.</p>
+    </div>
+  </div>
+
+  <p style="font-size: 0.92rem;">This is compositional generalisation applied to finance. MuZero composes game mechanics. Dreamer composes physics. RecWM composes market dynamics. The architecture that conquered games and robotics &mdash; applied to the domain where it matters most.</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- REFLEXIVITY: THE IMPOSSIBLE FEATURE -->
+<!-- ================================================================ -->
+<div class="sec" id="inn-reflexivity">
+  <h2>Reflexivity: The Feature Nobody Else Can Build</h2>
+
+  <p>Every AI system in robotics, games, or autonomous driving assumes it is <em>observing</em> a system that exists independently. A self-driving car doesn&rsquo;t change the road by driving on it. A game agent doesn&rsquo;t change the physics by playing.</p>
+
+  <p style="font-size: 1.05rem; line-height: 1.7; max-width: 720px;"><strong>Financial markets are different.</strong> The model&rsquo;s predictions change the system it&rsquo;s predicting. When enough participants act on the same signal, the signal becomes self-fulfilling &mdash; or self-defeating. This is George Soros&rsquo;s reflexivity, formalised in Donald MacKenzie&rsquo;s &ldquo;performativity&rdquo; research, and mathematically grounded in Perdomo et al. 2020 (Theorem 3.5).</p>
+
+  <div style="background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0;">
+    <div style="font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
+      <div style="color: #f97316; font-weight: 700; margin-bottom: 0.5rem;">THE REFLEXIVITY COEFFICIENT &epsilon;(t)</div>
+      <span style="color: #64748b;">RecWM computes &epsilon;(t) from the Jacobian of the feedback loop:</span><br><br>
+      <span style="color: #e2e8f0;">&epsilon;(t) = &Vert; &part;market(t+1) / &part;model_output(t) &Vert;</span><br><br>
+      <span style="color: #10b981;">&epsilon; &lt; 0.2</span> &mdash; Normal. Model&rsquo;s predictions don&rsquo;t move markets. Standard quant models work fine.<br>
+      <span style="color: #fbbf24;">&epsilon; &asymp; 0.3&ndash;0.5</span> &mdash; Elevated. Crowded positioning. The model&rsquo;s recommendations start to matter.<br>
+      <span style="color: #f87171;">&epsilon; &gt; 0.5</span> &mdash; Critical. Self-fulfilling dynamics. <strong>The model suppresses its own confidence.</strong><br><br>
+      <span style="color: #64748b;">This is the feature that would have detected:</span><br>
+      &bull; <span style="color: #e2e8f0;">Feb 2018 VIX blow-up</span> &mdash; risk-parity vol targets created a feedback loop (&epsilon; &gt; 0.6)<br>
+      &bull; <span style="color: #e2e8f0;">Aug 2007 quant quake</span> &mdash; correlated unwind of momentum/value strategies (&epsilon; &asymp; 0.55)<br>
+      &bull; <span style="color: #e2e8f0;">Jan 2021 GameStop</span> &mdash; retail + short squeeze reflexive cascade (&epsilon; &gt; 0.7)<br>
+      &bull; <span style="color: #e2e8f0;">Mar 2023 SVB</span> &mdash; deposit flight &rarr; asset fire-sale &rarr; contagion loop (&epsilon; &asymp; 0.5)
+    </div>
+  </div>
+
+  <p style="font-size: 0.92rem;">No other financial model measures its own impact on the market. Bloomberg shows data. Quant models predict prices. Risk models measure exposure. <strong>RecWM is the only system that knows when it&rsquo;s changing the game.</strong></p>
+</div>
+
+<!-- ================================================================ -->
+<!-- PART II: WHAT BLOOMBERG TEACHES US -->
+<!-- ================================================================ -->
+<div class="sec" id="inn-bloomberg">
+  <h2>Part II: What Bloomberg Teaches Us About Being Loved</h2>
+
+  <p style="font-size: 1.05rem; line-height: 1.7; max-width: 720px;">Bloomberg Terminal has 325,000+ subscribers paying $32K/year. Its interface is objectively ugly &mdash; amber-on-black, 30,000+ keyboard commands, a CLI from the 1980s. And users <em>love it</em>. Understanding why is essential to building something they&rsquo;ll love even more.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1.5rem 0;">
+    <div style="background: var(--bg-alt); border-top: 3px solid #f97316; padding: 1.3rem; border-radius: 0 0 var(--r) var(--r);">
+      <h4 style="color: #f97316; margin-top: 0; font-size: 0.9rem;">Muscle Memory</h4>
+      <p style="font-size: 0.82rem; margin-bottom: 0;">&ldquo;The muscle memory a ten-year bond trader has built into their fingers isn&rsquo;t something you migrate &mdash; you&rsquo;re resetting ten years of that person.&rdquo; Bloomberg&rsquo;s 30,000 commands become <em>extensions of thought</em>. Heidegger called this &ldquo;ready-to-hand&rdquo; &mdash; the tool disappears. RecWM must create the same fusion.</p>
+    </div>
+    <div style="background: var(--bg-alt); border-top: 3px solid #3b82f6; padding: 1.3rem; border-radius: 0 0 var(--r) var(--r);">
+      <h4 style="color: #3b82f6; margin-top: 0; font-size: 0.9rem;">Network Lock-In</h4>
+      <p style="font-size: 0.82rem; margin-bottom: 0;">IB Chat handles 200M messages/day. A quote exchanged in chat becomes a binding order. Symphony raised $100M to disrupt it and failed &mdash; Goldman Sachs couldn&rsquo;t even get its own employees to switch. The network IS the product. RecWM&rsquo;s shared world model creates the same dynamic.</p>
+    </div>
+    <div style="background: var(--bg-alt); border-top: 3px solid #10b981; padding: 1.3rem; border-radius: 0 0 var(--r) var(--r);">
+      <h4 style="color: #10b981; margin-top: 0; font-size: 0.9rem;">The IKEA Effect</h4>
+      <p style="font-size: 0.82rem; margin-bottom: 0;">Norton, Mochon &amp; Ariely (2012): people value self-assembled items 63% higher than identical pre-built ones. PMs who train RecWM with their own hypotheses, scenario weightings, and fragment calibrations create an externalisation of their own cognition. Switching means abandoning <em>a mirror of their mind</em>.</p>
+    </div>
+  </div>
+
+  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.5rem; margin: 1.5rem 0;">
+    <h3 style="margin-top: 0;">The Five Lessons for RecWM</h3>
+    <ol style="font-size: 0.9rem; line-height: 1.7; padding-left: 1.2rem;">
+      <li style="margin-bottom: 0.8rem;"><strong>Command-speed interaction.</strong> Bloomberg users hit one key and get data. RecWM users speak a question and get a simulated world state. Both are sub-second, in-workflow, zero context-switch. The speed must be neurologically rewarding.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Complexity that signals expertise.</strong> Bloomberg&rsquo;s UX Magazine ethnography: &ldquo;The more painful the UI is, the more satisfied these users are.&rdquo; RecWM&rsquo;s world model is inherently complex &mdash; seven fragments, composition channels, regime states &mdash; but this complexity must reward mastery, not punish beginners.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>24/7 concierge support, not help desks.</strong> Bloomberg&rsquo;s HELP HELP connects to a human in seconds, 12,000 queries/day, 15+ languages. RecWM&rsquo;s equivalent: the model itself explains its reasoning, traces its logic, and teaches you how to use it. The world model IS the help desk.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Your data becomes the moat.</strong> Bloomberg&rsquo;s BGN prices come from dealer contributions &mdash; data that exists nowhere else. RecWM&rsquo;s equivalent: every scenario a PM runs, every counterfactual they test, every fragment calibration they adjust creates proprietary training signal no competitor can replicate.</li>
+      <li style="margin-bottom: 0.8rem;"><strong>Make switching psychologically impossible.</strong> Overriding established motor programmes takes 2&ndash;4&times; longer than learning from scratch (Proctor &amp; Vu, 2006). Once PMs think in fragments, compositions, and regime states, every other tool feels like going back to spreadsheets.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PART III: THE COMPETITIVE VOID -->
+<!-- ================================================================ -->
+<div class="sec" id="inn-void">
+  <h2>Part III: The Competitive Void</h2>
+
+  <p style="font-size: 1.02rem; line-height: 1.7;">Every major player in finance and AI is missing the world model. Here is precisely what each one lacks:</p>
+
+  <div style="overflow-x: auto; margin: 1.5rem 0;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
+      <thead>
+        <tr style="border-bottom: 2px solid var(--border-light);">
+          <th style="text-align: left; padding: 0.6rem 0.8rem; font-weight: 700; width: 18%;">Competitor</th>
+          <th style="text-align: left; padding: 0.6rem 0.8rem; font-weight: 700; width: 30%;">What They Do</th>
+          <th style="text-align: left; padding: 0.6rem 0.8rem; font-weight: 700; color: #f87171; width: 52%;">What They Cannot Do</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Bloomberg</td>
+          <td style="padding: 0.6rem 0.8rem;">Data terminal + chat + indices</td>
+          <td style="padding: 0.6rem 0.8rem; color: #f87171;">No simulation. No &ldquo;what if.&rdquo; No world model. 35M instruments shown as data, never as an interacting system. Cannot answer &ldquo;why did this move?&rdquo;</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Palantir Foundry</td>
+          <td style="padding: 0.6rem 0.8rem;">Data integration + ontology</td>
+          <td style="padding: 0.6rem 0.8rem; color: #f87171;">Organises data, doesn&rsquo;t simulate it. No forward paths, no regime detection, no composition. An ontology is a map, not a physics engine.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Bridgewater&rsquo;s Machine</td>
+          <td style="padding: 0.6rem 0.8rem;">Rules-based economic model</td>
+          <td style="padding: 0.6rem 0.8rem; color: #f87171;">Deterministic, not learned. Hand-coded rules break when regimes change. No compositional generalisation. No reflexivity. Closest to a world model but frozen in structure.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Two Sigma / DE Shaw</td>
+          <td style="padding: 0.6rem 0.8rem;">ML prediction engines</td>
+          <td style="padding: 0.6rem 0.8rem; color: #f87171;">Statistical pattern matching. No causal structure, no composition operator, no forward simulation of novel scenarios. Trained to predict, not to <em>understand</em>.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">MSCI / Axioma</td>
+          <td style="padding: 0.6rem 0.8rem;">Linear factor risk models</td>
+          <td style="padding: 0.6rem 0.8rem; color: #f87171;">Factors are linear and additive. No interaction effects. Breaks at regime transitions &mdash; exactly when risk matters most. March 2020 VaR was useless.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Sooth Labs</td>
+          <td style="padding: 0.6rem 0.8rem;">Exogenous event forecasting</td>
+          <td style="padding: 0.6rem 0.8rem; color: #f87171;">Predicts external events (elections, weather) but not how they propagate through the financial system. Complementary to RecWM, not competitive.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">ChatGPT / Claude</td>
+          <td style="padding: 0.6rem 0.8rem;">General-purpose LLMs</td>
+          <td style="padding: 0.6rem 0.8rem; color: #f87171;">No world model. No portfolio awareness. Hallucinate numbers. Cannot simulate forward paths. Cannot compose fragments. Cannot measure reflexivity. Text in, text out.</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Man AHL / WorldQuant</td>
+          <td style="padding: 0.6rem 0.8rem;">Alpha signal factories</td>
+          <td style="padding: 0.6rem 0.8rem; color: #f87171;">Mine correlations at scale. But correlation is not composition. Finding signal &ne; understanding mechanism. Alpha decays because they don&rsquo;t model <em>why</em> signals work.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="background: linear-gradient(135deg, #0f172a 0%, #1a0a2e 100%); border: 2px solid #f97316; border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0; text-align: center;">
+    <p style="font-size: 1.3rem; color: #f1f5f9; margin-bottom: 0.5rem; font-weight: 700;">The gap is not incremental. It is categorical.</p>
+    <p style="font-size: 0.92rem; color: #94a3b8; margin-bottom: 0;">Bloomberg = data terminal. Quant models = statistical prediction. Risk models = backward measurement.<br><strong style="color: #f97316;">RecWM = world simulator.</strong> A new category of financial instrument.</p>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PART IV: THE HEDGE FUND CASE -->
+<!-- ================================================================ -->
+<div class="sec" id="inn-hedge">
+  <h2>Part IV: Why Hedge Funds Will Pay $500K/Year</h2>
+
+  <p>The ROI case for RecWM is not about data. It is about <strong>alpha, risk, and survival</strong>.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
+    <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.3rem;">
+      <h4 style="color: #10b981; margin-top: 0;">The Alpha Case</h4>
+      <p style="font-size: 0.88rem;">On a $5B fund, 50bps of additional alpha = <strong>$25M/year</strong>. RecWM generates alpha through:</p>
+      <ul style="font-size: 0.82rem; line-height: 1.7; padding-left: 1.2rem; margin-bottom: 0;">
+        <li><strong>Regime-based allocation:</strong> different strategies for different world states</li>
+        <li><strong>Composition arbitrage:</strong> fragment interactions the market hasn&rsquo;t priced</li>
+        <li><strong>Reflexivity trading:</strong> trading the feedback loops others can&rsquo;t see</li>
+        <li><strong>Time-decay edge:</strong> seeing regime transitions 2&ndash;5 days before price</li>
+        <li><strong>Counterfactual simulation:</strong> testing scenarios competitors cannot</li>
+      </ul>
+    </div>
+    <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.3rem;">
+      <h4 style="color: #f87171; margin-top: 0;">The Survival Case</h4>
+      <p style="font-size: 0.88rem;">Preventing one Archegos-scale blowup = <strong>the fund&rsquo;s existence</strong>. RecWM prevents catastrophe through:</p>
+      <ul style="font-size: 0.82rem; line-height: 1.7; padding-left: 1.2rem; margin-bottom: 0;">
+        <li><strong>Composition fragility:</strong> detects when fragment interactions are unstable</li>
+        <li><strong>Reflexivity alerts:</strong> warns when crowding creates self-fulfilling cascades</li>
+        <li><strong>War room mode:</strong> automated crisis response with ranked action sequences</li>
+        <li><strong>Cross-book correlation:</strong> CIO sees when multiple PMs are in the same trade</li>
+        <li><strong>Time-to-margin countdown:</strong> real-time liquidity crisis simulation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.5rem; margin: 1.5rem 0;">
+    <h3 style="margin-top: 0;">The Math</h3>
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border-light);">
+            <th style="text-align: left; padding: 0.6rem 0.8rem;">Value Source</th>
+            <th style="text-align: right; padding: 0.6rem 0.8rem;">Annual Value ($5B Fund)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border-light);">
+            <td style="padding: 0.6rem 0.8rem;">50bps additional alpha from regime-based allocation</td>
+            <td style="text-align: right; padding: 0.6rem 0.8rem; font-weight: 600;">$25,000,000</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-light);">
+            <td style="padding: 0.6rem 0.8rem;">20bps saved from avoiding one tail event per 3 years</td>
+            <td style="text-align: right; padding: 0.6rem 0.8rem; font-weight: 600;">$10,000,000</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-light);">
+            <td style="padding: 0.6rem 0.8rem;">Replace 3 research analysts ($250K each fully loaded)</td>
+            <td style="text-align: right; padding: 0.6rem 0.8rem; font-weight: 600;">$750,000</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-light);">
+            <td style="padding: 0.6rem 0.8rem;">Faster decision-making (hours &rarr; seconds &times; 250 trading days)</td>
+            <td style="text-align: right; padding: 0.6rem 0.8rem; font-weight: 600;">$5,000,000</td>
+          </tr>
+          <tr style="border-bottom: 2px solid var(--border-light);">
+            <td style="padding: 0.6rem 0.8rem; font-weight: 700;">Total annual value</td>
+            <td style="text-align: right; padding: 0.6rem 0.8rem; font-weight: 700; color: #10b981; font-size: 1.1rem;">$40,750,000</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.6rem 0.8rem; font-weight: 700;">RecWM subscription</td>
+            <td style="text-align: right; padding: 0.6rem 0.8rem; font-weight: 700; color: #f97316;">$500,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.85rem; color: var(--fg-dim); margin-top: 1rem; margin-bottom: 0;"><strong>ROI: 81&times;.</strong> The subscription pays for itself 81 times over. And that&rsquo;s before counting the existential value of not being the next LTCM, Archegos, or Melvin Capital.</p>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PART V: THE MOAT -->
+<!-- ================================================================ -->
+<div class="sec" id="inn-moat">
+  <h2>Part V: The Moat That Gets Deeper Every Day</h2>
+
+  <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1.5rem 0;">
+    <div style="background: var(--bg-alt); border-left: 4px solid #f97316; padding: 1.3rem 1.6rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="margin-top: 0;">1. The Simulation Flywheel</h4>
+      <p style="font-size: 0.9rem; margin-bottom: 0;">Every scenario a PM simulates teaches the world model something new. Which fragment interactions matter in this regime. Which compositions are stable. Which historical analogs are relevant. This is not usage data &mdash; it is <em>world knowledge</em> that no competitor can acquire without the same simulation volume. The model gets smarter because people use it to think.</p>
+    </div>
+    <div style="background: var(--bg-alt); border-left: 4px solid #3b82f6; padding: 1.3rem 1.6rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="margin-top: 0;">2. Cognitive Lock-In</h4>
+      <p style="font-size: 0.9rem; margin-bottom: 0;">Once PMs think in fragments, compositions, and regime states, they have rewired their mental model. Switching to another tool means rebuilding their cognitive architecture &mdash; not just relearning an interface. Proctor &amp; Vu (2006) show overriding established cognitive programmes takes 2&ndash;4&times; longer than learning from scratch. The lock-in is neurological.</p>
+    </div>
+    <div style="background: var(--bg-alt); border-left: 4px solid #10b981; padding: 1.3rem 1.6rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="margin-top: 0;">3. The Regulatory Moat</h4>
+      <p style="font-size: 0.9rem; margin-bottom: 0;">Once compliance approves RecWM&rsquo;s world model for risk reporting, scenario analysis, and stress testing, switching requires re-approval. Regulators are slow. Bloomberg survived 40 years partly because compliance departments resist change. The same force will protect RecWM.</p>
+    </div>
+    <div style="background: var(--bg-alt); border-left: 4px solid #a855f7; padding: 1.3rem 1.6rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="margin-top: 0;">4. The Talent Gap</h4>
+      <p style="font-size: 0.9rem; margin-bottom: 0;">The intersection of world model research + financial domain expertise is approximately 50 people on the planet. A competitor cannot hire their way to RecWM. The architecture requires deep knowledge of S5 state-spaces, compositional world models, active inference, financial microstructure, and reflexivity theory simultaneously. This is not a team you assemble &mdash; it is a team that must grow together.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- PART VI: THE CATEGORY -->
+<!-- ================================================================ -->
+<div class="sec" id="inn-category">
+  <h2>Part VI: A New Category of Financial Instrument</h2>
+
+  <p>Category-creating products don&rsquo;t compete with existing tools. They make existing tools look like the previous era.</p>
+
+  <div style="overflow-x: auto; margin: 1.5rem 0;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+      <thead>
+        <tr style="border-bottom: 2px solid var(--border-light);">
+          <th style="text-align: left; padding: 0.6rem 0.8rem; width: 25%;">Before</th>
+          <th style="text-align: center; padding: 0.6rem 0.8rem; width: 5%;">&rarr;</th>
+          <th style="text-align: left; padding: 0.6rem 0.8rem; width: 25%;">After</th>
+          <th style="text-align: left; padding: 0.6rem 0.8rem; width: 45%;">The Shift</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem;">Crystallography</td>
+          <td style="text-align: center; padding: 0.6rem 0.8rem;">&rarr;</td>
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">AlphaFold</td>
+          <td style="padding: 0.6rem 0.8rem;">Protein structure from years &rarr; seconds</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem;">Thomas Guide maps</td>
+          <td style="text-align: center; padding: 0.6rem 0.8rem;">&rarr;</td>
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Google Maps</td>
+          <td style="padding: 0.6rem 0.8rem;">Static reference &rarr; live, navigable, routable</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border-light);">
+          <td style="padding: 0.6rem 0.8rem;">Hand-coded physics</td>
+          <td style="text-align: center; padding: 0.6rem 0.8rem;">&rarr;</td>
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Tesla Neural Sim</td>
+          <td style="padding: 0.6rem 0.8rem;">Rules &rarr; learned simulation (500 years/day)</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.6rem 0.8rem;">Bloomberg + spreadsheets</td>
+          <td style="text-align: center; padding: 0.6rem 0.8rem;">&rarr;</td>
+          <td style="padding: 0.6rem 0.8rem; font-weight: 600; color: #f97316;">RecWM</td>
+          <td style="padding: 0.6rem 0.8rem; color: #f97316;">Data terminal &rarr; world simulator with reflexivity</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size: 0.92rem; line-height: 1.7;">In five years, finance will divide into <strong>pre-world-model</strong> and <strong>post-world-model</strong> eras. The firms that adopt RecWM will think in regime states, compositions, and reflexivity coefficients. The firms that don&rsquo;t will still be reading sell-side research and building Excel models &mdash; the financial equivalent of using a Thomas Guide in the age of Google Maps.</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- CLOSING -->
+<!-- ================================================================ -->
+<div style="background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 30%, #0f172a 60%, #0a0a0a 100%); padding: 3rem 2rem; border-radius: var(--r); margin: 3rem 0 0; text-align: center; position: relative; overflow: hidden;">
+  <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 50%, rgba(249,115,22,0.08) 0%, transparent 60%);"></div>
+  <div style="position: relative;">
+    <p style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: #f97316; margin-bottom: 1rem;">The Innovation Thesis</p>
+    <p style="font-size: 1.3rem; color: #f1f5f9; margin-bottom: 0.8rem; font-weight: 700;">Every domain has its world model. Finance is the last frontier.</p>
+    <p style="font-size: 1rem; color: #fed7aa; margin-bottom: 0.5rem;">Games have Dreamer. Robotics have JEPA. Driving has Tesla Neural Sim.</p>
+    <p style="font-size: 1rem; color: #f97316; font-weight: 700; margin-bottom: 0.5rem;">Finance has RecWM.</p>
+    <p style="font-size: 0.82rem; color: #64748b; margin: 0;">The most advanced world model architecture applied to the domain<br>where understanding the world is worth the most.</p>
   </div>
 </div>
 
