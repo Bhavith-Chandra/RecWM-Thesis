@@ -599,6 +599,7 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
     <div class="sb-grp">
       <div class="sb-lbl">Core Documents</div>
       <a href="#" data-page="overview" class="nl"><span class="nl-num">1</span><span class="nl-txt">Unified Architecture</span></a>
+      <a href="#" data-page="causal-engine" class="nl"><span class="nl-num">&#x2660;</span><span class="nl-txt">Causal Triangulation Engine</span></a>
       <a href="#" data-page="briefing" class="nl"><span class="nl-num">2</span><span class="nl-txt">Technical Briefing</span></a>
       <a href="#" data-page="masterplan" class="nl"><span class="nl-num">3</span><span class="nl-txt">Master Plan</span></a>
     </div>
@@ -693,6 +694,11 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
   <p style="font-size: 0.82rem; color: #475569; margin-top: 1rem;">August 2026 &middot; Read time: ~25 minutes</p>
 </div>
 
+<div class="warn" style="background: #fef2f2; border: 2px solid #fecaca; border-left: 4px solid #ef4444; padding: 1.2rem 1.5rem; margin-bottom: 2rem; border-radius: 6px;">
+  <strong style="color: #dc2626;">Status: Design Vision &mdash; Nothing Built Yet</strong>
+  <p style="margin-top: 0.4rem; font-size: 0.88rem; color: #991b1b;">This document describes what RecWM proposes to build. The architecture is entirely at design stage. No code exists. No experiments have been run. All building-block citations refer to published work by other researchers; what we contribute is the specific combination, the causal triangulation architecture, and the novel modifications described in each section.</p>
+</div>
+
 <!-- TABLE OF CONTENTS -->
 <div class="toc" style="margin-bottom:2.8rem;">
   <h3 style="margin-top:0;">Contents</h3>
@@ -701,9 +707,11 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
     <li><a href="#ev-problem">The Problem: Why This Doesn&rsquo;t Exist Yet</a></li>
     <li><a href="#ev-insight">The Core Insight: Markets Build Themselves</a></li>
     <li><a href="#ev-model">What the Model Is</a></li>
+    <li><a href="#ev-invent">What We&rsquo;re Actually Inventing</a></li>
     <li><a href="#ev-arch">High-Level Architecture</a></li>
     <li><a href="#ev-data">What Goes In: The Data</a></li>
     <li><a href="#ev-engine">How It Works: The Engine</a></li>
+    <li><a href="#ev-causal">The Causal Triangulation Engine</a></li>
     <li><a href="#ev-output">What Comes Out</a></li>
     <li><a href="#ev-capabilities">What You Can Do With It</a></li>
     <li><a href="#ev-hedge">The Hedge Fund Playbook</a></li>
@@ -722,14 +730,14 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
 <div class="sec" id="ev-vision">
   <h2>The Vision</h2>
 
-  <p style="font-size: 1.15rem; line-height: 1.7; color: var(--heading); max-width: 700px;">We are building a <strong>world model for financial markets</strong> &mdash; a system that understands the economy the way a chess engine understands chess. Not by memorising past games, but by understanding the rules, the pieces, and the consequences of every move.</p>
+  <p style="font-size: 1.15rem; line-height: 1.7; color: var(--heading); max-width: 700px;">We are <strong>inventing a fundamentally new class of world model for financial markets</strong> &mdash; a system that understands the economy the way a chess engine understands chess. Not by memorising past games, but by understanding the rules, the pieces, and the consequences of every move. This is not assembled from off-the-shelf components &mdash; RecWM is a new architecture, built from scratch on first principles.</p>
 
   <p>Every major AI system that has changed the world &mdash; AlphaGo, self-driving cars, protein folding &mdash; works the same way: it builds an internal model of how the world works, then uses that model to reason, plan, and act. Finance has nothing like this. The biggest banks in the world spend $40 billion a year on technology and still rely on dashboards that show what already happened. They have faster data. They do not have better understanding.</p>
 
   <p>RecWM is the missing piece: an AI system that doesn&rsquo;t just predict prices, but <em>understands</em> why markets move, how decisions create consequences, and what happens when everyone acts on the same information at the same time.</p>
 
   <div style="background: linear-gradient(135deg, var(--accent-wash) 0%, var(--bg) 100%); border: 1px solid var(--accent); border-left: 4px solid var(--accent); padding: 1.5rem 1.8rem; border-radius: 0 var(--r) var(--r) 0; margin: 2rem 0;">
-    <p style="font-size: 1.05rem; margin: 0; font-weight: 500; color: var(--heading);"><strong>In one sentence:</strong> RecWM is an on-premise AI engine that models the causal structure of financial markets, learns continuously from new data without forgetting the past, and accounts for the fact that its own predictions change the system it&rsquo;s predicting.</p>
+    <p style="font-size: 1.05rem; margin: 0; font-weight: 500; color: var(--heading);"><strong>In one sentence:</strong> RecWM is a new foundational model architecture &mdash; invented from scratch &mdash; that discovers and validates causal structure in financial markets through four-channel triangulation, learns continuously without forgetting, and accounts for the fact that its own predictions change the system it&rsquo;s predicting.</p>
   </div>
 </div>
 
@@ -791,7 +799,7 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
     <p style="font-size: 0.88rem; color: var(--fg-dim); margin-top: 1rem; margin-bottom: 0;">This loop is not a bug to be linearised away. It is <em>the fundamental mechanism of financial markets.</em></p>
   </div>
 
-  <p>RecWM&rsquo;s core equation captures this in four pieces:</p>
+  <p>RecWM&rsquo;s core equation &mdash; the foundation of an entirely new model class &mdash; captures this in four pieces:</p>
 
   <div class="equation-block" style="font-size: 1.1rem;">W(t+1) = C( W(t), A(B(t)), &Phi;(t) )</div>
 
@@ -813,13 +821,13 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
 <div class="sec" id="ev-model">
   <h2>What the Model Is</h2>
 
-  <p>RecWM is a <strong>structured intelligence engine</strong> that runs entirely on the client&rsquo;s own hardware. Let&rsquo;s be precise about what it is and what it is not:</p>
+  <p>RecWM is not an incremental improvement on existing models. It is a <strong>new foundational architecture</strong> &mdash; a structured intelligence engine that runs entirely on the client&rsquo;s own hardware. It invents five things that do not exist anywhere in the literature or industry. Let&rsquo;s be precise about what it is and what it is not:</p>
 
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;">
     <div style="background: var(--accent-wash); border: 1px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: var(--r);">
       <h4 style="color: var(--accent); margin-top: 0;">What it IS</h4>
       <ul style="font-size: 0.9rem; margin-bottom: 0;">
-        <li>A causal model of how financial markets work</li>
+        <li>A causal model of how financial markets work, validated by four-channel triangulation</li>
         <li>Continuously learning &mdash; gets smarter every day</li>
         <li>On-premise &mdash; your data never leaves your building</li>
         <li>Traceable &mdash; every output links back to the data and logic that produced it</li>
@@ -834,10 +842,64 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
         <li>Not a dashboard that shows what already happened</li>
         <li>Not a black box &mdash; every number is explainable</li>
         <li>Not a prediction machine that says &ldquo;the market will go up&rdquo;</li>
-        <li>Not a 50-billion-parameter language model &mdash; it&rsquo;s much smaller and more structured</li>
+        <li>Not a 50-billion-parameter language model &mdash; it&rsquo;s a new architectural class, purpose-built from scratch</li>
+        <li>Not a state-space model with extras bolted on &mdash; SSMs are one mechanism inside a fundamentally different architecture</li>
         <li>Not a cloud service &mdash; it runs on your own GPUs</li>
       </ul>
     </div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- 4a. WHAT WE'RE INVENTING -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-invent">
+  <h2>What We&rsquo;re Actually Inventing</h2>
+
+  <p>RecWM is <strong>not</strong> built by plugging together existing components. It uses published building blocks (properly credited below) as starting ingredients, then invents five new things on top of them that do not exist anywhere in the literature or industry:</p>
+
+  <div style="margin: 1.5rem 0;">
+    <div style="display: grid; gap: 1rem;">
+      <div style="background: var(--accent-wash); border: 1px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: var(--r); display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start;">
+        <div style="background: var(--accent); color: #fff; width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem;">1</div>
+        <div>
+          <h4 style="margin: 0 0 0.3rem; color: var(--heading);">Causal-Constrained Temporal Dynamics</h4>
+          <p style="font-size: 0.9rem; margin: 0;">The discovered causal graph masks the world model&rsquo;s coupling matrix: A<sub>coupled</sub> = M &#8857; A<sub>full</sub>. The model can only learn inter-fragment connections that are causally justified. Nobody has done this &mdash; existing SSMs and transformers learn arbitrary correlations.</p>
+        </div>
+      </div>
+      <div style="background: var(--accent-wash); border: 1px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: var(--r); display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start;">
+        <div style="background: var(--accent); color: #fff; width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem;">2</div>
+        <div>
+          <h4 style="margin: 0 0 0.3rem; color: var(--heading);">Four-Channel Triangulation as Architecture</h4>
+          <p style="font-size: 0.9rem; margin: 0;">Every prediction is validated by four independent channels (SSM, causal graph, sheaf coherence, economic theory). Confidence = minimum across channels. This architecture does not exist.</p>
+        </div>
+      </div>
+      <div style="background: var(--accent-wash); border: 1px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: var(--r); display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start;">
+        <div style="background: var(--accent); color: #fff; width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem;">3</div>
+        <div>
+          <h4 style="margin: 0 0 0.3rem; color: var(--heading);">World Model &harr; Causal Graph &harr; Continual Learning Three-Way Coupling</h4>
+          <p style="font-size: 0.9rem; margin: 0;">Regime detection triggers causal re-discovery, which updates the world model&rsquo;s structural constraints, which triggers memory re-anchoring. The three systems are mutually coupled. Nobody has proposed this coupling &mdash; because nobody has built this kind of model.</p>
+        </div>
+      </div>
+      <div style="background: var(--accent-wash); border: 1px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: var(--r); display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start;">
+        <div style="background: var(--accent); color: #fff; width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem;">4</div>
+        <div>
+          <h4 style="margin: 0 0 0.3rem; color: var(--heading);">Endogenous Reflexivity Coefficient &epsilon;(t)</h4>
+          <p style="font-size: 0.9rem; margin: 0;">A real-time measure of how much the model&rsquo;s own predictions are changing the system. Computed from the model&rsquo;s internals, not external observation. This formalisation does not exist in the literature.</p>
+        </div>
+      </div>
+      <div style="background: var(--accent-wash); border: 1px solid var(--accent); padding: 1.2rem 1.5rem; border-radius: var(--r); display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start;">
+        <div style="background: var(--accent); color: #fff; width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem;">5</div>
+        <div>
+          <h4 style="margin: 0 0 0.3rem; color: var(--heading);">Latent-Space Causal Discovery for Financial Imagination</h4>
+          <p style="font-size: 0.9rem; margin: 0;">Running causal discovery on the world model&rsquo;s learned latent representations rather than raw observables. Enables &ldquo;what if?&rdquo; scenario analysis through causal intervention in the model&rsquo;s internal representation space. Entirely novel and empirically untested.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background: var(--warn-bg); border: 1px solid var(--warn-border); border-left: 4px solid var(--warn); padding: 1.2rem 1.5rem; border-radius: 0 var(--r) var(--r) 0; margin: 1.5rem 0;">
+    <p style="margin: 0; font-size: 0.95rem;"><strong>Building blocks we use (and credit):</strong> S5 state-space mechanics for temporal evolution (Smith et al. ICLR 2023), GateL0RD gating for selective updates (Gumbsch et al. NeurIPS 2021), EWC for memory protection (Kirkpatrick et al. PNAS 2017), BOCPD for regime detection (Adams &amp; MacKay 2007), SPIB for information compression (Wang et al. 2021), PCMCI for causal discovery (Runge 2019), NOTEARS for structure learning (Zheng et al. 2018). These are ingredients &mdash; the way steel and glass are ingredients for a skyscraper. The invention is the architecture itself: a new class of world model that fuses causal triangulation, reflexive construction, and continual learning into something that does not exist anywhere in the literature.</p>
   </div>
 </div>
 
@@ -900,7 +962,7 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
 
       <!-- TITLE -->
       <text x="480" y="38" text-anchor="middle" fill="#f1f5f9" font-size="18" font-weight="700" letter-spacing="0.04em">RecWM — SYSTEM ARCHITECTURE</text>
-      <text x="480" y="58" text-anchor="middle" fill="#64748b" font-size="11" letter-spacing="0.06em">DATA → FRAGMENTS → PROCESS → COMPOSE → REFLEXIVITY → INTELLIGENCE</text>
+      <text x="480" y="58" text-anchor="middle" fill="#64748b" font-size="11" letter-spacing="0.06em">DATA → FRAGMENTS → CAUSAL DISCOVERY → TRIANGULATE → REFLEXIVITY → INTELLIGENCE</text>
 
       <!-- ===== LAYER 1: DATA SOURCES ===== -->
       <rect x="30" y="78" width="900" height="82" rx="8" fill="#0f172a" stroke="#1e40af" stroke-width="1.5" stroke-dasharray="4,3"/>
@@ -1220,7 +1282,7 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
 <div class="sec" id="ev-engine">
   <h2>How It Works: The Engine</h2>
 
-  <p>The model works in seven stages. Think of it as an assembly line: raw data enters at the bottom, and actionable intelligence comes out at the top.</p>
+  <p>RecWM is a new class of world model &mdash; not a state-space model, not a transformer, not a foundation model in the conventional sense. It is an architecture invented from scratch for the specific problem of modelling reflexive, non-stationary, constraint-bound economic systems. The engine works in seven stages:</p>
 
   <h3>Stage 1: Break the World into Pieces</h3>
   <p>The first thing the model does is break the financial world into <strong>seven fragments</strong>, each capturing a different aspect of reality at its natural speed:</p>
@@ -1251,8 +1313,8 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
   </ul>
   <p>When a gate is closed, the fragment&rsquo;s state is preserved exactly as it was &mdash; no forgetting, no drift. This is the model&rsquo;s built-in memory: it naturally remembers what it learned about slow-moving dynamics while quickly adapting to fast-moving ones.</p>
 
-  <h3>Stage 4: Compose the Fragments</h3>
-  <p>The fragments don&rsquo;t exist in isolation. Liquidity affects risk. Credit affects structure. Policy affects everything. The model learns how fragments interact &mdash; not just correlations, but causal relationships (if liquidity dries up, <em>then</em> risk spikes, <em>because</em> market makers withdraw).</p>
+  <h3>Stage 4: Compose the Fragments via Causal Discovery</h3>
+  <p>The fragments don&rsquo;t exist in isolation. Liquidity affects risk. Credit affects structure. Policy affects everything. But RecWM doesn&rsquo;t just learn correlations &mdash; it <em>discovers</em> the causal graph between fragments using PCMCI (Runge 2019) and NOTEARS (Zheng 2018), identifying which fragments actually <em>cause</em> changes in which others. The discovered causal graph then constrains the SSM: the model can only learn connections that are causally justified. If the graph says &ldquo;no edge from sentiment to credit,&rdquo; the SSM coupling matrix is masked to zero there.</p>
   <p>At this stage, constraints kick in. Four types of constraints filter every possible action:</p>
   <ul>
     <li><strong>Regulatory</strong> &mdash; leverage caps, position limits, capital requirements</li>
@@ -1294,6 +1356,44 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
       <p style="font-size: 0.88rem; margin-bottom: 0;">How sensitive is the future to decisions made today? When this approaches 1, you&rsquo;re at a fork in the road &mdash; small choices now lock in trajectories that cannot be reversed later. Bifurcation points, tipping points, points of no return.</p>
     </div>
   </div>
+</div>
+
+
+<!-- ================================================================ -->
+<!-- 6b. THE CAUSAL TRIANGULATION ENGINE -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-causal">
+  <h2>The Causal Triangulation Engine</h2>
+
+  <p>This is where RecWM fundamentally departs from every other model. Prediction alone is not enough &mdash; a model that predicts well for wrong reasons will fail catastrophically when the world changes. RecWM validates every prediction through <strong>four independent channels</strong> before it trusts it:</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
+    <div style="background: var(--bg-alt); border-left: 4px solid #3b82f6; padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="color: #3b82f6; margin-top: 0; font-size: 0.95rem;">Channel 1: Temporal Dynamics Engine</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0;">The world model&rsquo;s state evolution layer (which uses SSM-style mechanics internally) makes a prediction based on learned dynamics. &ldquo;Given the current state of all seven fragments, what happens next?&rdquo; This is what every other model stops at. We don&rsquo;t.</p>
+    </div>
+    <div style="background: var(--bg-alt); border-left: 4px solid #10b981; padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="color: #10b981; margin-top: 0; font-size: 0.95rem;">Channel 2: Causal Graph</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0;">A structural causal model (Pearl, 2009) discovers and tracks which fragments <em>actually cause</em> which others &mdash; not just correlations. Does the SSM&rsquo;s prediction respect known causal structure? If the model predicts credit spreads tighten but the causal graph says rising rates &rarr; wider spreads, the prediction is flagged.</p>
+    </div>
+    <div style="background: var(--bg-alt); border-left: 4px solid #f97316; padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="color: #f97316; margin-top: 0; font-size: 0.95rem;">Channel 3: Sheaf Coherence</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0;">Cross-fragment consistency check: do all seven fragments tell a coherent story? If liquidity says &ldquo;fine&rdquo; but credit says &ldquo;stress&rdquo; and sentiment says &ldquo;panic,&rdquo; the disagreement itself is a signal. Sheaf-Laplacian mathematics (Hansen &amp; Ghrist, 2019) measures how much fragments agree.</p>
+    </div>
+    <div style="background: var(--bg-alt); border-left: 4px solid #a855f7; padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="color: #a855f7; margin-top: 0; font-size: 0.95rem;">Channel 4: Economic Theory</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0;">Hard constraints from economics: no-arbitrage conditions, flow consistency (one party&rsquo;s outflow is another&rsquo;s inflow), covered interest parity, balance sheet identities. Does the prediction violate any known economic law?</p>
+    </div>
+  </div>
+
+  <div style="background: linear-gradient(135deg, var(--accent-wash) 0%, var(--bg) 100%); border: 1px solid var(--accent); border-left: 4px solid var(--accent); padding: 1.5rem 1.8rem; border-radius: 0 var(--r) var(--r) 0; margin: 2rem 0;">
+    <p style="font-size: 1.05rem; margin: 0; font-weight: 500; color: var(--heading);"><strong>The critical design choice:</strong> Confidence is the <strong>minimum</strong> across all four channels, not the average. A prediction that scores 95% on the SSM but 20% on causal consistency gets a confidence of 20%. You cannot average your way past a structural contradiction.</p>
+  </div>
+
+  <h3>Why This Is a Genuine Invention</h3>
+  <p>No existing system does this. Current financial AI models (Bloomberg GPT, JPMorgan&rsquo;s LLM stack, Two Sigma&rsquo;s prediction engine) make predictions and report confidence. None triangulate against causal structure. None check whether predictions violate known economic laws. None detect when fragments tell contradictory stories.</p>
+  <p>The causal triangulation engine is not a post-hoc filter. It is <strong>baked into the architecture</strong>: the causal graph constrains which connections the SSM can learn (masking the coupling matrix), the coherence check shapes the loss function, and theory violations trigger automatic re-discovery of the causal structure. The three components &mdash; SSM, causal graph, and continual learning &mdash; are <em>mutually coupled</em>: each one informs and constrains the other two.</p>
+  <p style="font-size: 0.9rem; color: var(--fg-dim);"><strong>Prior art:</strong> Causal discovery from time series uses PCMCI (Runge et al. <em>Nature Communications</em> 2019) and NOTEARS (Zheng et al. NeurIPS 2018). Pearl&rsquo;s do-calculus (2009) provides the intervention framework. Sheaf-Laplacian consistency checking from Hansen &amp; Ghrist (2019). What&rsquo;s new is combining all four into a single triangulation architecture that runs at inference time. <a href="javascript:go('causal-engine')" style="color: var(--accent);">&rarr; Full Causal Engine Specification</a></p>
 </div>
 
 <!-- ================================================================ -->
@@ -1869,7 +1969,7 @@ will itself alter the Fed&rsquo;s next move. This is path-dependent.
 </div>
 
 <h1>RecWM: Complete Architecture Specification</h1>
-<p class="subtitle">Mathematics, diagrams, and prior art attribution for every component. August 2026.</p>
+<p class="subtitle">Mathematics, diagrams, and prior art attribution for every component &mdash; including the causal triangulation engine. August 2026.</p>
 
 <div class="toc">
   <h3>Contents</h3>
@@ -1888,6 +1988,7 @@ will itself alter the Fed&rsquo;s next move. This is path-dependent.
     <li><a href="#s12">CL-4: Slow-Fast Weights</a></li>
     <li><a href="#s13">The Performativity-CL Connection</a></li>
     <li><a href="#s14">Sheaf-Laplacian Cross-Fragment Consistency</a></li>
+    <li><a href="#s14b">Causal Triangulation Engine</a></li>
     <li><a href="#s15">Evaluation Protocol</a></li>
     <li><a href="#s16">Prior Art Attribution</a></li>
   </ol>
@@ -1911,7 +2012,7 @@ will itself alter the Fed&rsquo;s next move. This is path-dependent.
 <!-- ═══ SECTION 2 ═══ -->
 <h2 id="s2"><span class="sec-num">2.</span> System Architecture Overview</h2>
 
-<p>RecWM has two regions: a four-layer world model (WM) and five continual learning (CL) mechanisms. Every component is typed by timescale &mdash; the same &tau;<sub>k</sub> parameter governs the S5 step size, the GateL0RD penalty, the SPIB prediction horizon, the EWC strength, and the replay buffer size.</p>
+<p>RecWM is a fundamentally new class of world model &mdash; not a state-space model, not a transformer, not a fine-tuned foundation model. It is an architecture invented from scratch. Internally, it has two regions: a four-layer world model (WM) engine and five continual learning (CL) mechanisms, unified by a causal triangulation layer that validates every prediction. Every component is typed by timescale &mdash; the same &tau;<sub>k</sub> parameter governs the S5 step size, the GateL0RD penalty, the SPIB prediction horizon, the EWC strength, and the replay buffer size.</p>
 
 <div class="diagram-wrap">
 <svg viewBox="0 0 780 700" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif">
@@ -2325,6 +2426,28 @@ Small eigenvalues = fragments agree. Large eigenvalues = incoherence.
 </div>
 
 <!-- ═══ SECTION 15: Evaluation ═══ -->
+<!-- ═══ SECTION 14b: CAUSAL TRIANGULATION ═══ -->
+<h2 id="s14b"><span class="sec-num">14b.</span> Causal Triangulation Engine</h2>
+
+<p>The Sheaf-Laplacian consistency check (above) is one channel of a broader validation architecture. RecWM validates every prediction through four independent channels before trusting it:</p>
+
+<div class="contrib">
+<strong>Four-Channel Triangulation (all running at inference time):</strong>
+<ol style="font-size: 0.92rem;">
+  <li><strong>Temporal Dynamics</strong> &mdash; the world model&rsquo;s state evolution prediction (internally S5+GateL0RD) from the latent state</li>
+  <li><strong>Causal Graph</strong> &mdash; structural causal model via PCMCI (Runge 2019) + NOTEARS (Zheng 2018); discovered graph masks the SSM coupling matrix: A<sub>coupled</sub> = M &#8857; A<sub>full</sub></li>
+  <li><strong>Sheaf Coherence</strong> &mdash; cross-fragment consistency via Sheaf-Laplacian (&sect;14 above)</li>
+  <li><strong>Economic Theory</strong> &mdash; no-arbitrage, flow consistency, covered interest parity hard constraints</li>
+</ol>
+<p style="margin-bottom: 0.3rem;">Final confidence: <strong>&kappa; = min(&kappa;<sub>SSM</sub>, &kappa;<sub>causal</sub>, &kappa;<sub>coherence</sub>, &kappa;<sub>theory</sub>)</strong> &mdash; weakest link, not average.</p>
+</div>
+
+<p><strong>Three-way coupling.</strong> The causal graph, SSM, and continual learning mechanisms are mutually coupled. When BOCPD detects a regime shift (&sect;11), it triggers causal re-discovery (the graph structure may have changed), which updates the world model&rsquo;s coupling mask, which triggers EWC re-anchoring around the new parameter region. This three-way coupling is a genuine architectural invention &mdash; no existing system couples causal discovery with SSM training with continual learning.</p>
+
+<p><strong>Causal discovery in latent space.</strong> Standard PCMCI and NOTEARS operate on observed variables. RecWM runs causal discovery on the world model&rsquo;s learned latent representations, discovering causal structure between abstract fragment states rather than raw observables. This is novel and untested &mdash; whether causal discovery algorithms produce meaningful results in learned latent spaces is an open empirical question.</p>
+
+<p style="font-size: 0.9rem; color: var(--fg-dim);"><a href="javascript:go('causal-engine')" style="color: var(--accent);">&rarr; Full Causal Triangulation Engine Specification</a> (detailed math, SCM equations, regime-switching causal structure, PM integration)</p>
+
 <h2 id="s15"><span class="sec-num">15.</span> Evaluation Protocol</h2>
 
 <div class="math">
@@ -2385,6 +2508,494 @@ Small eigenvalues = fragments agree. Large eigenvalues = incoherence.
 
 </div>
 </div>
+    <div class="pg" id="pg-causal-engine">
+<div class="page">
+
+<div class="warn" style="background: #fef2f2; border: 2px solid #fecaca; border-left: 4px solid #ef4444; padding: 1.2rem 1.5rem; margin-bottom: 2rem; border-radius: 6px;">
+  <strong style="color: #dc2626;">Status: Architecture Design &mdash; Not Implemented</strong>
+  <p style="margin-top: 0.4rem; font-size: 0.88rem; color: #991b1b;">This describes a system we are inventing. No code exists. The causal inference engine below is a novel architectural component; every building block is credited, but the combination and the runtime triangulation concept have no prior art. All claims are design-stage.</p>
+</div>
+
+<h1>The Causal Triangulation Engine</h1>
+<p class="subtitle">How RecWM validates every prediction through causal structure, cross-fragment coherence, and economic theory &mdash; simultaneously. This is not post-hoc analysis. This is a runtime architectural component.</p>
+
+<div class="toc">
+  <h3>Contents</h3>
+  <ol>
+    <li><a href="#ct1">Why Prediction Without Causation Fails in Finance</a></li>
+    <li><a href="#ct2">The Triangulation Principle</a></li>
+    <li><a href="#ct3">Causal Graph Architecture</a></li>
+    <li><a href="#ct4">The Three Rungs in Financial Context</a></li>
+    <li><a href="#ct5">Runtime Causal Discovery: Learning the Graph</a></li>
+    <li><a href="#ct6">Regime-Switching Causal Structure</a></li>
+    <li><a href="#ct7">The Triangulation Engine: How It Works</a></li>
+    <li><a href="#ct8">Integration with the World Model Engine</a></li>
+    <li><a href="#ct9">What This Produces for a Portfolio Manager</a></li>
+    <li><a href="#ct10">What Makes This Genuinely New</a></li>
+    <li><a href="#ct11">What Could Kill This</a></li>
+    <li><a href="#ct12">Prior Art Attribution</a></li>
+  </ol>
+</div>
+
+<!-- ═══ SECTION 1 ═══ -->
+<h2 id="ct1"><span class="sec-num">1.</span> Why Prediction Without Causation Fails in Finance</h2>
+
+<p>Every time-series model in production finance &mdash; from ARIMA to Chronos-2 to TradeFM &mdash; learns the same thing: <strong>statistical associations</strong>. They answer: "given the past, what comes next?" This is Rung 1 of Pearl's causal ladder (Pearl 2009): <em>association</em>, P(Y|X).</p>
+
+<p>But the questions hedge funds actually need answered are on Rungs 2 and 3:</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Rung</th><th>Question Type</th><th>Mathematical Form</th><th>Financial Example</th><th>Who Can Answer It</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Association</strong></td>
+      <td>"What do I expect?"</td>
+      <td>P(Y | X = x)</td>
+      <td>"Given VIX at 30, what's the expected S&P move?"</td>
+      <td>Any ML model</td>
+    </tr>
+    <tr>
+      <td><strong>2. Intervention</strong></td>
+      <td>"What if I do?"</td>
+      <td>P(Y | do(X = x))</td>
+      <td>"What happens to bond prices <em>if the Fed raises rates 50bps</em>?"</td>
+      <td>Requires causal model</td>
+    </tr>
+    <tr>
+      <td><strong>3. Counterfactual</strong></td>
+      <td>"What if I had?"</td>
+      <td>P(Y<sub>x</sub> | X' = x')</td>
+      <td>"Would our portfolio have crashed if we <em>hadn't</em> hedged?"</td>
+      <td>Requires full SCM + noise terms</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>The distinction matters enormously. Consider: "VIX and credit spreads are correlated." A statistical model uses this correlation to predict. But the <strong>causal question</strong> is directional: does high VIX <em>cause</em> credit spreads to widen (through risk repricing), or do wide credit spreads <em>cause</em> VIX to rise (through volatility contagion), or does a third factor (e.g. Fed tightening) cause both? The correlation is identical in all three cases. The interventional predictions are completely different.</p>
+
+<div class="contrib">
+  <strong>The fundamental gap.</strong> No deployed financial model answers interventional questions using formal causal inference. Hedge fund "scenario analysis" uses conditional correlations — P(Y|X=x), not P(Y|do(X=x)). These give wrong answers when confounders exist, which is always the case in macroeconomics. RecWM proposes to close this gap by building causal graphs into the architecture as a runtime component, not a post-hoc analysis tool.
+</div>
+
+<!-- ═══ SECTION 2 ═══ -->
+<h2 id="ct2"><span class="sec-num">2.</span> The Triangulation Principle</h2>
+
+<p><strong>Triangulation</strong> (Munaf&ograve; &amp; Davey Smith, <em>Nature</em> 2018) is the methodological principle that a conclusion is trustworthy when multiple independent methods &mdash; each with different biases and assumptions &mdash; converge on the same answer.</p>
+
+<p>RecWM implements triangulation as an architectural principle, not a best practice. Every prediction is cross-validated through four independent channels:</p>
+
+<div class="diagram-wrap">
+<svg viewBox="0 0 780 500" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <filter id="ctds" x="-2%" y="-2%" width="104%" height="108%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.06"/>
+    </filter>
+    <marker id="cta" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L12 4L0 8L3 4z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- Central prediction node -->
+  <circle cx="390" cy="250" r="55" fill="#1d4ed8" filter="url(#ctds)"/>
+  <text x="390" y="242" text-anchor="middle" fill="#fff" font-weight="700" font-size="13">Prediction</text>
+  <text x="390" y="260" text-anchor="middle" fill="#dbeafe" font-size="10.5">Confidence: &kappa;</text>
+
+  <!-- Channel 1: SSM -->
+  <rect x="30" y="60" width="200" height="90" rx="10" fill="#fff" stroke="#3b82f6" stroke-width="1.5" filter="url(#ctds)"/>
+  <rect x="30" y="60" width="200" height="6" rx="10 10 0 0" fill="#3b82f6"/>
+  <text x="130" y="88" text-anchor="middle" fill="#111827" font-weight="700" font-size="12">Channel 1: Temporal Dynamics</text>
+  <text x="130" y="106" text-anchor="middle" fill="#6b7280" font-size="10">S5 Typed-&Delta; temporal dynamics</text>
+  <text x="130" y="122" text-anchor="middle" fill="#6b7280" font-size="10">"What does the data say?"</text>
+  <line x1="230" y1="120" x2="340" y2="220" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#cta)"/>
+
+  <!-- Channel 2: Causal Graph -->
+  <rect x="550" y="60" width="200" height="90" rx="10" fill="#fff" stroke="#dc2626" stroke-width="1.5" filter="url(#ctds)"/>
+  <rect x="550" y="60" width="200" height="6" rx="10 10 0 0" fill="#dc2626"/>
+  <text x="650" y="88" text-anchor="middle" fill="#111827" font-weight="700" font-size="12">Channel 2: Causal Graph</text>
+  <text x="650" y="106" text-anchor="middle" fill="#6b7280" font-size="10">SCM + do-calculus interventions</text>
+  <text x="650" y="122" text-anchor="middle" fill="#6b7280" font-size="10">"What does causation say?"</text>
+  <line x1="550" y1="120" x2="440" y2="220" stroke="#dc2626" stroke-width="1.5" marker-end="url(#cta)"/>
+
+  <!-- Channel 3: Coherence -->
+  <rect x="30" y="350" width="200" height="90" rx="10" fill="#fff" stroke="#059669" stroke-width="1.5" filter="url(#ctds)"/>
+  <rect x="30" y="350" width="200" height="6" rx="10 10 0 0" fill="#059669"/>
+  <text x="130" y="378" text-anchor="middle" fill="#111827" font-weight="700" font-size="12">Channel 3: Coherence</text>
+  <text x="130" y="396" text-anchor="middle" fill="#6b7280" font-size="10">Sheaf-Laplacian cross-fragment</text>
+  <text x="130" y="412" text-anchor="middle" fill="#6b7280" font-size="10">"Do fragments agree?"</text>
+  <line x1="230" y1="380" x2="340" y2="280" stroke="#059669" stroke-width="1.5" marker-end="url(#cta)"/>
+
+  <!-- Channel 4: Economic Theory -->
+  <rect x="550" y="350" width="200" height="90" rx="10" fill="#fff" stroke="#d97706" stroke-width="1.5" filter="url(#ctds)"/>
+  <rect x="550" y="350" width="200" height="6" rx="10 10 0 0" fill="#d97706"/>
+  <text x="650" y="378" text-anchor="middle" fill="#111827" font-weight="700" font-size="12">Channel 4: Econ Theory</text>
+  <text x="650" y="396" text-anchor="middle" fill="#6b7280" font-size="10">No-arbitrage, flow consistency</text>
+  <text x="650" y="412" text-anchor="middle" fill="#6b7280" font-size="10">"Does economics allow this?"</text>
+  <line x1="550" y1="380" x2="440" y2="280" stroke="#d97706" stroke-width="1.5" marker-end="url(#cta)"/>
+
+  <!-- Confidence formula -->
+  <rect x="250" y="440" width="280" height="45" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="390" y="460" text-anchor="middle" font-size="11" fill="#334155" font-family="Georgia, serif">&kappa; = min(&kappa;<tspan font-size="8" dy="3">SSM</tspan><tspan dy="-3">, &kappa;</tspan><tspan font-size="8" dy="3">causal</tspan><tspan dy="-3">, &kappa;</tspan><tspan font-size="8" dy="3">coherence</tspan><tspan dy="-3">, &kappa;</tspan><tspan font-size="8" dy="3">theory</tspan><tspan dy="-3">)</tspan></text>
+  <text x="390" y="478" text-anchor="middle" font-size="9.5" fill="#64748b">Confidence = weakest link, not average</text>
+</svg>
+<div class="diagram-caption"><strong>Figure 1.</strong> The four-channel triangulation engine. Each channel independently evaluates a prediction. Final confidence is the <em>minimum</em> across channels — a prediction trusted by the SSM but violating causal structure gets flagged, not averaged away.</div>
+</div>
+
+<p>The critical design choice: confidence is the <strong>minimum</strong>, not the average. If the temporal engine predicts X but the causal graph says X violates known causal structure, the prediction is flagged regardless of how confident the SSM is. This is conservative by design — false negatives (missed predictions) are preferable to false positives (acted-on predictions that violate causal logic) in a hedge fund context.</p>
+
+<!-- ═══ SECTION 3 ═══ -->
+<h2 id="ct3"><span class="sec-num">3.</span> Causal Graph Architecture</h2>
+
+<p>The causal graph in RecWM is a <strong>Structural Causal Model</strong> (Pearl 2009) over the seven fragment types, with edges representing directional causal mechanisms.</p>
+
+<div class="math">
+<span class="lbl">Structural Causal Model over fragments</span>
+<strong>Variables:</strong> V = {Liquidity, Momentum, Risk, Credit, Structure, Sentiment, Policy}
+<strong>Structural equations:</strong>
+  Liquidity(t)  = f<sub>liq</sub>(Policy(t-&delta;), Risk(t), U<sub>liq</sub>)
+  Momentum(t)   = f<sub>mom</sub>(Liquidity(t), Sentiment(t), U<sub>mom</sub>)
+  Risk(t)       = f<sub>risk</sub>(Credit(t), Sentiment(t), Momentum(t), U<sub>risk</sub>)
+  Credit(t)     = f<sub>cred</sub>(Policy(t-&delta;), Structure(t), Risk(t-&delta;), U<sub>cred</sub>)
+  Structure(t)  = f<sub>struct</sub>(Policy(t-&delta;), Credit(t-&delta;), U<sub>struct</sub>)
+  Sentiment(t)  = f<sub>sent</sub>(Momentum(t), Risk(t), U<sub>sent</sub>)
+  Policy(t)     = f<sub>pol</sub>(Structure(t-&delta;), Risk(t-&delta;), Credit(t-&delta;), U<sub>pol</sub>)
+
+<strong>Noise terms:</strong> U = {U<sub>liq</sub>, ..., U<sub>pol</sub>} &mdash; independent exogenous shocks
+<strong>DAG:</strong> G = (V, E) where E encodes which f<sub>k</sub> depends on which variables
+
+<strong>Key property:</strong> The structural equations are NOT linear. They are learned
+nonlinear functions (neural networks) whose STRUCTURE (which inputs, not
+what function) is constrained by the causal graph.
+</div>
+
+<p>The causal graph is not fixed. It is <strong>discovered from data and updated as regimes change</strong> (Section 6). The structural equations above are an initial hypothesis informed by macroeconomic theory. The discovery algorithm tests and revises this structure.</p>
+
+<!-- ═══ SECTION 4 ═══ -->
+<h2 id="ct4"><span class="sec-num">4.</span> The Three Rungs in Financial Context</h2>
+
+<h3>Rung 1: Association &mdash; what every model already does</h3>
+<div class="math">
+<span class="lbl">Observational inference</span>
+P(Credit_spread | VIX = 30, Fed_rate = 5.5%)
+
+This conditions on observed data. It tells you: "when VIX has been 30
+and rates were 5.5%, credit spreads were typically X."
+
+Problem: if VIX = 30 was always accompanied by a specific macro regime,
+you can't separate the VIX effect from the regime effect.
+</div>
+
+<h3>Rung 2: Intervention &mdash; what RecWM adds</h3>
+<div class="math">
+<span class="lbl">Interventional inference via do-calculus</span>
+P(Credit_spread | do(Fed_rate = 5.5%))
+
+This asks: "if we INTERVENE and set Fed_rate to 5.5%, what happens to
+credit spreads?" — regardless of what caused the rate to be 5.5%.
+
+<strong>Adjustment formula</strong> (Pearl 2009, backdoor criterion):
+If Z satisfies the backdoor criterion relative to (X, Y) in G:
+  P(Y | do(X = x)) = &Sigma;<sub>z</sub> P(Y | X = x, Z = z) P(Z = z)
+
+<strong>Financial application:</strong>
+  Z = {macro_regime, global_conditions, prior_policy}
+  X = Fed_rate
+  Y = Credit_spread
+  P(Credit_spread | do(Fed_rate = 5.5%)) adjusts for confounders Z
+
+This is NOT the same as P(Credit_spread | Fed_rate = 5.5%) because
+the confounders Z are held at their population distribution, not
+conditioned on the specific values that co-occurred with Fed_rate = 5.5%.
+</div>
+
+<h3>Rung 3: Counterfactual &mdash; the hardest and most valuable</h3>
+<div class="math">
+<span class="lbl">Counterfactual inference via structural equations</span>
+P(Portfolio_2008<sub>hedged</sub> | Portfolio_2008<sub>actual</sub> = -38%)
+
+"Given that our portfolio lost 38% in 2008, what WOULD have happened
+if we had hedged with the strategy that was available?"
+
+Three-step procedure (Pearl 2009, Chapter 7):
+  1. ABDUCTION:  Infer noise terms U from observed data
+     u* = argmax<sub>u</sub> P(observed_data | u)
+  2. ACTION:     Modify the structural equations (apply the hedge)
+     Replace f<sub>portfolio</sub> with f<sub>portfolio_hedged</sub>
+  3. PREDICTION: Run the modified model forward with inferred noise
+     Portfolio_2008<sub>hedged</sub> = f<sub>portfolio_hedged</sub>(observed_market, u*)
+</div>
+
+<!-- ═══ SECTION 5 ═══ -->
+<h2 id="ct5"><span class="sec-num">5.</span> Runtime Causal Discovery: Learning the Graph</h2>
+
+<p>The causal graph is not hand-coded. It is <strong>learned from data</strong> using a combination of constraint-based and continuous optimization methods, then <strong>validated against economic theory</strong>.</p>
+
+<div class="math">
+<span class="lbl">PCMCI for time-series causal discovery &mdash; Runge et al. Science Advances 2019</span>
+Two phases:
+  <strong>PC phase (condition selection):</strong>
+  For each pair (X<sub>i</sub><sup>t-&tau;</sup>, X<sub>j</sub><sup>t</sup>):
+    Test conditional independence X<sub>i</sub><sup>t-&tau;</sup> &perp; X<sub>j</sub><sup>t</sup> | S
+    for conditioning sets S of increasing size.
+    If independent for any S: remove the link.
+
+  <strong>MCI phase (momentary conditional independence):</strong>
+  For surviving links, test:
+    X<sub>i</sub><sup>t-&tau;</sup> &perp; X<sub>j</sub><sup>t</sup> | parents(X<sub>i</sub>) &cup; parents(X<sub>j</sub>)
+  This removes indirect effects and common drivers.
+
+Result: a time-lagged causal graph with lag-specific edges.
+Software: Tigramite (Python, open-source).
+</div>
+
+<div class="math">
+<span class="lbl">NOTEARS for continuous DAG optimization &mdash; Zheng et al. NeurIPS 2018</span>
+min<sub>W</sub>  F(W)                    // score function (e.g., least squares)
+s.t.  h(W) = tr(e<sup>W&odot;W</sup>) - d = 0  // acyclicity constraint
+
+W &isin; &Ropf;<sup>d&times;d</sup> is the weighted adjacency matrix.
+h(W) = 0 iff W is a DAG (Zheng's key theorem).
+
+Solved via augmented Lagrangian:
+  min<sub>W</sub> F(W) + &rho;/2 ||h(W)||<sup>2</sup> + &alpha; h(W)
+
+<strong>For RecWM:</strong> Run NOTEARS on fragment latent states z<sub>k</sub>(t)
+to discover causal structure in the LEARNED representation space.
+</div>
+
+<div class="math">
+<span class="lbl">Theory-constrained discovery</span>
+The discovery algorithm does NOT run unconstrained. It is initialized with
+a <strong>prior graph</strong> encoding known economic relationships:
+
+  <strong>Required edges</strong> (economic theory, cannot be removed):
+    Policy &rarr; Liquidity  (central bank sets funding conditions)
+    Credit &rarr; Risk       (credit deterioration increases risk)
+
+  <strong>Forbidden edges</strong> (economic impossibility):
+    Sentiment &rarr; Structure  (sentiment cannot change GDP in 1 day)
+    Momentum &rarr; Policy     (price momentum doesn't set Fed policy)
+
+  <strong>Discoverable edges</strong> (let the data decide):
+    Liquidity &rarr; Momentum  (does funding drive price trends?)
+    Risk &rarr; Sentiment      (does volatility drive news tone?)
+    Credit &rarr; Liquidity    (does credit stress cause funding freezes?)
+
+The discovery algorithm operates ONLY on discoverable edges,
+respecting required and forbidden constraints.
+</div>
+
+<!-- ═══ SECTION 6 ═══ -->
+<h2 id="ct6"><span class="sec-num">6.</span> Regime-Switching Causal Structure</h2>
+
+<p>The most important insight: <strong>the causal graph itself changes across regimes</strong>. In calm markets, the credit-to-equity causal link is weak. In crisis, it becomes the dominant channel. The graph is not static — it is a function of the economic regime.</p>
+
+<div class="math">
+<span class="lbl">FANTOM: regime-switching causal discovery &mdash; Rahmani &amp; Frossard, NeurIPS 2025</span>
+Joint inference of:
+  (i)   Number of regimes K
+  (ii)  Regime boundaries/assignments r(t)
+  (iii) Per-regime causal DAGs G<sub>1</sub>, ..., G<sub>K</sub>
+
+Architecture:
+  <strong>Conditional normalizing flows</strong> for heteroscedastic noise:
+    p(x<sub>j</sub> | pa(x<sub>j</sub>)) modeled via spline flow
+    Hypernetwork predicts spline params respecting causal structure
+
+  <strong>Bayesian EM:</strong>
+    E-step: posterior regime assignment via Bayes rule
+    M-step: maximize likelihood with Bernoulli edges + Gumbel-softmax
+    Acyclicity: augmented Lagrangian (NOTEARS-style)
+
+<strong>Identifiability</strong> (Theorems 4.2, 4.3):
+  Under acyclicity + mild noise assumptions:
+  - Stationary: the temporal heteroscedastic causal model is identifiable
+  - Non-stationary: K, regime indices, and per-regime DAGs are
+    identifiable up to permutation
+
+<strong>For RecWM:</strong> BOCPD detects regime change &rarr; triggers FANTOM-style
+re-discovery &rarr; updates the causal graph &rarr; new graph constrains
+SSM predictions. The causal graph is ALIVE, not frozen.
+</div>
+
+<div class="contrib">
+  <strong>What is genuinely new here.</strong> FANTOM discovers regime-switching causal graphs. BOCPD detects changepoints. What no one has done is: (1) running causal discovery on SSM latent states (not raw data), (2) using the discovered graph to constrain SSM predictions in real time, (3) coupling the causal graph update to the CL mechanism (regime change = new graph = new EWC anchors). This three-way coupling — SSM &harr; Causal Graph &harr; CL — is the novel architectural contribution.
+</div>
+
+<!-- ═══ SECTION 7 ═══ -->
+<h2 id="ct7"><span class="sec-num">7.</span> The Triangulation Engine: How It Works</h2>
+
+<p>At each prediction step, the four channels produce independent assessments:</p>
+
+<div class="math">
+<span class="lbl">Four-channel triangulation at time t</span>
+<strong>Channel 1 &mdash; SSM prediction:</strong>
+  y&#770;<sub>SSM</sub>(t+h) = C&#772; &middot; z(t)  +  D&#772; &middot; u(t)
+  &kappa;<sub>SSM</sub> = f(prediction_error_history, regime_stability)
+
+<strong>Channel 2 &mdash; Causal graph validation:</strong>
+  For each causal path P in graph G<sub>regime</sub>:
+    y&#770;<sub>causal,P</sub> = structural_equation_along_path(P, observed_parents)
+  &kappa;<sub>causal</sub> = agreement(y&#770;<sub>SSM</sub>, {y&#770;<sub>causal,P</sub>})
+  If y&#770;<sub>SSM</sub> predicts credit spread tightening but the causal graph
+  shows Policy &rarr; Credit is currently a widening mechanism: FLAG.
+
+<strong>Channel 3 &mdash; Cross-fragment coherence:</strong>
+  &kappa;<sub>coherence</sub> = 1 - &lambda;<sub>1</sub>(L<sub>F</sub>) / &lambda;<sub>max</sub>(L<sub>F</sub>)
+  (sheaf Laplacian smallest eigenvalue / largest)
+  Small &lambda;<sub>1</sub> = fragments agree. Large &lambda;<sub>1</sub> = incoherence.
+
+<strong>Channel 4 &mdash; Economic theory constraints:</strong>
+  Check: does the prediction violate no-arbitrage conditions?
+  Check: are flow quantities conserved (assets = liabilities)?
+  Check: does the prediction respect accounting identities?
+  &kappa;<sub>theory</sub> = fraction of constraints satisfied
+
+<strong>Final confidence:</strong>
+  &kappa; = min(&kappa;<sub>SSM</sub>, &kappa;<sub>causal</sub>, &kappa;<sub>coherence</sub>, &kappa;<sub>theory</sub>)
+
+<strong>Decision rule:</strong>
+  &kappa; &gt; &kappa;<sub>high</sub>:   ACT on prediction (high confidence)
+  &kappa;<sub>low</sub> &lt; &kappa; &lt; &kappa;<sub>high</sub>:  FLAG for human review
+  &kappa; &lt; &kappa;<sub>low</sub>:   SUPPRESS prediction (unreliable)
+</div>
+
+<!-- ═══ SECTION 8 ═══ -->
+<h2 id="ct8"><span class="sec-num">8.</span> Integration with the World Model Engine</h2>
+
+<p>The causal graph doesn't sit beside the world model — it <strong>constrains</strong> it. The integration is bidirectional:</p>
+
+<div class="math">
+<span class="lbl">World Model &rarr; Causal Graph (bottom-up)</span>
+The world model produces latent states z<sub>k</sub>(t) for each fragment k.
+Causal discovery (PCMCI / NOTEARS) runs on these latent states
+to discover/update the causal graph.
+
+z<sub>k</sub>(t) is lower-dimensional and more structured than raw data,
+making causal discovery more tractable and identifiable.
+</div>
+
+<div class="math">
+<span class="lbl">Causal Graph &rarr; World Model (top-down)</span>
+The discovered causal graph constrains the world model's transition dynamics.
+
+If the causal graph says Liquidity &rarr; Momentum but NOT Momentum &rarr; Liquidity:
+  The coupling matrix A<sub>liq&rarr;mom</sub> is active (learned)
+  The coupling matrix A<sub>mom&rarr;liq</sub> is ZERO (masked)
+
+Implementation: binary mask M derived from causal graph G
+  A<sub>coupled</sub> = M &odot; A<sub>full</sub>
+  where M<sub>ij</sub> = 1 if edge i &rarr; j exists in G, 0 otherwise
+
+This means the world model can only use information along causal paths.
+Spurious correlations (confounded associations) are structurally
+prevented from influencing predictions.
+</div>
+
+<!-- ═══ SECTION 9 ═══ -->
+<h2 id="ct9"><span class="sec-num">9.</span> What This Produces for a Portfolio Manager</h2>
+
+<p>The triangulation engine translates into concrete outputs that no existing system provides:</p>
+
+<div class="table-wrap" style="font-size: 0.88rem;">
+<table>
+  <thead><tr><th>Output</th><th>What It Means</th><th>Why It Matters</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Causal scenario analysis</strong></td><td>P(portfolio | do(Fed_rate = X))</td><td>Interventional, not conditional. Answers "what if" correctly.</td><td style="color: #dc2626;">Not built</td></tr>
+    <tr><td><strong>Triangulation confidence</strong></td><td>&kappa; score per prediction</td><td>Tells you WHEN to trust the model and when not to.</td><td style="color: #dc2626;">Not built</td></tr>
+    <tr><td><strong>Causal attribution</strong></td><td>Which causal paths drove a prediction</td><td>Explainability: "credit spreads widened because Policy &rarr; Credit &rarr; Risk"</td><td style="color: #dc2626;">Not built</td></tr>
+    <tr><td><strong>Regime-conditional graphs</strong></td><td>Different causal maps for calm vs. crisis</td><td>Early warning: "causal structure is shifting toward crisis pattern"</td><td style="color: #dc2626;">Not built</td></tr>
+    <tr><td><strong>Counterfactual analysis</strong></td><td>P(Y<sub>hedged</sub> | Y<sub>actual</sub>)</td><td>Post-mortem: "if we'd hedged, we'd have lost 8% not 22%"</td><td style="color: #dc2626;">Not built</td></tr>
+    <tr><td><strong>Coherence alerts</strong></td><td>Sheaf-Laplacian eigenvalue spike</td><td>"Fragments disagree — something is about to break"</td><td style="color: #dc2626;">Not built</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ═══ SECTION 10 ═══ -->
+<h2 id="ct10"><span class="sec-num">10.</span> What Makes This Genuinely New</h2>
+
+<p>RecWM is not assembling S5 + do-calculus + sheaf theory off the shelf. The individual building blocks exist. The following combinations do not:</p>
+
+<div class="table-wrap" style="font-size: 0.88rem;">
+<table>
+  <thead><tr><th>Invention</th><th>What Exists</th><th>What We Invent</th><th>Why It's New</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Causal-constrained SSM</strong></td>
+      <td>SSMs (S5) and causal discovery (PCMCI, NOTEARS) exist separately</td>
+      <td>Using a discovered causal graph to mask the SSM coupling matrix at runtime</td>
+      <td>Zero prior work combining causal graph constraints with S5-class SSMs</td>
+    </tr>
+    <tr>
+      <td><strong>2. Triangulation as architecture</strong></td>
+      <td>Triangulation is a research methodology (Munaf&ograve; 2018), not a system component</td>
+      <td>Four-channel runtime validation with min-confidence gating</td>
+      <td>No deployed ML system uses triangulation as an architectural principle</td>
+    </tr>
+    <tr>
+      <td><strong>3. SSM &harr; Causal Graph &harr; CL coupling</strong></td>
+      <td>SSMs, causal discovery, and CL exist separately. FANTOM does regime-switching causal discovery.</td>
+      <td>BOCPD triggers causal re-discovery which updates SSM constraints which triggers EWC re-anchoring</td>
+      <td>The three-way coupling is novel. No prior work connects CL mechanisms to causal graph updates.</td>
+    </tr>
+    <tr>
+      <td><strong>4. Latent-space causal discovery</strong></td>
+      <td>Causal discovery runs on observed data. CRL recovers latent causal variables.</td>
+      <td>Running causal discovery on SSM hidden states z<sub>k</sub>(t), leveraging the typed-fragment structure for identifiability</td>
+      <td>Fragment typing provides the auxiliary variable structure needed for CRL identifiability (iVAE conditions).</td>
+    </tr>
+    <tr>
+      <td><strong>5. Interventional financial scenario analysis</strong></td>
+      <td>do-calculus (Pearl 2009), stress testing (Basel III). Never combined.</td>
+      <td>do(Fed_rate = X) computed via learned structural equations over fragment latents</td>
+      <td>Current stress testing uses conditional correlations, not interventional calculus. The gap is categorical.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ═══ SECTION 11 ═══ -->
+<h2 id="ct11"><span class="sec-num">11.</span> What Could Kill This</h2>
+
+<div class="table-wrap" style="font-size: 0.88rem;">
+<table>
+  <thead><tr><th>Risk</th><th>Probability</th><th>What Happens</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Causal discovery fails on financial data</strong></td><td>Medium-High</td><td>Financial data has massive confounding, feedback loops, and non-stationarity. PCMCI/NOTEARS may produce unstable or meaningless graphs. If the discovered graph changes every week, it's noise not structure.</td></tr>
+    <tr><td><strong>Latent states aren't causally meaningful</strong></td><td>Medium</td><td>SSM hidden states z<sub>k</sub>(t) may be statistically useful but causally arbitrary. Running causal discovery on arbitrary representations produces meaningless graphs. Identifiability conditions (iVAE) may not hold.</td></tr>
+    <tr><td><strong>Triangulation is too conservative</strong></td><td>Medium</td><td>If min-confidence gating suppresses most predictions, the system produces too few actionable signals. Hedge funds need enough signals to trade.</td></tr>
+    <tr><td><strong>Interventional queries aren't useful at portfolio level</strong></td><td>Low-Medium</td><td>do(Fed_rate = X) is clean in theory. In practice, a Fed rate change comes with a press conference, dot plot, and narrative that the do() operator doesn't capture. The intervention is never "clean" in financial markets.</td></tr>
+    <tr><td><strong>Causal graph computation is too slow</strong></td><td>Low</td><td>PCMCI/NOTEARS are computationally expensive. Running them on every regime change may be too slow for daily updates. NOTEARS on 7 variables is fast; on 84 latent dimensions it may not be.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ═══ SECTION 12 ═══ -->
+<h2 id="ct12"><span class="sec-num">12.</span> Prior Art Attribution</h2>
+
+<div class="table-wrap" style="font-size: 0.86rem;">
+<table>
+  <thead><tr><th>Component</th><th>Source</th><th>What We Use</th><th>What We Invent</th></tr></thead>
+  <tbody>
+    <tr><td>SCM / do-calculus</td><td>Pearl 2009, <em>Causality</em></td><td>Framework, adjustment formula, three rungs</td><td>Applied to financial fragment latents (novel application)</td></tr>
+    <tr><td>PCMCI</td><td>Runge et al. <em>Science Advances</em> 2019</td><td>Time-series causal discovery algorithm</td><td>Applied to SSM hidden states, theory-constrained (novel)</td></tr>
+    <tr><td>NOTEARS</td><td>Zheng et al. NeurIPS 2018</td><td>Continuous DAG optimization</td><td>With causal graph &rarr; SSM mask coupling (novel)</td></tr>
+    <tr><td>FANTOM</td><td>Rahmani &amp; Frossard, NeurIPS 2025</td><td>Regime-switching causal discovery</td><td>Coupled to BOCPD + CL mechanism (novel)</td></tr>
+    <tr><td>Triangulation</td><td>Munaf&ograve; &amp; Davey Smith, <em>Nature</em> 2018</td><td>Methodological principle</td><td>Implemented as runtime architecture (novel)</td></tr>
+    <tr><td>Sheaf Laplacian</td><td>Hansen &amp; Ghrist 2019</td><td>Spectral theory of cellular sheaves</td><td>Applied to financial fragment coherence (novel)</td></tr>
+    <tr><td>CRL / iVAE</td><td>Khemakhem et al. AISTATS 2020</td><td>Identifiability conditions for latent variables</td><td>Fragment types as auxiliary variables for identifiability (novel)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="warn" style="margin-top: 2rem;">
+  <strong>Honest summary.</strong> The causal triangulation engine is RecWM's most ambitious component and the one most likely to fail. If causal discovery produces stable, meaningful graphs on financial latent states, this is a genuine breakthrough. If it doesn't, we still have a typed SSM with native CL — useful but not revolutionary. The triangulation engine is what separates "yet another time-series model" from "a genuinely new kind of financial reasoning system." Build Order: Bet 5, Week 12-14.
+</div>
+
+</div>
+</div>
+
     <div class="pg" id="pg-briefing">
 <div class="hero">
   <div class="wrap">
@@ -13791,7 +14402,30 @@ For an economic world model built on causal/structural foundations, this means a
 
 </div>
 
-    </div>
+    
+<!-- CAUSAL INFERENCE AS THEORETICAL PILLAR -->
+<div class="sec">
+  <h2>The Sixth Object: Causal Structure as Triangulation</h2>
+
+  <p>The five fundamental objects above (Construction Operator, Constraint Field, Reflexivity Coefficient, Fragment Decomposition, Compositional Coherence) define <em>what</em> RecWM models. But modelling is not enough. The question is: <strong>how do you know your model is right?</strong></p>
+
+  <p>This is where causal inference becomes a foundational pillar. RecWM does not merely predict &mdash; it discovers and validates causal structure, using Judea Pearl&rsquo;s three rungs of causation (2009) as its theoretical backbone:</p>
+
+  <table>
+    <thead><tr><th>Rung</th><th>Question</th><th>RecWM Application</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1. Association</strong></td><td>P(Y|X) &mdash; what correlates?</td><td>World model latent dynamics capture statistical co-movement across fragments</td></tr>
+      <tr><td><strong>2. Intervention</strong></td><td>P(Y|do(X)) &mdash; what causes what?</td><td>Causal discovery (PCMCI, NOTEARS) identifies directional fragment causation; do-calculus enables &ldquo;what if Fed cuts 50bp?&rdquo; scenario analysis</td></tr>
+      <tr><td><strong>3. Counterfactual</strong></td><td>P(Y<sub>x</sub>|X&prime;=x&prime;) &mdash; what would have happened?</td><td>Latent-space counterfactual simulation: &ldquo;If the Fed had held rates in March, where would credit spreads be now?&rdquo;</td></tr>
+    </tbody>
+  </table>
+
+  <p>The causal graph is not a static assumption &mdash; it is <strong>discovered continuously</strong> from data and <strong>re-discovered</strong> when BOCPD detects a regime shift. The graph then constrains the world model (masking the coupling matrix), is validated by sheaf coherence (cross-fragment consistency), and is bounded by economic theory (no-arbitrage, flow conservation). This four-channel triangulation is a genuine architectural invention.</p>
+
+  <p style="font-size: 0.9rem; color: var(--fg-dim);"><strong>Why this is foundational, not decorative:</strong> Without causal triangulation, RecWM is just another SSM making predictions. With it, RecWM can explain <em>why</em> a prediction is made, detect when the causal structure has changed, and distinguish between correlation and causation in real time. This is the difference between a weather model that says &ldquo;it will rain&rdquo; and one that says &ldquo;low pressure from the west is pushing moisture over the mountains, causing rain.&rdquo; The second model survives when weather patterns change. The first doesn&rsquo;t.</p>
+</div>
+
+</div>
 
     <div class="pg" id="pg-gap-analysis">
 <div class="page">
@@ -14400,6 +15034,11 @@ For an economic world model built on causal/structural foundations, this means a
   <p style="font-size: 0.82rem; color: var(--fg-faint); margin-top: 0.7rem;">August 2026 &middot; New field &middot; New fundamental units &middot; New processing paradigm</p>
 </div>
 
+<div class="warn" style="background: #fef2f2; border: 2px solid #fecaca; border-left: 4px solid #ef4444; padding: 1.2rem 1.5rem; margin-bottom: 2rem; border-radius: 6px;">
+  <strong style="color: #dc2626;">Status: Design Vision &mdash; Nothing Built Yet</strong>
+  <p style="margin-top: 0.4rem; font-size: 0.88rem; color: #991b1b;">This document describes what RecWM proposes to build. The architecture is entirely at design stage. No code exists. No experiments have been run. All building-block citations refer to published work by other researchers; what we contribute is the specific combination, the causal triangulation architecture, and the novel modifications described in each section.</p>
+</div>
+
 <!-- TABLE OF CONTENTS -->
 <div class="toc" style="margin-bottom:2.8rem;">
   <h3 style="margin-top:0;">Contents</h3>
@@ -14750,6 +15389,11 @@ For an economic world model built on causal/structural foundations, this means a
   <h1 style="margin-bottom: 0.7rem; font-size: 2.3rem; line-height: 1.15; color: var(--heading); max-width: 780px;">RecWM: Five Theorems for Economic Reality</h1>
   <p class="subtitle" style="font-size: 1.08rem; max-width: 740px; color: var(--fg-dim); line-height: 1.55;">Economics has no world model because the mathematics does not exist. Reflexivity, evolving constraints, non-ergodicity, and performative forgetting are not engineering problems&mdash;they are unsolved mathematical problems. We address all five with novel theorems&mdash;three provable, one conditional, one conjectural.</p>
   <p style="font-size: 0.82rem; color: var(--fg-faint); margin-top: 0.7rem;">August 2026 &middot; Five novel theorems, zero prior co-citations</p>
+</div>
+
+<div class="warn" style="background: #fef2f2; border: 2px solid #fecaca; border-left: 4px solid #ef4444; padding: 1.2rem 1.5rem; margin-bottom: 2rem; border-radius: 6px;">
+  <strong style="color: #dc2626;">Status: Design Vision &mdash; Nothing Built Yet</strong>
+  <p style="margin-top: 0.4rem; font-size: 0.88rem; color: #991b1b;">This document describes what RecWM proposes to build. The architecture is entirely at design stage. No code exists. No experiments have been run. All building-block citations refer to published work by other researchers; what we contribute is the specific combination, the causal triangulation architecture, and the novel modifications described in each section.</p>
 </div>
 
 <!-- TABLE OF CONTENTS -->
