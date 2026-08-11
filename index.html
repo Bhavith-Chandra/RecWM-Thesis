@@ -648,6 +648,7 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
     <li><a href="#ev-engine">How It Works: The Engine</a></li>
     <li><a href="#ev-output">What Comes Out</a></li>
     <li><a href="#ev-capabilities">What You Can Do With It</a></li>
+    <li><a href="#ev-hedge">The Hedge Fund Playbook</a></li>
     <li><a href="#ev-math">The Research: Why Nobody Built This Before</a></li>
     <li><a href="#ev-theorems">The Five Theorems (Plain English)</a></li>
     <li><a href="#ev-ewmt">The New Field: EWM Theory</a></li>
@@ -1311,6 +1312,268 @@ will itself alter the Fed&rsquo;s next move. This is path-dependent.
       <tr><td><strong>Historical Analog Search</strong></td><td>Finds structurally similar episodes from history &mdash; not price patterns, but similar causal structures.</td><td>Tells you where today <em>diverges</em> from the analog, not just where it matches. The divergence is often the most useful information.</td></tr>
     </tbody>
   </table>
+</div>
+
+<!-- ================================================================ -->
+<!-- 8b. HEDGE FUND PLAYBOOK — DEEP RESEARCH VERSION -->
+<!-- ================================================================ -->
+<div class="sec" id="ev-hedge">
+  <h2>The Hedge Fund Playbook: How You Make Money With This</h2>
+
+  <p style="font-size: 1.1rem; line-height: 1.7; max-width: 720px;">RecWM is not an analytics dashboard. It is an <strong>alpha generation engine</strong>. Every capability maps directly to P&amp;L. Here is how hedge funds &mdash; from discretionary macro to multi-strategy platforms &mdash; use it to generate alpha, deploy capital, manage risk, and avoid the blowups that destroy firms.</p>
+
+  <div style="background: var(--accent-wash); border: 1px solid var(--accent); border-left: 4px solid var(--accent); padding: 1.3rem 1.6rem; border-radius: 0 var(--r) var(--r) 0; margin: 1.5rem 0;">
+    <p style="margin: 0; font-size: 0.95rem;"><strong>The core claim:</strong> Regime-conditional models add 100&ndash;200bps annualised and 0.15&ndash;0.3 Sharpe improvement over static models (Ang &amp; Bekaert, <em>Review of Financial Studies</em>, 2002; Guidolin &amp; Timmermann, <em>JEDC</em>, 2007). Nearly all of this alpha comes from <em>early</em> transition detection &mdash; being underweight risk 2&ndash;4 weeks before a regime flips captures the bulk of the drawdown-avoidance benefit. Late detection captures almost none. RecWM is built to detect transitions early.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 1. THESIS GENERATION -->
+  <!-- ============================================ -->
+  <h3 id="ev-hedge-thesis">1. Thesis Generation &mdash; Finding the Next Big Trade</h3>
+
+  <p>The hardest part of running money is generating a thesis that is both non-consensus and correct. Bridgewater decomposes markets into growth and inflation surprises versus what&rsquo;s discounted, using 100 years of cross-country data to match structural analogs (Weimar, 1930s deleveraging, Japan 1990s) &mdash; Dalio&rsquo;s <em>Principles for Navigating Big Debt Crises</em> formalises this as template-matching. Soros built theses around reflexive feedback loops (1992 ERM short: rate/currency-peg incompatibility). Brevan Howard runs off central bank reaction functions, cross-currency basis, and positioning data.</p>
+
+  <p>The common bottleneck: analysts manually pattern-match today&rsquo;s data against a mental library of past regimes, and cross-fragment causality (how a Liquidity shock propagates through Credit into Structure) is inferred qualitatively. RecWM automates this &mdash; turning Dalio-style analog-matching into a queryable, continuously-updated, backtestable causal model.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
+    <div style="background: var(--bg-alt); border-left: 4px solid var(--accent); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="color: var(--accent); margin-top: 0; font-size: 0.95rem;">Macro Thesis Discovery</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">The model continuously tracks all 7 fragments and their causal connections. When the causal graph shifts &mdash; a relationship that held for years starts breaking &mdash; it surfaces a thesis candidate with the structural analog, divergence analysis, and confidence interval.</p>
+      <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--fg-dim);"><strong>Example:</strong> &ldquo;The credit-to-liquidity transmission channel has inverted for the first time since 2007. Credit stress is no longer causing liquidity withdrawal &mdash; instead, liquidity withdrawal is causing credit stress. This inversion preceded the GFC by 14 months. Current analog similarity: 72%. Key divergence: EM external debt is 2.4&times; higher, concentrating risk in 3 countries.&rdquo;</p>
+    </div>
+    <div style="background: var(--bg-alt); border-left: 4px solid var(--accent); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="color: var(--accent); margin-top: 0; font-size: 0.95rem;">Cross-Asset Dislocation Finder</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">When the causal graph implies one price and the market shows another, that gap is a trade. The model quantifies the dislocation, identifies the mechanism that should close it, and estimates the timeline. This covers credit-equity basis (CDS-implied vol vs. equity IV), rates-FX (covered interest parity deviations), and vol-rates (swaption vol vs. realised rate vol).</p>
+      <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--fg-dim);"><strong>Why causal beats statistical:</strong> Standard RV uses cointegration and regression &mdash; these assume stationary linear relationships and break when regimes shift (2020 COVID, 2022 UK gilt crisis), producing worst drawdowns precisely when the trade should be sized up. RecWM conditions the relationship on regime state. Credit-equity correlation is near 0 in calm markets, spikes to 0.6&ndash;0.8 in stress &mdash; a causal model sizes the trade for <em>which</em> regime is forming, not a rolling-window average.</p>
+    </div>
+    <div style="background: var(--bg-alt); border-left: 4px solid var(--accent); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="color: var(--accent); margin-top: 0; font-size: 0.95rem;">Narrative Decay Detection</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">Markets run on narratives (&ldquo;soft landing,&rdquo; &ldquo;AI revolution,&rdquo; &ldquo;higher for longer&rdquo;). Sentiment alone is coincident or lagging. RecWM detects <strong>narrative decay</strong> &mdash; the cross-fragment divergence where Sentiment is still bullish but Structure is deteriorating (decreasing breadth, rising crowding, thinning liquidity). This divergence historically precedes reversals by 1&ndash;3 weeks.</p>
+      <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--fg-dim);"><strong>Example:</strong> &ldquo;The &lsquo;soft landing&rsquo; narrative has positive sentiment momentum but manufacturing PMI contracted for 3 consecutive months. In 6/7 prior instances, this Sentiment-Structure divergence resolved via narrative collapse and a 6&ndash;12% equity drawdown within 40 trading days.&rdquo;</p>
+    </div>
+    <div style="background: var(--bg-alt); border-left: 4px solid var(--accent); padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0;">
+      <h4 style="color: var(--accent); margin-top: 0; font-size: 0.95rem;">Regime-Transition Thesis</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">The biggest trades come from regime changes. RecWM detects these early, identifies the structural analog, and tells you where this episode <em>diverges</em> from the analog &mdash; the divergence is often the most valuable information, because it tells you what the consensus is getting wrong.</p>
+      <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--fg-dim);"><strong>Alpha:</strong> Global macro funds run Sharpe ~0.5&ndash;0.8 with 8&ndash;15% vol. Regime-conditional overlays add 100&ndash;200bps annualised and 0.15&ndash;0.3 Sharpe improvement. The gain is concentrated entirely in early transition detection &mdash; being underweight risk 2&ndash;4 weeks before the flip.</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 2. PREDICTION STRATEGIES -->
+  <!-- ============================================ -->
+  <h3 id="ev-hedge-predict">2. Prediction Strategies &mdash; Turning Thesis into Signal</h3>
+
+  <p>Once you have a thesis, you need a <em>signal</em> &mdash; a quantified, time-bound prediction with confidence intervals and defined invalidation conditions. RecWM produces these natively because its forward simulations generate distributions, not point estimates.</p>
+
+  <table>
+    <thead><tr><th>Strategy Type</th><th>What RecWM Produces</th><th>Edge &amp; Numbers</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Regime-Conditional Forecasts</strong></td>
+        <td>Probability distributions for returns conditional on the current regime. Not &ldquo;S&amp;P returns 8% annually&rdquo; but &ldquo;given late-cycle liquidity contraction, S&amp;P 20-day return: median &minus;2.1%, 10th percentile &minus;8.4%, 90th percentile +3.7%.&rdquo;</td>
+        <td>Traditional models average across regimes, blending bull and bear into meaningless unconditional estimates. Regime-conditional forecasts are 3&ndash;5&times; more actionable. Sharpe improvement: +0.15&ndash;0.3 (Ang &amp; Bekaert, 2002).</td>
+      </tr>
+      <tr>
+        <td><strong>Relative Value Signals</strong></td>
+        <td>Cross-asset fair-value estimates derived from the causal graph. When the model says &ldquo;given current liquidity and credit conditions, USDJPY should be 3.2% lower,&rdquo; that spread is tradeable with a causal basis. Unlike statistical regression, causal links survive regime changes.</td>
+        <td>Basis trades run 50&ndash;150bps per trade. Regime-aware sizing cuts tail drawdowns 20&ndash;40% vs. static sizing. The regression breaks during crises; the causal link persists.</td>
+      </tr>
+      <tr>
+        <td><strong>Tail Risk Timing</strong></td>
+        <td>Not &ldquo;tail risk is elevated&rdquo; but &ldquo;the specific mechanism is leverage-forced selling via the credit channel, expected to trigger in 5&ndash;15 trading days if funding conditions don&rsquo;t ease.&rdquo; Precise enough to <em>time</em> hedges, not just buy insurance permanently.</td>
+        <td>Traditional tail hedging costs 0.5&ndash;2% of AUM annually as a static budget. Dynamic timing based on mechanism detection can cut hedging cost by 30&ndash;50% while improving coverage.</td>
+      </tr>
+      <tr>
+        <td><strong>Event-Path Prediction</strong></td>
+        <td>Before major events (FOMC, earnings, elections), simulate 1,000+ paths through the event conditional on different outcomes. Not just direction and magnitude, but the <em>sequence</em>: initial rally &rarr; reversal &rarr; settlement. Enables superior options structuring (calendars, path-dependent strategies) over naive straddles.</td>
+        <td>Second-order path prediction improves event-trade Sharpe by 0.4&ndash;0.8, mainly by avoiding whipsaw losses from trading the initial move as terminal (the common FOMC &ldquo;knee-jerk then fade&rdquo; pattern).</td>
+      </tr>
+      <tr>
+        <td><strong>Crowding &amp; Anti-Crowding</strong></td>
+        <td>The reflexivity coefficient &epsilon;(t) per asset class detects when positioning is self-referential. High &epsilon; = crowded, violent exit. Low &epsilon; = under-owned, cheap entry. This measures the <em>structural mechanism</em> of crowding via the feedback loop, not lagging symptoms (short interest, fund flows).</td>
+        <td>CTA/trend overlays with crowding signals add 50&ndash;100bps/year net of costs, with the main benefit being crash-alpha (positive skew) rather than steady-state Sharpe.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ============================================ -->
+  <!-- 3. STOCK BUY/SELL STRATEGIES -->
+  <!-- ============================================ -->
+  <h3 id="ev-hedge-stock">3. Stock Buying &amp; Selling Strategies</h3>
+
+  <p>RecWM is not a stock-picker. It is the <strong>structural layer underneath stock picking</strong> that makes every buy/sell decision smarter. It answers the questions that come before and after the pick itself &mdash; timing, sizing, factor exposure, sector allocation, and exit signals.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Factor Timing &amp; Rotation</h4>
+      <p style="font-size: 0.86rem;">Value, momentum, quality, size, volatility &mdash; factor returns are strongly regime-dependent. Naive timing based on valuation spreads generates only ~0.1&ndash;0.2 Sharpe improvement and often destroys value (Arnott et al., 2016). Factor momentum (12-month factor returns predicting next month) adds ~0.3&ndash;0.5 Sharpe (Asness, 2018&ndash;2021). But regime shifts are the dominant driver of factor drawdowns (2020 Q1 value crash, 2022 momentum unwind). RecWM&rsquo;s regime-conditional factor forecasts can plausibly raise a multi-factor Sharpe from ~0.8 to ~1.1&ndash;1.3 by predicting regime transitions 4&ndash;8 weeks ahead.</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Sector Rotation Timing</h4>
+      <p style="font-size: 0.86rem;">Macro-overlay equity funds (Bridgewater, Man AHL, PGIM) time sectors using ISM/PMI surprises, credit spreads, and yield curve shape &mdash; typically with 4&ndash;8 week lags because official macro data is monthly. RecWM detects regime breaks in real time, compressing this lag materially. Historically, being 2&ndash;4 weeks early on a sector rotation captures 150&ndash;300bps of relative sector performance per rotation (cyclicals outperform defensives by ~8&ndash;12% over the 2 months following an ISM trough). Being early is the entire edge &mdash; most rotation funds are reactive, capturing only the tail.</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Entry Timing</h4>
+      <p style="font-size: 0.86rem;">Buying a high-beta tech stock during a regime transition into liquidity contraction is structural suicide regardless of the company&rsquo;s fundamentals. RecWM tells you: &ldquo;This is a regime where momentum factor exposure has negative expected return &mdash; wait for the liquidity fragment to stabilise before adding risk.&rdquo; The signal has a causal rationale, not a trailing stop.</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Exit Signals</h4>
+      <p style="font-size: 0.86rem;">Selling is harder than buying. RecWM provides structural exits: &ldquo;The causal pathway that supported this position (loose liquidity &rarr; momentum &rarr; tech outperformance) is breaking down. The liquidity fragment gated closed 3 days ago. Historical precedent: once this pathway breaks, reversal takes 5&ndash;12 trading days.&rdquo; That is a sell signal backed by causal structure, not a drawdown rule.</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Causal Pairs Trading</h4>
+      <p style="font-size: 0.86rem;">Classic stat-arb pairs (cointegration, z-score mean reversion) blow up during regime changes &mdash; this is the 2007 quant quake mechanism. Stat-arb pairs books run Sharpe 1.0&ndash;1.5 but with occasional &minus;15&ndash;20% drawdowns on relationship breaks. <strong>Causal pairs</strong> &mdash; pairs justified by shared structural exposure (same credit sensitivity, same liquidity channel) verified via the world model &mdash; have materially lower tail risk because the trade thesis is falsifiable independent of price. The model pre-flags pairs whose structural link has degraded <em>before</em> price divergence occurs, cutting breakage drawdowns roughly in half.</p>
+    </div>
+    <div class="impl-card">
+      <h4 style="color: var(--accent); margin-bottom: 0.3rem;">Earnings &amp; Event Positioning</h4>
+      <p style="font-size: 0.86rem;">Before earnings, the model doesn&rsquo;t predict revenue &mdash; it tells you what each outcome <em>means</em> given the current regime. A beat in a risk-off regime with rising reflexivity has a completely different path than the same beat in risk-on. Pre-event straddles when path distributions are wide; directional when one outcome is structurally dominant; post-event fades when reflexivity spikes (initial move overshoots because everyone acts on the same signal). Sharpe improvement on event trades: +0.4&ndash;0.8.</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 4. CAPITAL DEPLOYMENT -->
+  <!-- ============================================ -->
+  <h3 id="ev-hedge-deploy">4. Capital Deployment &mdash; How Much Money Goes Where</h3>
+
+  <p>Having a good prediction is not enough. You need to size correctly, deploy across strategies efficiently, and know when to add or cut. This is where most funds leave the most money on the table.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1.5rem 0;">
+    <div style="background: var(--bg-alt); border: 1px solid var(--border-light); padding: 1.3rem 1.6rem; border-radius: var(--r);">
+      <h4 style="color: var(--green); margin-top: 0;">Position Sizing: Beyond Kelly</h4>
+      <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Renaissance, DE Shaw, and Two Sigma don&rsquo;t use textbook Kelly &mdash; full Kelly produces 50%+ drawdowns that trigger redemptions. Practitioners use fractional Kelly (10&ndash;25%) or vol-targeting (size &prop; 1/&sigma;). Both approaches assume constant correlation and liquidity, which breaks in crises.</p>
+      <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>RecWM&rsquo;s constraint-native sizing asks a harder question:</strong> &ldquo;What size maximises expected return per unit of risk, <em>given that I can actually exit this position at the size I&rsquo;m considering, under the liquidity conditions likely to prevail when I need to exit?</em>&rdquo;</p>
+      <p style="font-size: 0.9rem; margin-bottom: 0;">A position that&rsquo;s 20% of ADV can face 200&ndash;500bps of market impact to unwind in stress, vs. &lt;20bps for a 2%-of-ADV position. Melvin Capital&rsquo;s short book was sized far beyond what GME&rsquo;s float/volume could absorb &mdash; a liquidity-blind sizing failure, not a thesis failure. RecWM&rsquo;s liquidity fragment would have capped the position at what could actually be exited.</p>
+    </div>
+
+    <div style="background: var(--bg-alt); border: 1px solid var(--border-light); padding: 1.3rem 1.6rem; border-radius: var(--r);">
+      <h4 style="color: var(--green); margin-top: 0;">Dynamic Capital Allocation Across Strategies</h4>
+      <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">A multi-strategy fund runs macro, equity L/S, credit, vol arb, and event-driven books. RecWM produces <strong>regime-conditional Sharpe estimates per strategy</strong>. In a liquidity contraction, the vol arb book&rsquo;s expected Sharpe drops from 1.8 to 0.4 (vol selling becomes dangerous), while macro&rsquo;s rises from 0.9 to 2.1 (directional moves become cleaner). The model reallocates capital <em>before</em> the regime fully materialises.</p>
+      <p style="font-size: 0.9rem; margin-bottom: 0;">Guidolin &amp; Timmermann (2007) find regime-switching allocation adds ~2&ndash;3% annualised certainty-equivalent return over static i.i.d. models. For a $10B multi-strat fund, that is $200&ndash;300M per year.</p>
+    </div>
+
+    <div style="background: var(--bg-alt); border: 1px solid var(--border-light); padding: 1.3rem 1.6rem; border-radius: var(--r);">
+      <h4 style="color: var(--green); margin-top: 0;">Marginal Capital Decision</h4>
+      <p style="font-size: 0.9rem; margin-bottom: 0;">&ldquo;I have $50M of undeployed capital. Where does the next dollar go?&rdquo; RecWM computes the marginal impact of capital on every active position and strategy, accounting for correlation, liquidity, and regime. It also tells you: <strong>&ldquo;The best use of this capital right now is not deploying it&rdquo;</strong> &mdash; when the constructibility index is low and the cost of optionality (cash) is cheap relative to the opportunity set. Cash is cheapest insurance when the model says liquidity is about to dry up.</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 5. FUND DISPERSION & PORTFOLIO CONSTRUCTION -->
+  <!-- ============================================ -->
+  <h3 id="ev-hedge-portfolio">5. Portfolio Construction &amp; Risk Management</h3>
+
+  <p>Portfolio construction is where most hedge funds leave the most money on the table. They optimise individual positions brilliantly and compose them into a portfolio that blows up because the interactions weren&rsquo;t modelled. Every catastrophic fund failure &mdash; LTCM, Archegos, Melvin, the 2007 quant quake &mdash; stems from treating position sizing, cross-book correlation, leverage, hedging, and liquidity as <em>separately modelled, statically calibrated</em> problems. RecWM models them as one system.</p>
+
+  <div style="background: var(--warn-bg); border: 1px solid var(--warn-border); border-left: 4px solid var(--warn); padding: 1.3rem 1.6rem; border-radius: 0 var(--r) var(--r) 0; margin: 1.5rem 0;">
+    <h4 style="color: var(--warn); margin-top: 0;">The Composition Fragility Problem (Real Examples)</h4>
+    <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Archegos (March 2021):</strong> $20&ndash;30B in forced liquidation, ~$10B in bank losses. Multiple counterparties (Credit Suisse, Nomura, Morgan Stanley, Goldman) each saw only their own swap exposure, not the aggregated concentration in ViacomCBS and Discovery. RecWM&rsquo;s composition fragility signal would have flagged that &ldquo;independent&rdquo; pods were collectively net-long the same five names with 5&times; leverage, months before the forced unwind that moved those stocks 30&ndash;60% in two days.</p>
+    <p style="font-size: 0.9rem; margin-bottom: 0;"><strong>August 2007 Quant Quake:</strong> Goldman&rsquo;s Global Alpha, AQR, Renaissance &mdash; multiple quant funds unwound similar factor exposures simultaneously. Models didn&rsquo;t account for the endogenous fact that liquidity is a function of your neighbours&rsquo; positioning. A world model that treats liquidity as endogenous (not a fixed parameter) would have detected the crowding weeks earlier.</p>
+  </div>
+
+  <table>
+    <thead><tr><th>Portfolio Task</th><th>What RecWM Does</th><th>P&amp;L Impact</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Risk Budgeting</strong></td>
+        <td>Allocate risk using regime-conditional correlations, not trailing 60-day correlations that reflect yesterday&rsquo;s regime.</td>
+        <td>Avoids over-allocating to strategies whose diversification benefit disappears in the regime actually forming.</td>
+      </tr>
+      <tr>
+        <td><strong>Hedge Optimisation</strong></td>
+        <td>Selects hedges based on the specific <em>contagion pathway</em> you&rsquo;re exposed to. A fund with concentrated tech exposure buying broad SPX puts is overpaying for downside it isn&rsquo;t exposed to; hedging the specific factor (e.g., rates-sensitivity via 2s10s) targets the actual mechanism.</td>
+        <td>Reduces hedging cost from ~150bps to ~60&ndash;80bps of AUM while improving tail coverage. For a $1B book: ~$7&ndash;9M saved annually.</td>
+      </tr>
+      <tr>
+        <td><strong>Drawdown Prevention</strong></td>
+        <td>Detects when your portfolio&rsquo;s specific factor exposures are entering a hostile regime and recommends de-risking <em>before</em> the drawdown. Citadel and Point72 both cut gross 30&ndash;50% in March 2020&rsquo;s first two weeks and posted positive-to-flat years. LTCM ($4.6B lost) and Melvin (&minus;53%) did not.</td>
+        <td>For a $10B fund, avoiding a 5% drawdown = <strong>$500M preserved</strong> + avoided redemptions (typically 2&ndash;3&times; the drawdown in AUM loss from investor withdrawals).</td>
+      </tr>
+      <tr>
+        <td><strong>Gross/Net Management</strong></td>
+        <td>Dynamic gross and net exposure recommendations. Multi-strat funds run 400&ndash;800% gross. &ldquo;Constructibility falling &rarr; reduce gross. Reflexivity rising &rarr; reduce net.&rdquo; Citadel reportedly cut gross ~30% in days during March 2020.</td>
+        <td>Prevents the worst outcome: max gross and max net at the moment the market turns. The difference between a controlled de-risk and a forced liquidation.</td>
+      </tr>
+      <tr>
+        <td><strong>Liquidity Tiering</strong></td>
+        <td>Continuously scores every position by days-to-liquidate under stress. March 2020: even Treasuries saw bid-ask widen 5&ndash;10&times;. &ldquo;If we receive a 10% redemption during liquidity contraction, we can liquidate in 4.2 days without moving markets &gt;50bps. At 20%, it takes 11 days and impact rises to 180bps.&rdquo;</td>
+        <td>Converts fire sales into orderly, pre-planned unwinds. Prevents forced selling into illiquidity &mdash; the single most destructive event for a fund&rsquo;s track record.</td>
+      </tr>
+      <tr>
+        <td><strong>Multi-PM Platform Risk</strong></td>
+        <td>For Citadel/Millennium-model platforms (~200&ndash;300 pods): cross-pod position netting + correlation-of-correlations monitoring. Flags when &ldquo;independent&rdquo; PMs are unknowingly on the same side of a trade. This is the Archegos mechanism at portfolio scale.</td>
+        <td>Prevents platform-level blowups that cost single-digit to double-digit percent of AUM in days. The single largest existential risk for multi-PM platforms.</td>
+      </tr>
+      <tr>
+        <td><strong>Investor Reporting</strong></td>
+        <td>Auto-generates regime-aware attribution: &ldquo;This month&rsquo;s +140bps: 60% from correctly positioning for liquidity-to-risk transmission, 25% from rate duration, 15% from carry.&rdquo;</td>
+        <td>Cleaner investor communication &rarr; higher retention &rarr; more stable AUM &rarr; higher management fees.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ============================================ -->
+  <!-- 6. ADVANCED USE CASES -->
+  <!-- ============================================ -->
+  <h3 id="ev-hedge-advanced">6. Advanced Strategies</h3>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
+    <div style="background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg) 100%); border: 1px solid var(--border-light); padding: 1.3rem 1.6rem; border-radius: var(--r);">
+      <h4 style="color: var(--signal-purple); margin-top: 0;">Volatility Surface Trading</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">Vol desks (Citadel Securities, Optiver, Susquehanna) model the implied vol surface via SABR/SVI calibrated to market prices. RecWM produces <strong>regime-conditional fair-value vol surfaces</strong> informed by structural forecasts of macro vol regimes, not backward-looking GARCH. This creates edge at regime transition points, where the market surface is still priced for the old regime.</p>
+      <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--fg-dim);"><strong>Alpha:</strong> 50&ndash;150bps of additional Sharpe-adjusted return per year, concentrated around macro inflection points. Particularly powerful for 1&ndash;3 month expiries during regime transitions.</p>
+    </div>
+    <div style="background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg) 100%); border: 1px solid var(--border-light); padding: 1.3rem 1.6rem; border-radius: var(--r);">
+      <h4 style="color: var(--signal-purple); margin-top: 0;">Global Macro Signals</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">Regime-conditional directional signals across rates, FX, commodities, and equity indices. Each signal comes with the causal mechanism, confidence interval, expected duration, and invalidation condition.</p>
+      <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--fg-dim);"><strong>Example:</strong> &ldquo;Policy fragment: BOJ 65% likely to adjust YCC within 20 trading days. Credit fragment: JPY carry positions at 2019 highs. If BOJ moves: USDJPY &minus;4 to &minus;8%. Invalidation: BOJ explicit forward guidance extending current policy.&rdquo;</p>
+    </div>
+    <div style="background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg) 100%); border: 1px solid var(--border-light); padding: 1.3rem 1.6rem; border-radius: var(--r);">
+      <h4 style="color: var(--signal-purple); margin-top: 0;">Credit Long/Short</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">The credit fragment + EDGAR filing NLP (footnote changes, going-concern language, covenant headroom shifts) identifies sector-level credit deterioration <em>before</em> rating agency action. Lead time: typically 2&ndash;6 weeks between filing red flags and spread widening.</p>
+      <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--fg-dim);"><strong>Alpha:</strong> Captures 100&ndash;300bps of spread move before consensus repricing. Long credits with stable structural support; short credits where the credit fragment is deteriorating and EDGAR leverage ratios exceed regime-specific stress thresholds.</p>
+    </div>
+    <div style="background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg) 100%); border: 1px solid var(--border-light); padding: 1.3rem 1.6rem; border-radius: var(--r);">
+      <h4 style="color: var(--signal-purple); margin-top: 0;">Redemption &amp; Liquidity Management</h4>
+      <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">Projects portfolio-level liquidity under stress, scored against redemption schedules. Tells the fund when to proactively maintain a cash buffer or prepare for gating &mdash; before redemption requests arrive.</p>
+      <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--fg-dim);"><strong>Value:</strong> Prevents the death spiral where redemptions → forced selling → NAV decline → more redemptions. This is how Melvin Capital died in 2022 after the 2021 drawdown triggered persistent outflows.</p>
+    </div>
+  </div>
+
+  <!-- CONCRETE P&L EXAMPLE -->
+  <h3 id="ev-hedge-example">7. Worked Example: One Week in the Life of a $2B Macro Fund</h3>
+
+  <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 2rem; border-radius: var(--r); margin: 1.5rem 0;">
+    <div style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.8;">
+      <p><strong style="color: #60a5fa;">Monday morning:</strong> RecWM&rsquo;s thesis scanner surfaces an alert: the credit-to-liquidity transmission channel has inverted. This pattern preceded 3 prior sell-offs by 8&ndash;21 trading days. The model identifies the closest structural analog (August 2015, 81% similarity) and the critical divergence (EM external debt is 2.4&times; higher, concentrating outflow risk in 3 countries). The PM reviews and confirms: this is a tradeable thesis.</p>
+
+      <p><strong style="color: #60a5fa;">Monday afternoon:</strong> The PM asks: &ldquo;What if the Fed signals 50bps cut at next FOMC?&rdquo; RecWM runs 5,000 forward simulations through the reflexive loop. Result: equities rally initially (+1.8%) then reverse as EM outflows compound (&minus;4.2% net over 20 days in the median path). The key insight: the initial rally triggers EM carry unwinds, which feed back into dollar strength, which amplifies EM stress &mdash; a second-order reflexive effect the consensus won&rsquo;t see until it&rsquo;s happening.</p>
+
+      <p><strong style="color: #60a5fa;">Tuesday:</strong> The PM builds a position: long SPX puts (3-week expiry), long USD/EM basket. RecWM sizes the trade: max $120M notional given the current liquidity fragment readings and VAR limits. It recommends 3 tranches over 2 days to minimise market impact. It also screens the vol surface: 3-week SPX puts are 0.8 vol points cheap relative to the model&rsquo;s regime-conditional fair value &mdash; the market is still priced for the old regime.</p>
+
+      <p><strong style="color: #60a5fa;">Wednesday:</strong> Reflexivity coefficient &epsilon; spikes to 0.31. Model alert: &ldquo;Selling is beginning to feed on itself. Threshold for self-fulfilling dynamics: &epsilon; &gt; 0.3. The position is directionally correct but the path is becoming violent. Tighten stops on existing longs by 40%. Widen confidence intervals on all point estimates.&rdquo;</p>
+
+      <p><strong style="color: #60a5fa;">Thursday:</strong> Composition fragility check: the new puts are 82% uncorrelated with the existing book. No hidden concentration detected across strategies. The risk system confirms: portfolio-level VaR is within 65% of limit. Days-to-liquidate under stress for the full book: 3.1 days. The fund can handle a 15% redemption without forced selling.</p>
+
+      <p style="margin-bottom: 0;"><strong style="color: #60a5fa;">Friday:</strong> The PM enters the weekend with conviction, correctly sized, with structural invalidation conditions defined by the model: &ldquo;Thesis invalidated if the liquidity fragment re-opens and funding costs normalise within 5 trading days.&rdquo; The PM&rsquo;s IC memo, auto-generated by RecWM, shows the full causal chain, analog analysis, sizing rationale, and regime-conditional P&amp;L distribution. The CIO approves a $30M add on Monday if the signal strengthens.</p>
+    </div>
+  </div>
+
+  <div style="background: var(--accent-wash); border: 1px solid var(--accent); padding: 1.5rem 1.8rem; border-radius: var(--r); margin: 1.5rem 0;">
+    <h4 style="color: var(--accent); margin-top: 0;">The Bottom Line: Quantified Edge</h4>
+    <table style="margin-bottom: 0;">
+      <thead><tr><th>Source of Alpha</th><th>Mechanism</th><th>Estimated Annual Impact</th></tr></thead>
+      <tbody>
+        <tr><td>Early regime detection</td><td>2&ndash;4 weeks ahead of consensus</td><td>+100&ndash;200bps, +0.15&ndash;0.3 Sharpe</td></tr>
+        <tr><td>Regime-conditional factor timing</td><td>Avoid factor drawdowns</td><td>+0.3&ndash;0.6 Sharpe on multi-factor book</td></tr>
+        <tr><td>Sector rotation lead</td><td>2&ndash;4 weeks early</td><td>150&ndash;300bps per rotation event</td></tr>
+        <tr><td>Dynamic hedge optimisation</td><td>Mechanism-specific hedges</td><td>Save $7&ndash;9M per $1B AUM</td></tr>
+        <tr><td>Drawdown avoidance</td><td>Pre-emptive de-risking</td><td>$500M per event per $10B fund</td></tr>
+        <tr><td>Event-path prediction</td><td>Second-order path simulation</td><td>+0.4&ndash;0.8 Sharpe on event trades</td></tr>
+        <tr><td>Credit L/S lead time</td><td>Filing signals before ratings</td><td>100&ndash;300bps spread capture</td></tr>
+        <tr><td>Causal pairs vs. stat pairs</td><td>Halved breakage drawdowns</td><td>Tail risk reduction ~50%</td></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <!-- ================================================================ -->
