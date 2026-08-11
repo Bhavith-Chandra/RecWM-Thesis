@@ -596,6 +596,7 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
       <div class="sb-lbl">Start Here</div>
       <a href="#" data-page="everything" class="nl"><span class="nl-num">&#x2302;</span><span class="nl-txt">RecWM: The World Model</span></a>
       <a href="#" data-page="vision" class="nl"><span class="nl-num">&#x25C9;</span><span class="nl-txt">What Is RecWM? (In Depth)</span></a>
+      <a href="#" data-page="innovation" class="nl"><span class="nl-num">&#x25A0;</span><span class="nl-txt">Architecture Diagram</span></a>
     </div>
     <div class="sb-grp">
       <div class="sb-lbl">REN Architecture</div>
@@ -620,6 +621,7 @@ body, html { background: var(--bg); color: var(--ink); -webkit-font-smoothing: a
     </div>
     <div class="sb-grp">
       <div class="sb-lbl">Research: Prior Art &amp; Analysis</div>
+      <a href="#" data-page="definitive" class="nl"><span class="nl-num">&#x1F50D;</span><span class="nl-txt">Deep Research &amp; Claims Audit</span></a>
       <a href="#" data-page="causal-engine" class="nl"><span class="nl-num">&#x2660;</span><span class="nl-txt">Causal Triangulation Engine</span></a>
       <a href="#" data-page="briefing" class="nl"><span class="nl-num">&#x1F4D1;</span><span class="nl-txt">Technical Briefing (Legacy)</span></a>
       <a href="#" data-page="foundations" class="nl"><span class="nl-num">F</span><span class="nl-txt">Theoretical Foundations</span></a>
@@ -15735,443 +15737,142 @@ For an economic world model built on causal/structural foundations, this means a
 <div class="pg" id="pg-innovation">
 <div class="page">
 
-<div class="doc-header" style="background: linear-gradient(135deg, #0a0a0a 0%, #0d1117 20%, #161b22 40%, #0d1117 70%, #0a0a0a 100%); padding: 5rem 2.2rem 3.5rem; border-bottom: 3px solid #f97316; margin: -2.5rem -2.2rem 2.5rem; position: relative; overflow: hidden;">
-  <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 60%, rgba(249,115,22,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 30%, rgba(59,130,246,0.05) 0%, transparent 50%);"></div>
-  <div style="position: relative;">
-    <div style="font-family: var(--font-sans); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.22em; color: #f97316; margin-bottom: 1rem;">The Innovation Thesis</div>
-    <h1 style="margin-bottom: 0.8rem; font-size: 2.5rem; line-height: 1.08; color: #f1f5f9; max-width: 780px;">Why This Has Never<br>Been Built Before</h1>
-    <p style="font-size: 1.12rem; max-width: 700px; color: #94a3b8; line-height: 1.65; margin-bottom: 1.5rem;">DeepMind built Dreamer to let agents dream. Meta built JEPA to let machines understand without generating pixels. NVIDIA built Cosmos to simulate physics. Nobody has built a <em>world model for the financial system</em>. Here is why RecWM is that model &mdash; and why it will be the most loved product in finance.</p>
-    <p style="font-size: 0.82rem; color: #475569; max-width: 620px; line-height: 1.6;">This document synthesizes deep research across world model architectures, Bloomberg&rsquo;s lock-in mechanics, hedge fund workflows, and competitive landscape analysis. Every claim is grounded in technical reality or cited evidence.</p>
-  </div>
-</div>
-
-<!-- ================================================================ -->
-<!-- PART I: THE WORLD MODEL REVOLUTION -->
-<!-- ================================================================ -->
-<div class="sec" id="inn-worldmodel">
-  <h2>Part I: The World Model Revolution</h2>
-
-  <p style="font-size: 1.05rem; line-height: 1.7; max-width: 720px;">The most important idea in AI right now is not large language models. It is <strong>world models</strong> &mdash; systems that build internal simulations of how reality works, then use those simulations to plan, imagine, and reason about scenarios that have never happened before.</p>
-
-  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.8rem; margin: 2rem 0;">
-    <h3 style="margin-top: 0; font-size: 1.1rem;">What a World Model Actually Does</h3>
-    <p style="font-size: 0.92rem; margin-bottom: 1rem;">A world model learns the <em>dynamics</em> of its environment &mdash; not just what things look like, but how they change when you act on them. It can then &ldquo;dream&rdquo; forward: simulate thousands of possible futures without ever touching the real world.</p>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-      <div style="background: var(--bg); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1rem;">
-        <div style="font-size: 0.7rem; font-weight: 700; color: #f87171; letter-spacing: 0.08em; margin-bottom: 0.3rem;">WHAT IT ISN&rsquo;T</div>
-        <p style="font-size: 0.85rem; margin-bottom: 0;">A prediction model that maps inputs &rarr; outputs. A classifier. A regression. A time-series forecast. These see patterns. They don&rsquo;t <em>understand</em> mechanisms.</p>
-      </div>
-      <div style="background: var(--bg); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1rem;">
-        <div style="font-size: 0.7rem; font-weight: 700; color: #10b981; letter-spacing: 0.08em; margin-bottom: 0.3rem;">WHAT IT IS</div>
-        <p style="font-size: 0.85rem; margin-bottom: 0;">A simulation engine with state, transitions, and composition. It models <em>how the world evolves</em> when you change things. It can answer &ldquo;what if?&rdquo; questions it has never seen.</p>
-      </div>
-    </div>
+  <div class="doc-header">
+    <p style="text-transform:uppercase;letter-spacing:.15em;font-size:.85rem;opacity:.7;margin:0 0 .5rem">System Architecture &middot; August 2026</p>
+    <h1 style="margin:0 0 .75rem">RecWM &times; REN: Architecture Diagram</h1>
+    <p style="font-size:1.15rem;opacity:.85;margin:0;max-width:48rem">The full system architecture showing the reflexive world-model loop, all 11 inventions mapped to components, and prior art basis for each.</p>
   </div>
 
-  <h3>The Frontier: Who Is Building World Models</h3>
+  <h2>System Overview</h2>
 
-  <div style="overflow-x: auto; margin: 1.5rem 0;">
-    <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
+  <p>The diagram below shows RecWM's five-stage loop: <strong>Observe</strong> &rarr; <strong>Infer Beliefs</strong> &rarr; <strong>Compute Equilibrium</strong> &rarr; <strong>Predict</strong> &rarr; <strong>Act</strong>, with the reflexive feedback arrow (red dashed) showing how the system's own actions feed back into the next observation cycle. Each component maps to a specific REN invention and has explicit prior art.</p>
+
+  <div style="max-width:900px;margin:2rem auto;overflow-x:auto">
+    <svg viewBox="0 0 900 680" xmlns="http://www.w3.org/2000/svg" role="img" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;width:100%;height:auto">
+      <title>RecWM / REN Architecture</title>
+      <desc>Full system architecture showing the reflexive world-model loop.</desc>
+      <defs>
+        <marker id="arr" viewBox="0 0 10 6" refX="10" refY="3" markerWidth="8" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,3 L0,6 Z" fill="var(--fg-dim,#4b5563)"/></marker>
+        <marker id="arr-r" viewBox="0 0 10 6" refX="10" refY="3" markerWidth="8" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,3 L0,6 Z" fill="var(--red,#dc2626)"/></marker>
+      </defs>
+      <rect width="900" height="680" fill="var(--bg,#fff)" rx="8"/>
+      <text x="450" y="32" text-anchor="middle" font-size="16" font-weight="700" fill="var(--heading,#0f172a)" letter-spacing=".02em">RecWM &times; REN Architecture</text>
+      <text x="450" y="50" text-anchor="middle" font-size="10" fill="var(--fg-muted,#6b7280)" letter-spacing=".08em">REFLEXIVE CONSTRUCTIVE WORLD MODEL &mdash; SYSTEM OVERVIEW</text>
+      <rect x="30" y="68" width="840" height="52" rx="6" fill="var(--bg-surface,#f5f7fb)" stroke="var(--border-light,#e4e9f2)"/>
+      <text x="50" y="82" font-size="8" fill="var(--fg-muted,#6b7280)" letter-spacing=".1em" font-weight="600">DATA INGESTION</text>
+      <text x="50" y="100" font-size="10" fill="var(--fg-dim,#4b5563)">Prices &middot; Order Flow &middot; News/NLP &middot; SEC Filings &middot; Macro Releases &middot; Satellite &middot; Social</text>
+      <text x="830" y="100" text-anchor="end" font-size="9" fill="var(--accent,#1d4ed8)" font-weight="600">Inv 11: Information Fusion</text>
+      <line x1="450" y1="120" x2="450" y2="140" stroke="var(--fg-dim,#4b5563)" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="340" y="142" width="220" height="44" rx="6" fill="var(--accent-bg,#eff6ff)" stroke="var(--accent,#1d4ed8)" stroke-width="1.5"/>
+      <text x="360" y="160" font-size="9" font-weight="700" fill="var(--accent,#1d4ed8)" letter-spacing=".06em">OBSERVE</text>
+      <text x="360" y="176" font-size="9" fill="var(--fg-dim,#4b5563)">Market state x(t) at all timescales</text>
+      <line x1="450" y1="186" x2="450" y2="206" stroke="var(--fg-dim,#4b5563)" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="280" y="208" width="340" height="62" rx="6" fill="var(--bg-card,#f8f9fc)" stroke="var(--border,#d6dde8)" stroke-width="1.5"/>
+      <text x="300" y="226" font-size="9" font-weight="700" fill="var(--heading,#0f172a)" letter-spacing=".06em">INFER BELIEFS</text>
+      <text x="300" y="242" font-size="9" fill="var(--fg-dim,#4b5563)">B(&theta;, t, s) &mdash; beliefs per agent type &theta;,</text>
+      <text x="300" y="256" font-size="9" fill="var(--fg-dim,#4b5563)">time t, log-timescale s (RKHS embedding)</text>
+      <text x="600" y="256" text-anchor="end" font-size="8" fill="var(--accent,#1d4ed8)" font-weight="600">Inv 2: Belief Fields</text>
+      <line x1="450" y1="270" x2="450" y2="290" stroke="var(--fg-dim,#4b5563)" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="120" y="292" width="660" height="130" rx="8" fill="var(--bg-raised,#fff)" stroke="var(--accent-dark,#1e3a8a)" stroke-width="2"/>
+      <text x="140" y="312" font-size="10" font-weight="700" fill="var(--accent-dark,#1e3a8a)" letter-spacing=".06em">COMPUTE EQUILIBRIUM</text>
+      <text x="140" y="326" font-size="8" fill="var(--fg-muted,#6b7280)">&Phi;(b*; x, &theta;) = b* &mdash; find ALL self-consistent belief configurations</text>
+      <rect x="140" y="336" width="180" height="72" rx="5" fill="var(--accent-bg,#eff6ff)" stroke="var(--accent-dim,#93c5fd)"/>
+      <text x="155" y="354" font-size="9" font-weight="700" fill="var(--accent,#1d4ed8)">ATLAS</text>
+      <text x="155" y="368" font-size="8" fill="var(--fg-dim,#4b5563)">Neural warm-start &rarr;</text>
+      <text x="155" y="380" font-size="8" fill="var(--fg-dim,#4b5563)">Anderson acceleration &rarr;</text>
+      <text x="155" y="392" font-size="8" fill="var(--fg-dim,#4b5563)">Adaptive damping</text>
+      <text x="155" y="404" font-size="7" fill="var(--accent,#1d4ed8)">~1.4ms / equilibrium</text>
+      <line x1="320" y1="372" x2="350" y2="372" stroke="var(--fg-dim,#4b5563)" marker-end="url(#arr)"/>
+      <rect x="352" y="336" width="180" height="72" rx="5" fill="var(--contrib-bg,#ecfdf5)" stroke="var(--green-dim,#a7f3d0)"/>
+      <text x="367" y="354" font-size="9" font-weight="700" fill="var(--green,#059669)">HYDRA</text>
+      <text x="367" y="368" font-size="8" fill="var(--fg-dim,#4b5563)">Deflation + homotopy &rarr;</text>
+      <text x="367" y="380" font-size="8" fill="var(--fg-dim,#4b5563)">Find K &le; 8 equilibria &rarr;</text>
+      <text x="367" y="392" font-size="8" fill="var(--fg-dim,#4b5563)">Probability weighting</text>
+      <text x="367" y="404" font-size="7" fill="var(--green,#059669)">&lt;15ms for 5 equilibria</text>
+      <line x1="532" y1="372" x2="562" y2="372" stroke="var(--fg-dim,#4b5563)" marker-end="url(#arr)"/>
+      <rect x="564" y="336" width="200" height="72" rx="5" fill="var(--warn-bg,#fef2f2)" stroke="var(--warn-border,#fecaca)"/>
+      <text x="579" y="354" font-size="9" font-weight="700" fill="var(--warn,#b91c1c)">SEISMOGRAPH</text>
+      <text x="579" y="368" font-size="8" fill="var(--fg-dim,#4b5563)">Jacobian eigenvalue tracking &rarr;</text>
+      <text x="579" y="380" font-size="8" fill="var(--fg-dim,#4b5563)">Bifurcation detection &rarr;</text>
+      <text x="579" y="392" font-size="8" fill="var(--fg-dim,#4b5563)">&delta;_bif countdown to regime shift</text>
+      <text x="579" y="404" font-size="7" fill="var(--warn,#b91c1c)">&lt;0.05ms / timestep</text>
+      <text x="760" y="312" text-anchor="end" font-size="8" fill="var(--accent,#1d4ed8)" font-weight="600">Inv 3: Equilibrium Engine</text>
+      <line x1="450" y1="422" x2="450" y2="442" stroke="var(--fg-dim,#4b5563)" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="180" y="444" width="540" height="58" rx="6" fill="var(--bg-card,#f8f9fc)" stroke="var(--border,#d6dde8)" stroke-width="1.5"/>
+      <text x="200" y="462" font-size="9" font-weight="700" fill="var(--heading,#0f172a)" letter-spacing=".06em">PREDICT &amp; REASON</text>
+      <rect x="200" y="470" width="145" height="24" rx="4" fill="var(--tag-bg,#eff6ff)" stroke="var(--border-light,#e4e9f2)" stroke-width=".5"/>
+      <text x="210" y="486" font-size="8" fill="var(--accent,#1d4ed8)">K*(s) Influence Kernel</text>
+      <rect x="360" y="470" width="145" height="24" rx="4" fill="var(--tag-bg,#eff6ff)" stroke="var(--border-light,#e4e9f2)" stroke-width=".5"/>
+      <text x="370" y="486" font-size="8" fill="var(--accent,#1d4ed8)">Counterfactual Engine</text>
+      <rect x="520" y="470" width="180" height="24" rx="4" fill="var(--tag-bg,#eff6ff)" stroke="var(--border-light,#e4e9f2)" stroke-width=".5"/>
+      <text x="530" y="486" font-size="8" fill="var(--accent,#1d4ed8)">Market Ontology Engine</text>
+      <line x1="450" y1="502" x2="450" y2="522" stroke="var(--fg-dim,#4b5563)" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="280" y="524" width="340" height="50" rx="6" fill="var(--accent-bg,#eff6ff)" stroke="var(--accent,#1d4ed8)" stroke-width="1.5"/>
+      <text x="300" y="542" font-size="9" font-weight="700" fill="var(--accent,#1d4ed8)" letter-spacing=".06em">ACT (Self-Impact Aware)</text>
+      <text x="300" y="558" font-size="9" fill="var(--fg-dim,#4b5563)">p* = T(p*; s, &theta;) &mdash; fixed point accounting</text>
+      <text x="300" y="570" font-size="9" fill="var(--fg-dim,#4b5563)">for own market impact</text>
+      <text x="600" y="558" text-anchor="end" font-size="8" fill="var(--accent,#1d4ed8)" font-weight="600">Inv 4: Self-Impact</text>
+      <path d="M 450 574 L 450 600 Q 450 620 430 620 L 90 620 Q 70 620 70 600 L 70 164 Q 70 142 90 142 L 330 142" fill="none" stroke="var(--red,#dc2626)" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arr-r)"/>
+      <text x="72" y="400" font-size="8" fill="var(--red,#dc2626)" font-weight="700" transform="rotate(-90,72,400)" text-anchor="middle" letter-spacing=".1em">REFLEXIVE FEEDBACK</text>
+      <rect x="800" y="292" width="85" height="130" rx="5" fill="var(--sienna-bg,#fef3c7)" stroke="var(--amber-dim,#fde68a)"/>
+      <text x="842" y="312" text-anchor="middle" font-size="8" font-weight="700" fill="var(--amber,#d97706)" letter-spacing=".05em">TRAINING</text>
+      <text x="812" y="330" font-size="7" fill="var(--fg-dim,#4b5563)">ABC: Adversarial</text>
+      <text x="812" y="342" font-size="7" fill="var(--fg-dim,#4b5563)">Belief Calibration</text>
+      <text x="812" y="356" font-size="7" fill="var(--amber,#d97706)" font-weight="600">Inv 5</text>
+      <line x1="812" y1="364" x2="872" y2="364" stroke="var(--amber-dim,#fde68a)" stroke-width=".5"/>
+      <text x="812" y="380" font-size="7" fill="var(--fg-dim,#4b5563)">Multi-Scale</text>
+      <text x="812" y="392" font-size="7" fill="var(--fg-dim,#4b5563)">Belief PDE</text>
+      <text x="812" y="406" font-size="7" fill="var(--amber,#d97706)" font-weight="600">Inv 7</text>
+      <line x1="800" y1="357" x2="780" y2="357" stroke="var(--amber,#d97706)" marker-end="url(#arr)"/>
+      <rect x="800" y="444" width="85" height="58" rx="5" fill="var(--warn-bg,#fef2f2)" stroke="var(--warn-border,#fecaca)"/>
+      <text x="842" y="462" text-anchor="middle" font-size="8" font-weight="700" fill="var(--warn,#b91c1c)" letter-spacing=".05em">DEFENSE</text>
+      <text x="812" y="478" font-size="7" fill="var(--fg-dim,#4b5563)">Adversarial robustness</text>
+      <text x="812" y="490" font-size="7" fill="var(--fg-dim,#4b5563)">Belief manipulation</text>
+      <text x="812" y="500" font-size="7" fill="var(--warn,#b91c1c)" font-weight="600">Inv 9</text>
+      <rect x="160" y="632" width="580" height="38" rx="6" fill="var(--bg-surface,#f5f7fb)" stroke="var(--border-light,#e4e9f2)"/>
+      <text x="180" y="648" font-size="8" fill="var(--fg-muted,#6b7280)" letter-spacing=".1em" font-weight="600">OUTPUTS</text>
+      <text x="180" y="662" font-size="9" fill="var(--fg-dim,#4b5563)">Theses &middot; Regime Alerts &middot; Scenarios &middot; Execution Plans &middot; Bifurcation Countdown</text>
+      <line x1="450" y1="574" x2="450" y2="600" stroke="var(--fg-dim,#4b5563)" stroke-dasharray="3,2"/>
+      <line x1="450" y1="616" x2="450" y2="630" stroke="var(--fg-dim,#4b5563)" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="340" y="598" width="220" height="20" rx="4" fill="var(--contrib-bg,#ecfdf5)" stroke="var(--green-dim,#a7f3d0)" stroke-width=".5"/>
+      <text x="450" y="612" text-anchor="middle" font-size="8" fill="var(--green,#059669)" font-weight="600">Inv 10: Live Architecture &mdash; 24/7 Continual Learning</text>
+    </svg>
+  </div>
+
+  <h2>Component Legend</h2>
+
+  <div class="table-wrap">
+    <table>
       <thead>
-        <tr style="border-bottom: 2px solid var(--border-light);">
-          <th style="text-align: left; padding: 0.6rem 0.8rem; font-weight: 700; color: var(--fg-dim);">System</th>
-          <th style="text-align: left; padding: 0.6rem 0.8rem; font-weight: 700; color: var(--fg-dim);">Builder</th>
-          <th style="text-align: left; padding: 0.6rem 0.8rem; font-weight: 700; color: var(--fg-dim);">Domain</th>
-          <th style="text-align: left; padding: 0.6rem 0.8rem; font-weight: 700; color: var(--fg-dim);">Key Innovation</th>
-        </tr>
+        <tr><th>Component</th><th>Color</th><th>Role</th><th>Primary Prior Art</th></tr>
       </thead>
       <tbody>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">DreamerV3</td>
-          <td style="padding: 0.6rem 0.8rem;">DeepMind</td>
-          <td style="padding: 0.6rem 0.8rem;">Games / Robotics</td>
-          <td style="padding: 0.6rem 0.8rem;">Learns entirely by &ldquo;dreaming&rdquo; &mdash; optimizes policy inside imagined latent trajectories. First to collect diamonds in Minecraft from scratch. Published in <em>Nature</em> 2025.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">MuZero</td>
-          <td style="padding: 0.6rem 0.8rem;">DeepMind</td>
-          <td style="padding: 0.6rem 0.8rem;">Games</td>
-          <td style="padding: 0.6rem 0.8rem;">Learns the rules of chess, Go, and Atari <em>without being told them</em>. Plans via MCTS in a learned latent space. Three learned functions: representation, dynamics, prediction.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">V-JEPA 2</td>
-          <td style="padding: 0.6rem 0.8rem;">Meta / LeCun</td>
-          <td style="padding: 0.6rem 0.8rem;">Video / Robotics</td>
-          <td style="padding: 0.6rem 0.8rem;">Predicts in abstract representation space, never generates pixels. 15&ndash;30&times; faster planning than generative alternatives. Zero-shot robot deployment.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Genie 3</td>
-          <td style="padding: 0.6rem 0.8rem;">DeepMind</td>
-          <td style="padding: 0.6rem 0.8rem;">Interactive environments</td>
-          <td style="padding: 0.6rem 0.8rem;">Generates playable 3D worlds from text prompts at 720p/24fps. Object permanence, real-time physics. DeepMind calls it &ldquo;a stepping stone toward AGI.&rdquo;</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Cosmos 3</td>
-          <td style="padding: 0.6rem 0.8rem;">NVIDIA</td>
-          <td style="padding: 0.6rem 0.8rem;">Physical AI</td>
-          <td style="padding: 0.6rem 0.8rem;">Mixture-of-Transformers. Trained on 20 trillion tokens. Used by Tesla, Figure AI, Uber for robot and vehicle simulation.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Tesla Neural Sim</td>
-          <td style="padding: 0.6rem 0.8rem;">Tesla</td>
-          <td style="padding: 0.6rem 0.8rem;">Driving / Robotics</td>
-          <td style="padding: 0.6rem 0.8rem;">Simulates 500 years of driving experience per day. Same simulator trains both FSD and Optimus. Learned physics, not hand-coded.</td>
-        </tr>
-        <tr>
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600; color: #f97316;">RecWM</td>
-          <td style="padding: 0.6rem 0.8rem; color: #f97316; font-weight: 600;">Treasury4</td>
-          <td style="padding: 0.6rem 0.8rem; color: #f97316; font-weight: 600;">Financial Markets</td>
-          <td style="padding: 0.6rem 0.8rem; color: #f97316; font-weight: 600;">7 typed fragments composed via &otimes; operator. S5 state-space backbone. Reflexivity coefficient &epsilon;(t). The first world model for the financial system.</td>
-        </tr>
+        <tr><td><strong>ATLAS</strong></td><td style="background:var(--accent-bg);width:20px"></td><td>Core equilibrium solver (fixed-point iteration)</td><td>DEQ (Bai et al. 2019), Anderson acceleration</td></tr>
+        <tr><td><strong>HYDRA</strong></td><td style="background:var(--contrib-bg);width:20px"></td><td>Multi-equilibrium discovery</td><td>Farrell et al. 2015, Gu et al. 2021, HomoODE 2023</td></tr>
+        <tr><td><strong>SEISMOGRAPH</strong></td><td style="background:var(--warn-bg);width:20px"></td><td>Bifurcation detection &amp; regime warning</td><td>Scheffer et al. 2009, Bury et al. 2023</td></tr>
+        <tr><td><strong>Self-Impact</strong></td><td style="background:var(--accent-bg);width:20px"></td><td>Performative feedback layer</td><td>Perdomo et al. 2020, Mofakhami et al. 2023</td></tr>
+        <tr><td><strong>Training</strong></td><td style="background:var(--sienna-bg);width:20px"></td><td>Adversarial belief calibration</td><td>Adversarial training (Madry et al. 2018)</td></tr>
+        <tr><td><strong>Defense</strong></td><td style="background:var(--warn-bg);width:20px"></td><td>Robustness against belief manipulation</td><td>Robust optimization</td></tr>
       </tbody>
     </table>
   </div>
 
-  <p style="font-size: 0.95rem; line-height: 1.7;">Every other domain has its world model. Games have Dreamer and MuZero. Robotics has V-JEPA and Cosmos. Autonomous driving has GAIA-3 and Tesla&rsquo;s neural simulator. <strong>Finance has nothing.</strong> RecWM fills the last great gap.</p>
-</div>
+  <h2>The Triple Correspondence</h2>
 
-<!-- ================================================================ -->
-<!-- THE JEPA INSIGHT -->
-<!-- ================================================================ -->
-<div class="sec" id="inn-jepa">
-  <h2>The JEPA Insight: Why RecWM Predicts in Latent Space</h2>
+  <p>The core architectural insight: three independently-motivated diagnostics converge on the same mathematical object.</p>
 
-  <p>Yann LeCun&rsquo;s most important argument (arXiv:2306.02572): <strong>generative models solve the wrong problem for world modeling.</strong> A model that generates pixels wastes capacity on irrelevant detail &mdash; the exact pattern of light on a countertop, the precise wording of a headline. What matters for planning is abstract state: objects, relationships, dynamics.</p>
-
-  <div style="background: var(--bg-alt); border-left: 4px solid #3b82f6; padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0; margin: 1.5rem 0;">
-    <p style="font-size: 0.92rem; margin-bottom: 0.5rem;"><strong>V-JEPA 2-AC demonstrated this concretely:</strong> planning in a 1024-dimensional latent space takes ~16 seconds per action. The equivalent using NVIDIA Cosmos (a generative video model) takes ~4 minutes &mdash; <strong>15&ndash;30&times; slower</strong> &mdash; because it must generate and evaluate full video frames.</p>
-    <p style="font-size: 0.88rem; color: var(--fg-dim); margin-bottom: 0;">You do not need to render the future to evaluate it. You only need to predict its abstract state.</p>
+  <div class="math-block" style="text-align:center;line-height:2.5">
+    <strong>&rho;(D&Phi;(b*)) &lt; 1</strong><br>
+    <span style="font-size:.9rem;opacity:.7">&darr; same spectral radius &darr;</span><br>
+    DEQ convergence &nbsp;|&nbsp; Perdomo stability (&epsilon; &lt; &gamma;/&beta;) &nbsp;|&nbsp; Scheffer critical slowing down
   </div>
 
-  <p>RecWM applies this insight to finance. It does not predict price time series (pixel-level prediction). It predicts the <strong>abstract state of seven fragments</strong> &mdash; Liquidity, Momentum, Risk, Credit, Structure, Sentiment, Policy &mdash; and their compositions. This is why it can simulate 5,000 forward paths in seconds: it operates in a compressed state-space, not in the space of observable prices.</p>
-</div>
-
-<!-- ================================================================ -->
-<!-- WHAT MAKES THIS COMPOSITIONAL -->
-<!-- ================================================================ -->
-<div class="sec" id="inn-composition">
-  <h2>Compositionality: The Key to Generalisation</h2>
-
-  <p>The deepest innovation in RecWM is not any single fragment. It is the <strong>composition operator &otimes;</strong> that combines them.</p>
-
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
-    <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.3rem;">
-      <h4 style="color: #f87171; margin-top: 0;">Why Linear Models Fail</h4>
-      <p style="font-size: 0.88rem; margin-bottom: 0;">Standard factor models assume factors combine linearly: Return = &beta;<sub>1</sub>F<sub>1</sub> + &beta;<sub>2</sub>F<sub>2</sub> + &hellip; But in March 2020, Liquidity &times; Risk &times; Sentiment interacted <em>multiplicatively</em>. The selling caused the illiquidity caused the fear caused the selling. Linear models cannot represent this circular composition.</p>
-    </div>
-    <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.3rem;">
-      <h4 style="color: #10b981; margin-top: 0;">Why Composition Works</h4>
-      <p style="font-size: 0.88rem; margin-bottom: 0;">RecWM&rsquo;s &otimes; operator composes fragments with 4 constraint layers: algebraic (type compatibility), information-theoretic (SPIB compression), dynamical (Lyapunov stability), and economic (no-arbitrage). This lets the model represent <em>interactions it has never seen</em> &mdash; the same way language models compose words into sentences they&rsquo;ve never generated.</p>
-    </div>
-  </div>
-
-  <p style="font-size: 0.92rem;">This is compositional generalisation applied to finance. MuZero composes game mechanics. Dreamer composes physics. RecWM composes market dynamics. The architecture that conquered games and robotics &mdash; applied to the domain where it matters most.</p>
-</div>
-
-<!-- ================================================================ -->
-<!-- REFLEXIVITY: THE IMPOSSIBLE FEATURE -->
-<!-- ================================================================ -->
-<div class="sec" id="inn-reflexivity">
-  <h2>Reflexivity: The Feature Nobody Else Can Build</h2>
-
-  <p>Every AI system in robotics, games, or autonomous driving assumes it is <em>observing</em> a system that exists independently. A self-driving car doesn&rsquo;t change the road by driving on it. A game agent doesn&rsquo;t change the physics by playing.</p>
-
-  <p style="font-size: 1.05rem; line-height: 1.7; max-width: 720px;"><strong>Financial markets are different.</strong> The model&rsquo;s predictions change the system it&rsquo;s predicting. When enough participants act on the same signal, the signal becomes self-fulfilling &mdash; or self-defeating. This is George Soros&rsquo;s reflexivity, formalised in Donald MacKenzie&rsquo;s &ldquo;performativity&rdquo; research, and mathematically grounded in Perdomo et al. 2020 (Theorem 3.5).</p>
-
-  <div style="background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0;">
-    <div style="font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; color: #94a3b8; line-height: 1.8;">
-      <div style="color: #f97316; font-weight: 700; margin-bottom: 0.5rem;">THE REFLEXIVITY COEFFICIENT &epsilon;(t)</div>
-      <span style="color: #64748b;">RecWM computes &epsilon;(t) from the Jacobian of the feedback loop:</span><br><br>
-      <span style="color: #e2e8f0;">&epsilon;(t) = &Vert; &part;market(t+1) / &part;model_output(t) &Vert;</span><br><br>
-      <span style="color: #10b981;">&epsilon; &lt; 0.2</span> &mdash; Normal. Model&rsquo;s predictions don&rsquo;t move markets. Standard quant models work fine.<br>
-      <span style="color: #fbbf24;">&epsilon; &asymp; 0.3&ndash;0.5</span> &mdash; Elevated. Crowded positioning. The model&rsquo;s recommendations start to matter.<br>
-      <span style="color: #f87171;">&epsilon; &gt; 0.5</span> &mdash; Critical. Self-fulfilling dynamics. <strong>The model suppresses its own confidence.</strong><br><br>
-      <span style="color: #64748b;">This is the feature that would have detected:</span><br>
-      &bull; <span style="color: #e2e8f0;">Feb 2018 VIX blow-up</span> &mdash; risk-parity vol targets created a feedback loop (&epsilon; &gt; 0.6)<br>
-      &bull; <span style="color: #e2e8f0;">Aug 2007 quant quake</span> &mdash; correlated unwind of momentum/value strategies (&epsilon; &asymp; 0.55)<br>
-      &bull; <span style="color: #e2e8f0;">Jan 2021 GameStop</span> &mdash; retail + short squeeze reflexive cascade (&epsilon; &gt; 0.7)<br>
-      &bull; <span style="color: #e2e8f0;">Mar 2023 SVB</span> &mdash; deposit flight &rarr; asset fire-sale &rarr; contagion loop (&epsilon; &asymp; 0.5)
-    </div>
-  </div>
-
-  <p style="font-size: 0.92rem;">No other financial model measures its own impact on the market. Bloomberg shows data. Quant models predict prices. Risk models measure exposure. <strong>RecWM is the only system that knows when it&rsquo;s changing the game.</strong></p>
-</div>
-
-<!-- ================================================================ -->
-<!-- PART II: WHAT BLOOMBERG TEACHES US -->
-<!-- ================================================================ -->
-<div class="sec" id="inn-bloomberg">
-  <h2>Part II: What Bloomberg Teaches Us About Being Loved</h2>
-
-  <p style="font-size: 1.05rem; line-height: 1.7; max-width: 720px;">Bloomberg Terminal has 325,000+ subscribers paying $32K/year. Its interface is objectively ugly &mdash; amber-on-black, 30,000+ keyboard commands, a CLI from the 1980s. And users <em>love it</em>. Understanding why is essential to building something they&rsquo;ll love even more.</p>
-
-  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1.5rem 0;">
-    <div style="background: var(--bg-alt); border-top: 3px solid #f97316; padding: 1.3rem; border-radius: 0 0 var(--r) var(--r);">
-      <h4 style="color: #f97316; margin-top: 0; font-size: 0.9rem;">Muscle Memory</h4>
-      <p style="font-size: 0.82rem; margin-bottom: 0;">&ldquo;The muscle memory a ten-year bond trader has built into their fingers isn&rsquo;t something you migrate &mdash; you&rsquo;re resetting ten years of that person.&rdquo; Bloomberg&rsquo;s 30,000 commands become <em>extensions of thought</em>. Heidegger called this &ldquo;ready-to-hand&rdquo; &mdash; the tool disappears. RecWM must create the same fusion.</p>
-    </div>
-    <div style="background: var(--bg-alt); border-top: 3px solid #3b82f6; padding: 1.3rem; border-radius: 0 0 var(--r) var(--r);">
-      <h4 style="color: #3b82f6; margin-top: 0; font-size: 0.9rem;">Network Lock-In</h4>
-      <p style="font-size: 0.82rem; margin-bottom: 0;">IB Chat handles 200M messages/day. A quote exchanged in chat becomes a binding order. Symphony raised $100M to disrupt it and failed &mdash; Goldman Sachs couldn&rsquo;t even get its own employees to switch. The network IS the product. RecWM&rsquo;s shared world model creates the same dynamic.</p>
-    </div>
-    <div style="background: var(--bg-alt); border-top: 3px solid #10b981; padding: 1.3rem; border-radius: 0 0 var(--r) var(--r);">
-      <h4 style="color: #10b981; margin-top: 0; font-size: 0.9rem;">The IKEA Effect</h4>
-      <p style="font-size: 0.82rem; margin-bottom: 0;">Norton, Mochon &amp; Ariely (2012): people value self-assembled items 63% higher than identical pre-built ones. PMs who train RecWM with their own hypotheses, scenario weightings, and fragment calibrations create an externalisation of their own cognition. Switching means abandoning <em>a mirror of their mind</em>.</p>
-    </div>
-  </div>
-
-  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.5rem; margin: 1.5rem 0;">
-    <h3 style="margin-top: 0;">The Five Lessons for RecWM</h3>
-    <ol style="font-size: 0.9rem; line-height: 1.7; padding-left: 1.2rem;">
-      <li style="margin-bottom: 0.8rem;"><strong>Command-speed interaction.</strong> Bloomberg users hit one key and get data. RecWM users speak a question and get a simulated world state. Both are sub-second, in-workflow, zero context-switch. The speed must be neurologically rewarding.</li>
-      <li style="margin-bottom: 0.8rem;"><strong>Complexity that signals expertise.</strong> Bloomberg&rsquo;s UX Magazine ethnography: &ldquo;The more painful the UI is, the more satisfied these users are.&rdquo; RecWM&rsquo;s world model is inherently complex &mdash; seven fragments, composition channels, regime states &mdash; but this complexity must reward mastery, not punish beginners.</li>
-      <li style="margin-bottom: 0.8rem;"><strong>24/7 concierge support, not help desks.</strong> Bloomberg&rsquo;s HELP HELP connects to a human in seconds, 12,000 queries/day, 15+ languages. RecWM&rsquo;s equivalent: the model itself explains its reasoning, traces its logic, and teaches you how to use it. The world model IS the help desk.</li>
-      <li style="margin-bottom: 0.8rem;"><strong>Your data becomes the moat.</strong> Bloomberg&rsquo;s BGN prices come from dealer contributions &mdash; data that exists nowhere else. RecWM&rsquo;s equivalent: every scenario a PM runs, every counterfactual they test, every fragment calibration they adjust creates proprietary training signal no competitor can replicate.</li>
-      <li style="margin-bottom: 0.8rem;"><strong>Make switching psychologically impossible.</strong> Overriding established motor programmes takes 2&ndash;4&times; longer than learning from scratch (Proctor &amp; Vu, 2006). Once PMs think in fragments, compositions, and regime states, every other tool feels like going back to spreadsheets.</li>
-    </ol>
-  </div>
-</div>
-
-<!-- ================================================================ -->
-<!-- PART III: THE COMPETITIVE VOID -->
-<!-- ================================================================ -->
-<div class="sec" id="inn-void">
-  <h2>Part III: The Competitive Void</h2>
-
-  <p style="font-size: 1.02rem; line-height: 1.7;">Every major player in finance and AI is missing the world model. Here is precisely what each one lacks:</p>
-
-  <div style="overflow-x: auto; margin: 1.5rem 0;">
-    <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
-      <thead>
-        <tr style="border-bottom: 2px solid var(--border-light);">
-          <th style="text-align: left; padding: 0.6rem 0.8rem; font-weight: 700; width: 18%;">Competitor</th>
-          <th style="text-align: left; padding: 0.6rem 0.8rem; font-weight: 700; width: 30%;">What They Do</th>
-          <th style="text-align: left; padding: 0.6rem 0.8rem; font-weight: 700; color: #f87171; width: 52%;">What They Cannot Do</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Bloomberg</td>
-          <td style="padding: 0.6rem 0.8rem;">Data terminal + chat + indices</td>
-          <td style="padding: 0.6rem 0.8rem; color: #f87171;">No simulation. No &ldquo;what if.&rdquo; No world model. 35M instruments shown as data, never as an interacting system. Cannot answer &ldquo;why did this move?&rdquo;</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Palantir Foundry</td>
-          <td style="padding: 0.6rem 0.8rem;">Data integration + ontology</td>
-          <td style="padding: 0.6rem 0.8rem; color: #f87171;">Organises data, doesn&rsquo;t simulate it. No forward paths, no regime detection, no composition. An ontology is a map, not a physics engine.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Bridgewater&rsquo;s Machine</td>
-          <td style="padding: 0.6rem 0.8rem;">Rules-based economic model</td>
-          <td style="padding: 0.6rem 0.8rem; color: #f87171;">Deterministic, not learned. Hand-coded rules break when regimes change. No compositional generalisation. No reflexivity. Closest to a world model but frozen in structure.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Two Sigma / DE Shaw</td>
-          <td style="padding: 0.6rem 0.8rem;">ML prediction engines</td>
-          <td style="padding: 0.6rem 0.8rem; color: #f87171;">Statistical pattern matching. No causal structure, no composition operator, no forward simulation of novel scenarios. Trained to predict, not to <em>understand</em>.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">MSCI / Axioma</td>
-          <td style="padding: 0.6rem 0.8rem;">Linear factor risk models</td>
-          <td style="padding: 0.6rem 0.8rem; color: #f87171;">Factors are linear and additive. No interaction effects. Breaks at regime transitions &mdash; exactly when risk matters most. March 2020 VaR was useless.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Sooth Labs</td>
-          <td style="padding: 0.6rem 0.8rem;">Exogenous event forecasting</td>
-          <td style="padding: 0.6rem 0.8rem; color: #f87171;">Predicts external events (elections, weather) but not how they propagate through the financial system. Complementary to RecWM, not competitive.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">ChatGPT / Claude</td>
-          <td style="padding: 0.6rem 0.8rem;">General-purpose LLMs</td>
-          <td style="padding: 0.6rem 0.8rem; color: #f87171;">No world model. No portfolio awareness. Hallucinate numbers. Cannot simulate forward paths. Cannot compose fragments. Cannot measure reflexivity. Text in, text out.</td>
-        </tr>
-        <tr>
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Man AHL / WorldQuant</td>
-          <td style="padding: 0.6rem 0.8rem;">Alpha signal factories</td>
-          <td style="padding: 0.6rem 0.8rem; color: #f87171;">Mine correlations at scale. But correlation is not composition. Finding signal &ne; understanding mechanism. Alpha decays because they don&rsquo;t model <em>why</em> signals work.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div style="background: linear-gradient(135deg, #0f172a 0%, #1a0a2e 100%); border: 2px solid #f97316; border-radius: 10px; padding: 1.5rem; margin: 1.5rem 0; text-align: center;">
-    <p style="font-size: 1.3rem; color: #f1f5f9; margin-bottom: 0.5rem; font-weight: 700;">The gap is not incremental. It is categorical.</p>
-    <p style="font-size: 0.92rem; color: #94a3b8; margin-bottom: 0;">Bloomberg = data terminal. Quant models = statistical prediction. Risk models = backward measurement.<br><strong style="color: #f97316;">RecWM = world simulator.</strong> A new category of financial instrument.</p>
-  </div>
-</div>
-
-<!-- ================================================================ -->
-<!-- PART IV: THE HEDGE FUND CASE -->
-<!-- ================================================================ -->
-<div class="sec" id="inn-hedge">
-  <h2>Part IV: Why Hedge Funds Will Pay $500K/Year</h2>
-
-  <p>The ROI case for RecWM is not about data. It is about <strong>alpha, risk, and survival</strong>.</p>
-
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
-    <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.3rem;">
-      <h4 style="color: #10b981; margin-top: 0;">The Alpha Case</h4>
-      <p style="font-size: 0.88rem;">On a $5B fund, 50bps of additional alpha = <strong>$25M/year</strong>. RecWM generates alpha through:</p>
-      <ul style="font-size: 0.82rem; line-height: 1.7; padding-left: 1.2rem; margin-bottom: 0;">
-        <li><strong>Regime-based allocation:</strong> different strategies for different world states</li>
-        <li><strong>Composition arbitrage:</strong> fragment interactions the market hasn&rsquo;t priced</li>
-        <li><strong>Reflexivity trading:</strong> trading the feedback loops others can&rsquo;t see</li>
-        <li><strong>Time-decay edge:</strong> seeing regime transitions 2&ndash;5 days before price</li>
-        <li><strong>Counterfactual simulation:</strong> testing scenarios competitors cannot</li>
-      </ul>
-    </div>
-    <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.3rem;">
-      <h4 style="color: #f87171; margin-top: 0;">The Survival Case</h4>
-      <p style="font-size: 0.88rem;">Preventing one Archegos-scale blowup = <strong>the fund&rsquo;s existence</strong>. RecWM prevents catastrophe through:</p>
-      <ul style="font-size: 0.82rem; line-height: 1.7; padding-left: 1.2rem; margin-bottom: 0;">
-        <li><strong>Composition fragility:</strong> detects when fragment interactions are unstable</li>
-        <li><strong>Reflexivity alerts:</strong> warns when crowding creates self-fulfilling cascades</li>
-        <li><strong>War room mode:</strong> automated crisis response with ranked action sequences</li>
-        <li><strong>Cross-book correlation:</strong> CIO sees when multiple PMs are in the same trade</li>
-        <li><strong>Time-to-margin countdown:</strong> real-time liquidity crisis simulation</li>
-      </ul>
-    </div>
-  </div>
-
-  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.5rem; margin: 1.5rem 0;">
-    <h3 style="margin-top: 0;">The Math</h3>
-    <div style="overflow-x: auto;">
-      <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
-        <thead>
-          <tr style="border-bottom: 2px solid var(--border-light);">
-            <th style="text-align: left; padding: 0.6rem 0.8rem;">Value Source</th>
-            <th style="text-align: right; padding: 0.6rem 0.8rem;">Annual Value ($5B Fund)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom: 1px solid var(--border-light);">
-            <td style="padding: 0.6rem 0.8rem;">50bps additional alpha from regime-based allocation</td>
-            <td style="text-align: right; padding: 0.6rem 0.8rem; font-weight: 600;">$25,000,000</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border-light);">
-            <td style="padding: 0.6rem 0.8rem;">20bps saved from avoiding one tail event per 3 years</td>
-            <td style="text-align: right; padding: 0.6rem 0.8rem; font-weight: 600;">$10,000,000</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border-light);">
-            <td style="padding: 0.6rem 0.8rem;">Replace 3 research analysts ($250K each fully loaded)</td>
-            <td style="text-align: right; padding: 0.6rem 0.8rem; font-weight: 600;">$750,000</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border-light);">
-            <td style="padding: 0.6rem 0.8rem;">Faster decision-making (hours &rarr; seconds &times; 250 trading days)</td>
-            <td style="text-align: right; padding: 0.6rem 0.8rem; font-weight: 600;">$5,000,000</td>
-          </tr>
-          <tr style="border-bottom: 2px solid var(--border-light);">
-            <td style="padding: 0.6rem 0.8rem; font-weight: 700;">Total annual value</td>
-            <td style="text-align: right; padding: 0.6rem 0.8rem; font-weight: 700; color: #10b981; font-size: 1.1rem;">$40,750,000</td>
-          </tr>
-          <tr>
-            <td style="padding: 0.6rem 0.8rem; font-weight: 700;">RecWM subscription</td>
-            <td style="text-align: right; padding: 0.6rem 0.8rem; font-weight: 700; color: #f97316;">$500,000</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="font-size: 0.85rem; color: var(--fg-dim); margin-top: 1rem; margin-bottom: 0;"><strong>ROI: 81&times;.</strong> The subscription pays for itself 81 times over. And that&rsquo;s before counting the existential value of not being the next LTCM, Archegos, or Melvin Capital.</p>
-  </div>
-</div>
-
-<!-- ================================================================ -->
-<!-- PART V: THE MOAT -->
-<!-- ================================================================ -->
-<div class="sec" id="inn-moat">
-  <h2>Part V: The Moat That Gets Deeper Every Day</h2>
-
-  <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1.5rem 0;">
-    <div style="background: var(--bg-alt); border-left: 4px solid #f97316; padding: 1.3rem 1.6rem; border-radius: 0 var(--r) var(--r) 0;">
-      <h4 style="margin-top: 0;">1. The Simulation Flywheel</h4>
-      <p style="font-size: 0.9rem; margin-bottom: 0;">Every scenario a PM simulates teaches the world model something new. Which fragment interactions matter in this regime. Which compositions are stable. Which historical analogs are relevant. This is not usage data &mdash; it is <em>world knowledge</em> that no competitor can acquire without the same simulation volume. The model gets smarter because people use it to think.</p>
-    </div>
-    <div style="background: var(--bg-alt); border-left: 4px solid #3b82f6; padding: 1.3rem 1.6rem; border-radius: 0 var(--r) var(--r) 0;">
-      <h4 style="margin-top: 0;">2. Cognitive Lock-In</h4>
-      <p style="font-size: 0.9rem; margin-bottom: 0;">Once PMs think in fragments, compositions, and regime states, they have rewired their mental model. Switching to another tool means rebuilding their cognitive architecture &mdash; not just relearning an interface. Proctor &amp; Vu (2006) show overriding established cognitive programmes takes 2&ndash;4&times; longer than learning from scratch. The lock-in is neurological.</p>
-    </div>
-    <div style="background: var(--bg-alt); border-left: 4px solid #10b981; padding: 1.3rem 1.6rem; border-radius: 0 var(--r) var(--r) 0;">
-      <h4 style="margin-top: 0;">3. The Regulatory Moat</h4>
-      <p style="font-size: 0.9rem; margin-bottom: 0;">Once compliance approves RecWM&rsquo;s world model for risk reporting, scenario analysis, and stress testing, switching requires re-approval. Regulators are slow. Bloomberg survived 40 years partly because compliance departments resist change. The same force will protect RecWM.</p>
-    </div>
-    <div style="background: var(--bg-alt); border-left: 4px solid #a855f7; padding: 1.3rem 1.6rem; border-radius: 0 var(--r) var(--r) 0;">
-      <h4 style="margin-top: 0;">4. The Talent Gap</h4>
-      <p style="font-size: 0.9rem; margin-bottom: 0;">The intersection of world model research + financial domain expertise is approximately 50 people on the planet. A competitor cannot hire their way to RecWM. The architecture requires deep knowledge of S5 state-spaces, compositional world models, active inference, financial microstructure, and reflexivity theory simultaneously. This is not a team you assemble &mdash; it is a team that must grow together.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ================================================================ -->
-<!-- PART VI: THE CATEGORY -->
-<!-- ================================================================ -->
-<div class="sec" id="inn-category">
-  <h2>Part VI: A New Category of Financial Instrument</h2>
-
-  <p>Category-creating products don&rsquo;t compete with existing tools. They make existing tools look like the previous era.</p>
-
-  <div style="overflow-x: auto; margin: 1.5rem 0;">
-    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
-      <thead>
-        <tr style="border-bottom: 2px solid var(--border-light);">
-          <th style="text-align: left; padding: 0.6rem 0.8rem; width: 25%;">Before</th>
-          <th style="text-align: center; padding: 0.6rem 0.8rem; width: 5%;">&rarr;</th>
-          <th style="text-align: left; padding: 0.6rem 0.8rem; width: 25%;">After</th>
-          <th style="text-align: left; padding: 0.6rem 0.8rem; width: 45%;">The Shift</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem;">Crystallography</td>
-          <td style="text-align: center; padding: 0.6rem 0.8rem;">&rarr;</td>
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">AlphaFold</td>
-          <td style="padding: 0.6rem 0.8rem;">Protein structure from years &rarr; seconds</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem;">Thomas Guide maps</td>
-          <td style="text-align: center; padding: 0.6rem 0.8rem;">&rarr;</td>
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Google Maps</td>
-          <td style="padding: 0.6rem 0.8rem;">Static reference &rarr; live, navigable, routable</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.6rem 0.8rem;">Hand-coded physics</td>
-          <td style="text-align: center; padding: 0.6rem 0.8rem;">&rarr;</td>
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600;">Tesla Neural Sim</td>
-          <td style="padding: 0.6rem 0.8rem;">Rules &rarr; learned simulation (500 years/day)</td>
-        </tr>
-        <tr>
-          <td style="padding: 0.6rem 0.8rem;">Bloomberg + spreadsheets</td>
-          <td style="text-align: center; padding: 0.6rem 0.8rem;">&rarr;</td>
-          <td style="padding: 0.6rem 0.8rem; font-weight: 600; color: #f97316;">RecWM</td>
-          <td style="padding: 0.6rem 0.8rem; color: #f97316;">Data terminal &rarr; world simulator with reflexivity</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <p style="font-size: 0.92rem; line-height: 1.7;">In five years, finance will divide into <strong>pre-world-model</strong> and <strong>post-world-model</strong> eras. The firms that adopt RecWM will think in regime states, compositions, and reflexivity coefficients. The firms that don&rsquo;t will still be reading sell-side research and building Excel models &mdash; the financial equivalent of using a Thomas Guide in the age of Google Maps.</p>
-</div>
-
-<!-- ================================================================ -->
-<!-- CLOSING -->
-<!-- ================================================================ -->
-<div style="background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 30%, #0f172a 60%, #0a0a0a 100%); padding: 3rem 2rem; border-radius: var(--r); margin: 3rem 0 0; text-align: center; position: relative; overflow: hidden;">
-  <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 50%, rgba(249,115,22,0.08) 0%, transparent 60%);"></div>
-  <div style="position: relative;">
-    <p style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: #f97316; margin-bottom: 1rem;">The Innovation Thesis</p>
-    <p style="font-size: 1.3rem; color: #f1f5f9; margin-bottom: 0.8rem; font-weight: 700;">Every domain has its world model. Finance is the last frontier.</p>
-    <p style="font-size: 1rem; color: #fed7aa; margin-bottom: 0.5rem;">Games have Dreamer. Robotics have JEPA. Driving has Tesla Neural Sim.</p>
-    <p style="font-size: 1rem; color: #f97316; font-weight: 700; margin-bottom: 0.5rem;">Finance has RecWM.</p>
-    <p style="font-size: 0.82rem; color: #64748b; margin: 0;">The most advanced world model architecture applied to the domain<br>where understanding the world is worth the most.</p>
-  </div>
-</div>
+  <p>When &rho;(D&Phi;) &lt; 1: the solver converges, predictions are performatively stable, and the regime is robust. When &rho;(D&Phi;) &rarr; 1: convergence slows, performative predictions become self-defeating, and a regime transition approaches. <strong>One number governs all three phenomena.</strong></p>
 
 </div>
+</div>
 
-    </div>
-
-
-
-    <div class="pg" id="pg-alwayson">
+<div class="pg" id="pg-alwayson">
 <div class="page">
 
 <div class="doc-header" style="background: linear-gradient(135deg, #020617 0%, #0c1222 25%, #0f172a 50%, #0c1222 75%, #020617 100%); padding: 5rem 2.2rem 3.5rem; border-bottom: 3px solid #10b981; margin: -2.5rem -2.2rem 2.5rem; position: relative; overflow: hidden;">
@@ -19485,610 +19186,392 @@ For an economic world model built on causal/structural foundations, this means a
     <div class="pg" id="pg-definitive">
 <div class="page">
 
-<!-- HERO -->
-<div class="doc-header" style="background: linear-gradient(135deg, #020617 0%, #0a0f1a 20%, #0f172a 50%, #0a0f1a 80%, #020617 100%); padding: 4.5rem 2.2rem 3rem; border-bottom: 3px solid #6366f1; margin: -2.5rem -2.2rem 2.5rem; position: relative; overflow: hidden;">
-  <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
-    <div style="position: absolute; top: 10%; left: 12%; width: 280px; height: 280px; background: radial-gradient(circle, rgba(99,102,241,0.05) 0%, transparent 70%); border-radius: 50%;"></div>
-    <div style="position: absolute; bottom: 5%; right: 15%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(16,185,129,0.04) 0%, transparent 70%); border-radius: 50%;"></div>
+  <div class="doc-header">
+    <p style="text-transform:uppercase;letter-spacing:.15em;font-size:.85rem;opacity:.7;margin:0 0 .5rem">Deep Research &amp; Claims Audit &middot; August 2026</p>
+    <h1 style="margin:0 0 .75rem">RecWM &times; REN: Research Foundations, Prior Art, and Honest Assessment</h1>
+    <p style="font-size:1.15rem;opacity:.85;margin:0;max-width:48rem">Every claim proof-tested against the literature. Every piece of prior art cited. Every gap acknowledged. This is the page for people who read papers.</p>
   </div>
-  <div style="position: relative;">
-    <div style="font-family: var(--font-sans); font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #6366f1; margin-bottom: 0.8rem;">The Definitive Core Document</div>
-    <h1 style="margin-bottom: 0.8rem; font-size: 2.4rem; line-height: 1.08; color: #f1f5f9; max-width: 800px;">RecWM: A Reflexive World Model<br>for Financial Markets</h1>
-    <p style="font-size: 1rem; max-width: 720px; color: #94a3b8; line-height: 1.65; margin-bottom: 1rem;">The first world model that accounts for its own market impact. Built on performative prediction theory, continual learning, and latent imagination &mdash; targeting the L6 capability that no system has reached.</p>
-    <p style="font-size: 0.72rem; color: #475569; max-width: 620px; line-height: 1.55;">Research architecture &middot; 5 genuine innovations &middot; 7 typed fragments &middot; S5 backbone (Smith et al. 2023) &middot; GateL0RD gating (Gumbsch et al. 2021) &middot; EWC (Kirkpatrick et al. 2017) &middot; BOCPD (Adams &amp; MacKay 2007)</p>
-  </div>
-</div>
 
-<!-- STATUS DISCLAIMER -->
-<div style="background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.25); border-radius: var(--r); padding: 1rem 1.2rem; margin-bottom: 2rem;">
-  <p style="font-size: 0.82rem; font-weight: 600; color: #f59e0b; margin-bottom: 0.3rem;">Status: Research Architecture</p>
-  <p style="font-size: 0.78rem; color: var(--fg-dim); margin: 0;">RecWM is a research design. There is no production system, no backtest, no deployed model. This document describes the architecture we intend to build and the genuine gaps it targets. Claims are testable hypotheses, not validated results.</p>
-</div>
+  <!-- ============================================================ -->
+  <!-- 0. POSITIONING                                                -->
+  <!-- ============================================================ -->
 
-<!-- TABLE OF CONTENTS -->
-<div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1rem 1.4rem; margin-bottom: 2.5rem;">
-  <p style="font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--fg-dim); margin-bottom: 0.6rem;">Contents</p>
-  <ol style="font-size: 0.82rem; padding-left: 1.2rem; margin: 0; color: var(--fg-dim); line-height: 1.8;">
-    <li>The Core Thesis: Why Reflexivity Changes Everything</li>
-    <li>What Exists Today &mdash; The Honest Competitive Map</li>
-    <li>The Five Genuine Innovations</li>
-    <li>Building Blocks &mdash; Prior Art We Assemble (Not Invent)</li>
-    <li>System Architecture</li>
-    <li>From Architecture to P&amp;L</li>
-    <li>What We Must Prove</li>
-    <li>Build Sequence</li>
+  <h2>0. How to Read This</h2>
+
+  <p>RecWM/REN integrates four established bodies of work into a single architecture where their mathematical structures align:</p>
+
+  <ol>
+    <li><strong>Deep Equilibrium Models</strong> (Bai, Kolter &amp; Koltun, NeurIPS 2019) &mdash; implicit layers via fixed-point iteration</li>
+    <li><strong>Performative prediction</strong> (Perdomo, Zrnic, Mendler-D&uuml;nner &amp; Hardt, ICML 2020) &mdash; models whose predictions change the distribution they predict</li>
+    <li><strong>Deflation-based multi-solution discovery</strong> (Farrell, Birkisson &amp; Funke, SIAM J. Sci. Comput. 2015) &mdash; finding all roots of a nonlinear system</li>
+    <li><strong>Spectral early-warning signals</strong> (Scheffer et al., Nature 2009) &mdash; critical slowing down near tipping points</li>
   </ol>
-</div>
 
-
-<!-- ════════ SECTION 1: THE CORE THESIS ════════ -->
-<div class="sec">
-  <h2>1. The Core Thesis: Why Reflexivity Changes Everything</h2>
-
-  <p>Every financial "world model" built to date treats markets as natural phenomena &mdash; something to observe and replicate, like weather or protein folding. Microsoft MarS (ICLR 2025) generates synthetic order flows. TradeFM (2026) learns trade-flow distributions. JPMorgan ABIDES simulates agent populations.</p>
-
-  <p><strong>They all share a fatal assumption: the model does not change what it models.</strong></p>
-
-  <p>Financial markets are <em>reflexive</em> systems (Soros 1987; MacKenzie 2006). The act of deploying a model changes the distribution the model was trained on. If RecWM predicts a crisis and institutions act on it, the crisis may be averted &mdash; making the model's own prediction wrong. If it identifies an arbitrage, acting on it closes the arbitrage. The model is not outside the system; it is inside.</p>
-
-  <div style="background: var(--bg-alt); border-left: 4px solid #6366f1; padding: 1.2rem 1.4rem; border-radius: 0 var(--r) var(--r) 0; margin: 1.5rem 0;">
-    <p style="font-size: 0.92rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--fg);">The RecWM Thesis</p>
-    <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">A financial world model must solve three problems simultaneously:</p>
-    <ol style="font-size: 0.85rem; padding-left: 1.2rem; margin: 0;">
-      <li><strong>State estimation</strong> under partial observability and heterogeneous data</li>
-      <li><strong>Continual learning</strong> across non-stationary regimes without catastrophic forgetting</li>
-      <li><strong>Reflexivity correction</strong> &mdash; maintaining calibration when the model's outputs change the distribution it models</li>
-    </ol>
-    <p style="font-size: 0.85rem; margin: 0.5rem 0 0;">Problem 3 is what makes RecWM different. No existing system addresses it.</p>
+  <div class="rcwm-box">
+    <strong>The core insight.</strong> The DEQ contraction condition, the Perdomo performative stability threshold, and the dynamical-systems bifurcation indicator are mathematically the same object &mdash; the spectral radius of the belief-update Jacobian. Our architecture is the first to exploit this triple correspondence: convergence, performative stability, and regime-change detection emerge from a single diagnostic.
   </div>
 
-  <h3>Performative Prediction: The Formal Framework</h3>
-  <p>Perdomo et al. (ICML 2020) formalized this as <em>performative prediction</em>: deploying model &theta; shifts the data distribution from D to D(&theta;). A model is <strong>performatively stable</strong> if it is optimal for the distribution it induces: &theta;* = argmin<sub>&theta;</sub> L(&theta;, D(&theta;*)). Their Theorem 3.5 shows convergence when the sensitivity &epsilon; satisfies &epsilon; &lt; &gamma;/&beta;, where &gamma; is the strong convexity parameter and &beta; is the Lipschitz constant of the loss gradient.</p>
+  <p>This page documents what is genuinely new, what is integration of existing work, what is standard technique applied in a new domain, and what remains unproven. We cite every ancestor. We claim no more than we can defend.</p>
 
-  <p>But Perdomo's &epsilon; is a <strong>fixed constant</strong>. In real markets, reflexivity intensity varies: low during calm, extreme during crises. This is where our first genuine innovation begins.</p>
-</div>
+  <!-- ============================================================ -->
+  <!-- 1. FIELD LANDSCAPE                                            -->
+  <!-- ============================================================ -->
 
+  <h2>1. Where RecWM Sits in the Field</h2>
 
-<!-- ════════ SECTION 2: COMPETITIVE MAP ════════ -->
-<div class="sec">
-  <h2>2. What Exists Today &mdash; The Honest Competitive Map</h2>
+  <p>The Economic World Models survey (arXiv 2608.06020, August 2026; 7,836 papers screened, 737 validated) defines six capability levels for economic world models. The survey explicitly finds Level 6 &mdash; sim-to-real economic twinning with continuous online correction &mdash; <strong>"nearly absent"</strong> in the literature.</p>
 
-  <p>We are not the only team thinking about world models for finance. Here is what actually exists, assessed fairly:</p>
-
-  <div style="overflow-x: auto; margin: 1rem 0;">
-    <table style="width: 100%; border-collapse: collapse; font-size: 0.78rem;">
+  <div class="table-wrap">
+    <table>
       <thead>
-        <tr style="border-bottom: 2px solid var(--border-light);">
-          <th style="text-align: left; padding: 0.6rem 0.5rem;">System</th>
-          <th style="text-align: left; padding: 0.6rem 0.5rem;">What It Does</th>
-          <th style="text-align: left; padding: 0.6rem 0.5rem;">Reflexive?</th>
-          <th style="text-align: left; padding: 0.6rem 0.5rem;">Status</th>
-        </tr>
+        <tr><th>Level</th><th>Capability</th><th>Examples</th><th>RecWM Target</th></tr>
       </thead>
       <tbody>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">Microsoft MarS</td>
-          <td style="padding: 0.5rem;">Autoregressive order-level market simulator, 1B+ params. ICLR 2025. Open-source.</td>
-          <td style="padding: 0.5rem; color: #ef4444;">No</td>
-          <td style="padding: 0.5rem;">Published, code released</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">TradeFM</td>
-          <td style="padding: 0.5rem;">524M-param trade-flow foundation model. Zero-shot transfer to APAC markets.</td>
-          <td style="padding: 0.5rem; color: #ef4444;">No</td>
-          <td style="padding: 0.5rem;">arXiv 2026</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">Sooth Labs</td>
-          <td style="padding: 0.5rem;">Exogenous event forecasting. $50M at $335M val. LeCun &amp; Dean as advisors.</td>
-          <td style="padding: 0.5rem; color: #f59e0b;">Orthogonal</td>
-          <td style="padding: 0.5rem;">Funded, building</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">Macrocosm</td>
-          <td style="padding: 0.5rem;">Digital twin of world economy. Doyne Farmer (Oxford). $2.6M raised.</td>
-          <td style="padding: 0.5rem; color: #f59e0b;">Partially</td>
-          <td style="padding: 0.5rem;">Early stage</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">JPM ABIDES</td>
-          <td style="padding: 0.5rem;">Agent-based economic simulator with RL agents. Multi-agent Markov game.</td>
-          <td style="padding: 0.5rem; color: #f59e0b;">Partially</td>
-          <td style="padding: 0.5rem;">Published, internal use</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">ICML 2026 JEPA</td>
-          <td style="padding: 0.5rem;">Latent market state embeddings (Balestriero, Assran). Risk structure learning.</td>
-          <td style="padding: 0.5rem; color: #ef4444;">No</td>
-          <td style="padding: 0.5rem;">Conference poster</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">Bridgewater</td>
-          <td style="padding: 0.5rem;">$160B AUM systematic economic machine. $2B ML fund (2024). 40+ year track record.</td>
-          <td style="padding: 0.5rem; color: #f59e0b;">Unknown</td>
-          <td style="padding: 0.5rem;">Deployed, proprietary</td>
+        <tr><td>L1</td><td>Stylized-fact reproduction</td><td>ABMs (LeBaron 2006), Santa Fe ASM (Arthur et al. 1997)</td><td>Subsumes</td></tr>
+        <tr><td>L2</td><td>Calibrated simulation</td><td>ABIDES (Byrd et al. 2020), DSGE models</td><td>Subsumes</td></tr>
+        <tr><td>L3</td><td>Generative market data</td><td>Microsoft MarS (ICLR 2025), FinDiff</td><td>Subsumes</td></tr>
+        <tr><td>L4</td><td>Counterfactual policy analysis</td><td>DSGE-Gym (arXiv 2607.03144), EWM (Schaab &amp; Scheidegger 2026)</td><td>Via Counterfactual Engine</td></tr>
+        <tr><td>L5</td><td>Adaptive online learning</td><td>Partial: some RL-based trading systems</td><td>Via Live Architecture</td></tr>
+        <tr><td style="background:var(--accent-bg)"><strong>L6</strong></td><td style="background:var(--accent-bg)"><strong>Reflexive sim-to-real twin</strong></td><td style="background:var(--accent-bg)"><strong>Nearly absent</strong></td><td style="background:var(--accent-bg)"><strong>Core target</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>RecWM targets L6 with a specific mechanism: endogenous modeling of how agent beliefs and market prices co-construct each other, which is qualitatively different from exogenous simulation (MarS) or hand-coded behavioral rules (ABIDES).</p>
+
+  <div class="warn">
+    <strong>Honest caveat.</strong> Targeting an identified gap is not the same as filling it. RecWM is at the mathematical specification stage. The L6 claim is a research direction, not a delivered capability.
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 2. PRIOR ART MAP                                              -->
+  <!-- ============================================================ -->
+
+  <h2>2. Prior Art Map: What We Build On</h2>
+
+  <p>Every component of REN has ancestors. We name them all.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>REN Component</th><th>Primary Prior Art</th><th>What We Take</th><th>What We Add</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Implicit layer (ATLAS)</strong></td>
+          <td>DEQ (Bai et al. 2019); MonDEQ (Winston &amp; Kolter, NeurIPS 2020); DEQN (Azinovic et al. 2019/2022)</td>
+          <td>Fixed-point computation as a forward pass; implicit differentiation for backprop</td>
+          <td>Domain-specific factorization into action/price/belief stages; warm-starting from temporal correlation; residual minimization for unstable equilibria</td>
         </tr>
         <tr>
-          <td style="padding: 0.5rem; font-weight: 600; color: #10b981;">RecWM</td>
-          <td style="padding: 0.5rem;">Reflexive world model with performative prediction correction + continual learning.</td>
-          <td style="padding: 0.5rem; color: #10b981;">Yes (thesis)</td>
-          <td style="padding: 0.5rem; color: #f59e0b;">Research design only</td>
+          <td><strong>Multi-equilibrium (HYDRA)</strong></td>
+          <td>Deflation (Farrell et al. 2015); Neural deflation (Gu, Wang &amp; Yang 2021); HomoODE (Chen et al. 2023); HomPINNs (2022)</td>
+          <td>Deflation operator to repel solver from known roots; homotopy continuation for path-following</td>
+          <td>Combined deflation + homotopy applied to a DEQ-style implicit layer for economic equilibria; Boltzmann probability weighting over equilibria</td>
+        </tr>
+        <tr>
+          <td><strong>Bifurcation detection (SEISMOGRAPH)</strong></td>
+          <td>Critical slowing down (Scheffer et al. Nature 2009; Dakos et al. PNAS 2008); Deep learning EWS (Bury et al. 2021)</td>
+          <td>Spectral radius of Jacobian as stability indicator; eigenvalue tracking near unit circle</td>
+          <td>Application to DEQ belief-update Jacobian specifically; connection to Perdomo contraction threshold; neural bifurcation predictor for precursor signatures</td>
+        </tr>
+        <tr>
+          <td><strong>Self-Impact Layer</strong></td>
+          <td>Performative prediction (Perdomo et al. ICML 2020); NN extension (Mofakhami et al. AISTATS 2023); Game-theoretic implicit layers (Geiger &amp; Straehle AAAI 2021)</td>
+          <td>Framework for modeling how predictions alter the predicted distribution</td>
+          <td><strong>Embedding performative prediction as a differentiable layer inside the DEQ fixed-point iteration</strong> &mdash; the equilibrium itself accounts for self-impact. No prior paper does this.</td>
+        </tr>
+        <tr>
+          <td><strong>Belief Fields</strong></td>
+          <td>Harsanyi type spaces (Mertens &amp; Zamir 1985); Cognitive hierarchy (Camerer, Ho &amp; Chong QJE 2004); Kernel embeddings of distributions (Muandet et al. 2017)</td>
+          <td>Hierarchical belief structure; finite-depth truncation of strategic reasoning</td>
+          <td>Sylvester belief recurrence with learned interaction matrices; adaptive depth truncation (Graves 2016); Gaussian parametric restriction for tractability</td>
+        </tr>
+        <tr>
+          <td><strong>Influence Kernel</strong></td>
+          <td>Matrix resolvent (standard linear algebra, Horn &amp; Johnson); Cognitive hierarchy models; Level-k reasoning</td>
+          <td>Neumann series convergence; resolvent form (I &minus; M)<sup>&minus;1</sup></td>
+          <td>Timescale-indexed application to belief hierarchies; interpretation of spectral radius as crisis signal. The resolvent itself is standard &mdash; the domain application and timescale indexing are the contribution.</td>
+        </tr>
+        <tr>
+          <td><strong>Crowding detection</strong></td>
+          <td>MSCI Security Crowding Model (2018); MSCI Integrated Factor Crowding; AQR factor timing; 13F overlap analysis</td>
+          <td>The concept of measuring crowding across investors</td>
+          <td>Crowding detection in <em>belief space</em> (convergence of causal narratives) rather than position space (who holds what) or factor space (correlated exposures)</td>
+        </tr>
+        <tr>
+          <td><strong>Self-impact in execution</strong></td>
+          <td>Almgren &amp; Chriss (2000); Obizhaeva &amp; Wang (2013); Cont, Kukanov &amp; Stoikov (2014)</td>
+          <td>Mechanical market impact models for execution optimization</td>
+          <td>Distinction between mechanical self-impact (trade moves price) and <em>reflexive</em> self-impact (prediction changes regime). Almgren-Chriss handles the former; our Self-Impact Layer handles the latter.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1rem 1.2rem; margin: 1rem 0;">
-    <p style="font-size: 0.82rem; font-weight: 600; margin-bottom: 0.3rem;">Our Honest Position</p>
-    <p style="font-size: 0.8rem; color: var(--fg-dim); margin: 0;">MarS, TradeFM, and ABIDES are real, working systems. We have nothing deployed. Our advantage is not capability superiority &mdash; it is targeting a different problem. They simulate markets. We aim to build a model that <em>knows it is inside the market</em> and corrects for its own influence. Whether this advantage is real or merely theoretical is exactly what we need to prove.</p>
-  </div>
-</div>
+  <!-- ============================================================ -->
+  <!-- 3. CLAIMS AUDIT                                               -->
+  <!-- ============================================================ -->
 
+  <h2>3. Claims Audit: Verdict on Every Novelty Claim</h2>
 
-<!-- ════════ SECTION 3: FIVE GENUINE INNOVATIONS ════════ -->
-<div class="sec">
-  <h2>3. The Five Genuine Innovations</h2>
-  <p>After deep research across the full academic literature, these are the claims that survived pressure-testing. Each targets a verified gap &mdash; a problem where we found zero or near-zero prior work.</p>
+  <p>We categorize each claim as: <strong style="color:var(--green)">Genuinely Novel</strong>, <strong style="color:var(--amber)">Novel Integration</strong> (combining existing techniques in a new way), <strong style="color:var(--cyan)">Domain Application</strong> (standard technique, new domain), or <strong style="color:var(--red)">Overclaimed</strong> (must be restated).</p>
 
-  <!-- Innovation 1: Endogenous epsilon -->
-  <div style="border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.5rem; margin: 1.5rem 0; background: var(--bg-alt);">
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-      <span style="background: #10b981; color: white; font-size: 0.6rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.1em;">Innovation 1</span>
-      <span style="font-size: 0.65rem; color: var(--fg-dim);">Gap verified: zero prior work</span>
-    </div>
-    <h3 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Endogenous &epsilon;(t): State-Dependent Reflexivity</h3>
-    <p style="font-size: 0.85rem; margin-bottom: 0.8rem;">Perdomo's &epsilon; is a fixed constant measuring how much model deployment shifts the data distribution. In real markets, this sensitivity is state-dependent: negligible during calm, extreme during crises. We make &epsilon; a learned function of the world state:</p>
-
-    <div style="background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 1rem; margin: 0.8rem 0; overflow-x: auto;">
-      <pre style="font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.75rem; color: #e2e8f0; margin: 0; line-height: 1.7;">&epsilon;(t) = f<sub>&phi;</sub>(z(t), regime(t), vol(t))
-
-<span style="color: #64748b;">-- Perdomo Thm 3.5 convergence requires: &epsilon; &lt; &gamma;/&beta;</span>
-<span style="color: #64748b;">-- When &epsilon;(t) crosses &gamma;/&beta;, the system enters the unstable zone</span>
-<span style="color: #64748b;">-- This crossing IS the crisis mechanism</span>
-
-<span style="color: #10b981;">Three zones emerge:</span>
-  &epsilon;(t) &lt; &gamma;/(2&beta;)     <span style="color: #10b981;">&rarr; Stable &amp; optimizable (normal markets)</span>
-  &gamma;/(2&beta;) &le; &epsilon;(t) &lt; &gamma;/&beta;  <span style="color: #f59e0b;">&rarr; Stable but NOT optimizable (unnamed gap)</span>
-  &epsilon;(t) &ge; &gamma;/&beta;      <span style="color: #ef4444;">&rarr; Unstable (crisis: retraining diverges)</span></pre>
-    </div>
-
-    <p style="font-size: 0.82rem; color: var(--fg-dim); margin-bottom: 0.5rem;"><strong>Why this matters for P&amp;L:</strong> The &epsilon;(t) signal tells a portfolio manager when the market is in a regime where their models' own actions create feedback loops. When &epsilon;(t) approaches &gamma;/&beta;, reduce position sizes and widen stop-losses. When it crosses, switch to crisis-mode allocation.</p>
-
-    <p style="font-size: 0.75rem; color: var(--fg-dim); margin: 0;"><em>Literature basis:</em> Perdomo et al. ICML 2020 (Thm 3.5); Miller, Perdomo &amp; Zrnic ICML 2021; Hardt &amp; Mendler-Dunner, Statistical Science 2025 survey. The unnamed gap &gamma;/(2&beta;) &le; &epsilon; &lt; &gamma;/&beta; appears in no published work.</p>
-  </div>
-
-  <!-- Innovation 2: Sheaf consistency -->
-  <div style="border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.5rem; margin: 1.5rem 0; background: var(--bg-alt);">
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-      <span style="background: #10b981; color: white; font-size: 0.6rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.1em;">Innovation 2</span>
-      <span style="font-size: 0.65rem; color: var(--fg-dim);">Gap verified: &lt;5 papers in finance, zero for signal fusion</span>
-    </div>
-    <h3 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Sheaf-Laplacian Consistency Detection</h3>
-    <p style="font-size: 0.85rem; margin-bottom: 0.8rem;">When fragments disagree &mdash; liquidity says "stress" but credit says "calm" &mdash; the disagreement itself is informative. We apply Ghrist's sheaf Laplacian framework (Hansen &amp; Ghrist 2019) to detect cross-fragment incoherence. Robinson (2017) proved sheaves are the "canonical data structure for sensor integration." Nobody has applied this to financial signal fusion.</p>
-
-    <div style="background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 1rem; margin: 0.8rem 0; overflow-x: auto;">
-      <pre style="font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.75rem; color: #e2e8f0; margin: 0; line-height: 1.7;"><span style="color: #6366f1;">Sheaf Laplacian:</span>  L<sub>F</sub> = &delta;<sup>T</sup> C<sub>W</sub> &delta;
-
-x<sup>T</sup> L<sub>F</sub> x = &Sigma;<sub>e=(u,v)</sub> w<sub>e</sub> || F<sub>u&larr;e</sub> x(u) - F<sub>v&larr;e</sub> x(v) ||&sup2;
-
-<span style="color: #64748b;">-- Small eigenvalues = global consistency (fragments agree)</span>
-<span style="color: #64748b;">-- Large eigenvalues = incoherence (fragments disagree)</span>
-<span style="color: #64748b;">-- Eigenvectors localize WHERE the disagreement lives</span></pre>
-    </div>
-
-    <p style="font-size: 0.82rem; color: var(--fg-dim); margin-bottom: 0.5rem;"><strong>Why this matters for P&amp;L:</strong> Cross-fragment incoherence is the canary in the coal mine. When liquidity and credit suddenly disagree after months of agreement, something has changed that neither fragment alone has priced. This signal precedes dislocations by days to weeks &mdash; exploitable via relative-value trades between the disagreeing fragments.</p>
-
-    <p style="font-size: 0.75rem; color: var(--fg-dim); margin: 0;"><em>Literature basis:</em> Hansen &amp; Ghrist, J. Applied &amp; Comp. Topology 2019; Robinson, arXiv:1603.01446 (2017); Ghrist &amp; Hansen arXiv:2503.17836 (clearing networks only). Sarfo SSRN 2025 (category theory in finance, not sheaves).</p>
-  </div>
-
-  <!-- Innovation 3: Latent imagination -->
-  <div style="border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.5rem; margin: 1.5rem 0; background: var(--bg-alt);">
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-      <span style="background: #10b981; color: white; font-size: 0.6rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.1em;">Innovation 3</span>
-      <span style="font-size: 0.65rem; color: var(--fg-dim);">Gap verified: zero Dreamer/RSSM applied to trading</span>
-    </div>
-    <h3 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Latent-Space Financial Imagination</h3>
-    <p style="font-size: 0.85rem; margin-bottom: 0.8rem;">Dreamer (Hafner et al. 2020, 2023) learns world models in latent space and "imagines" future trajectories without executing real actions. JEPA (LeCun 2022) predicts in representation space rather than pixel space. Neither has been applied to financial markets. MarS generates in observation space (raw orders); we propose generating in latent state space &mdash; faster, more abstract, and composable with the reflexivity correction.</p>
-
-    <div style="background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 1rem; margin: 0.8rem 0; overflow-x: auto;">
-      <pre style="font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.75rem; color: #e2e8f0; margin: 0; line-height: 1.7;"><span style="color: #6366f1;">Imagination loop:</span>
-  z&#x302;(t+1) = transition(z(t), a(t))     <span style="color: #64748b;">-- predict next latent state</span>
-  r&#x302;(t+1) = reward(z&#x302;(t+1))             <span style="color: #64748b;">-- predict portfolio impact</span>
-  c&#x302;(t+1) = continue(z&#x302;(t+1))            <span style="color: #64748b;">-- predict regime stability</span>
-
-<span style="color: #10b981;">Key difference from MarS:</span>
-  MarS:  generate raw order &rarr; match &rarr; observe price  <span style="color: #64748b;">(observation space)</span>
-  RecWM: predict latent state &rarr; evaluate &rarr; branch     <span style="color: #64748b;">(latent space)</span></pre>
-    </div>
-
-    <p style="font-size: 0.82rem; color: var(--fg-dim); margin-bottom: 0.5rem;"><strong>Why this matters for P&amp;L:</strong> Scenario generation becomes a real-time capability. Instead of running overnight Monte Carlo, the PM asks "what happens if the Fed cuts 50bp tomorrow?" and gets a distribution of portfolio outcomes in seconds. This enables tail-hedge construction: identify the imagined scenarios where portfolio drawdown exceeds -5% and construct hedges specifically for those paths.</p>
-
-    <p style="font-size: 0.75rem; color: var(--fg-dim); margin: 0;"><em>Literature basis:</em> Hafner et al. DreamerV3 (2023); LeCun, "A Path Towards Autonomous Machine Intelligence" (2022). JEPA in finance: Mahns/Balestriero/Assran ICML 2026; Fin-JEPA SSRN 6855118. Zero Dreamer/RSSM papers applied to trading.</p>
-  </div>
-
-  <!-- Innovation 4: Active inference -->
-  <div style="border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.5rem; margin: 1.5rem 0; background: var(--bg-alt);">
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-      <span style="background: #10b981; color: white; font-size: 0.6rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.1em;">Innovation 4</span>
-      <span style="font-size: 0.65rem; color: var(--fg-dim);">Gap verified: ~5&ndash;7 papers total, no production system</span>
-    </div>
-    <h3 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Active Inference for Portfolio Decisions</h3>
-    <p style="font-size: 0.85rem; margin-bottom: 0.8rem;">Active inference (Friston 2010) frames decision-making as free-energy minimization: the agent simultaneously updates its beliefs <em>and</em> selects actions to reduce expected surprise. This is a natural fit for reflexive markets &mdash; the agent's actions change the world, and the framework accounts for this by construction. Only ~5&ndash;7 papers connect active inference to finance. "Agentic Finance" (Entropy 28(3):321, 2026) is the most recent.</p>
-
-    <p style="font-size: 0.82rem; color: var(--fg-dim); margin-bottom: 0.5rem;"><strong>Why this matters for P&amp;L:</strong> Active inference provides a principled framework for the explore-exploit tradeoff in portfolio construction. The epistemic drive (reduce uncertainty about market state) naturally generates information-gathering trades; the pragmatic drive (achieve target returns) generates alpha-seeking trades. The framework automatically balances these based on the current state uncertainty.</p>
-
-    <p style="font-size: 0.75rem; color: var(--fg-dim); margin: 0;"><em>Literature basis:</em> Friston, "The free-energy principle" (Nature Reviews Neuroscience, 2010); Halperin &amp; Feldshteyn arXiv:1805.06126 (2018); "Agentic Finance" Entropy 28(3):321 (2026); Adra, Rev. Behav. Econ. 12(2) (2025). VERSES AI is the only company building on active inference, and not for trading.</p>
-  </div>
-
-  <!-- Innovation 5: Counterperformativity -->
-  <div style="border: 1px solid var(--border-light); border-radius: var(--r); padding: 1.5rem; margin: 1.5rem 0; background: var(--bg-alt);">
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem;">
-      <span style="background: #10b981; color: white; font-size: 0.6rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.1em;">Innovation 5</span>
-      <span style="font-size: 0.65rem; color: var(--fg-dim);">Gap verified: zero mathematical formalization exists</span>
-    </div>
-    <h3 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 1.05rem;">Counterperformativity Mathematics</h3>
-    <p style="font-size: 0.85rem; margin-bottom: 0.8rem;">MacKenzie &amp; Bamford (2018) named the phenomenon: when a prediction causes the opposite of what it predicts. "The market will crash" &rarr; central bank intervenes &rarr; market rallies. The Perdomo performative prediction survey (arXiv:2602.10176) explicitly lists counterperformativity as out of scope. Zero mathematical formalization exists anywhere in the literature.</p>
-
-    <p style="font-size: 0.82rem; color: var(--fg-dim); margin-bottom: 0.5rem;"><strong>Why this matters for P&amp;L:</strong> Counterperformativity is the mechanism behind "buy the rumor, sell the news." Understanding when a prediction will be self-fulfilling vs. self-defeating is the difference between a profitable position and a trap. A formal model of when &epsilon; flips sign would be directly tradeable.</p>
-
-    <p style="font-size: 0.75rem; color: var(--fg-dim); margin: 0;"><em>Literature basis:</em> MacKenzie &amp; Bamford 2018; Perdomo survey arXiv:2602.10176 (2026); Soros, "The Alchemy of Finance" (1987). Zero mathematical formalization of counterperformativity exists.</p>
-  </div>
-</div>
-
-
-<!-- ════════ SECTION 4: BUILDING BLOCKS ════════ -->
-<div class="sec">
-  <h2>4. Building Blocks &mdash; Prior Art We Assemble (Not Invent)</h2>
-  <p>RecWM is assembled from established components. Claiming any of these as innovations would be dishonest. We credit them properly and describe what we add.</p>
-
-  <div style="overflow-x: auto; margin: 1rem 0;">
-    <table style="width: 100%; border-collapse: collapse; font-size: 0.78rem;">
+  <div class="table-wrap">
+    <table>
       <thead>
-        <tr style="border-bottom: 2px solid var(--border-light);">
-          <th style="text-align: left; padding: 0.5rem;">Component</th>
-          <th style="text-align: left; padding: 0.5rem;">Source</th>
-          <th style="text-align: left; padding: 0.5rem;">What We Add</th>
-        </tr>
+        <tr><th>Claim</th><th>Verdict</th><th>Evidence</th></tr>
       </thead>
       <tbody>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">S5 backbone</td>
-          <td style="padding: 0.5rem;">Smith et al. ICLR 2023</td>
-          <td style="padding: 0.5rem;">Typed-delta initialization: link &Delta;<sub>k</sub> to fragment timescale &tau;<sub>k</sub>. The init is novel; the architecture is not.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">GateL0RD gating</td>
-          <td style="padding: 0.5rem;">Gumbsch et al. NeurIPS 2021</td>
-          <td style="padding: 0.5rem;">Applied to fragment-level sparse updating. The component is used as-is.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">EWC regularization</td>
-          <td style="padding: 0.5rem;">Kirkpatrick et al. PNAS 2017</td>
-          <td style="padding: 0.5rem;">Per-fragment Fisher with typed decay. Standard technique, novel parameterization.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">BOCPD regime detection</td>
-          <td style="padding: 0.5rem;">Adams &amp; MacKay 2007</td>
-          <td style="padding: 0.5rem;">Applied to trigger EWC consolidation events. Standard method.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">SPIB compression</td>
-          <td style="padding: 0.5rem;">Wang et al. 2021</td>
-          <td style="padding: 0.5rem;">Parallelized per fragment. Standard method.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">Kalman filtering</td>
-          <td style="padding: 0.5rem;">Kalman 1960; Harvey 1989</td>
-          <td style="padding: 0.5rem;">Textbook. Used for fast-loop state estimation. Not an innovation.</td>
+        <tr>
+          <td>"REN is a new model class"</td>
+          <td><strong style="color:var(--red)">Overclaimed</strong></td>
+          <td>REN is a domain-specific instantiation of DEQ (Bai et al. 2019) with economic structure. DEQN (Azinovic et al. 2019) already applies DEQ to economic equilibria. <strong>Restate as:</strong> "REN is a domain-specific architecture within the DEQ family, designed for reflexive multi-agent markets."</td>
         </tr>
         <tr>
-          <td style="padding: 0.5rem; font-weight: 600;">Slow-fast weights</td>
-          <td style="padding: 0.5rem;">CLS-ER, Arani et al. 2022</td>
-          <td style="padding: 0.5rem;">Applied directly for knowledge consolidation.</td>
+          <td>"First world model for financial markets"</td>
+          <td><strong style="color:var(--red)">Overclaimed</strong></td>
+          <td>Microsoft MarS (ICLR 2025) is literally a generative foundation model for financial market simulation. <strong>Restate as:</strong> "First architecture that treats reflexive belief-price co-construction as a first-class modeling primitive."</td>
+        </tr>
+        <tr>
+          <td>Self-Impact Layer embeds performative prediction inside DEQ fixed-point</td>
+          <td><strong style="color:var(--green)">Genuinely Novel</strong></td>
+          <td>All research agents converge: no prior paper embeds Perdomo-style performative feedback as a differentiable layer within a DEQ fixed-point iteration. Closest: Mofakhami et al. (AISTATS 2023) for performative NNs; Geiger &amp; Straehle (AAAI 2021) for game-theoretic implicit layers. Neither closes the loop inside the implicit layer.</td>
+        </tr>
+        <tr>
+          <td>Triple correspondence: DEQ contraction = Perdomo threshold = bifurcation indicator</td>
+          <td><strong style="color:var(--green)">Genuinely Novel</strong></td>
+          <td>The spectral radius &rho;(D&Phi;) simultaneously serves as (1) convergence guarantee for the fixed-point solver, (2) Perdomo's performative stability condition &epsilon; &lt; &gamma;/&beta;, and (3) Scheffer's critical-slowing-down indicator. No paper connects these three interpretations. This is a genuine conceptual contribution.</td>
+        </tr>
+        <tr>
+          <td>Endogenous &epsilon;: learned, state-dependent Perdomo threshold as regime signal</td>
+          <td><strong style="color:var(--green)">Genuinely Novel</strong></td>
+          <td>In Perdomo et al. 2020, &epsilon; is a fixed constant. Making it learned and state-dependent (&epsilon;<sub>t</sub>) turns the convergence boundary into a regime-change detector. The gap between &gamma;/(2&beta;) &lt; &epsilon; &lt; &gamma;/&beta; &mdash; stable but not optimizable &mdash; is unnamed in the literature. Connects performative prediction theory to dynamical systems bifurcation theory.</td>
+        </tr>
+        <tr>
+          <td>Belief-space crowding detection</td>
+          <td><strong style="color:var(--green)">Genuinely Novel</strong></td>
+          <td>Existing crowding metrics detect position-space crowding (MSCI Security Crowding, 13F overlap) and factor-space crowding (MSCI Integrated Factor Crowding, AQR). Detecting crowding in <em>belief space</em> &mdash; convergence of causal narratives across participant types &mdash; appears genuinely new. However, this is a conceptual contribution with no empirical validation.</td>
+        </tr>
+        <tr>
+          <td>Influence Kernel K*(s) as "novel resolvent"</td>
+          <td><strong style="color:var(--amber)">Novel Integration</strong></td>
+          <td>The matrix resolvent (I &minus; M)<sup>&minus;1</sup> via Neumann series is textbook linear algebra (Horn &amp; Johnson). Cognitive hierarchy models (Camerer et al. 2004) and level-k reasoning already truncate strategic depth. <strong>What's new:</strong> applying the resolvent to belief hierarchies indexed by continuous log-timescale, and interpreting the spectral radius as a crisis signal. The math is standard; the application is the contribution.</td>
+        </tr>
+        <tr>
+          <td>HYDRA multi-equilibrium finder</td>
+          <td><strong style="color:var(--amber)">Novel Integration</strong></td>
+          <td>Deflation (Farrell 2015), neural deflation (Gu et al. 2021), and homotopy continuation with neural networks (HomoODE 2023, HomPINNs 2022) all exist separately. The combination applied to economic equilibria within a DEQ-style implicit layer is new as integration, not as algorithmic invention.</td>
+        </tr>
+        <tr>
+          <td>SEISMOGRAPH bifurcation detection</td>
+          <td><strong style="color:var(--cyan)">Domain Application</strong></td>
+          <td>Critical slowing down is Scheffer et al. (Nature 2009), with thousands of citations. Deep learning for EWS is Bury et al. (2021, 2023). Spectral radius monitoring is textbook dynamical systems (Strogatz). <strong>Contribution:</strong> applying it to the Jacobian of REN's belief-update map specifically, not the technique itself.</td>
+        </tr>
+        <tr>
+          <td>"Every existing financial model ignores reflexivity"</td>
+          <td><strong style="color:var(--red)">Overclaimed</strong></td>
+          <td>Trivially false. The Santa Fe ASM (Arthur et al. 1997) explicitly models belief-price feedback. Kwon &amp; Dai (2025) provide a formal framework for reflexivity in financial markets. ABMs with feedback loops are standard. <strong>Restate as:</strong> "No production trading system jointly learns the market's response function to its own predictions and optimizes through it in closed loop."</td>
+        </tr>
+        <tr>
+          <td>Multi-Scale Belief PDE</td>
+          <td><strong style="color:var(--red)">Overclaimed</strong></td>
+          <td>No PDE formulation exists anywhere in the specification. The actual equations are a discrete recurrence indexed by timescale, not a continuous PDE. Mean-field game PDEs (Lasry &amp; Lions 2007) are the genuine PDE framework. <strong>Action:</strong> either develop the PDE rigorously (derive continuum limit, state function spaces, prove well-posedness) or rename to "Multi-Scale Belief Recurrence."</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div style="background: var(--bg-alt); border-left: 4px solid #3b82f6; padding: 1rem 1.2rem; border-radius: 0 var(--r) var(--r) 0; margin: 1rem 0;">
-    <p style="font-size: 0.82rem; margin: 0;"><strong>The assembly is the contribution.</strong> No one has combined these specific components in this specific way for this specific problem. The typed-delta S5 initialization and per-fragment EWC parameterization are novel contributions within standard frameworks. But the individual components are well-established &mdash; and we say so.</p>
-  </div>
-</div>
+  <!-- ============================================================ -->
+  <!-- 4. THE DEFENSIBLE CORE                                        -->
+  <!-- ============================================================ -->
 
+  <h2>4. The Defensible Core: What Survives Scrutiny</h2>
 
-<!-- ════════ SECTION 5: SYSTEM ARCHITECTURE ════════ -->
-<div class="sec">
-  <h2>5. System Architecture</h2>
-  <p>RecWM has four world-model layers and a continual-learning subsystem. The entire architecture is typed by fragment timescale &tau;<sub>k</sub>, which governs the S5 step size, gating penalty, EWC strength, and replay buffer size for each fragment.</p>
+  <p>After proof-testing every claim, four contributions survive as genuinely defensible:</p>
 
-  <!-- Architecture diagram -->
-  <div style="margin: 2rem 0; overflow-x: auto;">
-    <svg viewBox="0 0 780 520" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto; font-family: system-ui, -apple-system, sans-serif;">
-      <defs>
-        <marker id="def-arrow" viewBox="0 0 10 7" refX="9" refY="3.5" markerWidth="7" markerHeight="5" orient="auto-start-reverse">
-          <path d="M0 0L10 3.5L0 7L2.5 3.5z" fill="#64748b"/>
-        </marker>
-      </defs>
-
-      <!-- World Model region -->
-      <rect x="30" y="200" width="720" height="300" rx="10" fill="none" stroke="#3b82f6" stroke-width="1" stroke-dasharray="6,4" opacity="0.5"/>
-      <text x="50" y="222" font-size="9" font-weight="700" fill="#3b82f6" letter-spacing="0.12em" opacity="0.7">WORLD MODEL</text>
-
-      <!-- CL region -->
-      <rect x="30" y="20" width="720" height="170" rx="10" fill="none" stroke="#10b981" stroke-width="1" stroke-dasharray="6,4" opacity="0.5"/>
-      <text x="50" y="42" font-size="9" font-weight="700" fill="#10b981" letter-spacing="0.12em" opacity="0.7">CONTINUAL LEARNING</text>
-
-      <!-- CL boxes -->
-      <rect x="50" y="55" width="200" height="50" rx="6" fill="var(--bg-alt, #f8fafc)" stroke="#10b981" stroke-width="1"/>
-      <text x="80" y="77" font-size="10" font-weight="600" fill="var(--fg, #111827)">GateL0RD Natural CL</text>
-      <text x="80" y="92" font-size="8.5" fill="var(--fg-dim, #6b7280)">Sparse updates = implicit replay</text>
-
-      <rect x="270" y="55" width="200" height="50" rx="6" fill="var(--bg-alt, #f8fafc)" stroke="#10b981" stroke-width="1"/>
-      <text x="300" y="77" font-size="10" font-weight="600" fill="var(--fg, #111827)">Per-Fragment EWC</text>
-      <text x="300" y="92" font-size="8.5" fill="var(--fg-dim, #6b7280)">Fisher diagonal, typed decay</text>
-
-      <rect x="490" y="55" width="240" height="50" rx="6" fill="var(--bg-alt, #f8fafc)" stroke="#10b981" stroke-width="1"/>
-      <text x="520" y="77" font-size="10" font-weight="600" fill="var(--fg, #111827)">BOCPD Regime Trigger</text>
-      <text x="520" y="92" font-size="8.5" fill="var(--fg-dim, #6b7280)">Consolidation on regime change</text>
-
-      <rect x="160" y="120" width="240" height="50" rx="6" fill="var(--bg-alt, #f8fafc)" stroke="#10b981" stroke-width="1"/>
-      <text x="190" y="142" font-size="10" font-weight="600" fill="var(--fg, #111827)">Slow-Fast Weight Merge</text>
-      <text x="190" y="157" font-size="8.5" fill="var(--fg-dim, #6b7280)">CLS-ER knowledge consolidation</text>
-
-      <rect x="430" y="120" width="280" height="50" rx="6" fill="var(--bg-alt, #f8fafc)" stroke="#6366f1" stroke-width="1.5"/>
-      <text x="460" y="142" font-size="10" font-weight="700" fill="#6366f1">Endogenous &epsilon;(t) Correction</text>
-      <text x="460" y="157" font-size="8.5" fill="var(--fg-dim, #6b7280)">Performative prediction + reflexivity</text>
-
-      <!-- WM boxes -->
-      <rect x="50" y="240" width="340" height="50" rx="6" fill="var(--bg-alt, #f8fafc)" stroke="#3b82f6" stroke-width="1"/>
-      <text x="60" y="260" font-size="9" font-weight="700" fill="#3b82f6">L0</text>
-      <text x="82" y="260" font-size="10" font-weight="600" fill="var(--fg, #111827)">S5 Typed-&Delta; Backbone</text>
-      <text x="82" y="278" font-size="8.5" fill="var(--fg-dim, #6b7280)" font-style="italic">h(t) = A h(t-1) + B u(t),  &Delta; typed by &tau;</text>
-
-      <rect x="410" y="240" width="320" height="50" rx="6" fill="var(--bg-alt, #f8fafc)" stroke="#3b82f6" stroke-width="1"/>
-      <text x="420" y="260" font-size="9" font-weight="700" fill="#3b82f6">L1</text>
-      <text x="442" y="260" font-size="10" font-weight="600" fill="var(--fg, #111827)">GateL0RD Fragment Gating</text>
-      <text x="442" y="278" font-size="8.5" fill="var(--fg-dim, #6b7280)" font-style="italic">z(t) = g&sdot;z&#771; + (1-g)&sdot;z(t-1)</text>
-
-      <rect x="50" y="310" width="340" height="50" rx="6" fill="var(--bg-alt, #f8fafc)" stroke="#3b82f6" stroke-width="1"/>
-      <text x="60" y="330" font-size="9" font-weight="700" fill="#3b82f6">L2</text>
-      <text x="82" y="330" font-size="10" font-weight="600" fill="var(--fg, #111827)">SPIB Per-Fragment Compression</text>
-      <text x="82" y="348" font-size="8.5" fill="var(--fg-dim, #6b7280)" font-style="italic">max I(z; future) - &beta; I(z; input)</text>
-
-      <rect x="410" y="310" width="320" height="50" rx="6" fill="var(--bg-alt, #f8fafc)" stroke="#3b82f6" stroke-width="1"/>
-      <text x="420" y="330" font-size="9" font-weight="700" fill="#3b82f6">L3</text>
-      <text x="442" y="330" font-size="10" font-weight="600" fill="var(--fg, #111827)">K Independent Decoders</text>
-      <text x="442" y="348" font-size="8.5" fill="var(--fg-dim, #6b7280)" font-style="italic">x&#x302;(t) = &Sigma; g(z(t)), identifiability via L1</text>
-
-      <!-- Fragment encoders -->
-      <rect x="50" y="385" width="700" height="45" rx="6" fill="var(--bg-alt, #f8fafc)" stroke="var(--border-light, #e2e8f0)" stroke-width="1"/>
-      <text x="70" y="412" font-size="9.5" font-weight="600" fill="var(--fg, #111827)">7 Fragment Encoders:</text>
-      <text x="200" y="412" font-size="9" fill="#3b82f6" font-weight="600">Liq</text>
-      <text x="260" y="412" font-size="9" fill="#f97316" font-weight="600">Mom</text>
-      <text x="320" y="412" font-size="9" fill="#ef4444" font-weight="600">Risk</text>
-      <text x="380" y="412" font-size="9" fill="#eab308" font-weight="600">Cred</text>
-      <text x="440" y="412" font-size="9" fill="#a855f7" font-weight="600">Struc</text>
-      <text x="510" y="412" font-size="9" fill="#ec4899" font-weight="600">Sent</text>
-      <text x="570" y="412" font-size="9" fill="#6366f1" font-weight="600">Policy</text>
-
-      <!-- Data feeds -->
-      <rect x="50" y="450" width="700" height="45" rx="6" fill="none" stroke="var(--border-light, #e2e8f0)" stroke-width="1" stroke-dasharray="4,3"/>
-      <text x="70" y="478" font-size="9" fill="var(--fg-dim, #6b7280)">Data: Order books, prices, vol surfaces, CDS spreads, dealer gamma, news/social, Fed/fiscal, positioning surveys</text>
-
-      <!-- Arrows -->
-      <line x1="395" y1="468" x2="395" y2="435" stroke="#64748b" stroke-width="1" marker-end="url(#def-arrow)"/>
-      <line x1="395" y1="380" x2="395" y2="365" stroke="#64748b" stroke-width="1" marker-end="url(#def-arrow)"/>
-      <line x1="220" y1="305" x2="220" y2="295" stroke="#64748b" stroke-width="1" marker-end="url(#def-arrow)"/>
-      <line x1="570" y1="305" x2="570" y2="295" stroke="#64748b" stroke-width="1" marker-end="url(#def-arrow)"/>
-      <line x1="220" y1="235" x2="220" y2="175" stroke="#10b981" stroke-width="1" marker-end="url(#def-arrow)" stroke-dasharray="4,3"/>
-      <line x1="570" y1="235" x2="570" y2="175" stroke="#6366f1" stroke-width="1" marker-end="url(#def-arrow)" stroke-dasharray="4,3"/>
-    </svg>
+  <div class="contrib" style="margin-bottom:1rem">
+    <strong>1. Performative feedback as a differentiable layer inside DEQ.</strong> No prior paper embeds Perdomo-style performative prediction within a DEQ fixed-point iteration so the equilibrium endogenously accounts for the model's own impact on the data-generating process. Closest prior art: Mofakhami et al. (AISTATS 2023) for performative NNs; Geiger &amp; Straehle (AAAI 2021) for game-theoretic implicit layers. Neither closes the loop inside the implicit layer's forward pass.
   </div>
 
-  <h3>The 7 Typed Fragments</h3>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 3px; margin: 1rem 0;">
-    <div style="background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: var(--r); padding: 0.6rem; text-align: center;">
-      <div style="font-size: 0.65rem; font-weight: 700; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.08em;">Liquidity</div>
-      <div style="font-size: 0.68rem; color: var(--fg-dim); margin-top: 0.2rem;">Funding, depth, dealer balance</div>
-    </div>
-    <div style="background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.2); border-radius: var(--r); padding: 0.6rem; text-align: center;">
-      <div style="font-size: 0.65rem; font-weight: 700; color: #f97316; text-transform: uppercase; letter-spacing: 0.08em;">Momentum</div>
-      <div style="font-size: 0.68rem; color: var(--fg-dim); margin-top: 0.2rem;">Trends, CTA flows</div>
-    </div>
-    <div style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: var(--r); padding: 0.6rem; text-align: center;">
-      <div style="font-size: 0.65rem; font-weight: 700; color: #ef4444; text-transform: uppercase; letter-spacing: 0.08em;">Risk</div>
-      <div style="font-size: 0.68rem; color: var(--fg-dim); margin-top: 0.2rem;">Vol, correlation, tails</div>
-    </div>
-    <div style="background: rgba(234,179,8,0.08); border: 1px solid rgba(234,179,8,0.2); border-radius: var(--r); padding: 0.6rem; text-align: center;">
-      <div style="font-size: 0.65rem; font-weight: 700; color: #eab308; text-transform: uppercase; letter-spacing: 0.08em;">Credit</div>
-      <div style="font-size: 0.68rem; color: var(--fg-dim); margin-top: 0.2rem;">Spreads, defaults, basis</div>
-    </div>
-    <div style="background: rgba(168,85,247,0.08); border: 1px solid rgba(168,85,247,0.2); border-radius: var(--r); padding: 0.6rem; text-align: center;">
-      <div style="font-size: 0.65rem; font-weight: 700; color: #a855f7; text-transform: uppercase; letter-spacing: 0.08em;">Structure</div>
-      <div style="font-size: 0.68rem; color: var(--fg-dim); margin-top: 0.2rem;">Gamma, micro, rebalancing</div>
-    </div>
-    <div style="background: rgba(236,72,153,0.08); border: 1px solid rgba(236,72,153,0.2); border-radius: var(--r); padding: 0.6rem; text-align: center;">
-      <div style="font-size: 0.65rem; font-weight: 700; color: #ec4899; text-transform: uppercase; letter-spacing: 0.08em;">Sentiment</div>
-      <div style="font-size: 0.68rem; color: var(--fg-dim); margin-top: 0.2rem;">Narrative, positioning</div>
-    </div>
-    <div style="background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); border-radius: var(--r); padding: 0.6rem; text-align: center;">
-      <div style="font-size: 0.65rem; font-weight: 700; color: #6366f1; text-transform: uppercase; letter-spacing: 0.08em;">Policy</div>
-      <div style="font-size: 0.68rem; color: var(--fg-dim); margin-top: 0.2rem;">Rates, fiscal, regulatory</div>
-    </div>
+  <div class="contrib" style="margin-bottom:1rem">
+    <strong>2. The triple correspondence.</strong> The DEQ contraction condition (&rho;(D&Phi;) &lt; 1), the Perdomo performative stability threshold (&epsilon; &lt; &gamma;/&beta;), and the Scheffer critical-slowing-down indicator are <em>the same mathematical object</em> &mdash; the spectral radius of the belief-update Jacobian. This means convergence, performative stability, and regime-change detection are three views of one diagnostic. No paper connects all three.
   </div>
-</div>
 
+  <div class="contrib" style="margin-bottom:1rem">
+    <strong>3. Endogenous &epsilon; as regime-change mechanism.</strong> Making the Perdomo sensitivity parameter learned and state-dependent turns a static convergence condition into a dynamic regime detector. The boundary &epsilon;<sub>t</sub> = &gamma;/&beta; &mdash; where the belief equilibrium loses contractivity &mdash; is mathematically identical to a bifurcation in dynamical systems theory. This connection is new.
+  </div>
 
-<!-- ════════ SECTION 6: FROM ARCHITECTURE TO P&L ════════ -->
-<div class="sec">
-  <h2>6. From Architecture to P&amp;L</h2>
-  <p>Every architectural component must connect to a money-making mechanism. If it doesn't generate alpha, reduce risk, or improve execution, it doesn't belong.</p>
+  <div class="contrib" style="margin-bottom:1rem">
+    <strong>4. Belief-space crowding.</strong> Detecting crowding in the space of causal narratives and scenario expectations, rather than in position space (who holds what) or factor space (correlated exposures), is conceptually novel. No existing crowding metric operates at this level of abstraction.
+  </div>
 
-  <div style="overflow-x: auto; margin: 1.5rem 0;">
-    <table style="width: 100%; border-collapse: collapse; font-size: 0.78rem;">
+  <!-- ============================================================ -->
+  <!-- 5. ARCHITECTURE WITH CITATIONS                                -->
+  <!-- ============================================================ -->
+
+  <h2>5. Architecture: Component-by-Component with Prior Art</h2>
+
+  <h3>5.1 Belief Field (Exponential-Family Belief Hierarchy)</h3>
+  <p><strong>What it does:</strong> Represents multi-agent belief states as a parameterized hierarchy. Under Gaussian assumptions, beliefs at depth k evolve via the Sylvester recurrence B<sup>(k+1)</sup> = K B<sup>(k)</sup> W<sup>T</sup> + R, where K is a learned interaction matrix, W encodes observation weights, and R is an exogenous signal matrix. Converges to a discrete Lyapunov equation when &rho;(K &otimes; W) &lt; 1.</p>
+  <p><strong>Prior art:</strong> Harsanyi type spaces (Mertens &amp; Zamir 1985); cognitive hierarchy (Camerer, Ho &amp; Chong QJE 2004); kernel embeddings of distributions (Muandet et al. 2017).</p>
+  <p><strong>Novel contribution:</strong> The Sylvester belief recurrence with learned interaction matrices and adaptive depth truncation (&agrave; la Graves 2016). Incremental &mdash; the tractability comes from the Gaussian restriction, not from a new mathematical insight.</p>
+
+  <h3>5.2 ATLAS (Equilibrium Solver)</h3>
+  <p><strong>What it does:</strong> Finds fixed points of the belief-update map &Phi;(b) = b using Anderson-accelerated iteration with neural warm-starting. For stable equilibria (&rho;(D&Phi;) &lt; 1), Anderson acceleration converges superlinearly. For unstable equilibria, falls back to minimizing the residual norm &Vert;&Phi;(b) &minus; b&Vert;<sup>2</sup> via safeguarded line search.</p>
+  <p><strong>Prior art:</strong> DEQ (Bai et al. 2019); Anderson acceleration (Anderson 1965, Walker &amp; Ni 2011); MonDEQ (Winston &amp; Kolter 2020) for relaxing contractivity.</p>
+  <p><strong>Novel contribution:</strong> Incremental. Warm-starting from temporal correlation and the fallback to residual minimization for unstable equilibria are engineering adaptations, not new algorithms.</p>
+
+  <h3>5.3 HYDRA (Multi-Equilibrium Finder)</h3>
+  <p><strong>What it does:</strong> Discovers multiple equilibria using Farrell-Birkisson-Funke deflation combined with homotopy continuation. After finding one equilibrium, deflation modifies the residual to repel the solver, then re-runs to find additional solutions.</p>
+  <p><strong>Prior art:</strong> Farrell et al. (SIAM J. Sci. Comput. 2015); neural deflation (Gu, Wang &amp; Yang 2021); HomoODE (Chen et al. 2023); HomPINNs (2022); Kumar, Pichi &amp; Rozza (Feb 2026) for deflation with bifurcation curves.</p>
+  <p><strong>Novel contribution:</strong> The combination applied to economic belief equilibria within a DEQ-style implicit layer. Each individual technique exists; the integration is the contribution.</p>
+
+  <h3>5.4 SEISMOGRAPH (Bifurcation Detector)</h3>
+  <p><strong>What it does:</strong> Monitors the spectral radius of the belief-update Jacobian D&Phi;(b*) as an early-warning indicator. As &rho;(D&Phi;) &rarr; 1, the equilibrium loses stability.</p>
+  <p><strong>Prior art:</strong> Critical slowing down (Scheffer et al. Nature 2009); deep learning for EWS (Bury et al. 2021, 2023); Kumar, Pichi &amp; Rozza (2026) for deflation with bifurcation curve detection.</p>
+  <p><strong>Novel contribution:</strong> Essentially zero novelty in the detection technique. The contribution is applying it to the DEQ belief-update Jacobian and connecting it to the Perdomo threshold. Cite Scheffer 2009 prominently.</p>
+
+  <h3>5.5 Self-Impact Layer (Performative Feedback)</h3>
+  <p><strong>What it does:</strong> Models how the system's own predictions alter the belief landscape. Embedded as a differentiable layer within the DEQ fixed-point iteration so the equilibrium accounts for self-impact. The Perdomo contraction condition &epsilon; &lt; &gamma;/&beta; serves as both convergence guarantee and stability indicator.</p>
+  <p><strong>Prior art:</strong> Performative prediction (Perdomo et al. ICML 2020 Theorem 3.5); NN extension (Mofakhami et al. AISTATS 2023); game-theoretic implicit layers (Geiger &amp; Straehle AAAI 2021); performative market making (Kleitsikas, Leonardos &amp; Ventre, arXiv 2508.04344).</p>
+  <p><strong>Novel contribution:</strong> <strong>This is the strongest novelty claim.</strong> No prior paper embeds performativity inside a DEQ-style fixed-point solver. The triple correspondence (&rho;(D&Phi;) simultaneously governs convergence, performative stability, and bifurcation) is a genuine conceptual contribution.</p>
+
+  <!-- ============================================================ -->
+  <!-- 6. COMPUTATIONAL FEASIBILITY                                  -->
+  <!-- ============================================================ -->
+
+  <h2>6. Computational Feasibility: What's Realistic and What Isn't</h2>
+
+  <div class="table-wrap">
+    <table>
       <thead>
-        <tr style="border-bottom: 2px solid var(--border-light);">
-          <th style="text-align: left; padding: 0.6rem 0.5rem;">Innovation</th>
-          <th style="text-align: left; padding: 0.6rem 0.5rem;">Signal Produced</th>
-          <th style="text-align: left; padding: 0.6rem 0.5rem;">Trading Action</th>
-          <th style="text-align: left; padding: 0.6rem 0.5rem;">P&amp;L Mechanism</th>
-        </tr>
+        <tr><th>Claim</th><th>Analysis</th><th>Verdict</th></tr>
       </thead>
       <tbody>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">Endogenous &epsilon;(t)</td>
-          <td style="padding: 0.5rem;">Reflexivity intensity level</td>
-          <td style="padding: 0.5rem;">Scale position sizes inversely to &epsilon;</td>
-          <td style="padding: 0.5rem;">Avoid being the crowded exit. Reduce drawdowns during feedback-loop crises.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">Sheaf consistency</td>
-          <td style="padding: 0.5rem;">Cross-fragment incoherence score</td>
-          <td style="padding: 0.5rem;">Relative-value between disagreeing fragments</td>
-          <td style="padding: 0.5rem;">Capture dislocations before they correct. E.g., credit says calm but liquidity says stress &rarr; short credit protection.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">Latent imagination</td>
-          <td style="padding: 0.5rem;">Distribution of portfolio outcomes per scenario</td>
-          <td style="padding: 0.5rem;">Tail-hedge construction for worst-case imagined paths</td>
-          <td style="padding: 0.5rem;">Cheaper hedging by targeting specific tail scenarios instead of broad market hedges.</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border-light);">
-          <td style="padding: 0.5rem; font-weight: 600;">Active inference</td>
-          <td style="padding: 0.5rem;">Explore vs. exploit balance</td>
-          <td style="padding: 0.5rem;">Information-gathering trades during uncertainty</td>
-          <td style="padding: 0.5rem;">Principled sizing when model uncertainty is high. Avoid conviction trades on thin evidence.</td>
+        <tr>
+          <td>ATLAS: ~1.4ms per equilibrium at d=256</td>
+          <td>256&times;256 matrix inverse: ~0.01ms on modern GPU (cuBLAS). 6 iterations &times; forward pass (~0.2ms each) + Anderson overhead (~0.05ms). Arithmetic checks out.</td>
+          <td style="color:var(--green)"><strong>Plausible</strong></td>
         </tr>
         <tr>
-          <td style="padding: 0.5rem; font-weight: 600;">Regime detection (BOCPD)</td>
-          <td style="padding: 0.5rem;">Regime change probability</td>
-          <td style="padding: 0.5rem;">Systematic rebalancing at regime transitions</td>
-          <td style="padding: 0.5rem;">Capture cross-asset repricing at macro inflection points.</td>
+          <td>HYDRA: &lt;15ms for 5 equilibria</td>
+          <td>Each deflated solve adds ~2-3ms. 5 &times; 3ms = 15ms. Consistent with ATLAS timing.</td>
+          <td style="color:var(--green)"><strong>Plausible</strong></td>
+        </tr>
+        <tr>
+          <td>Full forward pass: ~7ms</td>
+          <td><strong>Inconsistent with HYDRA.</strong> HYDRA alone is 15ms for 5 equilibria. 7ms is only achievable in the common case (1-2 equilibria). Must present two figures: common-case (~7ms) and bifurcation-regime (~20-25ms).</td>
+          <td style="color:var(--amber)"><strong>Partially plausible</strong></td>
+        </tr>
+        <tr>
+          <td>SEISMOGRAPH: &lt;0.05ms per timestep</td>
+          <td>Power iteration on 256&times;256 matrix: ~0.002ms. Incremental Rayleigh quotient: O(d). Plausible.</td>
+          <td style="color:var(--green)"><strong>Plausible</strong></td>
+        </tr>
+        <tr>
+          <td>Warm-start reduces iterations from 30-50 to 3-8</td>
+          <td>Consistent with DEQ literature. DEQ models typically converge in 20-30 iterations; warm-starting from correlated inputs reduces this. Standard technique.</td>
+          <td style="color:var(--green)"><strong>Plausible</strong></td>
+        </tr>
+        <tr>
+          <td>"All free data" for institutional-grade operation</td>
+          <td><strong>Misleading.</strong> Free sources (FRED, SEC EDGAR, GLEIF) provide macro/fundamental data. Real-time pricing, order book data, and corporate actions require paid feeds ($50K-500K/year). Satellite and alternative data have significant costs.</td>
+          <td style="color:var(--red)"><strong>Overstated</strong></td>
+        </tr>
+        <tr>
+          <td>Anderson acceleration converges to unstable fixed points</td>
+          <td>Standard Anderson acceleration cannot &mdash; unstable fixed points repel iterations. The claim relies on the fallback to residual minimization (&Vert;&Phi;(b) &minus; b&Vert;<sup>2</sup>), which is a different algorithm. The convergence rate 1 &minus; &alpha;&beta;<sub>min</sub> is for this fallback, not Anderson. Must be stated precisely.</td>
+          <td style="color:var(--amber)"><strong>Technically correct but misleadingly stated</strong></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1rem 1.2rem; margin: 1rem 0;">
-    <p style="font-size: 0.82rem; font-weight: 600; margin-bottom: 0.3rem;">Target Buyers</p>
-    <p style="font-size: 0.8rem; color: var(--fg-dim); margin-bottom: 0.5rem;">Multi-strategy hedge funds ($5B+ AUM) running macro, credit, and relative-value books. They already have regime models, risk systems, and execution infrastructure. RecWM adds the <em>reflexivity layer</em> they don't have &mdash; and can't build from Bloomberg or MSCI.</p>
-    <p style="font-size: 0.78rem; color: var(--fg-dim); margin: 0;"><strong>Key differentiator vs. Bloomberg/MSCI:</strong> Those systems describe the world as it is now. RecWM describes how the world will respond to your actions. That is the L6 gap.</p>
-  </div>
-</div>
+  <!-- ============================================================ -->
+  <!-- 7. CRITICAL GAPS                                              -->
+  <!-- ============================================================ -->
 
+  <h2>7. Critical Gaps We Acknowledge</h2>
 
-<!-- ════════ SECTION 7: WHAT WE MUST PROVE ════════ -->
-<div class="sec">
-  <h2>7. What We Must Prove</h2>
-  <p>The architecture is a set of testable hypotheses. Here are the critical ones, ranked by risk:</p>
-
-  <div style="display: flex; flex-direction: column; gap: 0.5rem; margin: 1.5rem 0;">
-    <div style="display: grid; grid-template-columns: 60px 1fr; gap: 0; border: 1px solid var(--border-light); border-radius: var(--r); overflow: hidden;">
-      <div style="background: #ef4444; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;">High</div>
-      <div style="padding: 0.8rem 1rem;">
-        <div style="font-weight: 700; font-size: 0.85rem;">Can &epsilon;(t) be learned from data?</div>
-        <div style="font-size: 0.78rem; color: var(--fg-dim);">The endogenous &epsilon; requires a differentiable proxy for distribution shift. If this is not learnable, the core thesis collapses.</div>
-      </div>
-    </div>
-    <div style="display: grid; grid-template-columns: 60px 1fr; gap: 0; border: 1px solid var(--border-light); border-radius: var(--r); overflow: hidden;">
-      <div style="background: #ef4444; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;">High</div>
-      <div style="padding: 0.8rem 1rem;">
-        <div style="font-weight: 700; font-size: 0.85rem;">Does CL outperform rolling-window retraining?</div>
-        <div style="font-size: 0.78rem; color: var(--fg-dim);">The industry standard is periodic batch retraining. No published evidence shows EWC/replay beats this for financial time series. We must demonstrate it empirically.</div>
-      </div>
-    </div>
-    <div style="display: grid; grid-template-columns: 60px 1fr; gap: 0; border: 1px solid var(--border-light); border-radius: var(--r); overflow: hidden;">
-      <div style="background: #f59e0b; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;">Med</div>
-      <div style="padding: 0.8rem 1rem;">
-        <div style="font-weight: 700; font-size: 0.85rem;">Is the sheaf Laplacian practically computable at trading speed?</div>
-        <div style="font-size: 0.78rem; color: var(--fg-dim);">The sheaf Laplacian for 7 fragments with ~100-dim stalks is tractable in theory. Must validate latency under real data rates.</div>
-      </div>
-    </div>
-    <div style="display: grid; grid-template-columns: 60px 1fr; gap: 0; border: 1px solid var(--border-light); border-radius: var(--r); overflow: hidden;">
-      <div style="background: #f59e0b; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;">Med</div>
-      <div style="padding: 0.8rem 1rem;">
-        <div style="font-weight: 700; font-size: 0.85rem;">Does latent imagination add value over historical scenario replay?</div>
-        <div style="font-size: 0.78rem; color: var(--fg-dim);">If generated scenarios are no better than sampling from the historical distribution, the imagination engine is unnecessary complexity.</div>
-      </div>
-    </div>
-    <div style="display: grid; grid-template-columns: 60px 1fr; gap: 0; border: 1px solid var(--border-light); border-radius: var(--r); overflow: hidden;">
-      <div style="background: #10b981; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;">Low</div>
-      <div style="padding: 0.8rem 1rem;">
-        <div style="font-weight: 700; font-size: 0.85rem;">Can we source sufficient real-time data economically?</div>
-        <div style="font-size: 0.78rem; color: var(--fg-dim);">7 fragments require diverse data feeds: order books, CDS, dealer positioning, news/social. Enterprise data costs are $100K-$500K/year. Must validate availability of free/cheap alternatives for MVP.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ════════ SECTION 8: BUILD SEQUENCE ════════ -->
-<div class="sec">
-  <h2>8. Build Sequence</h2>
-  <p>Ordered by risk: prove the hardest hypotheses first. Kill the project early if they fail.</p>
-
-  <div style="display: flex; flex-direction: column; gap: 2px; margin: 1.5rem 0; font-size: 0.82rem;">
-    <div style="display: grid; grid-template-columns: 80px 1fr; background: var(--bg-alt); border-radius: var(--r); overflow: hidden;">
-      <div style="background: #3b82f6; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.72rem;">Wk 1&ndash;4</div>
-      <div style="padding: 0.8rem 1rem;">
-        <div style="font-weight: 700;">Prove &epsilon;(t) is learnable</div>
-        <div style="color: var(--fg-dim); font-size: 0.78rem;">Build minimal S5 on synthetic reflexive data. Train &epsilon;(t) estimator. If it cannot track distribution shift, stop.</div>
-      </div>
-    </div>
-    <div style="display: grid; grid-template-columns: 80px 1fr; background: var(--bg-alt); border-radius: var(--r); overflow: hidden;">
-      <div style="background: #6366f1; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.72rem;">Wk 5&ndash;8</div>
-      <div style="padding: 0.8rem 1rem;">
-        <div style="font-weight: 700;">CL vs. rolling retraining benchmark</div>
-        <div style="color: var(--fg-dim); font-size: 0.78rem;">Implement EWC + BOCPD. Benchmark against rolling-window retraining on historical regime transitions (2007-2009, 2020, 2022). Must demonstrate &gt;10% improvement in forward-looking loss to justify CL complexity.</div>
-      </div>
-    </div>
-    <div style="display: grid; grid-template-columns: 80px 1fr; background: var(--bg-alt); border-radius: var(--r); overflow: hidden;">
-      <div style="background: #a855f7; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.72rem;">Wk 9&ndash;12</div>
-      <div style="padding: 0.8rem 1rem;">
-        <div style="font-weight: 700;">Sheaf consistency + imagination MVP</div>
-        <div style="color: var(--fg-dim); font-size: 0.78rem;">Implement sheaf Laplacian for 3 fragments (Liquidity, Risk, Credit). Build minimal latent imagination engine. Validate: does incoherence signal precede dislocations?</div>
-      </div>
-    </div>
-    <div style="display: grid; grid-template-columns: 80px 1fr; background: var(--bg-alt); border-radius: var(--r); overflow: hidden;">
-      <div style="background: #ec4899; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.72rem;">Wk 13+</div>
-      <div style="padding: 0.8rem 1rem;">
-        <div style="font-weight: 700;">Full 7-fragment system + paper</div>
-        <div style="color: var(--fg-dim); font-size: 0.78rem;">Scale to all fragments. Write the paper: "Reflexive World Models for Financial Markets" targeting ICML/NeurIPS 2027. Run paper backtest on 2006-2026 data.</div>
-      </div>
-    </div>
+  <div class="warn">
+    <strong>These are the things a serious reviewer will ask about. We state them upfront rather than wait to be caught.</strong>
   </div>
 
-  <div style="background: var(--bg-alt); border: 1px solid var(--border-light); border-radius: var(--r); padding: 1rem 1.2rem; margin: 1rem 0;">
-    <p style="font-size: 0.82rem; font-weight: 600; margin-bottom: 0.3rem;">The Kill Criterion</p>
-    <p style="font-size: 0.8rem; color: var(--fg-dim); margin: 0;">If by week 4, we cannot demonstrate a learnable &epsilon;(t) that meaningfully tracks distribution shift on synthetic data, the reflexivity thesis is not viable as an engineering artifact and we should pivot to a simpler market simulation approach (competing in the MarS/TradeFM space without the reflexivity claim).</p>
+  <ol>
+    <li><strong>Zero empirical validation.</strong> 11 invention claims, zero experiments &mdash; not even on a 2D toy system. No benchmark, no evaluation protocol, no comparison to any baseline on any dataset. The system is pre-empirical.</li>
+    <li><strong>No alpha generation mechanism specified.</strong> The framework computes equilibria but never specifies how equilibrium features translate to trading signals with positive expected P&amp;L. Equilibrium accuracy and alpha generation are different problems.</li>
+    <li><strong>Agent type decomposition is untested.</strong> The framework assumes N=8-32 discrete agent types but provides no mechanism for discovering the number of types from data, no validation that the taxonomy captures real market microstructure.</li>
+    <li><strong>Warm-start degrades at bifurcations.</strong> The warm-start strategy (reducing iterations from 30-50 to 3-8) degrades precisely at regime transitions where accuracy matters most, because the equilibrium structure is changing rapidly.</li>
+    <li><strong>Convergence condition &rho;(K &otimes; W) &lt; 1 is uncharacterized.</strong> If this spectral radius is always &lt; 1, the crisis detector never fires. If it frequently exceeds 1, the equilibrium is rarely well-defined. The operating range must be empirically characterized.</li>
+    <li><strong>Defensibility is weak.</strong> The entire mathematical framework is published with no code, making it replicable by any well-resourced team. The moat must come from execution speed and data flywheel, not intellectual property.</li>
+    <li><strong>"Multi-Scale Belief PDE" has no PDE.</strong> The actual equations are a discrete recurrence, not a continuous PDE. Either derive the continuum limit rigorously or rename the component.</li>
+    <li><strong>Explanation head uses unreliable attribution.</strong> Cross-attention weights are known to be unreliable explanations (Jain &amp; Wallace 2019). The architecture needs gradient-based or perturbation-based explanations.</li>
+  </ol>
+
+  <!-- ============================================================ -->
+  <!-- 8. WHAT WE'D SAY TO SPECIFIC PEOPLE                          -->
+  <!-- ============================================================ -->
+
+  <h2>8. Anticipated Challenges and Our Honest Answers</h2>
+
+  <h3>To Yann LeCun: "How is this different from JEPA?"</h3>
+  <p>It isn't competitive with JEPA &mdash; it's complementary. JEPA learns world models via energy-based self-supervised learning in latent space. Our belief field provides a structured prior for the latent space when the domain involves reflexive multi-agent dynamics. The equilibrium computation can be framed as energy minimization (the residual norm defines an energy landscape; HYDRA explores its modes; Boltzmann weighting is the Gibbs measure), which aligns with the EBM framework. We see REN as a domain-specific module that could sit inside a JEPA-style architecture, providing inductive bias for financial markets.</p>
+
+  <h3>To Fei-Fei Li: "Where are the experiments?"</h3>
+  <p>Nowhere yet. Our immediate deliverable is the field's first interventional evaluation benchmark for economic world models &mdash; vintage-consistent replay of historical policy shocks, scored on causal response accuracy. We believe this benchmark will accelerate the entire field and intend to open-source it. Our minimal viable experiment: a 2-3 agent synthetic market validating that spectral radius tracks stability transitions. We present architectural hypotheses with a clear validation plan, not results.</p>
+
+  <h3>To a Senior Quant: "How does this make money?"</h3>
+  <p>The equilibrium engine produces <em>features</em>, not trades. Equilibrium features feed into standard signal construction (cross-sectional ranking, mean-reversion around equilibrium). The alpha is in the features, not in the equilibrium computation itself. Our wedge product is trajectory retrieval &mdash; paths shaped like now, what happened next &mdash; which is independently valuable and buildable with existing tools (pySigLib, log-signatures, Chen's identity) in 3 months. The full equilibrium engine is the long-term vision.</p>
+
+  <h3>To an Investor: "What's your moat?"</h3>
+  <p>Not the math &mdash; it's published. The moat comes from three things: (1) the interventional benchmark (field gatekeeping through evaluation standards), (2) execution speed (12-18 months ahead of anyone who starts from the paper), and (3) data flywheel from fund clients whose trading data calibrates the agent type decomposition. Sooth Labs is complementary (their exogenous forecasts are an input to our endogenous simulation), not competitive.</p>
+
+  <!-- ============================================================ -->
+  <!-- 9. COMPLETE BIBLIOGRAPHY                                      -->
+  <!-- ============================================================ -->
+
+  <h2>9. Key References (Cited in This Document)</h2>
+
+  <div style="font-size:.9rem;line-height:1.6">
+    <p><strong>Foundational:</strong></p>
+    <ul style="margin-top:.25rem">
+      <li>Bai, Kolter &amp; Koltun. "Deep Equilibrium Models." NeurIPS 2019.</li>
+      <li>Perdomo, Zrnic, Mendler-D&uuml;nner &amp; Hardt. "Performative Prediction." ICML 2020.</li>
+      <li>Farrell, Birkisson &amp; Funke. "Deflation Techniques for Finding Distinct Solutions of Nonlinear Partial Differential Equations." SIAM J. Sci. Comput. 2015.</li>
+      <li>Scheffer et al. "Early-warning signals for critical transitions." Nature 2009.</li>
+    </ul>
+    <p><strong>Extensions we build on:</strong></p>
+    <ul style="margin-top:.25rem">
+      <li>Winston &amp; Kolter. "Monotone Operator Equilibrium Networks." NeurIPS 2020.</li>
+      <li>Mofakhami et al. "Performative Prediction with Neural Networks." AISTATS 2023.</li>
+      <li>Geiger &amp; Straehle. "Learning Game-Theoretic Models Using Implicit Layers." AAAI 2021.</li>
+      <li>Chen et al. "HomoODE: Bridging DEQ and Neural ODEs via Homotopy Continuation." arXiv 2310.09583, 2023.</li>
+      <li>Gu, Wang &amp; Yang. "Structure Probing Neural Network Deflation." arXiv 2007.03609, 2021.</li>
+      <li>Azinovic, Gaegauf &amp; Scheidegger. "Deep Equilibrium Nets." Int. Econ. Rev. 2022.</li>
+      <li>Schaab &amp; Scheidegger. "Equilibrium World Models." arXiv 2606.23463, June 2026.</li>
+    </ul>
+    <p><strong>Market &amp; finance:</strong></p>
+    <ul style="margin-top:.25rem">
+      <li>Almgren &amp; Chriss. "Optimal Execution of Portfolio Transactions." J. Risk 2000.</li>
+      <li>Arthur et al. "Asset Pricing Under Endogenous Expectations in an Artificial Stock Market." 1997.</li>
+      <li>Camerer, Ho &amp; Chong. "A Cognitive Hierarchy Model of Games." QJE 2004.</li>
+      <li>Mertens &amp; Zamir. "Formulation of Bayesian Analysis for Games with Incomplete Information." Int. J. Game Theory 1985.</li>
+      <li>Microsoft MarS. "A Financial Market Simulation Engine Powered by Generative Foundation Model." ICLR 2025.</li>
+    </ul>
+    <p><strong>Surveys &amp; frameworks:</strong></p>
+    <ul style="margin-top:.25rem">
+      <li>EconWM Survey. arXiv 2608.06020, August 2026. 7,836 papers screened, 737 validated.</li>
+      <li>Bury et al. "Deep learning for early warning signals of tipping points." Nature Communications 2023.</li>
+      <li>Jain &amp; Wallace. "Attention is not Explanation." NAACL 2019.</li>
+    </ul>
   </div>
-</div>
 
-
-<!-- FOOTER -->
-<div style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light); font-size: 0.72rem; color: var(--fg-dim);">
-  <p style="margin-bottom: 0.3rem;"><strong>Must-Cite References</strong></p>
-  <p style="font-size: 0.7rem; color: var(--fg-dim); line-height: 1.6; margin: 0;">
-    Perdomo et al. "Performative Prediction" ICML 2020 &middot;
-    Smith et al. "Simplified State Space Layers (S5)" ICLR 2023 &middot;
-    Gumbsch et al. "Sparsely Changing Latent States (GateL0RD)" NeurIPS 2021 &middot;
-    Kirkpatrick et al. "Overcoming Catastrophic Forgetting (EWC)" PNAS 2017 &middot;
-    Adams &amp; MacKay "Bayesian Online Changepoint Detection" 2007 &middot;
-    Hansen &amp; Ghrist "Sheaf Laplacians" J. Applied &amp; Comp. Topology 2019 &middot;
-    Hafner et al. "DreamerV3" 2023 &middot;
-    LeCun "A Path Towards Autonomous Machine Intelligence" 2022 &middot;
-    Friston "The Free-Energy Principle" Nature Rev. Neuroscience 2010 &middot;
-    MacKenzie &amp; Bamford 2018 (counterperformativity) &middot;
-    Microsoft MarS, arXiv:2409.07486 (ICLR 2025) &middot;
-    Sooth Labs (2026, $50M) &middot;
-    "Agentic Finance" Entropy 28(3):321, 2026
-  </p>
 </div>
 
 </div>
-</div>
 
-    <div class="pg" id="pg-fin-ai-market">
+<div class="pg" id="pg-fin-ai-market">
 <div class="page">
 <style>
   @font-face {
