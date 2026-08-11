@@ -6353,7 +6353,7 @@ is a viable recurrence mechanism.
   <div class="container">
     <div class="hero-eyebrow">Execution Plan</div>
     <h1>RecWM &mdash; <em>From Hypothesis to Proof</em></h1>
-    <p class="hero-sub">A 16-week plan to validate the core thesis, produce one publishable paper, and determine whether this architecture works. Not a product roadmap &mdash; a research validation plan.</p>
+    <p class="hero-sub">A 16-week plan to validate the core thesis &mdash; including the causal triangulation engine &mdash; produce one publishable paper, and determine whether this new class of world model works. Not a product roadmap &mdash; a research validation plan.</p>
   </div>
 </div>
 
@@ -6385,9 +6385,9 @@ is a viable recurrence mechanism.
         <div class="card-title">What Exists</div>
         <div class="card-body">
           <ul style="margin: 0; padding-left: 1.2rem;">
-            <li>Architecture specification: 7 fragment types, 4 WM layers (S5 + GateL0RD + SPIB + Decoders), 5 CL mechanisms (GateL0RD implicit, RTRL, EWC, BOCPD, slow-fast)</li>
+            <li>Architecture specification: a new class of world model with 7 typed fragments, 4 WM layers (temporal dynamics + gating + compression + decoding), 5 CL mechanisms, and a causal triangulation engine (4-channel validation)</li>
             <li>Core equation: W(t+1) = C(W(t), A(B(t)), &Phi;(t))</li>
-            <li>5 genuinely novel contributions identified and pressure-tested</li>
+            <li>10 genuinely novel contributions identified and pressure-tested (including causal triangulation engine, causal-constrained dynamics, three-way coupling)</li>
             <li>Prior art mapped: every building block credited to its source</li>
             <li>All data sources identified (all free)</li>
           </ul>
@@ -6417,8 +6417,8 @@ is a viable recurrence mechanism.
 <section class="section" id="core-bets">
   <div class="container">
     <div class="section-label">Section II</div>
-    <h2>The five bets &mdash; each can independently kill the project</h2>
-    <p class="section-desc">RecWM stands on five empirical hypotheses. Each must be validated. If any one fails, the downstream architecture collapses.</p>
+    <h2>The six bets &mdash; each can independently kill the project</h2>
+    <p class="section-desc">RecWM stands on six empirical hypotheses. Each must be validated. If any one fails, the downstream architecture collapses.</p>
 
     <div class="card-grid cols-1" style="gap: 12px;">
       <div class="card">
@@ -6466,6 +6466,15 @@ is a viable recurrence mechanism.
         </div>
         <span class="tag tag-red">WEEK 14 TEST &mdash; HARDEST</span>
       </div>
+      <div class="card">
+        <div class="card-title">Bet 6: Causal triangulation produces higher-quality predictions than SSM alone</div>
+        <div class="card-body">
+          <strong>Test:</strong> Run PCMCI causal discovery on latent fragment states. Mask the coupling matrix with the discovered graph. Compare triangulated predictions (&kappa; = min across 4 channels) vs. unconstrained model on out-of-sample regimes.<br>
+          <strong>Kill if:</strong> Causal masking doesn&rsquo;t improve prediction quality on regime transitions, OR triangulation confidence &kappa; doesn&rsquo;t correlate with actual prediction accuracy (calibration test).<br>
+          <strong>Prior art:</strong> PCMCI (Runge 2019), NOTEARS (Zheng 2018), do-calculus (Pearl 2009). Causal-constrained world models and four-channel triangulation are our invention &mdash; no prior art exists.
+        </div>
+        <span class="tag tag-red">WEEK 12 TEST &mdash; NOVEL</span>
+      </div>
     </div>
   </div>
 </section>
@@ -6509,9 +6518,9 @@ is a viable recurrence mechanism.
           </tr>
           <tr>
             <td><strong>9&ndash;10</strong></td>
-            <td>Scale to 7 fragments. Full sheaf Laplacian consistency layer.</td>
+            <td>Scale to 7 fragments. Full sheaf Laplacian consistency layer. <strong>PCMCI causal discovery on latent states. Causal graph masking of coupling matrix.</strong></td>
             <td>BOCPD on latent states. Per-fragment EWC + online Fisher.</td>
-            <td style="color: #dc2626;"><strong>Bet 4: coherence drops precede dislocations</strong></td>
+            <td style="color: #dc2626;"><strong>Bet 4: coherence drops precede dislocations. Bet 6: causal masking improves predictions.</strong></td>
           </tr>
           <tr>
             <td><strong>11&ndash;12</strong></td>
@@ -6521,9 +6530,9 @@ is a viable recurrence mechanism.
           </tr>
           <tr>
             <td><strong>13&ndash;14</strong></td>
-            <td>Imagination engine (latent rollout). Scenario generation.</td>
-            <td>&epsilon;(t) estimator via Jacobian finite-difference.</td>
-            <td style="color: #dc2626;"><strong>Bet 5: &epsilon;(t) correlates with reflexive episodes</strong></td>
+            <td>Imagination engine (latent rollout). Scenario generation. <strong>Four-channel triangulation engine. Regime-switching causal discovery (FANTOM). do-calculus intervention analysis.</strong></td>
+            <td>&epsilon;(t) estimator via Jacobian finite-difference. Three-way coupling: BOCPD &rarr; causal re-discovery &rarr; EWC re-anchor.</td>
+            <td style="color: #dc2626;"><strong>Bet 5: &epsilon;(t) correlates with reflexive episodes. Triangulation &kappa; is well-calibrated.</strong></td>
           </tr>
           <tr>
             <td><strong>15&ndash;16</strong></td>
@@ -6553,11 +6562,11 @@ is a viable recurrence mechanism.
         <div class="card-number">Paper 1 &middot; After Week 12</div>
         <div class="card-title">Typed Multi-Timescale State Spaces with Continual Learning for Financial Time Series</div>
         <div class="card-body">
-          <strong>Core claim:</strong> A state-space model with fragment-typed discretization and integrated CL outperforms static models on regime-transition prediction.<br>
+          <strong>Core claim:</strong> A new class of world model with fragment-typed temporal dynamics, causal-constrained coupling, and integrated continual learning outperforms static models on regime-transition prediction.<br>
           <strong>Evidence needed:</strong> Phase 1&ndash;3 results &mdash; typed-&Delta; improvement, gate statistics, CL forgetting/transfer metrics.<br>
           <strong>Target:</strong> NeurIPS Workshop on Time Series / ICAIF 2027<br>
           <strong>Risk level:</strong> Low &mdash; this is an empirical architecture paper with standard benchmarks.<br>
-          <strong>Prior art to credit:</strong> S5 (Smith ICLR 2023), GateL0RD (Gumbsch NeurIPS 2021), SPIB (Wang 2021), EWC (Kirkpatrick PNAS 2017), BOCPD (Adams-MacKay 2007), CLS-ER (Arani ICLR 2022).
+          <strong>Prior art to credit:</strong> S5 (Smith ICLR 2023), GateL0RD (Gumbsch NeurIPS 2021), SPIB (Wang 2021), EWC (Kirkpatrick PNAS 2017), BOCPD (Adams-MacKay 2007), CLS-ER (Arani ICLR 2022), PCMCI (Runge 2019), NOTEARS (Zheng 2018), Pearl do-calculus (2009).
         </div>
         <span class="tag tag-green">LOW RISK</span>
       </div>
