@@ -16587,6 +16587,348 @@ For an economic world model built on causal/structural foundations, this means a
     </div>
 
     <div class="pg" id="pg-innovation">
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     #pg-innovation — RecWM × REN Architecture Diagram
+     Scoped design tokens, light + dark
+     ═══════════════════════════════════════════════════════════ */
+  #pg-innovation {
+    --ai-bg: #ffffff;
+    --ai-bg-raised: #ffffff;
+    --ai-bg-sunken: #f5f7fb;
+    --ai-surface: #f8f9fc;
+    --ai-text: #0f172a;
+    --ai-text-dim: #4b5563;
+    --ai-text-muted: #6b7280;
+    --ai-text-faint: #9ca3af;
+    --ai-border: #d9e0ec;
+    --ai-border-soft: #e6eaf3;
+    --ai-shadow: 0 1px 2px rgba(15,23,42,.04), 0 8px 24px -12px rgba(15,23,42,.10);
+    --ai-shadow-lg: 0 4px 12px rgba(15,23,42,.06), 0 24px 48px -20px rgba(15,23,42,.18);
+
+    /* core (blue) — solver / primary pipeline */
+    --ai-core: #1d4ed8;
+    --ai-core-ink: #1e3a8a;
+    --ai-core-bg: #eff6ff;
+    --ai-core-border: #bfdbfe;
+    --ai-core-glow: rgba(29,78,216,.18);
+
+    /* discovery (green) — multi-equilibrium / continual learning */
+    --ai-disc: #059669;
+    --ai-disc-ink: #065f46;
+    --ai-disc-bg: #ecfdf5;
+    --ai-disc-border: #a7f3d0;
+
+    /* monitoring (amber) — bifurcation / training */
+    --ai-mon: #d97706;
+    --ai-mon-ink: #92400e;
+    --ai-mon-bg: #fffbeb;
+    --ai-mon-border: #fde68a;
+
+    /* feedback (red) — reflexive loop / defense */
+    --ai-fb: #dc2626;
+    --ai-fb-ink: #991b1b;
+    --ai-fb-bg: #fef2f2;
+    --ai-fb-border: #fecaca;
+
+    /* violet — mathematical / triple correspondence */
+    --ai-math: #7c3aed;
+    --ai-math-ink: #5b21b6;
+    --ai-math-bg: #f5f3ff;
+    --ai-math-border: #ddd6fe;
+
+    color: var(--ai-text);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    #pg-innovation {
+      --ai-bg: #0a0e17;
+      --ai-bg-raised: #111827;
+      --ai-bg-sunken: #070a10;
+      --ai-surface: #131b2b;
+      --ai-text: #e7ecf6;
+      --ai-text-dim: #aab4c8;
+      --ai-text-muted: #8792a8;
+      --ai-text-faint: #5c667a;
+      --ai-border: #253045;
+      --ai-border-soft: #1b2436;
+      --ai-shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+      --ai-shadow-lg: 0 4px 16px rgba(0,0,0,.4), 0 32px 64px -24px rgba(0,0,0,.7);
+
+      --ai-core: #60a5fa;
+      --ai-core-ink: #93c5fd;
+      --ai-core-bg: #0f1f3d;
+      --ai-core-border: #1e3a6e;
+      --ai-core-glow: rgba(96,165,250,.25);
+
+      --ai-disc: #34d399;
+      --ai-disc-ink: #6ee7b7;
+      --ai-disc-bg: #0c2620;
+      --ai-disc-border: #16463a;
+
+      --ai-mon: #fbbf24;
+      --ai-mon-ink: #fcd34d;
+      --ai-mon-bg: #2a1f0a;
+      --ai-mon-border: #4d3a12;
+
+      --ai-fb: #f87171;
+      --ai-fb-ink: #fca5a5;
+      --ai-fb-bg: #2a1114;
+      --ai-fb-border: #4d1e23;
+
+      --ai-math: #a78bfa;
+      --ai-math-ink: #c4b5fd;
+      --ai-math-bg: #1c1530;
+      --ai-math-border: #362757;
+    }
+  }
+  #pg-innovation[data-theme="dark"], :root[data-theme="dark"] #pg-innovation {
+      --ai-bg: #0a0e17;
+      --ai-bg-raised: #111827;
+      --ai-bg-sunken: #070a10;
+      --ai-surface: #131b2b;
+      --ai-text: #e7ecf6;
+      --ai-text-dim: #aab4c8;
+      --ai-text-muted: #8792a8;
+      --ai-text-faint: #5c667a;
+      --ai-border: #253045;
+      --ai-border-soft: #1b2436;
+      --ai-shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+      --ai-shadow-lg: 0 4px 16px rgba(0,0,0,.4), 0 32px 64px -24px rgba(0,0,0,.7);
+      --ai-core: #60a5fa; --ai-core-ink: #93c5fd; --ai-core-bg: #0f1f3d; --ai-core-border: #1e3a6e; --ai-core-glow: rgba(96,165,250,.25);
+      --ai-disc: #34d399; --ai-disc-ink: #6ee7b7; --ai-disc-bg: #0c2620; --ai-disc-border: #16463a;
+      --ai-mon: #fbbf24; --ai-mon-ink: #fcd34d; --ai-mon-bg: #2a1f0a; --ai-mon-border: #4d3a12;
+      --ai-fb: #f87171; --ai-fb-ink: #fca5a5; --ai-fb-bg: #2a1114; --ai-fb-border: #4d1e23;
+      --ai-math: #a78bfa; --ai-math-ink: #c4b5fd; --ai-math-bg: #1c1530; --ai-math-border: #362757;
+  }
+  #pg-innovation[data-theme="light"], :root[data-theme="light"] #pg-innovation {
+      --ai-bg: #ffffff; --ai-bg-raised: #ffffff; --ai-bg-sunken: #f5f7fb; --ai-surface: #f8f9fc;
+      --ai-text: #0f172a; --ai-text-dim: #4b5563; --ai-text-muted: #6b7280; --ai-text-faint: #9ca3af;
+      --ai-border: #d9e0ec; --ai-border-soft: #e6eaf3;
+      --ai-core: #1d4ed8; --ai-core-ink: #1e3a8a; --ai-core-bg: #eff6ff; --ai-core-border: #bfdbfe; --ai-core-glow: rgba(29,78,216,.18);
+      --ai-disc: #059669; --ai-disc-ink: #065f46; --ai-disc-bg: #ecfdf5; --ai-disc-border: #a7f3d0;
+      --ai-mon: #d97706; --ai-mon-ink: #92400e; --ai-mon-bg: #fffbeb; --ai-mon-border: #fde68a;
+      --ai-fb: #dc2626; --ai-fb-ink: #991b1b; --ai-fb-bg: #fef2f2; --ai-fb-border: #fecaca;
+      --ai-math: #7c3aed; --ai-math-ink: #5b21b6; --ai-math-bg: #f5f3ff; --ai-math-border: #ddd6fe;
+  }
+
+  /* ── layout shell ── */
+  #pg-innovation .arch-wrap { max-width: 1080px; margin: 2.5rem auto; }
+  #pg-innovation .arch-eq { font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace; }
+
+  #pg-innovation .arch-stage {
+    display: flex; flex-direction: column; align-items: center; gap: 0;
+  }
+
+  /* connector arrow between stacked stages */
+  #pg-innovation .arch-arrow {
+    width: 2px; height: 30px; position: relative;
+    background: linear-gradient(var(--ai-border-soft), var(--ai-border));
+  }
+  #pg-innovation .arch-arrow::after {
+    content: ""; position: absolute; left: 50%; bottom: -1px; transform: translateX(-50%);
+    width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent;
+    border-top: 9px solid var(--ai-text-faint);
+  }
+  #pg-innovation .arch-arrow.thin { height: 20px; }
+
+  /* generic card */
+  #pg-innovation .arch-card {
+    background: var(--ai-bg-raised);
+    border: 1.5px solid var(--ai-border);
+    border-radius: 14px;
+    box-shadow: var(--ai-shadow);
+    padding: 1.1rem 1.4rem;
+    position: relative;
+  }
+  #pg-innovation .arch-card-label {
+    font-size: .72rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase;
+    display: flex; align-items: center; gap: .5rem; margin-bottom: .35rem;
+  }
+  #pg-innovation .arch-card-label .dot {
+    width: 8px; height: 8px; border-radius: 50%; flex: none;
+    box-shadow: 0 0 0 3px rgba(100,100,100,.18);
+  }
+  #pg-innovation .arch-card-desc { font-size: .86rem; color: var(--ai-text-dim); line-height: 1.5; }
+  #pg-innovation .arch-tag {
+    position: absolute; top: .7rem; right: .9rem;
+    font-size: .66rem; font-weight: 700; letter-spacing: .04em;
+    padding: .18rem .5rem; border-radius: 999px;
+    background: var(--ai-surface); border: 1px solid var(--ai-border-soft); color: var(--ai-text-muted);
+  }
+
+  /* stage width tiers */
+  #pg-innovation .stage-ingest { width: 100%; }
+  #pg-innovation .stage-observe { width: 62%; min-width: 280px; }
+  #pg-innovation .stage-beliefs { width: 78%; min-width: 320px; }
+  #pg-innovation .stage-equilibrium { width: 100%; }
+  #pg-innovation .stage-predict { width: 88%; min-width: 340px; }
+  #pg-innovation .stage-act { width: 66%; min-width: 300px; }
+  #pg-innovation .stage-outputs { width: 90%; }
+
+  /* color variants */
+  #pg-innovation .v-core { border-color: var(--ai-core-border); }
+  #pg-innovation .v-core .arch-card-label { color: var(--ai-core-ink); }
+  #pg-innovation .v-core .dot { background: var(--ai-core); }
+  #pg-innovation .v-core.filled { background: var(--ai-core-bg); }
+
+  #pg-innovation .v-disc { border-color: var(--ai-disc-border); }
+  #pg-innovation .v-disc .arch-card-label { color: var(--ai-disc-ink); }
+  #pg-innovation .v-disc .dot { background: var(--ai-disc); }
+  #pg-innovation .v-disc.filled { background: var(--ai-disc-bg); }
+
+  #pg-innovation .v-mon { border-color: var(--ai-mon-border); }
+  #pg-innovation .v-mon .arch-card-label { color: var(--ai-mon-ink); }
+  #pg-innovation .v-mon .dot { background: var(--ai-mon); }
+  #pg-innovation .v-mon.filled { background: var(--ai-mon-bg); }
+
+  #pg-innovation .v-fb { border-color: var(--ai-fb-border); }
+  #pg-innovation .v-fb .arch-card-label { color: var(--ai-fb-ink); }
+  #pg-innovation .v-fb .dot { background: var(--ai-fb); }
+  #pg-innovation .v-fb.filled { background: var(--ai-fb-bg); }
+
+  #pg-innovation .v-neutral { background: var(--ai-surface); }
+
+  /* Data ingestion strip */
+  #pg-innovation .ingest-chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .55rem; }
+  #pg-innovation .ingest-chip {
+    font-size: .78rem; padding: .3rem .65rem; border-radius: 8px;
+    background: var(--ai-bg); border: 1px solid var(--ai-border-soft); color: var(--ai-text-dim);
+    font-weight: 500;
+  }
+
+  /* Equilibrium engine — hero card with 3 sub-engines */
+  #pg-innovation .equilibrium-shell {
+    border: 2px solid var(--ai-core);
+    border-radius: 18px;
+    background: linear-gradient(180deg, var(--ai-bg-raised), var(--ai-bg-sunken));
+    box-shadow: var(--ai-shadow-lg), 0 0 0 6px var(--ai-core-glow);
+    padding: 1.4rem 1.5rem 1.6rem;
+  }
+  #pg-innovation .equilibrium-title {
+    font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ai-core-ink); margin-bottom: .15rem;
+  }
+  #pg-innovation .equilibrium-formula { font-size: .82rem; color: var(--ai-text-muted); margin-bottom: 1rem; }
+  #pg-innovation .engine-row {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 .9rem; align-items: stretch;
+  }
+  #pg-innovation .engine-arrow {
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ai-text-faint); font-size: 1.1rem; margin: 0 -.5rem;
+  }
+  #pg-innovation .engine-card {
+    border-radius: 12px; padding: .85rem 1rem; border: 1.5px solid; box-shadow: var(--ai-shadow);
+    display: flex; flex-direction: column; gap: .28rem;
+  }
+  #pg-innovation .engine-name { font-size: .85rem; font-weight: 800; letter-spacing: .03em; }
+  #pg-innovation .engine-step { font-size: .76rem; color: var(--ai-text-dim); line-height: 1.45; }
+  #pg-innovation .engine-metric {
+    margin-top: .35rem; font-size: .72rem; font-weight: 700;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  /* Predict & reason — pill row */
+  #pg-innovation .pill-row { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .7rem; }
+  #pg-innovation .pill {
+    flex: 1 1 150px; background: var(--ai-core-bg); border: 1px solid var(--ai-core-border);
+    color: var(--ai-core-ink); border-radius: 9px; padding: .5rem .75rem;
+    font-size: .78rem; font-weight: 600; text-align: center;
+  }
+
+  /* reflexive loop wrapper */
+  #pg-innovation .loop-region { position: relative; width: 100%; }
+  #pg-innovation .loop-rail {
+    position: absolute; left: 8px; top: 0; bottom: 0; width: calc(100% - 16px);
+    pointer-events: none;
+  }
+  #pg-innovation .loop-bar {
+    position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: repeating-linear-gradient(180deg, var(--ai-fb) 0 8px, transparent 8px 14px);
+    border-radius: 3px;
+  }
+  #pg-innovation .loop-bar.right { left: auto; right: 0; }
+  #pg-innovation .loop-tag {
+    position: absolute; left: -1px; top: 50%; transform: translateY(-50%) rotate(-90deg);
+    transform-origin: left center;
+    font-size: .65rem; font-weight: 800; letter-spacing: .14em; color: var(--ai-fb);
+    white-space: nowrap;
+  }
+  #pg-innovation .loop-caption {
+    text-align: center; font-size: .8rem; color: var(--ai-fb-ink);
+    background: var(--ai-fb-bg); border: 1px dashed var(--ai-fb-border);
+    border-radius: 10px; padding: .55rem 1rem; margin: .9rem auto 0; max-width: 640px;
+    font-weight: 600;
+  }
+
+  /* side annex cards (training / defense) */
+  #pg-innovation .annex-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-top: 1.4rem;
+  }
+  #pg-innovation .annex-card { border-radius: 12px; padding: .9rem 1rem; border: 1.5px solid; }
+  #pg-innovation .annex-title {
+    font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .4rem;
+  }
+  #pg-innovation .annex-item { font-size: .78rem; color: var(--ai-text-dim); margin-bottom: .15rem; }
+  #pg-innovation .annex-inv { font-size: .7rem; font-weight: 700; margin-top: .3rem; }
+
+  /* outputs strip */
+  #pg-innovation .outputs-strip {
+    display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-top: .6rem;
+  }
+  #pg-innovation .output-chip {
+    background: var(--ai-disc-bg); border: 1px solid var(--ai-disc-border); color: var(--ai-disc-ink);
+    font-size: .78rem; font-weight: 700; padding: .32rem .75rem; border-radius: 999px;
+  }
+
+  /* legend table */
+  #pg-innovation .legend-wrap { overflow-x: auto; margin: 1.2rem 0 2rem; border-radius: 12px; border: 1px solid var(--ai-border); }
+  #pg-innovation table.arch-legend { width: 100%; border-collapse: collapse; font-size: .86rem; background: var(--ai-bg-raised); }
+  #pg-innovation table.arch-legend th {
+    text-align: left; background: var(--ai-bg-sunken); color: var(--ai-text-muted);
+    font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700;
+    padding: .65rem .9rem; border-bottom: 1.5px solid var(--ai-border);
+  }
+  #pg-innovation table.arch-legend td { padding: .65rem .9rem; border-bottom: 1px solid var(--ai-border-soft); color: var(--ai-text-dim); vertical-align: top; }
+  #pg-innovation table.arch-legend tr:last-child td { border-bottom: none; }
+  #pg-innovation table.arch-legend td strong { color: var(--ai-text); }
+  #pg-innovation .swatch { width: 14px; height: 14px; border-radius: 4px; display: inline-block; border: 1px solid rgba(0,0,0,.08); }
+
+  /* triple correspondence */
+  #pg-innovation .triple-shell {
+    background: linear-gradient(155deg, var(--ai-math-bg), var(--ai-bg-raised) 70%);
+    border: 1.5px solid var(--ai-math-border); border-radius: 18px;
+    padding: 2rem 1.6rem; margin: 1.6rem 0; box-shadow: var(--ai-shadow);
+  }
+  #pg-innovation .triple-central {
+    text-align: center; font-size: 1.35rem; font-weight: 700; color: var(--ai-math-ink);
+    margin-bottom: .4rem;
+  }
+  #pg-innovation .triple-sub { text-align: center; font-size: .8rem; color: var(--ai-text-muted); margin-bottom: 1.4rem; }
+  #pg-innovation .triple-domains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  #pg-innovation .triple-domain {
+    background: var(--ai-bg-raised); border: 1px solid var(--ai-math-border); border-radius: 12px;
+    padding: 1rem; text-align: center; position: relative;
+  }
+  #pg-innovation .triple-domain::before {
+    content: ""; position: absolute; top: -1rem; left: 50%; transform: translateX(-50%);
+    width: 2px; height: 1rem; background: var(--ai-math-border);
+  }
+  #pg-innovation .triple-domain-name { font-size: .85rem; font-weight: 800; color: var(--ai-math-ink); margin-bottom: .3rem; }
+  #pg-innovation .triple-domain-desc { font-size: .78rem; color: var(--ai-text-dim); line-height: 1.5; }
+
+  /* responsive */
+  @media (max-width: 720px) {
+    #pg-innovation .engine-row { grid-template-columns: 1fr; }
+    #pg-innovation .engine-arrow { transform: rotate(90deg); margin: -.2rem 0; }
+    #pg-innovation .annex-grid { grid-template-columns: 1fr; }
+    #pg-innovation .triple-domains { grid-template-columns: 1fr; }
+    #pg-innovation .stage-ingest, #pg-innovation .stage-observe, #pg-innovation .stage-beliefs,
+    #pg-innovation .stage-predict, #pg-innovation .stage-act, #pg-innovation .stage-outputs { width: 100%; }
+    #pg-innovation .loop-tag { display: none; }
+  }
+</style>
+
 <div class="page">
 
   <div class="doc-header">
@@ -16597,132 +16939,186 @@ For an economic world model built on causal/structural foundations, this means a
 
   <h2>System Overview</h2>
 
-  <p>The diagram below shows RecWM's five-stage loop: <strong>Observe</strong> &rarr; <strong>Infer Beliefs</strong> &rarr; <strong>Compute Equilibrium</strong> &rarr; <strong>Predict</strong> &rarr; <strong>Act</strong>, with the reflexive feedback arrow (red dashed) showing how the system's own actions feed back into the next observation cycle. Each component maps to a specific REN invention and has explicit prior art.</p>
+  <p>The diagram below shows RecWM's five-stage loop: <strong>Observe</strong> &rarr; <strong>Infer Beliefs</strong> &rarr; <strong>Compute Equilibrium</strong> &rarr; <strong>Predict &amp; Reason</strong> &rarr; <strong>Act</strong>, closed by a <strong>reflexive feedback arrow</strong> (dashed red rail, left and right) showing how the system's own actions perturb the very market it next observes. Each stage maps to a specific REN invention with explicit prior art, listed in the legend below.</p>
 
-  <div style="max-width:900px;margin:2rem auto;overflow-x:auto">
-    <svg viewBox="0 0 900 680" xmlns="http://www.w3.org/2000/svg" role="img" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;width:100%;height:auto">
-      <title>RecWM / REN Architecture</title>
-      <desc>Full system architecture showing the reflexive world-model loop.</desc>
-      <defs>
-        <marker id="arr" viewBox="0 0 10 6" refX="10" refY="3" markerWidth="8" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,3 L0,6 Z" fill="var(--fg-dim,#4b5563)"/></marker>
-        <marker id="arr-r" viewBox="0 0 10 6" refX="10" refY="3" markerWidth="8" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,3 L0,6 Z" fill="var(--red,#dc2626)"/></marker>
-      </defs>
-      <rect width="900" height="680" fill="var(--bg,#fff)" rx="8"/>
-      <text x="450" y="32" text-anchor="middle" font-size="16" font-weight="700" fill="var(--heading,#0f172a)" letter-spacing=".02em">RecWM &times; REN Architecture</text>
-      <text x="450" y="50" text-anchor="middle" font-size="10" fill="var(--fg-muted,#6b7280)" letter-spacing=".08em">REFLEXIVE CONSTRUCTIVE WORLD MODEL &mdash; SYSTEM OVERVIEW</text>
-      <rect x="30" y="68" width="840" height="52" rx="6" fill="var(--bg-surface,#f5f7fb)" stroke="var(--border-light,#e4e9f2)"/>
-      <text x="50" y="82" font-size="8" fill="var(--fg-muted,#6b7280)" letter-spacing=".1em" font-weight="600">DATA INGESTION</text>
-      <text x="50" y="100" font-size="10" fill="var(--fg-dim,#4b5563)">Prices &middot; Order Flow &middot; News/NLP &middot; SEC Filings &middot; Macro Releases &middot; Satellite &middot; Social</text>
-      <text x="830" y="100" text-anchor="end" font-size="9" fill="var(--accent,#1d4ed8)" font-weight="600">Inv 11: Information Fusion</text>
-      <line x1="450" y1="120" x2="450" y2="140" stroke="var(--fg-dim,#4b5563)" stroke-width="1.5" marker-end="url(#arr)"/>
-      <rect x="340" y="142" width="220" height="44" rx="6" fill="var(--accent-bg,#eff6ff)" stroke="var(--accent,#1d4ed8)" stroke-width="1.5"/>
-      <text x="360" y="160" font-size="9" font-weight="700" fill="var(--accent,#1d4ed8)" letter-spacing=".06em">OBSERVE</text>
-      <text x="360" y="176" font-size="9" fill="var(--fg-dim,#4b5563)">Market state x(t) at all timescales</text>
-      <line x1="450" y1="186" x2="450" y2="206" stroke="var(--fg-dim,#4b5563)" stroke-width="1.5" marker-end="url(#arr)"/>
-      <rect x="280" y="208" width="340" height="62" rx="6" fill="var(--bg-card,#f8f9fc)" stroke="var(--border,#d6dde8)" stroke-width="1.5"/>
-      <text x="300" y="226" font-size="9" font-weight="700" fill="var(--heading,#0f172a)" letter-spacing=".06em">INFER BELIEFS</text>
-      <text x="300" y="242" font-size="9" fill="var(--fg-dim,#4b5563)">B(&theta;, t, s) &mdash; beliefs per agent type &theta;,</text>
-      <text x="300" y="256" font-size="9" fill="var(--fg-dim,#4b5563)">time t, log-timescale s (RKHS embedding)</text>
-      <text x="600" y="256" text-anchor="end" font-size="8" fill="var(--accent,#1d4ed8)" font-weight="600">Inv 2: Belief Fields</text>
-      <line x1="450" y1="270" x2="450" y2="290" stroke="var(--fg-dim,#4b5563)" stroke-width="1.5" marker-end="url(#arr)"/>
-      <rect x="120" y="292" width="660" height="130" rx="8" fill="var(--bg-raised,#fff)" stroke="var(--accent-dark,#1e3a8a)" stroke-width="2"/>
-      <text x="140" y="312" font-size="10" font-weight="700" fill="var(--accent-dark,#1e3a8a)" letter-spacing=".06em">COMPUTE EQUILIBRIUM</text>
-      <text x="140" y="326" font-size="8" fill="var(--fg-muted,#6b7280)">&Phi;(b*; x, &theta;) = b* &mdash; find ALL self-consistent belief configurations</text>
-      <rect x="140" y="336" width="180" height="72" rx="5" fill="var(--accent-bg,#eff6ff)" stroke="var(--accent-dim,#93c5fd)"/>
-      <text x="155" y="354" font-size="9" font-weight="700" fill="var(--accent,#1d4ed8)">ATLAS</text>
-      <text x="155" y="368" font-size="8" fill="var(--fg-dim,#4b5563)">Neural warm-start &rarr;</text>
-      <text x="155" y="380" font-size="8" fill="var(--fg-dim,#4b5563)">Anderson acceleration &rarr;</text>
-      <text x="155" y="392" font-size="8" fill="var(--fg-dim,#4b5563)">Adaptive damping</text>
-      <text x="155" y="404" font-size="7" fill="var(--accent,#1d4ed8)">~1.4ms / equilibrium</text>
-      <line x1="320" y1="372" x2="350" y2="372" stroke="var(--fg-dim,#4b5563)" marker-end="url(#arr)"/>
-      <rect x="352" y="336" width="180" height="72" rx="5" fill="var(--contrib-bg,#ecfdf5)" stroke="var(--green-dim,#a7f3d0)"/>
-      <text x="367" y="354" font-size="9" font-weight="700" fill="var(--green,#059669)">HYDRA</text>
-      <text x="367" y="368" font-size="8" fill="var(--fg-dim,#4b5563)">Deflation + homotopy &rarr;</text>
-      <text x="367" y="380" font-size="8" fill="var(--fg-dim,#4b5563)">Find K &le; 8 equilibria &rarr;</text>
-      <text x="367" y="392" font-size="8" fill="var(--fg-dim,#4b5563)">Probability weighting</text>
-      <text x="367" y="404" font-size="7" fill="var(--green,#059669)">&lt;15ms for 5 equilibria</text>
-      <line x1="532" y1="372" x2="562" y2="372" stroke="var(--fg-dim,#4b5563)" marker-end="url(#arr)"/>
-      <rect x="564" y="336" width="200" height="72" rx="5" fill="var(--warn-bg,#fef2f2)" stroke="var(--warn-border,#fecaca)"/>
-      <text x="579" y="354" font-size="9" font-weight="700" fill="var(--warn,#b91c1c)">SEISMOGRAPH</text>
-      <text x="579" y="368" font-size="8" fill="var(--fg-dim,#4b5563)">Jacobian eigenvalue tracking &rarr;</text>
-      <text x="579" y="380" font-size="8" fill="var(--fg-dim,#4b5563)">Bifurcation detection &rarr;</text>
-      <text x="579" y="392" font-size="8" fill="var(--fg-dim,#4b5563)">&delta;_bif countdown to regime shift</text>
-      <text x="579" y="404" font-size="7" fill="var(--warn,#b91c1c)">&lt;0.05ms / timestep</text>
-      <text x="760" y="312" text-anchor="end" font-size="8" fill="var(--accent,#1d4ed8)" font-weight="600">Inv 3: Equilibrium Engine</text>
-      <line x1="450" y1="422" x2="450" y2="442" stroke="var(--fg-dim,#4b5563)" stroke-width="1.5" marker-end="url(#arr)"/>
-      <rect x="180" y="444" width="540" height="58" rx="6" fill="var(--bg-card,#f8f9fc)" stroke="var(--border,#d6dde8)" stroke-width="1.5"/>
-      <text x="200" y="462" font-size="9" font-weight="700" fill="var(--heading,#0f172a)" letter-spacing=".06em">PREDICT &amp; REASON</text>
-      <rect x="200" y="470" width="145" height="24" rx="4" fill="var(--tag-bg,#eff6ff)" stroke="var(--border-light,#e4e9f2)" stroke-width=".5"/>
-      <text x="210" y="486" font-size="8" fill="var(--accent,#1d4ed8)">K*(s) Influence Kernel</text>
-      <rect x="360" y="470" width="145" height="24" rx="4" fill="var(--tag-bg,#eff6ff)" stroke="var(--border-light,#e4e9f2)" stroke-width=".5"/>
-      <text x="370" y="486" font-size="8" fill="var(--accent,#1d4ed8)">Counterfactual Engine</text>
-      <rect x="520" y="470" width="180" height="24" rx="4" fill="var(--tag-bg,#eff6ff)" stroke="var(--border-light,#e4e9f2)" stroke-width=".5"/>
-      <text x="530" y="486" font-size="8" fill="var(--accent,#1d4ed8)">Market Ontology Engine</text>
-      <line x1="450" y1="502" x2="450" y2="522" stroke="var(--fg-dim,#4b5563)" stroke-width="1.5" marker-end="url(#arr)"/>
-      <rect x="280" y="524" width="340" height="50" rx="6" fill="var(--accent-bg,#eff6ff)" stroke="var(--accent,#1d4ed8)" stroke-width="1.5"/>
-      <text x="300" y="542" font-size="9" font-weight="700" fill="var(--accent,#1d4ed8)" letter-spacing=".06em">ACT (Self-Impact Aware)</text>
-      <text x="300" y="558" font-size="9" fill="var(--fg-dim,#4b5563)">p* = T(p*; s, &theta;) &mdash; fixed point accounting</text>
-      <text x="300" y="570" font-size="9" fill="var(--fg-dim,#4b5563)">for own market impact</text>
-      <text x="600" y="558" text-anchor="end" font-size="8" fill="var(--accent,#1d4ed8)" font-weight="600">Inv 4: Self-Impact</text>
-      <path d="M 450 574 L 450 600 Q 450 620 430 620 L 90 620 Q 70 620 70 600 L 70 164 Q 70 142 90 142 L 330 142" fill="none" stroke="var(--red,#dc2626)" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arr-r)"/>
-      <text x="72" y="400" font-size="8" fill="var(--red,#dc2626)" font-weight="700" transform="rotate(-90,72,400)" text-anchor="middle" letter-spacing=".1em">REFLEXIVE FEEDBACK</text>
-      <rect x="800" y="292" width="85" height="130" rx="5" fill="var(--sienna-bg,#fef3c7)" stroke="var(--amber-dim,#fde68a)"/>
-      <text x="842" y="312" text-anchor="middle" font-size="8" font-weight="700" fill="var(--amber,#d97706)" letter-spacing=".05em">TRAINING</text>
-      <text x="812" y="330" font-size="7" fill="var(--fg-dim,#4b5563)">ABC: Adversarial</text>
-      <text x="812" y="342" font-size="7" fill="var(--fg-dim,#4b5563)">Belief Calibration</text>
-      <text x="812" y="356" font-size="7" fill="var(--amber,#d97706)" font-weight="600">Inv 5</text>
-      <line x1="812" y1="364" x2="872" y2="364" stroke="var(--amber-dim,#fde68a)" stroke-width=".5"/>
-      <text x="812" y="380" font-size="7" fill="var(--fg-dim,#4b5563)">Multi-Scale</text>
-      <text x="812" y="392" font-size="7" fill="var(--fg-dim,#4b5563)">Belief PDE</text>
-      <text x="812" y="406" font-size="7" fill="var(--amber,#d97706)" font-weight="600">Inv 7</text>
-      <line x1="800" y1="357" x2="780" y2="357" stroke="var(--amber,#d97706)" marker-end="url(#arr)"/>
-      <rect x="800" y="444" width="85" height="58" rx="5" fill="var(--warn-bg,#fef2f2)" stroke="var(--warn-border,#fecaca)"/>
-      <text x="842" y="462" text-anchor="middle" font-size="8" font-weight="700" fill="var(--warn,#b91c1c)" letter-spacing=".05em">DEFENSE</text>
-      <text x="812" y="478" font-size="7" fill="var(--fg-dim,#4b5563)">Adversarial robustness</text>
-      <text x="812" y="490" font-size="7" fill="var(--fg-dim,#4b5563)">Belief manipulation</text>
-      <text x="812" y="500" font-size="7" fill="var(--warn,#b91c1c)" font-weight="600">Inv 9</text>
-      <rect x="160" y="632" width="580" height="38" rx="6" fill="var(--bg-surface,#f5f7fb)" stroke="var(--border-light,#e4e9f2)"/>
-      <text x="180" y="648" font-size="8" fill="var(--fg-muted,#6b7280)" letter-spacing=".1em" font-weight="600">OUTPUTS</text>
-      <text x="180" y="662" font-size="9" fill="var(--fg-dim,#4b5563)">Theses &middot; Regime Alerts &middot; Scenarios &middot; Execution Plans &middot; Bifurcation Countdown</text>
-      <line x1="450" y1="574" x2="450" y2="600" stroke="var(--fg-dim,#4b5563)" stroke-dasharray="3,2"/>
-      <line x1="450" y1="616" x2="450" y2="630" stroke="var(--fg-dim,#4b5563)" stroke-width="1.5" marker-end="url(#arr)"/>
-      <rect x="340" y="598" width="220" height="20" rx="4" fill="var(--contrib-bg,#ecfdf5)" stroke="var(--green-dim,#a7f3d0)" stroke-width=".5"/>
-      <text x="450" y="612" text-anchor="middle" font-size="8" fill="var(--green,#059669)" font-weight="600">Inv 10: Live Architecture &mdash; 24/7 Continual Learning</text>
-    </svg>
+  <div class="arch-wrap">
+    <div class="loop-region">
+      <div class="loop-rail">
+        <div class="loop-bar"><span class="loop-tag">REFLEXIVE FEEDBACK &middot; p* re-enters x(t&#43;1)</span></div>
+        <div class="loop-bar right"></div>
+      </div>
+
+      <div class="arch-stage">
+
+        <!-- DATA INGESTION -->
+        <div class="arch-card stage-ingest v-neutral">
+          <div class="arch-card-label" style="color:var(--ai-text-muted)"><span class="dot" style="background:var(--ai-text-faint)"></span>DATA INGESTION</div>
+          <div class="ingest-chips">
+            <span class="ingest-chip">Prices</span>
+            <span class="ingest-chip">Order Flow</span>
+            <span class="ingest-chip">News / NLP</span>
+            <span class="ingest-chip">SEC Filings</span>
+            <span class="ingest-chip">Macro Releases</span>
+            <span class="ingest-chip">Satellite</span>
+            <span class="ingest-chip">Social</span>
+          </div>
+          <span class="arch-tag" style="color:var(--ai-core-ink);border-color:var(--ai-core-border)">Inv 11 &middot; Information Fusion</span>
+        </div>
+
+        <div class="arch-arrow"></div>
+
+        <!-- OBSERVE -->
+        <div class="arch-card stage-observe v-core filled">
+          <div class="arch-card-label"><span class="dot"></span>OBSERVE</div>
+          <div class="arch-card-desc">Market state <span class="arch-eq">x(t)</span> resolved at all timescales simultaneously &mdash; tick to macro cycle.</div>
+        </div>
+
+        <div class="arch-arrow"></div>
+
+        <!-- INFER BELIEFS -->
+        <div class="arch-card stage-beliefs v-neutral">
+          <div class="arch-card-label" style="color:var(--ai-core-ink)"><span class="dot" style="background:var(--ai-core)"></span>INFER BELIEFS</div>
+          <div class="arch-card-desc arch-eq" style="font-size:.88rem;color:var(--ai-text)">B(&theta;, t, s)</div>
+          <div class="arch-card-desc">Beliefs per agent type &theta;, time t, log-timescale s &mdash; embedded in an RKHS so beliefs at nearby scales interpolate smoothly.</div>
+          <span class="arch-tag" style="color:var(--ai-core-ink);border-color:var(--ai-core-border)">Inv 2 &middot; Belief Fields</span>
+        </div>
+
+        <div class="arch-arrow"></div>
+
+        <!-- COMPUTE EQUILIBRIUM (hero) -->
+        <div class="equilibrium-shell stage-equilibrium">
+          <div class="equilibrium-title">Compute Equilibrium</div>
+          <div class="equilibrium-formula arch-eq">&Phi;(b*; x, &theta;) = b* &nbsp;&mdash;&nbsp; find <em>all</em> self-consistent belief configurations</div>
+
+          <div class="engine-row">
+            <div class="engine-card v-core filled">
+              <div class="engine-name" style="color:var(--ai-core-ink)">ATLAS</div>
+              <div class="engine-step">Neural warm-start &rarr; Anderson acceleration &rarr; adaptive damping</div>
+              <div class="engine-metric" style="color:var(--ai-core-ink)">~1.4ms / equilibrium</div>
+            </div>
+            <div class="engine-arrow">&rarr;</div>
+            <div class="engine-card v-disc filled">
+              <div class="engine-name" style="color:var(--ai-disc-ink)">HYDRA</div>
+              <div class="engine-step">Deflation + homotopy continuation &rarr; find K &le; 8 equilibria &rarr; probability-weight each</div>
+              <div class="engine-metric" style="color:var(--ai-disc-ink)">&lt;15ms for 5 equilibria</div>
+            </div>
+            <div class="engine-arrow">&rarr;</div>
+            <div class="engine-card v-mon filled">
+              <div class="engine-name" style="color:var(--ai-mon-ink)">SEISMOGRAPH</div>
+              <div class="engine-step">Jacobian eigenvalue tracking &rarr; bifurcation detection &rarr; &delta;<sub>bif</sub> countdown to regime shift</div>
+              <div class="engine-metric" style="color:var(--ai-mon-ink)">&lt;0.05ms / timestep</div>
+            </div>
+          </div>
+
+          <div class="annex-grid">
+            <div class="annex-card v-mon filled">
+              <div class="annex-title" style="color:var(--ai-mon-ink)">Training &middot; ABC</div>
+              <div class="annex-item">Adversarial Belief Calibration</div>
+              <div class="annex-item">Multi-Scale Belief PDE</div>
+              <div class="annex-inv" style="color:var(--ai-mon-ink)">Inv 5, Inv 7</div>
+            </div>
+            <div class="annex-card v-fb filled">
+              <div class="annex-title" style="color:var(--ai-fb-ink)">Defense</div>
+              <div class="annex-item">Adversarial robustness</div>
+              <div class="annex-item">Belief-manipulation resistance</div>
+              <div class="annex-inv" style="color:var(--ai-fb-ink)">Inv 9</div>
+            </div>
+          </div>
+
+          <span class="arch-tag" style="top:1.4rem;color:var(--ai-core-ink);border-color:var(--ai-core-border)">Inv 3 &middot; Equilibrium Engine</span>
+        </div>
+
+        <div class="arch-arrow"></div>
+
+        <!-- PREDICT & REASON -->
+        <div class="arch-card stage-predict v-neutral">
+          <div class="arch-card-label" style="color:var(--ai-text)"><span class="dot" style="background:var(--ai-core)"></span>PREDICT &amp; REASON</div>
+          <div class="pill-row">
+            <div class="pill">K*(s) Influence Kernel</div>
+            <div class="pill">Counterfactual Engine</div>
+            <div class="pill">Market Ontology Engine</div>
+          </div>
+        </div>
+
+        <div class="arch-arrow"></div>
+
+        <!-- ACT -->
+        <div class="arch-card stage-act v-core filled">
+          <div class="arch-card-label"><span class="dot"></span>ACT (SELF-IMPACT AWARE)</div>
+          <div class="arch-card-desc arch-eq" style="font-size:.88rem;color:var(--ai-text)">p* = T(p*; s, &theta;)</div>
+          <div class="arch-card-desc">Fixed point accounting for the system's own market impact before acting.</div>
+          <span class="arch-tag" style="color:var(--ai-core-ink);border-color:var(--ai-core-border)">Inv 4 &middot; Self-Impact</span>
+        </div>
+
+        <div class="arch-arrow thin"></div>
+
+        <!-- OUTPUTS -->
+        <div class="arch-card stage-outputs v-neutral">
+          <div class="arch-card-label" style="justify-content:center;color:var(--ai-text-muted)"><span class="dot" style="background:var(--ai-text-faint)"></span>OUTPUTS</div>
+          <div class="outputs-strip">
+            <span class="output-chip">Theses</span>
+            <span class="output-chip">Regime Alerts</span>
+            <span class="output-chip">Scenarios</span>
+            <span class="output-chip">Execution Plans</span>
+            <span class="output-chip">Bifurcation Countdown</span>
+          </div>
+          <div style="text-align:center;margin-top:.7rem">
+            <span class="arch-tag" style="position:static;display:inline-block;color:var(--ai-disc-ink);border-color:var(--ai-disc-border);background:var(--ai-disc-bg)">Inv 10 &middot; Live Architecture &mdash; 24/7 Continual Learning</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="loop-caption">The reflexive feedback rail: <strong>p*</strong> re-enters the market as executed order flow, so the next <strong>OBSERVE</strong> already contains the trace of the system's last <strong>ACT</strong>. This is the architectural difference between a forecasting model and a reflexive world model.</div>
   </div>
 
   <h2>Component Legend</h2>
 
-  <div class="table-wrap">
-    <table>
+  <div class="legend-wrap">
+    <table class="arch-legend">
       <thead>
         <tr><th>Component</th><th>Color</th><th>Role</th><th>Primary Prior Art</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>ATLAS</strong></td><td style="background:var(--accent-bg);width:20px"></td><td>Core equilibrium solver (fixed-point iteration)</td><td>DEQ (Bai et al. 2019), Anderson acceleration</td></tr>
-        <tr><td><strong>HYDRA</strong></td><td style="background:var(--contrib-bg);width:20px"></td><td>Multi-equilibrium discovery</td><td>Farrell et al. 2015, Gu et al. 2021, HomoODE 2023</td></tr>
-        <tr><td><strong>SEISMOGRAPH</strong></td><td style="background:var(--warn-bg);width:20px"></td><td>Bifurcation detection &amp; regime warning</td><td>Scheffer et al. 2009, Bury et al. 2023</td></tr>
-        <tr><td><strong>Self-Impact</strong></td><td style="background:var(--accent-bg);width:20px"></td><td>Performative feedback layer</td><td>Perdomo et al. 2020, Mofakhami et al. 2023</td></tr>
-        <tr><td><strong>Training</strong></td><td style="background:var(--sienna-bg);width:20px"></td><td>Adversarial belief calibration</td><td>Adversarial training (Madry et al. 2018)</td></tr>
-        <tr><td><strong>Defense</strong></td><td style="background:var(--warn-bg);width:20px"></td><td>Robustness against belief manipulation</td><td>Robust optimization</td></tr>
+        <tr><td><strong>ATLAS</strong></td><td><span class="swatch" style="background:var(--ai-core-bg);border-color:var(--ai-core-border)"></span></td><td>Core equilibrium solver (fixed-point iteration)</td><td>DEQ (Bai et al. 2019), Anderson acceleration</td></tr>
+        <tr><td><strong>HYDRA</strong></td><td><span class="swatch" style="background:var(--ai-disc-bg);border-color:var(--ai-disc-border)"></span></td><td>Multi-equilibrium discovery</td><td>Farrell et al. 2015, Gu et al. 2021, HomoODE 2023</td></tr>
+        <tr><td><strong>SEISMOGRAPH</strong></td><td><span class="swatch" style="background:var(--ai-mon-bg);border-color:var(--ai-mon-border)"></span></td><td>Bifurcation detection &amp; regime warning</td><td>Scheffer et al. 2009, Bury et al. 2023</td></tr>
+        <tr><td><strong>Self-Impact</strong></td><td><span class="swatch" style="background:var(--ai-core-bg);border-color:var(--ai-core-border)"></span></td><td>Performative feedback layer</td><td>Perdomo et al. 2020, Mofakhami et al. 2023</td></tr>
+        <tr><td><strong>Training (ABC)</strong></td><td><span class="swatch" style="background:var(--ai-mon-bg);border-color:var(--ai-mon-border)"></span></td><td>Adversarial belief calibration</td><td>Adversarial training (Madry et al. 2018)</td></tr>
+        <tr><td><strong>Defense</strong></td><td><span class="swatch" style="background:var(--ai-fb-bg);border-color:var(--ai-fb-border)"></span></td><td>Robustness against belief manipulation</td><td>Robust optimization</td></tr>
       </tbody>
     </table>
   </div>
 
   <h2>The Triple Correspondence</h2>
 
-  <p>The core architectural insight: three independently-motivated diagnostics converge on the same mathematical object.</p>
+  <p>The core architectural insight: three independently-motivated diagnostics, developed in three unrelated literatures, converge on the same mathematical object.</p>
 
-  <div class="math-block" style="text-align:center;line-height:2.5">
-    <strong>&rho;(D&Phi;(b*)) &lt; 1</strong><br>
-    <span style="font-size:.9rem;opacity:.7">&darr; same spectral radius &darr;</span><br>
-    DEQ convergence &nbsp;|&nbsp; Perdomo stability (&epsilon; &lt; &gamma;/&beta;) &nbsp;|&nbsp; Scheffer critical slowing down
+  <div class="triple-shell">
+    <div class="triple-central arch-eq">&rho;(D&Phi;(b*)) &lt; 1</div>
+    <div class="triple-sub">one spectral radius &mdash; three domains of meaning</div>
+    <div class="triple-domains">
+      <div class="triple-domain">
+        <div class="triple-domain-name">DEQ Convergence</div>
+        <div class="triple-domain-desc">The fixed-point iteration in ATLAS contracts and converges when the Jacobian's spectral radius is below 1 &mdash; standard deep equilibrium theory (Bai et al. 2019).</div>
+      </div>
+      <div class="triple-domain">
+        <div class="triple-domain-name">Perdomo Stability</div>
+        <div class="triple-domain-desc">Performative predictions remain stable, not self-defeating, exactly when <span class="arch-eq">&epsilon; &lt; &gamma;/&beta;</span> &mdash; the performative-prediction stability condition (Perdomo et al. 2020, Thm. 3.5).</div>
+      </div>
+      <div class="triple-domain">
+        <div class="triple-domain-name">Scheffer Critical Slowing</div>
+        <div class="triple-domain-desc">As &rho;(D&Phi;) &rarr; 1, recovery from perturbation slows &mdash; the early-warning signal for critical transitions (Scheffer et al. 2009).</div>
+      </div>
+    </div>
   </div>
 
-  <p>When &rho;(D&Phi;) &lt; 1: the solver converges, predictions are performatively stable, and the regime is robust. When &rho;(D&Phi;) &rarr; 1: convergence slows, performative predictions become self-defeating, and a regime transition approaches. <strong>One number governs all three phenomena.</strong></p>
+  <p>When &rho;(D&Phi;) &lt; 1: the solver converges, predictions are performatively stable, and the regime is robust. When &rho;(D&Phi;) &rarr; 1: convergence slows, performative predictions become self-defeating, and a regime transition approaches. <strong>One number governs all three phenomena</strong> &mdash; which is why SEISMOGRAPH's eigenvalue tracker doubles as both a solver-health monitor and a regime-change early-warning system.</p>
 
 </div>
 </div>
+
 
 <div class="pg" id="pg-alwayson">
 <div class="page">
