@@ -3335,7 +3335,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
        ============================================================ -->
   <h2 id="eq-engine"><span class="sec-num">4</span>The Equilibrium Engine: ATLAS + HYDRA + SEISMOGRAPH</h2>
 
-  <p>The reflexive fixed-point equation <span class="st">b* = &Phi;(b*; s, &theta;)</span> is the computational heart of RecWM. Every forward pass, every prediction, every counterfactual query requires solving this equation&mdash;finding beliefs that are self-consistent with the world they would create. Na&iuml;ve iteration (Picard, <span class="st">b_{k+1} = &Phi;(b_k)</span>) converges but is unacceptably slow: 30&ndash;50 iterations at 0.2ms each yields 6&ndash;10ms per equilibrium, and we need multiple equilibria per timestep. The Equilibrium Engine is a three-component system that brings this down to <strong>1.4ms for the first equilibrium</strong> and <strong>&lt;15ms for a full multi-equilibrium landscape with bifurcation monitoring</strong>.</p>
+  <p>The reflexive fixed-point equation <span class="st">b* = &Phi;(b*; s, &theta;)</span> is the computational heart of RecWM. Every forward pass, every prediction, every counterfactual query requires solving this equation&mdash;finding beliefs that are self-consistent with the world they would create. Na&iuml;ve iteration (Picard, <span class="st">b_{k+1} = &Phi;(b_k)</span>) converges but is unacceptably slow: 30&ndash;50 iterations at 0.2ms each yields 6&ndash;10ms per equilibrium, and we need multiple equilibria per timestep. The Equilibrium Engine is a three-component system that brings this down to <strong>~5&ndash;10ms in production for the first equilibrium (1.4ms theoretical on an isolated GPU kernel with no competing workloads)</strong> and a correspondingly higher <strong>full multi-equilibrium landscape latency with bifurcation monitoring</strong> once queuing, batching, and shared-GPU contention are accounted for.</p>
 
   <div class="contrib">
     <strong>Why three sub-engines.</strong> ATLAS finds <em>one</em> equilibrium fast. HYDRA discovers <em>all</em> equilibria that matter. SEISMOGRAPH detects when the equilibrium landscape is about to change. Together they answer the three questions a trading system must answer in real time: (1) where is the market now? (2) where else could it be? (3) is a regime transition imminent?
@@ -4750,14 +4750,17 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
 
 <p>
   The core constraint is unforgiving: the full path from raw market data to executable
-  trading decision must complete in under 50&nbsp;ms. Beyond that threshold, the
+  trading decision has a theoretical core budget of 35&nbsp;ms, but realistic end-to-end
+  latency is <strong>80&ndash;150&nbsp;ms</strong>, gated by the slowest fragment encoder &mdash;
+  the 1.3B-parameter LLM sentiment encoder alone takes 30&ndash;40&nbsp;ms per pass, before
+  network, queuing, and GC overhead are added. Beyond the realistic threshold, the
   self-impact predictions of MIRROR degrade &mdash; the market has already moved in
   response to the same information RecWM is still processing. The pipeline decomposes
   into six stages, each with hard latency budgets:
 </p>
 
 <div class="rcwm-box">
-  <strong>Pipeline Latency Budget (50ms total)</strong>
+  <strong>Pipeline Latency Budget (35ms theoretical core; 80&ndash;150ms realistic end-to-end)</strong>
   <table>
     <thead>
       <tr>
@@ -5183,7 +5186,7 @@ class TierThreeIngest:
 <h4>Cost Model</h4>
 
 <div class="contrib">
-  <strong>Cloud Cost Estimate: $15&ndash;20K/month</strong>
+  <strong>Cloud Cost Estimate: $40&ndash;60K/month (including dev/staging, monitoring, storage, amortized training)</strong>
   <ul style="margin-top:0.4rem;">
     <li>10&times; A10G instances (AWS g5.xlarge): ~$8,500/month (spot pricing)</li>
     <li>Storage (54TB raw, 8TB preprocessed): ~$2,400/month (S3 + EBS)</li>
@@ -5273,13 +5276,15 @@ class TierThreeIngest:
 </div>
 
 <div class="contrib">
-  <strong>Free Data Advantage</strong>: The bulk of RecWM's training data comes from
-  freely available public sources. SEC EDGAR provides every corporate filing since 1996.
-  FRED covers 800K+ economic time series. GDELT indexes global news events in real time.
-  CFTC publishes weekly positioning data. Polymarket provides crowd-sourced probability
-  estimates. GLEIF provides the global legal entity graph. This is a structural advantage
-  over systems that require expensive proprietary data &mdash; RecWM's edge comes from
-  <em>how</em> it processes information, not from privileged access to it.
+  <strong>Data Cost Reality</strong>: Core research data &mdash; SEC EDGAR corporate filings
+  since 1996, FRED's 800K+ economic time series, GDELT's real-time global news index, CFTC
+  weekly positioning data, Polymarket crowd-sourced probability estimates, and the GLEIF
+  legal entity graph &mdash; is free and sufficient for prototyping and the single-fragment
+  research program. It is <em>not</em> sufficient for the full 7-fragment production
+  architecture: order book feeds, options surfaces, CDS spreads, and social media APIs at
+  production-grade coverage and latency run <strong>$250K&ndash;$1M/year</strong>. RecWM's
+  edge comes from <em>how</em> it processes information, not from free access to it &mdash;
+  but production deployment is not a free-data system.
 </div>
 
 <h4>Training Curriculum: 11 Weeks, 4 Phases</h4>
@@ -5579,10 +5584,12 @@ Level 4: SAFE MODE
   RecWM does not exist in a vacuum. The landscape of world models, financial AI, and
   quantitative trading systems is crowded with well-funded competitors. Understanding
   exactly where RecWM sits &mdash; what it does that nothing else does, and what others do
-  that it cannot &mdash; is essential for honest positioning. The core claim is narrow but
-  defensible: <strong>no existing system combines reflexive dynamics, multi-equilibrium
-  computation, belief fields, and real-time trading execution in a single
-  architecture.</strong>
+  that it cannot &mdash; is essential for honest positioning. The core claim is narrow, and
+  bounded by what is actually knowable: <strong>no reflexive world model that combines
+  reflexive dynamics, multi-equilibrium computation, belief fields, and real-time trading
+  execution in a single architecture has been published or is commercially available
+  &mdash; outside the top 3&ndash;5 proprietary trading firms. We cannot know what
+  Renaissance, Citadel, or DE Shaw have built internally.</strong>
 </p>
 
 <h3 id="comp-jepa">8.1 &ensp; JEPA (LeCun / AMI Labs, $1.03B)</h3>
@@ -5858,14 +5865,35 @@ Level 4: SAFE MODE
 </div>
 
 <div class="contrib">
-  <strong>RecWM's structural advantage over all four:</strong> None of these firms
-  (as far as public information reveals) have a formal reflexive world model &mdash; a
-  system that computes how its own predictions change the market it is predicting.
-  Renaissance finds patterns but doesn't model <em>why</em>. Two Sigma learns factors
-  but doesn't model factor <em>breakdown</em>. Citadel optimizes execution but doesn't
-  model belief <em>dynamics</em>. Bridgewater has the right intuition but hasn't
-  formalized it mathematically. RecWM's ATLAS + HYDRA + MIRROR combination targets
-  exactly this gap.
+  <strong>RecWM's structural advantage over all four &mdash; and its limits:</strong> No
+  reflexive world model has been <em>published</em> or is commercially available outside
+  the top 3&ndash;5 proprietary trading firms. We cannot know what Renaissance, Citadel,
+  or DE Shaw have built internally. Publicly, Renaissance finds patterns but doesn't
+  publish a model of <em>why</em> they exist. Two Sigma learns factors but doesn't
+  publish a model of factor <em>breakdown</em>. Citadel optimizes execution but doesn't
+  publish a belief <em>dynamics</em> model. Bridgewater has the right intuition but
+  hasn't formalized it mathematically in public. It is also important not to overstate
+  the gap here: top quant funds (Renaissance, AQR, Two Sigma) absolutely model signal
+  decay and crowding &mdash; empirically, through alpha decay curves and capacity
+  studies. RecWM's claimed difference is structural, not that competitors are blind to
+  decay: we aim to model the game-theoretic mechanism by which competitor discovery
+  affects equilibrium, predicting decay before it happens rather than fitting it after.
+  RecWM's ATLAS + HYDRA + MIRROR combination targets this gap, to the extent it exists in
+  what is publicly known.
+</div>
+
+<div class="rcwm-box">
+  <strong>Who RecWM actually competes with</strong>
+  <p style="margin-top:0.4rem;">
+    The realistic competitor set is Bloomberg (10K+ engineers), Citadel / Two Sigma / DE
+    Shaw (collectively $180B+ AUM), Man AHL (Oxford ML Research Group), and WorldQuant
+    (600+ researchers globally). These firms are potential customers, not head-to-head
+    competitors &mdash; they have the talent and capital to build something like RecWM
+    internally if they judged it worthwhile, and the honest read is that some of them may
+    already have. RecWM's ICP is the mid-tier fund ($500M&ndash;$10B AUM) that wants
+    Level&nbsp;3 SA-grade reflexive modeling but cannot build and staff a 50-person
+    in-house quant research team.
+  </p>
 </div>
 
 
@@ -6017,13 +6045,17 @@ Level 4: SAFE MODE
 </div>
 
 <div class="contrib">
-  <strong>The empty column:</strong> RecWM is the only row with "Yes" in every column.
-  This is not because other systems are bad &mdash; they are excellent at what they do.
-  It is because reflexive world modeling for real-time trading is a genuinely new
-  category. The closest competitors are JEPA (strong world model, no reflexivity),
-  DreamerV3 (strong RL, no multi-agent), and Citadel (strong execution, no world model).
-  RecWM's thesis is that combining all six capabilities in one architecture produces
-  emergent capability that none of them can achieve individually.
+  <strong>The empty column &mdash; among published, commercially available systems:</strong>
+  RecWM is the only row with "Yes" in every column, but this table can only score what is
+  public. No reflexive world model has been published or is commercially available
+  outside the top 3&ndash;5 proprietary trading firms, and we cannot know what
+  Renaissance, Citadel, or DE Shaw have built internally. Among what is publicly known,
+  the closest competitors are JEPA (strong world model, no reflexivity), DreamerV3
+  (strong RL, no multi-agent), and Citadel (strong execution, no disclosed world model).
+  Even if this gap is real, math alone is the weakest moat: the defensible advantages
+  will come from (a) trained model weights on proprietary client data, (b) the
+  calibration feedback loop where usage improves accuracy, (c) workflow integration
+  switching costs, and (d) first-mover advantage in a narrow niche.
 </div>
 
 
@@ -6971,6 +7003,85 @@ MIRROR savings: ~$63,500 per trade
     <strong>No mitigation exists.</strong> This is a structural feature of financial
     markets. We state it clearly and do not pretend otherwise.
   </p>
+</div>
+
+<h4>Gap 6: Adversarial Stress-Test Results (August 2026)</h4>
+
+<p>Following the formalization of the RecWM belief-space fixed-point architecture (Sections 10.1&ndash;10.3), the design was subjected to five independent adversarial stress tests: a mathematics review of the fixed-point/DEQ formalism, a financial-physics review of the equilibrium assumptions, a practical-implementation review of the SEISMOGRAPH early-warning subsystem, a training-feasibility review of the Phase 4 loss, and a red-team pass explicitly tasked with finding reasons the architecture fails. Six issues were classified <strong>FATAL</strong> or <strong>DEALBREAKER</strong> &mdash; meaning the architecture as specified in 10.1&ndash;10.3 does not work until they are resolved. They are recorded here in full, ahead of the mitigation plan.</p>
+
+<div class="warn">
+<strong>Issue 1 &mdash; Belief Space Compactness Is Unproven (FATAL &mdash; Math)</strong>
+<p style="margin-top:0.4rem;"><strong>Problem:</strong> The belief space <span class="m-var">B</span> is defined over the natural parameters of multivariate Gaussians, <span class="m-var">&eta;</span> <span class="m-op">=</span> (<span class="m-var">&Sigma;<sup>-1</sup>&mu;</span>, <span class="m-var">&Sigma;<sup>-1</sup></span>). As <span class="m-var">&Sigma;</span> ranges over all positive-definite matrices, <span class="m-var">&Sigma;<sup>-1</sup></span> ranges over an open cone in the space of symmetric matrices &mdash; unbounded above (arbitrarily concentrated beliefs) and open at the boundary (arbitrarily diffuse beliefs, <span class="m-var">&Sigma;<sup>-1</sup></span> &rarr; 0). This set is neither closed nor bounded, hence not compact.</p>
+<p style="margin-top:0.4rem;"><strong>Why it matters:</strong> Brouwer's fixed-point theorem &mdash; the theorem actually invoked to claim existence of an equilibrium belief <span class="m-var">b*</span> <span class="m-op">=</span> <span class="m-var">&Phi;</span>(<span class="m-var">b*</span>) &mdash; requires a nonempty, compact, convex domain. On an open, unbounded cone, <span class="m-var">&Phi;</span> can fail to have any fixed point at all. This is not a technicality: the fixed-point existence claim is the foundation the entire DEQ layer, the multi-equilibrium bifurcation analysis, and the "market as fixed point" framing all sit on top of.</p>
+<p style="margin-top:0.4rem;"><strong>Fix:</strong> Construct an explicit bounded domain and prove <span class="m-var">&Phi;</span> maps it to itself. Concretely: clip precision eigenvalues to a box <span class="m-var">[&epsilon;, M]</span> (0 &lt; &epsilon; &le; eigenvalues &le; M &lt; &infin;), which makes the natural-parameter domain compact and convex, then show <span class="m-var">&Phi;</span>'s outputs stay inside the box under the model's own update dynamics. Alternatively, drop Brouwer entirely and use the Banach contraction mapping theorem &mdash; if <span class="m-var">&Phi;</span> is a contraction (&rho;(<span class="m-var">D&Phi;</span>) &lt; 1), existence <em>and</em> uniqueness follow on any complete metric space, compactness not required.</p>
+</div>
+
+<div class="warn">
+<strong>Issue 2 &mdash; The Triple Correspondence Is Asserted, Not Proven (FATAL &mdash; Math)</strong>
+<p style="margin-top:0.4rem;"><strong>Problem:</strong> Section 10.3 claims that a single spectral condition, &rho;(<span class="m-var">D<sub>b</sub>&Phi;</span>) &lt; 1, simultaneously governs (a) DEQ fixed-point convergence, (b) Perdomo performative-stability, &epsilon; &lt; &gamma;/&beta;, and (c) Scheffer critical-slowing-down onset. This is stated as if self-evident. It is not. The Perdomo condition is defined in terms of the Wasserstein sensitivity of the induced distribution shift to model parameters, a fundamentally different object from a Jacobian spectral radius on the belief-update map.</p>
+<p style="margin-top:0.4rem;"><strong>Why it matters:</strong> If the correspondence is false or only holds under unstated conditions, then the "one number tells you if the system is stable" narrative collapses, and the three stability diagnostics give contradictory signals with no way to reconcile them.</p>
+<p style="margin-top:0.4rem;"><strong>Fix:</strong> Supply an explicit proof sketch of the conditions under which &rho;(<span class="m-var">D<sub>b</sub>&Phi;</span>) &lt; 1 implies &epsilon; &lt; &gamma;/&beta;. This requires, at minimum: the loss is &gamma;-strongly convex in the belief parameters; the distribution shift is &epsilon;-Lipschitz in the model's predictions; and the smoothness constant &beta; is bounded by the gradient-Lipschitz constant of <span class="m-var">&Phi;</span>. Until this chain is written out, the three diagnostics should be treated as three separate, only weakly-related signals.</p>
+</div>
+
+<div class="warn">
+<strong>Issue 3 &mdash; Markets Are Rarely At Equilibrium (FATAL &mdash; Financial Physics)</strong>
+<p style="margin-top:0.4rem;"><strong>Problem:</strong> The DEQ formulation assumes the system reaches <span class="m-var">b*</span> <span class="m-op">=</span> <span class="m-var">&Phi;</span>(<span class="m-var">b*</span>) before the next decision is made. Empirically, financial markets operate in a near-critical branching regime (Filimonov&ndash;Sornette estimate the branching ratio at <span class="m-var">n</span> &asymp; 0.6&ndash;0.8 for order-flow cascades). At <span class="m-var">n</span> <span class="m-op">=</span> 0.8, the relaxation time is roughly 5&times; the natural order-flow timescale &mdash; meaning the market frequently has not settled before the next exogenous shock arrives.</p>
+<p style="margin-top:0.4rem;"><strong>Why it matters:</strong> Boltzmann-type equilibrium weights, and the fixed-point framing generally, do not apply to non-equilibrium steady states. If the real system is in perpetual transient motion, computing "the" fixed point and reasoning about beliefs as if they sit at it describes a state the system is rarely actually in.</p>
+<p style="margin-top:0.4rem;"><strong>Fix:</strong> Adopt a three-tier operating mode. (a) <em>Adiabatic approximation</em>, used only when the estimated relaxation time is shorter than the inter-shock interval. (b) <em>Quasi-equilibrium tracking</em> as the default production mode: iterate <span class="m-var">b<sub>t+1</sub></span> <span class="m-op">=</span> <span class="m-var">&Phi;</span>(<span class="m-var">b<sub>t</sub></span>; <span class="m-var">x<sub>t</sub></span>, <span class="m-var">&theta;</span>) directly, without waiting for convergence &mdash; treat the belief update as a tracking filter, not a solver. (c) An explicit <strong>NON-EQUILIBRIUM WARNING</strong> flag when the spectral-radius-implied relaxation time exceeds the data feed's update rate.</p>
+</div>
+
+<div class="warn">
+<strong>Issue 4 &mdash; Gaussian Tails Are Wrong By 18 Orders Of Magnitude (FATAL &mdash; Financial Physics)</strong>
+<p style="margin-top:0.4rem;"><strong>Problem:</strong> The belief field is built on the Gaussian exponential family. Financial returns have power-law tails with exponent near 3, not exponential decay. At 10 standard deviations, the Gaussian model assigns probability &asymp; 10<sup>-23</sup>; the empirical power-law tail assigns roughly 10<sup>-4.5</sup>. The gap is 18 orders of magnitude.</p>
+<p style="margin-top:0.4rem;"><strong>Why it matters:</strong> This means the equilibrium computation structurally ignores the exact tail scenarios that real market participants price into options, risk limits, and crash dynamics. Transitions between equilibria driven by tail events can be missed entirely, silently.</p>
+<p style="margin-top:0.4rem;"><strong>Fix:</strong> Replace the Gaussian exponential family with a Student-t belief field, which preserves most of the natural-parameter machinery while adding genuine power-law tails. Where conjugacy loss is unacceptable, use a mixture-of-Gaussians belief representation (normal regime + crisis regime), which strengthens the existing multi-equilibrium framing rather than fighting it.</p>
+</div>
+
+<div class="warn">
+<strong>Issue 5 &mdash; SEISMOGRAPH's False-Positive Rate Makes It Unusable In Production (DEALBREAKER &mdash; Practical)</strong>
+<p style="margin-top:0.4rem;"><strong>Problem:</strong> The critical-slowing-down early-warning subsystem does not transfer cleanly to financial data. Estimated signal-to-noise ratio is 0.01&ndash;0.1. Financial systems have multiple simultaneous feedback loops operating at different timescales, which violates the slow-fast timescale separation that critical-slowing-down theory assumes. Pseudo-bifurcation signatures occur constantly for mundane reasons &mdash; volatility clustering, options-expiry effects, month-end rebalancing.</p>
+<p style="margin-top:0.4rem;"><strong>Why it matters:</strong> An early-warning system nobody trusts is worse than no early-warning system &mdash; it consumes attention, erodes credibility, and creates a false sense that tail risk is being monitored.</p>
+<p style="margin-top:0.4rem;"><strong>Fix:</strong> Downgrade SEISMOGRAPH from a production feature to a research contribution pending validation. Replace it in production with regime detection built on realized, directly observable quantities &mdash; volatility clustering, correlation breakdowns, liquidity withdrawal. Before any production reintroduction, validate out-of-sample against known historical bifurcations: the 2007 quant quake, the February 2018 vol event, the March 2020 COVID crash, and the September 2022 UK gilt crisis.</p>
+</div>
+
+<div class="warn">
+<strong>Issue 6 &mdash; Phase 4 Training Plan Is Not Feasible At Stated Budget Or Timeline (DEALBREAKER &mdash; Practical)</strong>
+<p style="margin-top:0.4rem;"><strong>Problem:</strong> The 84M-parameter model uses a five-term weighted loss with a five-dimensional hyperparameter search space. At ~$32K/run, a realistic 20&ndash;50 run search costs $650K&ndash;$1.6M. DEQ training has a 20&ndash;30% baseline failure rate; layering in multiple equilibria and bifurcation-aware differentiation pushes realistic success to 30&ndash;50% per run. Near bifurcation points, the Tikhonov regularization parameter is circularly defined during exactly the training regime where it is most needed.</p>
+<p style="margin-top:0.4rem;"><strong>Why it matters:</strong> A training plan that assumes near-100% single-shot success at 1/10th the actual compute budget means the stated 11-week Phase 4 timeline is not achievable.</p>
+<p style="margin-top:0.4rem;"><strong>Fix:</strong> Move to staged training with independent validation of each phase. Start with only two terms, <span class="m-var">L<sub>core</sub></span> <span class="m-op">+</span> <span class="m-var">L<sub>portfolio</sub></span>, adding the remaining three incrementally. Budget $500K&ndash;$1M for training compute. State the honest timeline as 6&ndash;12 months, not 11 weeks.</p>
+</div>
+
+<p>The remaining findings from the five stress tests &mdash; issues rated SERIOUS rather than FATAL/DEALBREAKER &mdash; are consolidated below.</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Issue</th>
+<th>Source</th>
+<th>Severity</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>Belief space (natural-parameter cone) is not compact &mdash; Brouwer fixed-point existence unproven</td><td>Math review</td><td>Fatal</td><td>Open</td></tr>
+<tr><td>2</td><td>Spectral radius &harr; Perdomo &epsilon; &lt; &gamma;/&beta; &harr; Scheffer critical slowing correspondence asserted, not proven</td><td>Math review</td><td>Fatal</td><td>Open</td></tr>
+<tr><td>3</td><td>Markets rarely reach equilibrium (n &asymp; 0.6&ndash;0.8 branching ratio); DEQ fixed-point assumption often invalid</td><td>Financial physics review</td><td>Fatal</td><td>Open</td></tr>
+<tr><td>4</td><td>Gaussian belief field misprices tail events by ~18 orders of magnitude vs. power-law reality</td><td>Financial physics review</td><td>Fatal</td><td>Open</td></tr>
+<tr><td>5</td><td>SEISMOGRAPH false-positive rate (~49-in-50) makes early warnings untrustworthy in production</td><td>Practical review</td><td>Dealbreaker</td><td>Open</td></tr>
+<tr><td>6</td><td>Phase 4 training budget/timeline understated by 5&ndash;10&times;; DEQ + bifurcation training has 30&ndash;50% success rate</td><td>Training feasibility review</td><td>Dealbreaker</td><td>Open</td></tr>
+<tr><td>7</td><td>Contraction constant &rho;(D<span class="m-var">&Phi;</span>) is estimated, not guaranteed &mdash; no certified bound at inference time</td><td>Math review</td><td>Serious</td><td>Research</td></tr>
+<tr><td>8</td><td>Multi-equilibrium selection rule underspecified near bifurcations</td><td>Math review</td><td>Serious</td><td>Open</td></tr>
+<tr><td>9</td><td>Implicit-function-theorem backward pass is numerically unstable as &rho;(D<span class="m-var">&Phi;</span>) &rarr; 1</td><td>Math / training review</td><td>Serious</td><td>Open</td></tr>
+<tr><td>10</td><td>Regime-conditional covariance estimates are data-starved in crisis regimes</td><td>Financial physics review</td><td>Serious</td><td>Open</td></tr>
+<tr><td>11</td><td>Exogenous shock arrivals treated as i.i.d.; real shocks cluster (Hawkes-type self-excitation)</td><td>Financial physics review</td><td>Serious</td><td>Research</td></tr>
+<tr><td>12</td><td>Slow&ndash;fast timescale separation violated by multi-timescale feedback loops</td><td>Practical review</td><td>Serious</td><td>Open</td></tr>
+<tr><td>13</td><td>Neural bifurcation predictor trained only on synthetic data; transfer to real markets unvalidated</td><td>Practical review</td><td>Serious</td><td>Research</td></tr>
+<tr><td>14</td><td>L<sub>explain</sub> and L<sub>portfolio</sub> loss terms can conflict; no documented resolution</td><td>Training feasibility review</td><td>Serious</td><td>Open</td></tr>
+<tr><td>15</td><td>No out-of-sample validation protocol against known historical regime shifts (2007, 2018, 2020, 2022)</td><td>Practical / red-team review</td><td>Serious</td><td>Mitigated</td></tr>
+</tbody>
+</table>
 </div>
 
 
