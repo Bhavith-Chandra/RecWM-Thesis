@@ -859,7 +859,7 @@ T(s, a; B) &nbsp;where&nbsp; a = A<sub>&theta;</sub>(B, s) &nbsp;and&nbsp; B is 
 z* = &Phi;(z*; x)
 </div>
 
-<p>This is precisely the deep equilibrium model (DEQ) formulation of Bai, Kolter &amp; Koltun (NeurIPS 2019): rather than stacking a fixed number of layers and hoping depth is sufficient, define an infinite-depth, weight-tied network implicitly as the fixed point of a single layer applied to itself, and differentiate through the fixed point using the implicit function theorem rather than backpropagating through an unrolled computation graph. DEQs achieve the representational power of arbitrarily deep networks with roughly an 88% reduction in memory footprint, because the backward pass never needs to store an unrolled trajectory &mdash; it needs only the fixed point and one linear solve. REN adapts this machinery to a domain DEQs were never built for: not "what is the fixed point of a generic implicit layer," but specifically "what is the fixed point of belief, action, and price in a reflexive market."</p>
+<p>This is precisely the deep equilibrium model (DEQ) formulation of Bai, Kolter &amp; Koltun (NeurIPS 2019): rather than stacking a fixed number of layers and hoping depth is sufficient, define an infinite-depth, weight-tied network implicitly as the fixed point of a single layer applied to itself, and differentiate through the fixed point using the implicit function theorem rather than backpropagating through an unrolled computation graph. DEQs achieve the representational power of arbitrarily deep networks with up to 88% reduction in memory footprint (Bai et al. 2019, empirical), because the backward pass never needs to store an unrolled trajectory &mdash; it needs only the fixed point and one linear solve. REN adapts this machinery to a domain DEQs were never built for: not "what is the fixed point of a generic implicit layer," but specifically "what is the fixed point of belief, action, and price in a reflexive market."</p>
 
 <div class="rcwm-box">
   <div class="rcwm-box-title">Why implicit differentiation matters here, specifically</div>
@@ -1166,7 +1166,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
 <p>The load-bearing citations behind the architecture, in order of appearance.</p>
 
 <div class="table-wrap">
-<div class="cite"><div class="cite-title">Deep Equilibrium Models</div><div class="cite-authors">Bai, S., Kolter, J. Z., &amp; Koltun, V.</div><div class="cite-venue">NeurIPS 2019</div><p style="font-size:0.85rem;margin-top:0.4rem;">Introduces DEQs: infinite-depth, weight-tied networks defined as z* = f&theta;(z*;x), trained via implicit differentiation, ~88% memory reduction vs. explicit unrolling. Source of REN's core fixed-point formulation.</p></div>
+<div class="cite"><div class="cite-title">Deep Equilibrium Models</div><div class="cite-authors">Bai, S., Kolter, J. Z., &amp; Koltun, V.</div><div class="cite-venue">NeurIPS 2019</div><p style="font-size:0.85rem;margin-top:0.4rem;">Introduces DEQs: infinite-depth, weight-tied networks defined as z* = f&theta;(z*;x), trained via implicit differentiation, up to 88% memory reduction vs. explicit unrolling (empirical). Source of REN's core fixed-point formulation.</p></div>
 
 <div class="cite"><div class="cite-title">Monotone Operator Equilibrium Networks</div><div class="cite-authors">Winston, E., &amp; Kolter, J. Z.</div><div class="cite-venue">NeurIPS 2020</div><p style="font-size:0.85rem;margin-top:0.4rem;">Adds monotone-operator constraints (I&minus;W &#8859; mI) guaranteeing fixed-point convergence by construction. Source of the influence-kernel's convergence discipline.</p></div>
 
@@ -1360,7 +1360,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
   <div class="section" id="ren-triple-correspondence">
   <h2>3&ensp;&middot;&ensp;The Triple Correspondence &mdash; One Scalar, Three Literatures</h2>
 
-  <p>The single most economical idea in REN is that one scalar &mdash; the spectral radius of the Jacobian of the belief map, &rho;(D&Phi;) &mdash; simultaneously governs three phenomena that were derived independently, decades apart, in three unrelated fields. This is not a coincidence dressed up as an insight; each of the three results below is a real theorem or well-established empirical regularity in its own literature, and the correspondence between them is exact because all three are, underneath the field-specific language, statements about the same linear stability condition of a fixed point.</p>
+  <p>The single most economical idea in REN is that one scalar &mdash; the spectral radius of the Jacobian of the belief map, &rho;(D&Phi;) &mdash; simultaneously governs three phenomena that were derived independently, decades apart, in three unrelated fields. This is not a coincidence dressed up as an insight; each of the three results below is a real theorem or well-established empirical regularity in its own literature, and the correspondence between them is exact because all three are, underneath the field-specific language, statements about the same linear stability condition of a fixed point. The triple correspondence is an architectural design principle: RecWM is constructed so that a single operator &Phi; governs all three phenomena. This unification must be engineered, not assumed &mdash; it is not an automatic consequence of using DEQs.</p>
 
   <h3>3.1&ensp;The three correspondences</h3>
 
@@ -1563,7 +1563,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
 
   <p><strong>Case (b) is itself a notable result</strong>: standard Anderson acceleration cannot find unstable fixed points, because it is fundamentally trying to accelerate convergence of the iteration b&#8614;&Phi;(b), which diverges near an unstable point. The safeguarded line search instead minimizes &Vert;g(b)&Vert;&sup2; directly, which can converge to <em>any</em> zero of <span class="m-op">g</span> regardless of the local stability of &Phi; at that zero. This is what makes HYDRA's search for unstable intermediate equilibria (the &ldquo;tipping point&rdquo; equilibrium of Section&nbsp;1.4) possible at all.</p>
 
-  <p><strong>Complexity.</strong> At d=256, m=8, K=6 (typical): warm-start &asymp;0.1ms + 6&times;0.2ms &Phi;-evaluations + &asymp;0.05ms Anderson overhead &asymp; <strong>1.4ms</strong> for a single equilibrium.</p>
+  <p><strong>Complexity.</strong> At d=256, m=8, K=6 (typical): warm-start &asymp;0.1ms + 6&times;0.2ms &Phi;-evaluations + &asymp;0.05ms Anderson overhead &asymp; <strong>1.4ms</strong> for a single equilibrium. The iteration count K is problem-dependent (typically 5&ndash;15 for well-conditioned problems); K=6 is the design-point estimate for d=256 with &rho;(D&Phi;) comfortably below 1.</p>
 
   <h3>6.2&ensp;HYDRA: finding all equilibria</h3>
 
@@ -4063,7 +4063,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
 
   <ul>
     <li><span class="st">&nabla;L_t</span> &mdash; gradient of the current loss (standard online learning)</li>
-    <li><span class="st">&lambda;_{EWC} &middot; F(&theta;_t - &theta;_{anchor})</span> &mdash; <strong>elastic weight consolidation</strong> (Kirkpatrick et al. 2017): the Fisher information matrix <span class="st">F</span> penalizes changes to parameters important for previously learned regimes</li>
+    <li><span class="st">&lambda;_{EWC} &middot; F(&theta;_t - &theta;_{anchor})</span> &mdash; <strong>Elastic Weight Consolidation</strong> (EWC; Kirkpatrick et al., PNAS 2017): the Fisher information matrix <span class="st">F</span> penalizes changes to parameters important for previously learned regimes. EWC is the foundational method for regularization-based continual learning. More recent approaches (constrained LoRA, replay-based methods) have superseded it in some settings; RecWM&rsquo;s continual learning module should evaluate these alternatives during Stage 3 training.</li>
     <li><span class="st">&lambda;_&Phi; &middot; &nabla;&Phi;_{violation}</span> &mdash; <strong>constraint barrier</strong>: a log-barrier term preventing parameter updates that would violate the constraint field</li>
   </ul>
 
@@ -4352,7 +4352,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
     </thead>
     <tbody>
       <tr><td>Liquidity</td><td>2.1M</td><td>&mdash;</td><td>Multi-scale temporal locality</td><td>1.2ms</td></tr>
-      <tr><td>Sentiment</td><td>1.3M</td><td>1.3B</td><td>Pre-trained language understanding</td><td>4.5ms</td></tr>
+      <tr><td>Sentiment</td><td>1.3M</td><td>1.3B</td><td>Pre-trained language understanding</td><td>4.5ms (cached) / 30&ndash;40ms (full pass)</td></tr>
       <tr><td>Policy</td><td>3.2M</td><td>&mdash;</td><td>Text-quantitative fusion</td><td>2.1ms</td></tr>
       <tr><td>Momentum</td><td>4.5M</td><td>&mdash;</td><td>Multi-scale SSM + cross-asset</td><td>2.8ms</td></tr>
       <tr><td>Risk</td><td>2.8M</td><td>&mdash;</td><td>Spatial (vol surface) + graph (corr)</td><td>1.8ms</td></tr>
@@ -4363,7 +4363,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
   </table>
 
   <div class="contrib">
-    <strong>Parallel execution.</strong> All seven encoders run in parallel on the GPU. The critical path is the sentiment encoder (4.5ms due to the frozen LLM forward pass). All other encoders complete within that window, so the total fragment encoding latency is ~5ms, not the sum of individual latencies.
+    <strong>Parallel execution.</strong> All seven encoders run in parallel on the GPU. The critical path is the sentiment encoder. With cached LLM embeddings (updated asynchronously), the sentiment encoder completes in ~4.5ms, giving ~5ms total fragment encoding. On a cold pass (no cache), the 1.3B LLM forward pass takes 30&ndash;40ms, which dominates the pipeline. The 5ms figure assumes warm cache; the 80&ndash;150ms end-to-end budget (Section 7) accounts for cold passes.
   </div>
 
 
@@ -4442,7 +4442,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
 
   <h4>6.3.1 GateL0RD Sparse Gating</h4>
 
-  <p>Not all dimensions of the state vector need to update at every timestep. During calm markets, the glacial block should barely change; during a flash crash, the fast block should update rapidly while slow blocks remain anchored. <strong>GateL0RD</strong> (Liebig &amp; Stechly 2024) implements this via learned sparse gates:</p>
+  <p>Not all dimensions of the state vector need to update at every timestep. During calm markets, the glacial block should barely change; during a flash crash, the fast block should update rapidly while slow blocks remain anchored. <strong>GateL0RD</strong> (Gumbsch, Butz &amp; Martius, NeurIPS 2021) implements this via learned sparse gates:</p>
 
   <div class="equation-block">
     z_{k+1} = g_k &odot; f(z_k, s_k) + (1 - g_k) &odot; z_k
@@ -4456,7 +4456,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
   <!-- ===== 6.4 SPIB Compression ===== -->
   <h3>6.4 SPIB Compression (~0.5M params)</h3>
 
-  <p>The 1024-dimensional S5 state <span class="st">z</span> contains more information than downstream heads need. The <strong>Self-Predictive Information Bottleneck</strong> (SPIB, Wang et al. 2021) compresses it to a 128-dimensional code <span class="st">c</span> that retains only the information relevant for predicting future states.</p>
+  <p>The 1024-dimensional S5 state <span class="st">z</span> contains more information than downstream heads need. The <strong>State Predictive Information Bottleneck</strong> (SPIB, Wang &amp; Tiwary, <em>J. Chem. Phys.</em> 2021) compresses it to a 128-dimensional code <span class="st">c</span> that retains only the information relevant for predicting future states. Originally developed for molecular dynamics simulation (Wang &amp; Tiwary 2021); adapted here for financial state compression &mdash; a novel cross-domain application.</p>
 
   <div class="equation-block">
     L_SPIB = -I(c; z^{t+&delta;}) + &beta;_{IB} &middot; I(c; z^t)
@@ -4706,7 +4706,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
   </table>
 
   <div class="contrib">
-    <strong>Cost discipline.</strong> At ~$100K for a complete training run, RecWM is firmly in the &ldquo;small model, big brain&rdquo; category. For comparison: GPT-3 (175B params) cost ~$4.6M to train; a typical quant fund spends $5&ndash;50M/year on compute. The 84M parameter budget is the result of deliberate architectural choices: frozen LLM backbone (saves ~$500K vs. fine-tuning), S5 instead of transformers (linear vs. quadratic in sequence length), SPIB compression (smaller downstream models), and GateL0RD gating (15&ndash;25% effective utilization). Every dollar of compute goes toward the hard problems&mdash;equilibrium computation, multi-scale dynamics, and counterfactual reasoning&mdash;not toward brute-force scaling.
+    <strong>Cost discipline.</strong> At $500K&ndash;$1M for a complete training run (see Resolution A6 for the staged breakdown), RecWM is in the &ldquo;small model, big brain&rdquo; category. For comparison: GPT-3 (175B params) cost ~$4.6M to train; a typical quant fund spends $5&ndash;50M/year on compute. The ~84M parameter budget is the result of deliberate architectural choices: frozen LLM backbone (saves ~$500K vs. fine-tuning), S5 instead of transformers (linear vs. quadratic in sequence length), SPIB compression (smaller downstream models), and GateL0RD gating (15&ndash;25% effective utilization). Every dollar of compute goes toward the hard problems&mdash;equilibrium computation, multi-scale dynamics, and counterfactual reasoning&mdash;not toward brute-force scaling.
   </div>
 
   <div class="cite-card">
@@ -6059,6 +6059,38 @@ Level 4: SAFE MODE
   calibration feedback loop where usage improves accuracy, (c) workflow integration
   switching costs, and (d) first-mover advantage in a narrow niche.
 </div>
+
+
+<h3>Competitive Landscape Update (August 2026)</h3>
+
+<p><strong>Core novelty validated.</strong> Extensive search confirms no published work or commercial system combines deep equilibrium models with performative prediction theory. The DEQ + performative prediction intersection remains unclaimed.</p>
+
+<h4>New Entrants to Monitor</h4>
+<div class="table-wrap"><table>
+<tr><th>Entity</th><th>What They Do</th><th>Relationship to RecWM</th></tr>
+<tr><td><strong>Bridgewater AIA Labs</strong></td><td>"Artificial Investment Associate" &mdash; systematic macro world model. AIA Macro Fund: 8.1% H1 2026, ~$5B AUM. Led by Co-CIO Greg Jensen.</td><td>Closest framing ("the System" as world model) but no DEQ/performative prediction. Systematic macro, not reflexive equilibrium.</td></tr>
+<tr><td><strong>Sooth Labs</strong></td><td>$50M seed ($335M val), backed by LeCun &amp; Jeff Dean. Multimodal world model for exogenous forecasting (geopolitics, macro, pandemics).</td><td><strong>Orthogonal.</strong> Exogenous prediction (what will happen) vs. RecWM&rsquo;s endogenous modeling (how predictions change outcomes). Complementary, not competitive.</td></tr>
+<tr><td><strong>Reflexivity (NYC)</strong></td><td>$30M Series B, embedded in Interactive Brokers. Knowledge-graph + LLM research copilot for thematic investing.</td><td>Despite the name, no reflexive/equilibrium modeling. Thematic research tool, not a world model.</td></tr>
+<tr><td><strong>AMI Labs (LeCun)</strong></td><td>$1.03B seed. LeCun left Meta to build general-purpose world models.</td><td>Targeting robotics/healthcare/industrial, not finance. Validates "world model" framing but leaves finance lane open.</td></tr>
+</table></div>
+
+<h4>Recent Academic Papers to Distinguish From</h4>
+<div class="table-wrap"><table>
+<tr><th>Paper</th><th>Year</th><th>What It Does</th><th>How RecWM Differs</th></tr>
+<tr><td>"AI and Systemic Risk: Performative Prediction, Algorithmic Herding, and Cognitive Dependency" (arXiv 2604.03272)</td><td>2026</td><td>Applies Perdomo&rsquo;s framework to systemic risk using 13F filings</td><td>Theoretical/empirical analysis, not a computational architecture. No DEQ, no real-time equilibrium computation.</td></tr>
+<tr><td>"Algometrics: Forecasting Under Algorithmic Feedback" (arXiv 2605.23978)</td><td>2026</td><td>Framework for forecasting when algorithms are part of the data-generating process</td><td>General framework, not architecture-specific. RecWM provides the concrete computational mechanism (DEQ + belief fields).</td></tr>
+<tr><td>"Performative Market Making" (arXiv 2508.04344)</td><td>2025</td><td>Models how financial models create self-fulfilling prophecies</td><td>Market-making specific. RecWM addresses the general multi-agent equilibrium, not just market-making feedback.</td></tr>
+<tr><td>"Agentic Finance: Active Inference for Bounded-Rational Investing" (Entropy 28(3):321)</td><td>2026</td><td>Active inference for portfolio management. Found "Passivity Paradox" &mdash; frozen beliefs outperform adaptive learning on ARKK ETF.</td><td>Uses simpler active inference (no DEQ, no multi-agent equilibrium). The Passivity Paradox is a cautionary finding RecWM must address &mdash; why does RecWM&rsquo;s adaptive updating avoid this trap?</td></tr>
+<tr><td>"Reflexivity as Prompt" (arXiv 2606.00061)</td><td>2026</td><td>Tests whether informing LLMs about Soros reflexivity improves forecasts</td><td>Prompt engineering experiment, not architectural. Heterogeneous results validate that reflexivity awareness matters but LLM prompting is insufficient.</td></tr>
+</table></div>
+
+<h4>World Model Funding Wave (H1 2026)</h4>
+<p>$3B+ invested in world-model startups in H1 2026 (AMI Labs $1.03B, World Labs $1B, Runway $315M, 23+ startups in China alone). <strong>All target physics/video/robotics</strong> &mdash; none target financial markets. This validates the "world model" paradigm while confirming RecWM occupies a genuine white space: the financial world model.</p>
+
+<div class="rcwm-box">
+<strong>Bottom line:</strong> RecWM&rsquo;s core innovation &mdash; using DEQ fixed-point computation as the natural architecture for performatively stable market equilibria &mdash; remains unpublished and commercially unavailable as of August 2026. The nearest academic work validates the <em>problem</em> (performative prediction matters in finance) without providing the <em>solution</em> (a concrete computational architecture). The nearest commercial work (Sooth Labs, Bridgewater AIA) operates on different axes (exogenous forecasting, systematic macro) rather than endogenous reflexive equilibrium.
+</div>
+
 
 
 <!-- ════════════════════════════════════════════════════════════════════════
@@ -7448,7 +7480,7 @@ marginal cost.</p>
 <strong>Issue 4 &mdash; Gaussian Tails Are Wrong By 18 Orders Of Magnitude (FATAL &mdash; Financial Physics)</strong>
 <p style="margin-top:0.4rem;"><strong>Problem:</strong> The belief field is built on the Gaussian exponential family. Financial returns have power-law tails with exponent near 3, not exponential decay. At 10 standard deviations, the Gaussian model assigns probability &asymp; 10<sup>-23</sup>; the empirical power-law tail assigns roughly 10<sup>-4.5</sup>. The gap is 18 orders of magnitude.</p>
 <p style="margin-top:0.4rem;"><strong>Why it matters:</strong> This means the equilibrium computation structurally ignores the exact tail scenarios that real market participants price into options, risk limits, and crash dynamics. Transitions between equilibria driven by tail events can be missed entirely, silently.</p>
-<p style="margin-top:0.4rem;"><strong>Fix:</strong> Replace the Gaussian exponential family with a Student-t belief field, which preserves most of the natural-parameter machinery while adding genuine power-law tails. Where conjugacy loss is unacceptable, use a mixture-of-Gaussians belief representation (normal regime + crisis regime), which strengthens the existing multi-equilibrium framing rather than fighting it.</p>
+<p style="margin-top:0.4rem;"><strong>Fix:</strong> Replace the Gaussian exponential family with a Student-t belief field, which preserves most of the natural-parameter machinery while adding genuine power-law tails, using a bounded characteristic kernel (Gaussian RBF), which ensures valid RKHS embedding regardless of tail weight. Where conjugacy loss is unacceptable, use a mixture-of-Gaussians belief representation (normal regime + crisis regime), which strengthens the existing multi-equilibrium framing rather than fighting it.</p>
 </div>
 
 <div class="warn">
@@ -7677,7 +7709,7 @@ marginal cost.</p>
 
 <h4>Contraction Guarantee Preservation</h4>
 
-<p>The MonDEQ contraction guarantee (Theorem 2.3 in Section 2) requires that <span class="m-var">&Phi;</span> be a monotone operator with Lipschitz constant <span class="m-var">L</span> &lt; 1. This guarantee depends on the <em>operator structure</em> of <span class="m-var">&Phi;</span>, not on the distributional family of the beliefs. Specifically:</p>
+<p>The MonDEQ contraction guarantee (Theorem 2.1 in Section 2) requires that <span class="m-var">&Phi;</span> be a monotone operator with Lipschitz constant <span class="m-var">L</span> &lt; 1. This guarantee depends on the <em>operator structure</em> of <span class="m-var">&Phi;</span>, not on the distributional family of the beliefs. Specifically:</p>
 
 <div class="math-block left-align">
   <span class="eq-label">(A3.8)</span>
@@ -26663,7 +26695,7 @@ For an economic world model built on causal/structural foundations, this means a
 
 <p><strong>Gap:</strong> RecWM models reflexivity via the &epsilon; coefficient and belief field dynamics, but does not use DEQ (Bai et al., NeurIPS 2019) to solve for the reflexive fixed point iteratively.</p>
 
-<p><strong>Research assessment:</strong> DEQ&rsquo;s fixed-point equation z* = f(z*, x) maps directly to Soros&rsquo;s two functions. The spectral radius &rho; of the Jacobian at z* measures instability. Jacobian regularization (Bai et al., ICML 2021) cuts convergence from 17 to ~6 iterations. 88% memory reduction vs explicit deep nets. Library: <span class="st">torchdeq</span>.</p>
+<p><strong>Research assessment:</strong> DEQ&rsquo;s fixed-point equation z* = f(z*, x) maps directly to Soros&rsquo;s two functions. The spectral radius &rho; of the Jacobian at z* measures instability. Jacobian regularization (Bai et al., ICML 2021) cuts convergence from 17 to ~6 iterations. up to 88% memory reduction vs explicit deep nets (Bai et al. 2019, empirical). Library: <span class="st">torchdeq</span>.</p>
 
 <div class="contrib">
   <strong>Strong recommendation:</strong> Replace or augment RecWM&rsquo;s current reflexive loop with a DEQ layer. The convergence speed &rho; becomes a real-time instability signal&mdash;slow convergence = bubble/crash dynamics. This operationalizes Soros reflexivity in a way no current product does. The DEQ-reflexivity connection is an <em>open gap in the literature</em>&mdash;publishing this would be a research contribution.
@@ -50810,14 +50842,14 @@ Total (Warning/Critical)             : &lt; 36 sec typical</div>
   <div class="doc-header">
     <p style="text-transform:uppercase;letter-spacing:.15em;font-size:.85rem;opacity:.7;margin:0 0 .5rem">REN Invention 8 &middot; August 2026</p>
     <h1 style="margin:0 0 .75rem">The Regime Transition Engine</h1>
-    <p style="font-size:1.15rem;opacity:.85;margin:0;max-width:52rem">Real-time detection, classification, and response to structural breaks in financial markets &mdash; built to detect the P-wave in market structure, not the shaking in price. RecWM's fragments (Liquidity, Credit, Risk, Structure, Flow, Narrative, Macro) are watched for the moment they stop agreeing with each other, days to weeks before that disagreement becomes a headline.</p>
+    <p style="font-size:1.15rem;opacity:.85;margin:0;max-width:52rem">Real-time detection, classification, and response to structural breaks in financial markets &mdash; built to detect the P-wave in market structure, not the shaking in price. RecWM's fragments (Liquidity, Sentiment, Policy, Momentum, Risk, Credit, Structure) are watched for the moment they stop agreeing with each other, days to weeks before that disagreement becomes a headline.</p>
   </div>
 
   <div class="section">
     <h2>1. What Is a Regime? A Mathematical Definition</h2>
     <h3>1.1 Formal Definition</h3>
     <p>A <strong>regime</strong> is a maximal connected region in world-state space over which the generating dynamics of financial observables are approximately stationary. This is a claim about the process that generates prices, not about prices themselves &mdash; the distinction is the entire thesis of this invention.</p>
-    <p>Let the world state at time <span class="m-var">t</span> be <span class="m-var">W</span>(<span class="m-var">t</span>) &mdash; the full RecWM world-model state comprising every fragment's state (Liquidity, Credit, Risk, Structure, Flow, Narrative, Macro). Each fragment <span class="m-var">f</span> evolves as a jump-diffusion:</p>
+    <p>Let the world state at time <span class="m-var">t</span> be <span class="m-var">W</span>(<span class="m-var">t</span>) &mdash; the full RecWM world-model state comprising every fragment's state (Liquidity, Sentiment, Policy, Momentum, Risk, Credit, Structure). Each fragment <span class="m-var">f</span> evolves as a jump-diffusion:</p>
     <div class="math-block">
       d<span class="m-var">F</span><sub>f</sub>(<span class="m-var">t</span>) = <span class="m-var">&mu;</span><sub>f</sub>(<span class="m-var">W</span>(<span class="m-var">t</span>), <span class="m-var">&theta;</span><sub>r</sub>) d<span class="m-var">t</span> <span class="m-op">+</span> <span class="m-var">&sigma;</span><sub>f</sub>(<span class="m-var">W</span>(<span class="m-var">t</span>), <span class="m-var">&theta;</span><sub>r</sub>) d<span class="m-var">B</span><sub>f</sub>(<span class="m-var">t</span>) <span class="m-op">+</span> <span class="m-var">J</span><sub>f</sub> d<span class="m-var">N</span><sub>f</sub>(<span class="m-var">t</span>)
       <p style="margin-top:.75rem;font-size:.9rem;opacity:.85">where <span class="m-var">&theta;</span><sub>r</sub> is the regime-specific parameter vector, <span class="m-var">&mu;</span><sub>f</sub> the drift, <span class="m-var">&sigma;</span><sub>f</sub> the diffusion (volatility structure), <span class="m-var">J</span><sub>f</sub> the jump-size distribution, <span class="m-var">N</span><sub>f</sub> a Poisson counting process for discontinuities, and <span class="m-var">B</span><sub>f</sub> a (possibly cross-fragment-correlated) Brownian motion.</p>
