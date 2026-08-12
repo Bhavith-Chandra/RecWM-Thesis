@@ -944,7 +944,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
 <tbody>
 <tr><td>1</td><td><strong>Influence Kernel</strong></td><td><span class="math-inline">K*(s)=(I&minus;&Gamma;A(s))<sup>&minus;1</sup>A(s)</span></td><td>Closed-form resolvent capturing every order of indirect strategic influence between agent types in one matrix inversion.</td></tr>
 <tr><td>2</td><td><strong>Belief Fields</strong></td><td><span class="math-inline">B(&theta;,t,s)</span></td><td>RKHS-embedded distributions over world states, collapsing infinite belief hierarchies to tractable O(N&middot;s) representation.</td></tr>
-<tr><td>3</td><td><strong>Equilibrium Engine</strong></td><td>ATLAS + HYDRA + SEISMOGRAPH</td><td>ATLAS: neural warm-start + Anderson acceleration, targeting ~1.4ms solves. HYDRA: deflation for finding multiple equilibria. SEISMOGRAPH: continuous spectral-radius monitoring for bifurcation early warning.</td></tr>
+<tr><td>3</td><td><strong>Equilibrium Engine</strong></td><td>ATLAS + HYDRA + SEISMOGRAPH</td><td>ATLAS: neural warm-start + Anderson acceleration, targeting ~1.4ms solves. HYDRA: deflation for finding multiple equilibria. SEISMOGRAPH: continuous spectral-radius monitoring for bifurcation early warning. (Production deployment uses Observable Regime Detection (ORD) — see Resolution A5.)</td></tr>
 <tr><td>4</td><td><strong>Self-Awareness Engine</strong></td><td>Reflexive model monitoring</td><td>The model tracks its own footprint &mdash; how much of the observed market state is attributable to its own prior predictions and executed trades.</td></tr>
 <tr><td>5</td><td><strong>Regime Transition Engine</strong></td><td>Critical slowing down detection</td><td>Operationalizes Scheffer's (2009) ecological early-warning signature for financial regime shifts, using the same &rho;(D&Phi;) the Equilibrium Engine already computes.</td></tr>
 <tr><td>6</td><td><strong>Scenario Branching Engine</strong></td><td>Counterfactual trajectory generation</td><td>Generates and ranks branching what-if trajectories under hypothetical belief injections, not resampled historical paths.</td></tr>
@@ -1542,6 +1542,8 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
   <h2>6&ensp;&middot;&ensp;Equilibrium Computation &mdash; ATLAS, HYDRA, SEISMOGRAPH</h2>
 
   <p>Finding, tracking, and monitoring the stability of belief equilibria is handled by three cooperating subsystems, each with distinct responsibilities and its own convergence theory.</p>
+
+  <p class="warn" style="margin:0.5rem 0;font-size:0.92em;"><strong>Production note:</strong> SEISMOGRAPH is the theoretical foundation. For production deployment, it is augmented by Observable Regime Detection (ORD), a 5-channel composite system — see Resolution A5.</p>
 
   <h3>6.1&ensp;ATLAS: the core fixed-point solver</h3>
 
@@ -2250,7 +2252,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
 
 <h2 id="s1-intro"><span class="sec-num">1</span>Introduction: Two Names, One System</h2>
 
-<p>This document describes the complete technical architecture of a system built to do something no existing financial model does: <em>predict markets while accounting for the fact that its own predictions change those markets</em>. The system has two names because it has two layers, and conflating them has caused confusion in every prior attempt at reflexive modeling.</p>
+<p>This document describes the complete technical architecture of a system built to do something not yet available in published or commercial financial models: <em>predict markets while accounting for the fact that its own predictions change those markets</em>. The system has two names because it has two layers, and conflating them has caused confusion in every prior attempt at reflexive modeling.</p>
 
 <div class="triple-card-row">
   <div class="triple-card">
@@ -2309,7 +2311,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
 
 <h3>1.2 The Core Insight: Markets Are Reflexive Systems</h3>
 
-<p>Every quantitative trading system built between 1990 and 2024 shares a hidden assumption: the market is a measurement target. You observe it, model it, predict it, and trade on the prediction. The prediction does not change the thing being predicted. This assumption is false. It has always been false. George Soros named the problem <em>reflexivity</em> in 1987. Performative prediction theory (Perdomo et al., 2020) formalized it. But no one built a production system that internalized it &mdash; until now.</p>
+<p>Every quantitative trading system built between 1990 and 2024 shares a hidden assumption: the market is a measurement target. You observe it, model it, predict it, and trade on the prediction. The prediction does not change the thing being predicted. This assumption is false. It has always been false. George Soros named the problem <em>reflexivity</em> in 1987. Performative prediction theory (Perdomo et al., 2020) formalized it. But no production system that internalizes it has been published or is commercially available.</p>
 
 <div class="rcwm-box">
   <strong>The Reflexivity Problem, Formally.</strong>
@@ -3337,6 +3339,8 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
 
   <p>The reflexive fixed-point equation <span class="st">b* = &Phi;(b*; s, &theta;)</span> is the computational heart of RecWM. Every forward pass, every prediction, every counterfactual query requires solving this equation&mdash;finding beliefs that are self-consistent with the world they would create. Na&iuml;ve iteration (Picard, <span class="st">b_{k+1} = &Phi;(b_k)</span>) converges but is unacceptably slow: 30&ndash;50 iterations at 0.2ms each yields 6&ndash;10ms per equilibrium, and we need multiple equilibria per timestep. The Equilibrium Engine is a three-component system that brings this down to <strong>~5&ndash;10ms in production for the first equilibrium (1.4ms theoretical on an isolated GPU kernel with no competing workloads)</strong> and a correspondingly higher <strong>full multi-equilibrium landscape latency with bifurcation monitoring</strong> once queuing, batching, and shared-GPU contention are accounted for.</p>
 
+  <p class="warn" style="margin:0.5rem 0;font-size:0.92em;"><strong>Production note:</strong> SEISMOGRAPH is the theoretical foundation. For production deployment, it is augmented by Observable Regime Detection (ORD), a 5-channel composite system — see Resolution A5.</p>
+
   <div class="contrib">
     <strong>Why three sub-engines.</strong> ATLAS finds <em>one</em> equilibrium fast. HYDRA discovers <em>all</em> equilibria that matter. SEISMOGRAPH detects when the equilibrium landscape is about to change. Together they answer the three questions a trading system must answer in real time: (1) where is the market now? (2) where else could it be? (3) is a regime transition imminent?
   </div>
@@ -4213,7 +4217,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
       <!-- Summary bar -->
       <rect x="130" y="630" width="600" height="50" rx="8" fill="var(--green)" opacity="0.08" stroke="var(--green)" stroke-width="1.5"/>
       <text x="430" y="650" text-anchor="middle" fill="var(--green)" font-weight="700" font-size="14">Total: ~84M trainable + 1.3B frozen | Inference: 35ms</text>
-      <text x="430" y="670" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="11">Training: 4 phases, 11 weeks, 8&ndash;32 A100s, ~$100K</text>
+      <text x="430" y="670" text-anchor="middle" fill="var(--fg-dim, #666)" font-size="11">Training: 5 stages, 6&ndash;12 months, 10 A10G GPUs, $500K&ndash;$1M</text>
 
       <defs>
         <marker id="arr6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/></marker>
@@ -4590,7 +4594,7 @@ p* = argfix { p &#8614; F(B(&theta;,t,s), K*(s), &Phi;(t)) | p }
   <!-- ===== 6.8 Training ===== -->
   <h3>6.8 Training Program</h3>
 
-  <p>Training proceeds in four phases over approximately 11 weeks, using 8&ndash;32 NVIDIA A100 GPUs (80GB). Total compute cost is approximately <strong>$100K</strong>.</p>
+  <p>Training proceeds in five stages over 6&ndash;12 months, using ~10 NVIDIA A10G GPUs. Total compute cost is <strong>$500K&ndash;$1M</strong>. See Resolution A6 for the full staged curriculum.</p>
 
   <table>
     <thead>
@@ -5335,9 +5339,7 @@ class TierThreeIngest:
 </div>
 
 <div class="math-block">
-  Total training compute: ~50,000 A100-hours &asymp; $100K per full training run
-  <br>
-  (at $2/A100-hour spot pricing on AWS/GCP)
+  Total training compute: $500K&ndash;$1M per full training run (see Resolution A6 for staged breakdown)
 </div>
 
 <p>
@@ -14660,7 +14662,7 @@ prevented from influencing predictions.
 <!-- ═══ SECTION 9 ═══ -->
 <h2 id="ct9"><span class="sec-num">9.</span> What This Produces for a Portfolio Manager</h2>
 
-<p>The triangulation engine translates into concrete outputs that no existing system provides:</p>
+<p>The triangulation engine translates into concrete outputs not available in published or commercial systems:</p>
 
 <div class="table-wrap" style="font-size: 0.88rem;">
 <table>
@@ -15619,7 +15621,7 @@ the issues raised by Perdomo et al. (2020).
     <div class="sec-label">Section 11</div>
     <h2>The Four Derived Signals &mdash; Complete Specification</h2>
 
-    <p>These are the product. Each signal is computed from the RecWM internals and measures something no existing system can measure.</p>
+    <p>These are the product. Each signal is computed from the RecWM internals and measures something not available in published or commercial systems.</p>
 
     <div class="def-block">
       <div class="def-term">Signal 1: Constructibility Index (CI)</div>
@@ -18312,7 +18314,7 @@ is a viable recurrence mechanism.
             <li>Core equation: W(t+1) = C(W(t), A(B(t)), &Phi;(t))</li>
             <li>10 genuinely novel contributions identified and pressure-tested (including causal triangulation engine, causal-constrained dynamics, three-way coupling)</li>
             <li>Prior art mapped: every building block credited to its source</li>
-            <li>All data sources identified (all free)</li>
+            <li>All data sources identified (free for MVP; production-grade feeds: $250K–$1M/year)</li>
           </ul>
         </div>
         <span class="tag tag-green">DESIGN COMPLETE</span>
@@ -18530,7 +18532,7 @@ is a viable recurrence mechanism.
   <div class="container">
     <div class="section-label">Section V</div>
     <h2>Data strategy</h2>
-    <p class="section-desc">All free. All API-accessible. No proprietary data required for MVP.</p>
+    <p class="section-desc">Free public sources sufficient for MVP. Production deployment requires institutional data feeds ($250K–$1M/year). See data cost analysis in Resolution A6.</p>
 
     <div class="table-wrap">
       <table class="data-table">
@@ -25024,7 +25026,7 @@ For an economic world model built on causal/structural foundations, this means a
   </div>
   <div class="impl-card">
     <h4 style="color: var(--accent); margin-bottom: 0.4rem;">Reflexivity-Aware</h4>
-    <p style="font-size: 0.88rem;">Estimates its own performative impact via &epsilon;(t). When predictions become self-fulfilling, the model detects this and adjusts its update rate. Novel &mdash; no existing system does this.</p>
+    <p style="font-size: 0.88rem;">Estimates its own performative impact via &epsilon;(t). When predictions become self-fulfilling, the model detects this and adjusts its update rate. Novel &mdash; not available in published or commercial systems.</p>
   </div>
   <div class="impl-card">
     <h4 style="color: var(--accent); margin-bottom: 0.4rem;">Traceable</h4>
@@ -25200,7 +25202,7 @@ For an economic world model built on causal/structural foundations, this means a
 <!-- ═══ 5. WHAT RECWM WOULD PRODUCE ═══ -->
 <h2 id="prod-outputs"><span class="sec-num">5.</span> Target Outputs (Design Specification)</h2>
 
-<p>If built and validated, RecWM would produce four derived signals that no existing system provides:</p>
+<p>If built and validated, RecWM would produce four derived signals not available in published or commercial systems:</p>
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0;">
   <div class="impl-card">
@@ -28445,7 +28447,7 @@ For an economic world model built on causal/structural foundations, this means a
   <p>Every existing financial model ignores this. They treat the market as a physical system whose laws don't depend on who's observing it. That approximation works in calm regimes where reflexive effects are small &mdash; when &rho;(<span class="m-op">D&Phi;</span>) is comfortably below 1, and the belief-price loop is a minor correction to an otherwise fundamentals-driven process. It fails catastrophically exactly when it matters most: in crises, crowded trades, regime transitions, and liquidity events, where the dominant dynamics are agents reacting to each other's reactions and &rho;(<span class="m-op">D&Phi;</span>) is approaching the critical boundary.</p>
 
   <div class="contrib">
-    <strong>The opportunity.</strong> A world model that treats reflexivity as a first-class primitive &mdash; that models agents, their beliefs, the interaction between beliefs and prices, and the feedback loops that make markets self-referential &mdash; would see things no existing system can see: crowding before it unwinds, regime shifts before they manifest in price, and the second-order effects of its own actions. Formally, it would be the first system to continuously monitor &rho;(<span class="m-op">D&Phi;</span>) in real time across the entire market, rather than discovering after the fact that a loop had been unstable.
+    <strong>The opportunity.</strong> A world model that treats reflexivity as a first-class primitive &mdash; that models agents, their beliefs, the interaction between beliefs and prices, and the feedback loops that make markets self-referential &mdash; would see things not visible to published or commercial systems: crowding before it unwinds, regime shifts before they manifest in price, and the second-order effects of its own actions. Formally, it would be the first system to continuously monitor &rho;(<span class="m-op">D&Phi;</span>) in real time across the entire market, rather than discovering after the fact that a loop had been unstable.
   </div>
 
   <!-- ============================================================ -->
@@ -28477,7 +28479,7 @@ For an economic world model built on causal/structural foundations, this means a
       <tbody>
         <tr>
           <td><strong>Observe</strong></td>
-          <td>Ingest prices, order flow, news, filings, macro data &mdash; all free, public sources &mdash; continuously, 24/7</td>
+          <td>Ingest prices, order flow, news, filings, macro data &mdash; free, public sources for MVP (institutional feeds required at scale) &mdash; continuously, 24/7</td>
           <td>Information Fusion layer (Invention 11)</td>
         </tr>
         <tr>
@@ -28750,7 +28752,7 @@ For an economic world model built on causal/structural foundations, this means a
     </table>
   </div>
 
-  <p>RecWM could not exist without REN &mdash; no existing architecture can compute reflexive belief equilibria as a forward pass. And REN without RecWM is an academic curiosity &mdash; a novel model class that doesn't ship anything. They are designed together, but they are not the same thing.</p>
+  <p>RecWM could not exist without REN &mdash; no published architecture computes reflexive belief equilibria as a forward pass. And REN without RecWM is an academic curiosity &mdash; a novel model class that doesn't ship anything. They are designed together, but they are not the same thing.</p>
 
   <h3>7.1 The Energy-Based Framing (for readers coming from JEPA)</h3>
 
@@ -28772,7 +28774,7 @@ For an economic world model built on causal/structural foundations, this means a
   <ul>
     <li>The mathematical framework for belief equilibria is specified (Influence Kernel, Belief Fields, Equilibrium Engine)</li>
     <li>The 11 core inventions are designed to component-specification level</li>
-    <li>The data strategy uses only free, publicly available sources</li>
+    <li>The data strategy starts with free, publicly available sources for MVP, scaling to institutional feeds ($250K–$1M/year) for production</li>
     <li>The compute requirements are estimated and bounded</li>
     <li>The competitive landscape is honestly assessed</li>
   </ul>
@@ -33148,7 +33150,7 @@ For an economic world model built on causal/structural foundations, this means a
           <td style="color:var(--green)"><strong>Plausible</strong></td>
         </tr>
         <tr>
-          <td>"All free data" for institutional-grade operation</td>
+          <td>Free data for MVP; $250K–$1M/year for institutional-grade operation</td>
           <td><strong>Misleading.</strong> Free sources (FRED, SEC EDGAR, GLEIF) provide macro/fundamental data. Real-time pricing, order book data, and corporate actions require paid feeds ($50K-500K/year). Satellite and alternative data have significant costs.</td>
           <td style="color:var(--red)"><strong>Overstated</strong></td>
         </tr>
